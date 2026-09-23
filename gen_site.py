@@ -104,6 +104,12 @@ def render_post(r, posts):
                      "image": (SITE_URL + r["og_image"]) if r["og_image"] else None, "datePublished": r["published"], "dateModified": r["modified"] or r["published"],
                      "author": {"@type": "Organization", "name": "Serene Med Spa"}, "publisher": {"@type": "Organization", "name": "Serene Med Spa", "logo": {"@type": "ImageObject", "url": SITE_URL + LOGO}},
                      "mainEntityOfPage": SITE_URL + r["slug"]}, ensure_ascii=False)
+    lslug = LOCAL_MAP.get(r["slug"].strip("/"))
+    local_card = ""
+    if lslug:
+        hl = f'<li><a href="/hudson/{lslug}/">Hudson, OH pricing &amp; booking &rsaquo;</a></li>' if lslug not in LOCAL_MISSING["hudson"] else ""
+        bl = f'<li><a href="/barboursville/{lslug}/">Barboursville, WV pricing &amp; booking &rsaquo;</a></li>' if lslug not in LOCAL_MISSING["barboursville"] else ""
+        local_card = f'<div class="card"><h3>Local pricing</h3><p style="font-size:.95rem">Each office publishes its own menu and prices.</p><ul>{hl}{bl}</ul></div>'
     body = f'''<section class="post-hero"><div class="wrap">
   <div class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/service/">Treatments</a> &rsaquo; <a href="/service/#{r["cat"]}">{CAT_NAME[r["cat"]]}</a></div>
   <h1 style="max-width:24ch">{esc(r["title"])}</h1>
@@ -119,6 +125,7 @@ def render_post(r, posts):
       <a class="btn btn-sm" href="{HUDSON["book"]}" target="_blank" rel="noopener">Hudson, OH</a>
       <a class="btn btn-sm" href="{BARB["book"]}" target="_blank" rel="noopener">Barboursville, WV</a>
       <a class="btn btn-sm btn-outline" href="/telehealth/">Telehealth visit</a></div>
+    {local_card}
     <div class="card"><h3>Call or text</h3><ul><li>Hudson &middot; <a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a></li><li>Barboursville &middot; <a href="tel:{BARB["tel"]}">{BARB["phone"]}</a></li><li>Telehealth &middot; <a href="tel:{TELE["tel"]}">{TELE["phone"]}</a></li></ul></div>
     <div class="card"><h3>Helpful links</h3><ul><li><a href="/post-care-instructions/">Post-care instructions</a></li><li><a href="/specials/">This month&rsquo;s specials</a></li><li><a href="/financing/">Financing &amp; payment plans</a></li><li><a href="/membership/">Membership</a></li><li><a href="/recommendation-webapp/">Treatment finder</a></li></ul></div>
   </aside>
