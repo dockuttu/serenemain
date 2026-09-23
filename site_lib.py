@@ -226,7 +226,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
   .nav .btn{display:none}.menu-toggle{display:block}
   .hero{min-height:70vh}
   .zf-grid{grid-template-columns:1fr}
-  .mbar{display:flex}body{padding-bottom:64px}
+  .mbar{display:flex}body{padding-bottom:64px}.promo-more{display:none}
   .foot-bottom{flex-direction:column}
 }
 @media (max-width:560px){.g4{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.foot-grid{grid-template-columns:1fr}}
@@ -255,7 +255,7 @@ def _mega():
         cols.append(f'<div><h5>{cat}</h5>' + "".join(f'<a href="{h}">{t}</a>' for h, t in items) + '</div>')
     return '<div class="drop mega">' + "".join(cols) + '</div>'
 
-PROMO = '<div class="promo">&#10022; <a href="/specials/">This month&rsquo;s specials</a> at Hudson &amp; Barboursville &middot; New: <a href="/telehealth/">Serene Telehealth</a> with Dr. Arora &mdash; weight management &amp; hormone care by video</div>'
+PROMO = '<div class="promo">&#10022; <a href="/specials/">This month&rsquo;s specials</a> at Hudson &amp; Barboursville<span class="promo-more"> &middot; New: <a href="/telehealth/">Serene Telehealth</a> with Dr. Arora &mdash; weight management &amp; hormone care by video</span></div>'
 
 NAV = PROMO + f'''<header>
   <div class="wrap nav">

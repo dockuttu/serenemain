@@ -12,7 +12,7 @@ def meta(s):
     def g(rx, default=""):
         m = re.search(rx, s, re.I | re.S); return html.unescape(m.group(1)).strip() if m else default
     title = g(r"<title>([^<]*)</title>")
-    title = re.sub(r"\s*[\-|–]\s*Serene Med Spas?\s*$", "", title).strip() or title
+    title = re.sub(r"\s*[\-|–]\s*Serene(?: Med Spas?)?\s*$", "", title).strip() or title
     return {
         "title": title,
         "description": g(r'<meta name="description" content="([^"]*)"'),
@@ -102,7 +102,9 @@ def simplify(h):
 def text_of(h, n=None):
     t = html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)[^>]*>.*?</\1>", "", h, flags=re.S)))
     t = re.sub(r"\s+", " ", t).strip()
-    return t[:n] if n else t
+    if n and len(t) > n:
+        t = t[:n].rsplit(" ", 1)[0].rstrip(",;:—-") + "…"
+    return t
 
 def load(mirror, slug):
     p = os.path.join(mirror, slug.strip("/"), "index.html") if slug.strip("/") else os.path.join(mirror, "index.html")
