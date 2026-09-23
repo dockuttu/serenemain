@@ -13,6 +13,7 @@ SITE = sys.argv[2] if len(sys.argv) > 2 else "bundle/site"
 
 # ---------------------------------------------------------------- categories
 CATS = [
+    ("about", "About Serene", r"dr-robin|dr-shweta|founder|serene-med-spa-dr|our-team|welcome|grand-opening|meet-"),
     ("intimate", "Intimate Wellness", r"p-shot|o-shot|vaginal|labial|sexual|alma-duo|empowerrf|erectile|intimate"),
     ("hair", "Hair Restoration", r"hair-restoration|alma-ted|prp-hair|hair-loss|hair-growth|exosome"),
     ("wellness", "Wellness & Weight", r"\biv\b|iv-|vitamin|hormone|biote|weight|glp|semaglutide|tirzepatide|peptide|nad|longevity|testosterone|hydration|pro-nox|nitrous|telehealth"),
@@ -67,6 +68,13 @@ def inventory():
         if rec["is_post"]: posts.append(rec)
         else: pages[slug] = rec
     posts.sort(key=lambda r: r["published"] or "", reverse=True)
+    # duplicates (same title) -> canonical to the primary (earliest published, shortest slug)
+    groups = {}
+    for r in posts: groups.setdefault(re.sub(r"[^a-z0-9]+", " ", r["title"].lower()).strip(), []).append(r)
+    for g in groups.values():
+        primary = sorted(g, key=lambda r: (r["published"] or "9", len(r["slug"])))[0]
+        for r in g:
+            r["canonical"] = primary["slug"]; r["is_dup"] = r is not primary
     return posts, pages
 
 def fmt_date(iso):
@@ -112,13 +120,21 @@ def render_post(r, posts):
 </div></section>
 {('<section class="tint-sand related"><div class="wrap"><div class="section-head"><span class="eyebrow">Keep reading</span><h2>Related treatments</h2></div><div class="grid g3">' + "".join(post_card(p, False) for p in related) + '</div></div></section>') if related else ''}
 {book_band()}'''
-    return shell(r["slug"], r["title"] + " | Serene Med Spa", r["description"] or X.text_of(body_html, 155), body, og_image=r["og_image"], ld=ld)
+    extra = f'<link rel="canonical" href="{SITE_URL}{r["canonical"]}">' if r.get("is_dup") else ""
+    page = shell(r["slug"], r["title"] + " | Serene Med Spa", r["description"] or X.text_of(body_html, 155), body, og_image=r["og_image"], ld=ld)
+    if extra: page = re.sub(r'<link rel="canonical" href="[^"]*">', extra, page, count=1)
+    return page
+
+FILTER_HTML = '''<div class="filter"><input type="search" id="q" placeholder="Search treatments (e.g. Botox, HydraFacial, weight loss)…" aria-label="Search treatments"></div>
+<script>document.addEventListener('DOMContentLoaded',function(){var q=document.getElementById('q');if(!q)return;q.addEventListener('input',function(){var v=q.value.trim().toLowerCase();document.querySelectorAll('.post-card').forEach(function(c){c.classList.toggle('hidden',v&&c.textContent.toLowerCase().indexOf(v)<0);});document.querySelectorAll('section[id]').forEach(function(s){var vis=s.querySelectorAll('.post-card:not(.hidden)').length;if(s.querySelector('.post-card'))s.classList.toggle('hidden',vis===0);});});});</script>'''
 
 def render_service(posts):
     groups = {}
-    for p in posts: groups.setdefault(p["cat"], []).append(p)
+    for p in posts:
+        if p.get("is_dup") or p["cat"] == "about": continue
+        groups.setdefault(p["cat"], []).append(p)
     order = ["injectables", "skin", "laser", "body", "wellness", "intimate", "hair"]
-    nav = '<div class="cat-nav">' + "".join(f'<a href="#{k}">{CAT_NAME[k]}</a>' for k in order if k in groups) + '</div>'
+    nav = '<div class="cat-nav">' + "".join(f'<a href="#{k}">{CAT_NAME[k]}</a>' for k in order if k in groups) + '</div>' + FILTER_HTML
     secs = ""
     for i, k in enumerate(order):
         if k not in groups: continue
@@ -130,9 +146,9 @@ def render_service(posts):
                  "Every treatment at Serene Med Spa — injectables, skin and laser, body contouring, wellness, intimate health and hair restoration — explained by our physician-led team.", body)
 
 def render_blogs(posts):
-    cards = "".join(post_card(p) for p in posts)
+    cards = "".join(post_card(p) for p in posts if not p.get("is_dup"))
     body = page_hero("Serene Journal", f"Treatment guides, pricing explainers and skin-health notes from our physicians and providers. Our newest articles are published on <a href='{BLOG}'>blog.serenemedspas.com</a>.", [("/", "Home"), (None, "Blog")], f"{len(posts)} articles") + \
-        f'<section><div class="wrap"><div class="grid g3">{cards}</div></div></section>' + book_band()
+        f'<section id="all"><div class="wrap">{FILTER_HTML}<div class="grid g3">{cards}</div></div></section>' + book_band()
     return shell("/blogs/", "Med Spa Blog | Serene Med Spa", "Treatment guides, pricing explainers and skin-health articles from Serene Med Spa in Hudson, OH and Barboursville, WV.", body)
 
 def render_prose(r, path=None, title=None, lede="", eyebrow="", crumbs=None, extra=""):
@@ -149,6 +165,7 @@ def render_embed(r, path=None, title=None, description=None, hero=None, noindex=
     path = path or r["slug"]
     widgets = X.html_widgets(r["container"])
     inner = "".join(X.widget_body(w) for w in widgets) if widgets else X.simplify(r["container"])
+    inner = re.sub(r"<script>(?:(?!</script>).)*?zf-consult(?:(?!</script>).)*?</script>", "", inner, flags=re.S)
     body = (hero or "") + f'<section class="embed"><div class="wrap">{inner}</div></section>'
     return shell(path, (title or r["title"]) + " | Serene Med Spa", description or r["description"] or X.text_of(inner, 155), body, og_image=r.get("og_image"), noindex=noindex)
 

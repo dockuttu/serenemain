@@ -45,7 +45,9 @@ TOOLS = [
 def stars(): return '<div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>'
 
 def home(posts):
-    featured = [p for p in posts if p["og_image"]][:6]
+    FEATURED = ["/botox-treatment-benefits/", "/hydrafacial-treatment-benefits/", "/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "/lip-filler-injection/", "/laser-hair-removal-at-serene-med-spa/", "/kybella-treatment-for-double-chin/"]
+    by = {p["slug"]: p for p in posts}
+    featured = [by[s] for s in FEATURED if s in by] or [p for p in posts if p["og_image"]][:6]
     from gen_site import post_card, CAT_NAME
     body = f'''
 <section class="hero">
@@ -69,8 +71,8 @@ def home(posts):
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">Two offices, one team</span><h2>Choose your Serene</h2><p class="lede">Each office has its own site with local pricing, specials and online booking.</p></div>
     <div class="grid g2">
-      {loc_card(HUDSON, "Serving Summit &amp; Portage counties, Cleveland and Akron. Full injectable, skin and laser menu; hormone and weight programs.")}
-      {loc_card(BARB, "Serving Huntington, Charleston and the Tri-State. Full injectable, skin and laser menu; IV therapy, hormones, sexual wellness and hair restoration.")}
+      {loc_card(HUDSON, "Serving Summit &amp; Portage counties, Cleveland and Akron. Full injectable, skin and laser menu; hormone and weight programs.", True)}
+      {loc_card(BARB, "Serving Huntington, Charleston and the Tri-State. Full injectable, skin and laser menu; IV therapy, hormones, sexual wellness and hair restoration.", True)}
     </div>
   </div>
 </section>
@@ -152,8 +154,8 @@ def home(posts):
     return shell("/", "Serene Med Spa | Physician-Led Med Spa in Hudson, OH & Barboursville, WV",
                  "Physician-led medical spa and wellness in Hudson, Ohio and Barboursville, West Virginia, plus telehealth weight management and hormone care in OH, WV, KY and FL. Injectables, skin, laser, body contouring and IV therapy — natural results by board-certified physicians.", body)
 
-def loc_card(L, blurb):
-    return f'''<div class="loc reveal">
+def loc_card(L, blurb, compact=False):
+    return f'''<div class="loc reveal{" compact" if compact else ""}">
   <div class="loc-body"><span class="state">{L["state"]}</span><h3 style="font-size:1.9rem;margin-top:4px">Serene Med Spa &middot; {L["name"].split(",")[0]}</h3><p style="color:var(--ink-soft)">{blurb}</p>
     <dl><dt>Address</dt><dd>{L["addr1"]}, {L["addr2"]}</dd><dt>Phone</dt><dd><a href="tel:{L["tel"]}">{L["phone"]}</a></dd><dt>Hours</dt><dd>Mon&ndash;Fri 9 AM &ndash; 5 PM &middot; Sat&ndash;Sun by appointment</dd></dl>
     <div class="actions"><a class="btn btn-sm" href="{L["book"]}" target="_blank" rel="noopener">Book online</a><a class="btn btn-sm btn-outline" href="{L["site"]}">Visit the {L["name"].split(",")[0]} site</a><a class="btn btn-sm btn-outline" href="{L["map"]}" target="_blank" rel="noopener">Directions</a></div>
@@ -296,11 +298,11 @@ def telehealth():
     <div class="card reveal"><h3>Wellness &amp; longevity</h3><p>Personalized wellness plans, lab review and prescription options to help you feel your best.</p></div>
   </div>
 </div></section>
-<section><div class="wrap prose" style="max-width:900px">{disc}
+<section><div class="wrap"><div class="prose" style="max-width:none">{disc}</div>
   <h2>Already a patient?</h2><p>Message Dr. Arora securely any time in the Spruce app. We reply during business hours.</p>
   <p><a class="btn" href="{TELE["spruce"]}" target="_blank" rel="noopener">Message Dr. Arora securely</a></p>
   <h2>Prefer an in-person visit?</h2><p>Serene Med Spa has two offices: <a href="{HUDSON["site"]}">Hudson, Ohio</a> and <a href="{BARB["site"]}">Barboursville, West Virginia</a>.</p>
-  <p style="background:#fff5f2;border-left:5px solid #c0392b;padding:14px 18px;border-radius:8px;font-weight:600">Telehealth is not for emergencies. If you have a medical emergency, call 911.</p>
+  <p style="background:#fff5f2;border-left:5px solid #c0392b;padding:14px 18px;border-radius:8px;font-weight:600;max-width:760px">Telehealth is not for emergencies. If you have a medical emergency, call 911.</p>
 </div></section>'''
     ld = json.dumps({"@context": "https://schema.org", "@type": "MedicalBusiness", "name": "Serene Telehealth with Dr. Robin Arora", "url": SITE_URL + "/telehealth/", "telephone": "+1-330-775-2452",
                      "areaServed": ["Ohio", "West Virginia", "Kentucky", "Florida"], "medicalSpecialty": ["Weight management", "Hormone therapy"], "parentOrganization": {"@type": "Organization", "name": "Serene Medical Spa LLC", "url": SITE_URL}}, ensure_ascii=False)

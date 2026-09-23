@@ -183,6 +183,20 @@ header{position:sticky;top:0;z-index:60;background:rgba(251,250,247,.92);backdro
 /* embedded legacy widgets (contact, telehealth, tools) */
 .embed{padding:32px 0 60px}
 .embed .wrap>*{margin-left:auto;margin-right:auto}
+/* prose accordions (post-care etc.) */
+.prose details{border:1px solid var(--rule);border-radius:12px;padding:14px 18px;margin:12px 0;background:#fff}
+.prose details summary{cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:600;color:var(--teal-900);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.prose details summary::-webkit-details-marker{display:none}
+.prose details summary::after{content:"+";color:var(--sage);font-size:1.5rem;line-height:1}
+.prose details[open] summary::after{content:"\2013"}
+.prose details>*:not(summary){margin-top:10px}
+.prov img{max-height:480px}
+.loc.compact{grid-template-columns:1fr}
+.loc.compact .map{display:none}
+.filter{display:flex;gap:10px;align-items:center;margin:0 0 22px}
+.filter input{flex:1;font:inherit;font-size:1rem;padding:13px 16px;border:1.5px solid var(--rule);border-radius:30px;background:#fff}
+.filter input:focus{outline:none;border-color:var(--teal-500)}
+.hidden{display:none!important}
 /* footer */
 footer{background:var(--teal-900);color:rgba(255,255,255,.85);padding:64px 0 28px;margin-top:40px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:36px}
