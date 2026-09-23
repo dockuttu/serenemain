@@ -259,24 +259,68 @@ def financing():
 {book_band()}'''
     return shell("/financing/", "Financing Options | Serene Med Spa", "Pay over time for treatments at Serene Med Spa with Cherry or CareCredit. 0% APR options for qualified patients; pre-qualify without affecting your credit score.", body)
 
+# ---- Monthly specials: edit SPECIALS_MONTH / SPECIALS each month (no flyer image needed) ----
+SPECIALS_MONTH = "September"
+SPECIALS_YEAR = "2026"
+SPECIALS = [
+    # (deal, [(treatment, href, one-line blurb)], note)
+    ("Buy 2, get 1 free", [
+        ("V-Tone", "/empowerrf-vaginal-rejuvenation-treatment/", "Gentle electrical muscle stimulation for pelvic-floor strength and bladder control."),
+        ("Forma V", "/empowerrf-vaginal-rejuvenation-treatment/", "Radiofrequency for intimate comfort, tissue quality and blood flow &mdash; no downtime."),
+        ("Morpheus V", "/empowerrf-vaginal-rejuvenation-treatment/", "Fractional RF microneedling for deeper remodeling of vaginal and vulvar tissue."),
+    ], "EmpowerRF women&rsquo;s wellness &middot; series of 3 recommended"),
+    ("Buy 1, get 1 free", [
+        ("PRP Hair Restoration", "/natural-prp-hair-restoration/", "Your own platelet-rich plasma, injected into the scalp to wake up thinning follicles."),
+    ], "Two sessions for the price of one"),
+    ("Buy 2, get 1 free", [
+        ("Evolve X", "/inmode-evolvex-body-contouring/", "Hands-free RF body contouring &mdash; tighten skin, reduce fat and tone muscle in one platform."),
+    ], "Series pricing on Tite, Trim &amp; Tone"),
+]
+
 def specials(pages):
-    r = pages.get("/specials/")
-    img = (r or {}).get("og_image") or "/wp-content/uploads/2026/08/August-Serene-Specials-for-Barboursville-Hudson-OH-791x1024.png"
-    body = page_hero("Monthly specials", "Buy more, glow more &mdash; this month&rsquo;s savings at Hudson and Barboursville. Specials change monthly; members see them first.", [("/", "Home"), (None, "Specials")], "Hudson, OH &middot; Barboursville, WV") + f'''
-<section><div class="wrap band">
-  <div class="reveal"><img src="{img}" alt="This month's specials at Serene Med Spa" style="border-radius:var(--r);box-shadow:var(--shadow)"></div>
-  <div class="prose"><h2>How to claim a special</h2><p>Book online or call the office and mention the special when you check in. Specials can&rsquo;t be combined with other discounts, and some require a consultation first so we can confirm you&rsquo;re a good candidate.</p>
+    month = SPECIALS_MONTH
+    cards = ""
+    for deal, items, note in SPECIALS:
+        rows = "".join(f'<li><a href="{href}"><strong>{name}</strong></a><span>{blurb}</span></li>' for name, href, blurb in items)
+        cards += f'''
+    <div class="card reveal special">
+      <span class="eyebrow">{month} special</span>
+      <h3 class="deal">{deal}</h3>
+      <ul class="deal-list">{rows}</ul>
+      <p class="deal-note">{note}</p>
+    </div>'''
+    body = page_hero(f"{month} specials", "More glow, more you &mdash; this month&rsquo;s savings at Hudson and Barboursville. Specials change monthly; members see them first.", [("/", "Home"), (None, "Specials")], f"{month} {SPECIALS_YEAR} &middot; Hudson, OH &middot; Barboursville, WV") + f'''
+<style>
+.special{{display:flex;flex-direction:column;border-top:4px solid var(--sage)}}
+.special .deal{{font-size:2rem;color:var(--teal-900);margin:0 0 18px}}
+.deal-list{{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:14px}}
+.deal-list li{{display:grid;gap:3px;padding-left:26px;position:relative}}
+.deal-list li::before{{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:50%;background:var(--sage)}}
+.deal-list a{{color:var(--teal-700);text-decoration:none;font-size:1.05rem}}
+.deal-list a:hover{{text-decoration:underline}}
+.deal-list span{{font-size:.92rem;color:var(--ink-soft)}}
+.deal-note{{margin-top:auto;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-500);font-weight:600}}
+.fine{{font-size:.9rem;color:var(--ink-soft);max-width:760px}}
+</style>
+<section><div class="wrap">
+  <div class="grid g3">{cards}
+  </div>
+  <p class="fine" style="margin-top:28px">Offers valid through {month} 30, {SPECIALS_YEAR} at both offices. Free session is of equal or lesser value and must be used by the same patient. Can&rsquo;t be combined with another discount or membership pricing; a consultation may be required to confirm candidacy.</p>
+</div></section>
+<section class="tint-sand"><div class="wrap band">
+  <div class="prose"><h2>How to claim a special</h2><p>Book online or call the office and mention the {month} special when you check in. Specials can&rsquo;t be combined with other discounts, and some require a consultation first so we can confirm you&rsquo;re a good candidate.</p>
   <p>Want them in your inbox? Ask the front desk to add you to our monthly email, or follow <a href="https://www.instagram.com/serene.wellness.wv" target="_blank" rel="noopener">@serene.wellness.wv</a>.</p>
   <div class="actions"><a class="btn" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a></div></div>
+  <div class="card reveal"><span class="eyebrow">Members save every month</span><h3>Serene Elevate Membership</h3><p>Members get priority access to specials plus discounted pricing on every visit. See what&rsquo;s included and join online.</p><div class="actions"><a class="btn btn-sm" href="/membership/">Membership details</a><a class="btn btn-sm btn-outline" href="/financing/">Financing</a></div></div>
 </div></section>'''
-    return shell("/specials/", "Monthly Med Spa Specials | Serene Med Spa", "This month's specials at Serene Med Spa in Hudson, OH and Barboursville, WV.", body, og_image=img)
+    return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: buy 2 get 1 free on V-Tone, Forma V, Morpheus V and Evolve X, and buy 1 get 1 free on PRP hair restoration.", body)
 
 def telehealth():
     disc = open(os.path.join(HERE, "telehealth-disclosures.html"), encoding="utf-8").read()
     # restyle the disclosure block's classes to the new design
     disc = disc.replace('class="grid"', 'class="grid g3"').replace('<p class="small"', '<p style="font-size:.95rem;color:var(--ink-soft)"')
     body = f'''
-<section class="hero" style="min-height:62vh;background:linear-gradient(100deg,rgba(20,45,52,.9) 0%,rgba(20,45,52,.6) 60%,rgba(20,45,52,.3) 100%),url('/wp-content/uploads/2024/07/IMG_0253-1.webp') center/cover no-repeat">
+<section class="hero" style="min-height:62vh;background:linear-gradient(100deg,rgba(20,45,52,.9) 0%,rgba(20,45,52,.6) 60%,rgba(20,45,52,.3) 100%),url('/wp-content/uploads/2024/07/2148574924.jpg') center/cover no-repeat">
   <div class="wrap"><span class="eyebrow">Telehealth &middot; Ohio, West Virginia, Kentucky &amp; Florida</span><h1 style="max-width:16ch">Serene Telehealth with Dr. Robin Arora</h1>
   <p class="lede">Medical weight management, hormone therapy and wellness care from home, by secure video with a board-certified physician.</p>
   <div class="hero-cta"><a class="btn" style="background:#fff;color:var(--teal-900);border-color:#fff" href="{TELE["spruce"]}" target="_blank" rel="noopener">Start a telehealth visit</a><a class="btn btn-ghost" href="tel:{TELE["tel"]}">Call {TELE["phone"]}</a><a class="btn btn-ghost" href="sms:{TELE["tel"]}">Text us</a></div>
