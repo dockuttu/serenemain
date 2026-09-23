@@ -276,7 +276,7 @@ def telehealth():
     # restyle the disclosure block's classes to the new design
     disc = disc.replace('class="grid"', 'class="grid g3"').replace('<p class="small"', '<p style="font-size:.95rem;color:var(--ink-soft)"')
     body = f'''
-<section class="hero" style="min-height:62vh;background:linear-gradient(100deg,rgba(20,45,52,.9) 0%,rgba(20,45,52,.6) 60%,rgba(20,45,52,.3) 100%),url('/wp-content/uploads/2024/07/2148574924.jpg') center/cover no-repeat">
+<section class="hero" style="min-height:62vh;background:linear-gradient(100deg,rgba(20,45,52,.9) 0%,rgba(20,45,52,.6) 60%,rgba(20,45,52,.3) 100%),url('/wp-content/uploads/2024/07/IMG_0253-1.webp') center/cover no-repeat">
   <div class="wrap"><span class="eyebrow">Telehealth &middot; Ohio, West Virginia, Kentucky &amp; Florida</span><h1 style="max-width:16ch">Serene Telehealth with Dr. Robin Arora</h1>
   <p class="lede">Medical weight management, hormone therapy and wellness care from home, by secure video with a board-certified physician.</p>
   <div class="hero-cta"><a class="btn" style="background:#fff;color:var(--teal-900);border-color:#fff" href="{TELE["spruce"]}" target="_blank" rel="noopener">Start a telehealth visit</a><a class="btn btn-ghost" href="tel:{TELE["tel"]}">Call {TELE["phone"]}</a><a class="btn btn-ghost" href="sms:{TELE["tel"]}">Text us</a></div>
