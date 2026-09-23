@@ -17,7 +17,7 @@ git reset --hard "origin/$BRANCH"
 echo "    now at: $(git rev-parse --short HEAD) — $(git log -1 --pretty=%s)"
 
 echo "==> Building"
-./build.sh
+bash ./build.sh
 
 mkdir -p "$LIVE"
 echo "==> Promoting to live ($LIVE/site) atomically"
