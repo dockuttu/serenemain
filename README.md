@@ -5,7 +5,7 @@ serenebarboursville / serenehudson). Migrated Sep 22–23, 2026 ahead of LegitSc
 
 ## Redesign (Sep 23, 2026)
 The WordPress look is gone: `gen_site.py` builds a new, hand-designed site from the snapshot's *content* (titles, meta, article bodies,
-self-contained HTML tools) plus authored pages. Palette: deep teal / sage / sand (matches the Serene logo); type: Cormorant Garamond + Jost.
+self-contained HTML tools) plus authored pages. Palette (v1, Sep 23 AM): deep teal / sage / sand; type: Cormorant Garamond + Jost. Superseded by v2 below.
 - `site_lib.py` — brand constants, CSS (`/main.css`), header/nav/footer shell, consult form, booking band, tracking (Google Ads tag + Meta pixel).
 - `extract.py` — pulls meta + clean semantic HTML out of the Elementor pages (posts -> `.prose`; pasted HTML tools -> embedded as-is).
 - `pages_custom.py` — home, locations, providers, about, reviews, membership, financing, specials, telehealth (with LegitScript disclosures), thank-you.
@@ -21,3 +21,21 @@ Editing copy: authored pages in `pages_custom.py`; article bodies still come fro
 
 Editing a page: edit the file under `mirror/<slug>/index.html`, commit, push — live within ~2 minutes.
 Rollback of the whole migration: point DNS for serenemedspas.com back at the Hostinger WordPress host.
+
+## Design system v2 (Sep 23, 2026 — "best med spa site" pass)
+Modeled on the top-grossing US med spa sites (SkinSpirit first; Ever/Body, Ject, Skin Laundry, LaserAway studied live):
+serif display + geometric sans, one deep green, one soft accent, white space, pill buttons, uppercase letter-spaced labels.
+- Type: **Poppins** (body, 300–600) · **Noto Serif Display** (h1/h2 uppercase, h3 normal case) · **Oooh Baby** (script accents, `.script`). All Google Fonts.
+- Color tokens in `site_lib.CSS :root`: `--forest #10322F` (primary; a hair toward the logo teal), `--forest-700/-500`, `--lav #C4C7E6` + `--lav-100` (accent; promo bar, eyebrows, trust strip, offer panel), `--grey #F5F7FA` (alternate sections), ink `#121417`. Legacy `--teal-*`/`--sage`/`--sand` names alias to these so older templates keep working.
+- Components: `.eyebrow` (lavender label), `.trust` strip, `.arch` (arch-shaped category photos), `.loctile` (photo location cards), `.provcard`, `.offer` (20% first-visit panel), `.rev` quote cards on `.tint-teal`, `.locpick` header location chooser, footer newsletter (`#zf-news` → Zoho web-to-lead, Last Name "Email signup", LEADCF1 "Website form: newsletter").
+- Real photos live in `assets/img/` (copied from the location sites' `img/`) and are served at `/img/…`; the WordPress uploads still serve at `/wp-content/uploads/…`.
+- Location memory: the header "Choose location" pill stores `serene_loc` (hudson | barboursville | telehealth) in localStorage; any `[data-loc-book]` / `[data-loc-tel]` link and `[data-loc-name]` text swaps to that office; `[data-loc-only="hudson"]` blocks show only for that office.
+- Monthly specials: `pages_custom.SPECIALS_MONTH` / `SPECIALS` (no flyer image needed); the promo bar text is `site_lib.PROMO`.
+
+## Plan: fold hudson. and barboursville. into serenemedspas.com (approved Sep 23)
+Goal: one brand, one nav, one domain for SEO — `serenemedspas.com/hudson/…` and `/barboursville/…`, 301 from every subdomain URL.
+1. **Phase 1 (done):** main site on the v2 design; header location chooser; location tiles link to the subdomains for now.
+2. **Phase 2 — Barboursville (~50 pages, small):** add a `locations/` renderer in `gen_site.py` that builds `/barboursville/<slug>/` from `serenebarboursville`'s page data (`pages_data*.py` + `gen_pages.py`) using the v2 shell; local pricing/specials/shop stay location-scoped; `bundle/nginx.conf` in serenebarboursville becomes a pure 301 map (`barboursville.serenemedspas.com/x/` → `serenemedspas.com/barboursville/x/`); update Google Ads final URLs (`/lp/*` → `/barboursville/lp/*`), GBP website link, Mangomint links; resubmit sitemap; keep the subdomain cert/container for 12 months for the redirects.
+3. **Phase 3 — Hudson (~250 pages incl. shop, labs, aftercare, city SEO pages):** same pattern; `/hudson/shop/…` keeps the Obagi catalog (shop.js) or the shop moves to `/shop/` for both offices; city pages (`med-spa-akron-oh` etc.) become `/hudson/med-spa-akron-oh/`.
+4. **Then:** the location chooser rewrites treatment links to the chosen office's page (`/botox-treatment-benefits/` → `/hudson/botox/`) so pricing is always local; retire the `Visit site` buttons.
+Rules: never change DNS or Google Ads final URLs without Robin's OK; keep the free-card pages untouched; every old URL must 301 (check with `check_links.py` + Search Console coverage after each phase).
