@@ -73,7 +73,10 @@ header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid 
 .nav .logo img{height:50px;width:auto}
 .nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex:1;justify-content:center}
 .nav ul li{position:relative}
-.nav ul a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:600;padding:12px 13px;display:block;transition:.2s;border-bottom:2px solid transparent}
+.nav ul a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:600;padding:12px 13px;display:block;white-space:nowrap;transition:.2s;border-bottom:2px solid transparent}
+.car{display:inline-block;width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 0 3px 7px;opacity:.7;vertical-align:middle;transition:.2s}
+.nav ul li:hover>a>.car{transform:rotate(225deg);margin-bottom:0}
+.drop a .car{display:none}
 .nav ul li:hover>a,.nav ul a:hover{color:var(--forest-500)}
 .drop{position:absolute;top:100%;left:0;min-width:250px;background:#fff;border:1px solid var(--rule);border-radius:0 0 16px 16px;padding:12px;box-shadow:var(--shadow);display:none;z-index:70}
 .drop.mega{min-width:900px;display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 26px;padding:26px 30px 28px;left:50%;transform:translateX(-50%)}
@@ -295,18 +298,23 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 /* responsive */
-@media (max-width:1180px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.drop.mega{min-width:760px;grid-template-columns:repeat(3,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav ul a{padding:12px 9px;letter-spacing:.12em}}
-@media (max-width:1024px){.shopband{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.post-wrap{grid-template-columns:1fr}.side{position:static}.offer{grid-template-columns:1fr}.locpick>button span{display:none}}
+@media (max-width:1180px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.drop.mega{min-width:760px;grid-template-columns:repeat(3,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav ul a{padding:12px 8px;letter-spacing:.1em;font-size:.68rem}}
+@media (max-width:1024px){.shopband{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.post-wrap{grid-template-columns:1fr}.side{position:static}.offer{grid-template-columns:1fr}}
+@media (max-width:1040px){
+  .nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:12px 16px 20px;border-bottom:1px solid var(--rule);gap:2px;max-height:calc(100vh - 84px);overflow:auto}
+  .nav ul.open{display:flex}
+  .nav ul a{padding:12px 6px;border-bottom:1px solid var(--rule);font-size:.72rem;letter-spacing:.14em;display:flex;align-items:center;justify-content:space-between}
+  .nav ul li:hover>.drop,.nav ul li:hover>.drop.mega{display:none}
+  .nav ul li.open>.drop,.nav ul li.open>.drop.mega{display:block;position:static;transform:none;min-width:0;box-shadow:none;border:0;padding:6px 0 10px 14px}
+  .nav ul li.open>a>.car{transform:rotate(225deg);margin-bottom:0}.nav ul li:hover>a>.car{transform:rotate(45deg);margin-bottom:3px}
+  .menu-toggle{display:block}
+}
 @media (max-width:900px){
   section{padding:56px 0}
   .g2,.g3{grid-template-columns:1fr}.loc,.prov,.band{grid-template-columns:1fr}.loc .map{min-height:220px}
   .nav{height:72px}.nav .logo img{height:42px}
-  .nav ul{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:12px 16px 20px;border-bottom:1px solid var(--rule);gap:2px;max-height:calc(100vh - 72px);overflow:auto}
-  .nav ul.open{display:flex}
-  .nav ul a{padding:12px 6px;border-bottom:1px solid var(--rule)}
-  .nav ul li:hover>.drop,.nav ul li:hover>.drop.mega{display:none}
-  .nav ul li.open>.drop,.nav ul li.open>.drop.mega{display:block;position:static;transform:none;min-width:0;box-shadow:none;border:0;padding:6px 0 10px 14px}
-  .nav .btn{display:none}.menu-toggle{display:block}
+  .nav ul{max-height:calc(100vh - 72px)}
+  .nav .btn{display:none}
   .locpick>button{padding:11px 14px}
   .hero{min-height:72vh}
   .zf-grid{grid-template-columns:1fr}
@@ -316,7 +324,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
   .loctile{min-height:320px;padding:26px}
   .yourloc .wrap{flex-direction:column;align-items:flex-start}.logos img{height:26px}.logos img.tall{height:44px}.shopband{padding:26px}
 }
-@media (max-width:560px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:1fr}.hero-chips{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:minmax(0,1fr)}.offer{padding:28px}.arch span{font-size:.58rem;padding:8px 12px}}
+@media (max-width:560px){.locpick>button span{display:none}.g6{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:1fr}.hero-chips{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:minmax(0,1fr)}.offer{padding:28px}.arch span{font-size:.58rem;padding:8px 12px}}
 """
 
 # ------------------------------------------------------------------ NAV / FOOTER
@@ -353,7 +361,7 @@ def _mega():
     return '<div class="drop mega">' + "".join(cols) + '</div>'
 def _locpick():
     opts = "".join(f'<button type="button" data-set-loc="{k}"><strong>{L["name"]}</strong><small>{L["addr1"]} &middot; {L["phone"]}</small></button>' for k, L in LOCATIONS)
-    return ('<div class="locpick" id="locpick"><button type="button" aria-haspopup="true" onclick="this.parentNode.classList.toggle(\'open\')">&#9906; <span data-loc-name>Choose location</span> &#9662;</button>'
+    return ('<div class="locpick" id="locpick"><button type="button" aria-haspopup="true" onclick="this.parentNode.classList.toggle(\'open\')">&#9906; <span data-loc-name>Choose location</span><i class="car"></i></button>'
             '<div class="drop"><b>Your Serene</b>' + opts + '<button type="button" data-set-loc="telehealth"><strong>Telehealth</strong><small>Video visits &middot; OH, WV, KY &amp; FL</small></button></div></div>')
 
 PROMO = '<div class="promo">&#10022; <a href="/specials/">September specials</a> are here &mdash; buy 2, get 1 free on V-Tone, Forma V, Morpheus V &amp; Evolve X<span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
@@ -362,12 +370,12 @@ NAV = PROMO + f'''<header>
   <div class="wrap nav">
     <a class="logo" href="/"><img src="{LOGO}" alt="Serene Med Spa" width="220" height="123"></a>
     <ul id="menu">
-      <li><a href="/service/">Treatments &#9662;</a>{_mega()}</li>
-      <li><a href="/locations/">Locations &#9662;</a>{_drop([(HUDSON["site"], "Serene Hudson, OH — office, pricing & booking"), (BARB["site"], "Serene Barboursville, WV — office, pricing & booking"), ("/telehealth/", "Serene Telehealth — OH, WV, KY & FL"), ("/locations/", "Compare locations, hours & directions")])}</li>
+      <li><a href="/service/">Treatments<i class="car"></i></a>{_mega()}</li>
+      <li><a href="/locations/">Locations<i class="car"></i></a>{_drop([(HUDSON["site"], "Serene Hudson, OH — office, pricing & booking"), (BARB["site"], "Serene Barboursville, WV — office, pricing & booking"), ("/telehealth/", "Serene Telehealth — OH, WV, KY & FL"), ("/locations/", "Compare locations, hours & directions")])}</li>
       <li><a href="/specials/">Specials</a></li>
       <li><a href="/membership/">Membership</a></li>
-      <li><a href="/specials/">For Patients &#9662;</a>{_drop(PATIENT_MENU)}</li>
-      <li><a href="/about-us/">About &#9662;</a>{_drop(ABOUT_MENU)}</li>
+      <li><a href="/specials/">For Patients<i class="car"></i></a>{_drop(PATIENT_MENU)}</li>
+      <li><a href="/about-us/">About<i class="car"></i></a>{_drop(ABOUT_MENU)}</li>
     </ul>
     <div class="nav-right">
       {_locpick()}
@@ -442,7 +450,7 @@ fetch(n.action,{{method:'POST',body:new URLSearchParams(new FormData(n)),mode:'n
 <script>
 (function(){{var io=new IntersectionObserver(function(e){{e.forEach(function(x){{if(x.isIntersecting){{x.target.classList.add('in');io.unobserve(x.target);}}}});}},{{threshold:.1}});
 document.querySelectorAll('.reveal').forEach(function(el){{io.observe(el);}});
-document.querySelectorAll('.nav ul li').forEach(function(li){{var a=li.querySelector(':scope>a'),d=li.querySelector(':scope>.drop');if(!d)return;a.addEventListener('click',function(e){{if(window.innerWidth<=900){{e.preventDefault();li.classList.toggle('open');}}}});}});
+document.querySelectorAll('.nav ul li').forEach(function(li){{var a=li.querySelector(':scope>a'),d=li.querySelector(':scope>.drop');if(!d)return;a.addEventListener('click',function(e){{if(window.innerWidth<=1040){{e.preventDefault();li.classList.toggle('open');}}}});}});
 var f=document.getElementById('zf-consult');if(f){{var err=document.getElementById('zf-err'),btn=f.querySelector('.zf-btn');
 f.addEventListener('submit',function(e){{e.preventDefault();err.textContent='';var bad=[].slice.call(f.querySelectorAll('[required]')).filter(function(i){{return !i.value.trim();}});var em=document.getElementById('zf-em');
 if(bad.length){{bad[0].focus();err.textContent='Please fill in the required fields.';return;}}
