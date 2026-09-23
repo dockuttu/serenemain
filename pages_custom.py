@@ -66,14 +66,33 @@ def home(posts):
     body = f"""
 <section class="hero" style="background-image:linear-gradient(90deg,rgba(16,50,47,.8) 0%,rgba(16,50,47,.5) 50%,rgba(16,50,47,.12) 100%),url('/img/lobby.jpg')">
   <div class="wrap">
-    <span class="script">Physician-led aesthetics &amp; wellness</span>
+    <span class="script" data-loc-none>Physician-led aesthetics &amp; wellness</span>
+    <span class="script hidden" data-loc-only="hudson">Serene Hudson, Ohio</span>
+    <span class="script hidden" data-loc-only="barboursville">Serene Barboursville, West Virginia</span>
+    <span class="script hidden" data-loc-only="telehealth">Serene Telehealth &middot; OH, WV, KY &amp; FL</span>
     <h1>Look refreshed.<br>Feel like yourself.</h1>
     <p class="lede">Injectables, skin and laser treatments, body contouring and medical wellness in Hudson, Ohio and Barboursville, West Virginia &mdash; planned by board-certified physicians and performed with a light hand.</p>
-    <div class="hero-cta"><a class="btn btn-lav" href="/#book" data-loc-book>Book Now</a><a class="btn btn-ghost" href="/service/">Explore treatments</a></div>
+    <div class="hero-cta"><a class="btn btn-lav" href="/#book" data-loc-book>Book Now</a><a class="btn btn-ghost" href="/service/">Explore treatments</a><a class="btn btn-ghost hidden" data-loc-any data-loc-site href="/locations/">Your office &amp; pricing</a></div>
     <div class="hero-chips"><span class="chip">Board-certified physicians</span><span class="chip">Allergan Platinum Partner</span><span class="chip">Complimentary consultations</span><span class="chip">Telehealth in OH &middot; WV &middot; KY &middot; FL</span></div>
   </div>
 </section>
 <div class="trust"><div class="wrap"><span>Physician-designed plans</span><span>Medical-grade products &amp; devices</span><span>Natural-looking results</span><span>5-star rated on Google</span></div></div>
+
+<div class="yourloc hidden" data-loc-only="hudson">
+  <div class="wrap"><div><span class="eyebrow" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:8px">Your Serene</span><h3>Hudson, Ohio</h3></div>
+    <div class="meta"><div><b>Address</b>{HUDSON["addr1"]}, {HUDSON["addr2"]}</div><div><b>Phone</b><a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a></div><div><b>Hours</b>Mon&ndash;Fri 9 AM &ndash; 5 PM &middot; Sat by appt.</div></div>
+    <div class="actions"><a class="btn btn-lav" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn btn-ghost" href="/hudson/pricing/">Hudson pricing</a><a class="btn btn-ghost" href="{HUDSON["map"]}" target="_blank" rel="noopener">Directions</a></div></div>
+</div>
+<div class="yourloc hidden" data-loc-only="barboursville">
+  <div class="wrap"><div><span class="eyebrow" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:8px">Your Serene</span><h3>Barboursville, West Virginia</h3></div>
+    <div class="meta"><div><b>Address</b>{BARB["addr1"]}, {BARB["addr2"]}</div><div><b>Phone</b><a href="tel:{BARB["tel"]}">{BARB["phone"]}</a></div><div><b>Hours</b>Mon&ndash;Fri 9 AM &ndash; 5 PM &middot; Sat by appt.</div></div>
+    <div class="actions"><a class="btn btn-lav" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a><a class="btn btn-ghost" href="/barboursville/pricing/">Barboursville pricing</a><a class="btn btn-ghost" href="{BARB["map"]}" target="_blank" rel="noopener">Directions</a></div></div>
+</div>
+<div class="yourloc hidden" data-loc-only="telehealth">
+  <div class="wrap"><div><span class="eyebrow" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:8px">Your Serene</span><h3>Telehealth with Dr. Robin Arora</h3></div>
+    <div class="meta"><div><b>Where</b>Video visits for patients in OH, WV, KY &amp; FL</div><div><b>Phone / text</b><a href="tel:{TELE["tel"]}">{TELE["phone"]}</a></div><div><b>Program</b>$149 / month &middot; Mon&ndash;Fri 9&ndash;5 ET</div></div>
+    <div class="actions"><a class="btn btn-lav" href="{TELE["spruce"]}" target="_blank" rel="noopener">Start a visit</a><a class="btn btn-ghost" href="/telehealth/">How it works</a></div></div>
+</div>
 
 <section>
   <div class="wrap">
@@ -85,7 +104,7 @@ def home(posts):
 
 <section class="tint-sand" id="locations">
   <div class="wrap">
-    <div class="section-head center"><span class="eyebrow">Two offices &middot; one standard of care</span><h2>Find your Serene</h2><p class="lede">Choose your office once and we&rsquo;ll remember it &mdash; booking, phone and pricing links across the site switch to your location.</p></div>
+    <div class="section-head center"><span class="eyebrow">Two offices &middot; one standard of care</span><h2>Find your Serene</h2><p class="lede">Pick your office once and the whole site follows: Book Now, phone numbers, pricing and treatment pages all switch to your location. Each office page has its own team, menu, hours and directions.</p></div>
     <div class="grid g3">
       <a class="loctile reveal" href="{HUDSON["site"]}"><img src="/img/hudson-front-desk.jpg" alt="Serene Med Spa Hudson, Ohio" loading="lazy"><span class="state">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}, {HUDSON["addr2"]} &middot; Serving Akron, Stow, Twinsburg &amp; the Cleveland east side.</p><div class="actions"><span class="btn btn-lav btn-sm">Hudson menu &amp; pricing</span></div></a>
       <a class="loctile reveal" href="{BARB["site"]}"><img src="/img/lobby-2.jpg" alt="Serene Med Spa Barboursville, West Virginia" loading="lazy"><span class="state">West Virginia</span><h3>Barboursville</h3><p>{BARB["addr1"]}, {BARB["addr2"]} &middot; Serving Huntington, Charleston, Ashland &amp; the Tri-State.</p><div class="actions"><span class="btn btn-lav btn-sm">Barboursville menu &amp; pricing</span></div></a>
@@ -109,6 +128,39 @@ def home(posts):
       <div><span class="eyebrow">New patients</span><h2>Your first visit, 20% off</h2><p class="lede">Applies to any product or service at either office &mdash; injectables, facials, lasers, IV therapy or skincare. Can&rsquo;t be combined with another discount. Mention it when you book.</p>
         <div class="actions"><a class="btn" href="/#book" data-loc-book>Book Now</a><a class="btn btn-outline" href="/specials/">September specials</a></div></div>
       <div class="big" style="text-align:center">20%<br><span style="font-size:.28em;letter-spacing:.2em">off your first visit</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tint-sand">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow">Trusted partners &amp; technology</span><h2>The brands behind the results</h2><p class="lede">Top-tier partner status with the makers of Botox, Xeomin and Ultherapy, and the same devices you&rsquo;d find in a university aesthetics department.</p></div>
+    <div class="badges">
+      <div class="badge reveal"><img src="/img/badges/allergan-platinum-2026.png" alt="Allergan Partner Privileges Platinum 2026"><div><b>Allergan Platinum Partner</b><small>Botox, Juv&eacute;derm, SkinVive, Kybella</small></div></div>
+      <div class="badge reveal"><img src="/img/badges/merz-elite-plus.png" alt="Merz Aesthetics ELITE+ Provider"><div><b>Merz Aesthetics ELITE+</b><small>Xeomin, Radiesse &amp; Ultherapy</small></div></div>
+      <div class="badge reveal"><img src="/img/badges/ultherapy-prime.png" alt="Ultherapy PRIME provider"><div><b>Ultherapy PRIME</b><small>Non-surgical lifting</small></div></div>
+      <div class="badge reveal"><img src="/img/badges/biote-certified-provider.webp" alt="Biote Certified Provider"><div><b>Biote Certified</b><small>Hormone optimization</small></div></div>
+      <div class="badge reveal"><img src="/img/logos/obagi-medical-logo.png" alt="Obagi Medical" style="padding:6px"><div><b>Authorized Obagi Provider</b><small>Medical-grade skincare</small></div></div>
+    </div>
+    <p style="text-align:center;margin:40px 0 18px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600">Injectables &amp; skin</p>
+    <div class="logos reveal">
+      <img src="/img/logos/botox-cosmetic-dark.png" alt="Botox Cosmetic" class="tall"><img src="/img/logos/juvederm-dark.png" alt="Juv&eacute;derm"><img src="/img/logos/skinvive-dark.png" alt="SkinVive by Juv&eacute;derm"><img src="/img/logos/kybella-dark.png" alt="Kybella"><img src="/img/logos/diamondglow-dark.png" alt="DiamondGlow"><img src="/img/logos/alle-dark.png" alt="All&#275;" class="tall">
+    </div>
+    <p style="text-align:center;margin:34px 0 18px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600">Laser, RF &amp; energy devices</p>
+    <div class="logos reveal">
+      <img src="/img/logos/alma-dark.png" alt="Alma Lasers"><img src="/img/logos/soprano-ice-platinum-dark.png" alt="Soprano ICE Platinum"><img src="/img/logos/opus-plasma-dark.png" alt="Opus Plasma"><img src="/img/logos/alma-hybrid-dark.png" alt="Alma Hybrid"><img src="/img/logos/alma-ted-dark.png" alt="Alma TED"><img src="/img/logos/alma-duo-dark.png" alt="Alma Duo" class="tall"><img src="/img/logos/harmony-bio-boost-dark.png" alt="Harmony Bio-Boost" class="tall"><img src="/img/logos/sknlab-dark.png" alt="SKNLAB">
+    </div>
+    <p style="text-align:center;margin-top:26px;font-size:.9rem;color:var(--ink-soft)">Plus Morpheus8, EvolveX, Forma and EmpowerRF by InMode, Sciton BBL &amp; MOXI, and HydraFacial.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="shopband reveal">
+      <div><span class="eyebrow">Medical-grade skincare</span><h2>Shop Obagi &mdash; reserve online, pick up at your office</h2><p class="lede">Nu-Derm, ELASTIderm, Professional-C, Obagi-C and Suzan Obagi MD lines, chosen by our physicians. Add products to your cart online and they&rsquo;ll be waiting at the front desk &mdash; no shipping, no guesswork.</p>
+        <div class="actions"><a class="btn" href="#" data-loc-shop>Shop Obagi</a><a class="btn btn-outline" href="/#consult">Ask which products fit your skin</a></div>
+        <p class="zf-fine" data-loc-none>Choose your office first so we show the right shop.</p></div>
+      <div class="products"><img src="/barboursville/img/obagi/professional-c-serum-20-400.webp" alt="Obagi Professional-C Serum 20%" loading="lazy"><img src="/barboursville/img/obagi/elastiderm-eye-cream-fine-lines-wrinkles-400.webp" alt="Obagi ELASTIderm Eye Cream" loading="lazy"><img src="/barboursville/img/obagi/hydrate-luxe-moisturizer-400.webp" alt="Obagi Hydrate Luxe" loading="lazy"><img src="/barboursville/img/obagi/skin-brightening-system-normal-to-oily-400.webp" alt="Obagi Nu-Derm Fx System" loading="lazy"><img src="/barboursville/img/obagi/mineral-broad-spectrum-spf-50-400.webp" alt="Obagi Sun Shield Mineral SPF 50" loading="lazy"><img src="/barboursville/img/obagi/clenziderm-acne-therapeutic-system-3-400.webp" alt="Obagi CLENZIderm System" loading="lazy"></div>
     </div>
   </div>
 </section>

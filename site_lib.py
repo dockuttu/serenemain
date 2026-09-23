@@ -248,6 +248,27 @@ header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid 
 .offer{background:var(--lav-100);border-radius:var(--r);padding:44px;display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
 .offer h2{font-size:clamp(1.8rem,3vw,2.5rem)}
 .offer .big{font-family:'Noto Serif Display',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:1;color:var(--forest);text-transform:uppercase}
+/* your-location strip (home) */
+.yourloc{background:var(--forest);color:#fff;padding:22px 0}
+.yourloc .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.yourloc h3{color:#fff;font-size:1.35rem;margin:0}
+.yourloc .meta{display:flex;gap:26px;flex-wrap:wrap;font-size:.92rem;color:rgba(255,255,255,.85)}
+.yourloc .meta b{display:block;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:#DDE0F5;font-weight:600}
+.yourloc a{color:#fff}
+.yourloc .actions .btn{padding:12px 22px;font-size:.68rem}
+/* partner / technology logos */
+.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:22px 44px}
+.logos img{height:34px;width:auto;opacity:.82;filter:grayscale(1) contrast(1.05);transition:.25s}
+.logos img:hover{opacity:1;filter:none}
+.logos img.tall{height:56px}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:34px}
+.badge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--rule);border-radius:60px;padding:8px 18px 8px 8px}
+.badge img{height:44px;width:auto}
+.badge b{display:block;font-size:.86rem;color:var(--forest)}
+.badge small{font-size:.72rem;color:var(--muted)}
+.shopband{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:var(--lav-100);border-radius:var(--r);padding:44px}
+.shopband .products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.shopband .products img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:14px;padding:10px}
 /* footer */
 footer{background:var(--forest);color:rgba(255,255,255,.82);padding:72px 0 28px;margin-top:0}
 .foot-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.35fr) minmax(0,1.6fr);gap:36px}
@@ -275,7 +296,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 /* responsive */
 @media (max-width:1180px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.drop.mega{min-width:760px;grid-template-columns:repeat(3,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav ul a{padding:12px 9px;letter-spacing:.12em}}
-@media (max-width:1024px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.post-wrap{grid-template-columns:1fr}.side{position:static}.offer{grid-template-columns:1fr}.locpick>button span{display:none}}
+@media (max-width:1024px){.shopband{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.post-wrap{grid-template-columns:1fr}.side{position:static}.offer{grid-template-columns:1fr}.locpick>button span{display:none}}
 @media (max-width:900px){
   section{padding:56px 0}
   .g2,.g3{grid-template-columns:1fr}.loc,.prov,.band{grid-template-columns:1fr}.loc .map{min-height:220px}
@@ -293,6 +314,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
   .foot-bottom{flex-direction:column}
   .trust .wrap{justify-content:flex-start}
   .loctile{min-height:320px;padding:26px}
+  .yourloc .wrap{flex-direction:column;align-items:flex-start}.logos img{height:26px}.logos img.tall{height:44px}.shopband{padding:26px}
 }
 @media (max-width:560px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:1fr}.hero-chips{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:minmax(0,1fr)}.offer{padding:28px}.arch span{font-size:.58rem;padding:8px 12px}}
 """
@@ -341,7 +363,7 @@ NAV = PROMO + f'''<header>
     <a class="logo" href="/"><img src="{LOGO}" alt="Serene Med Spa" width="220" height="123"></a>
     <ul id="menu">
       <li><a href="/service/">Treatments &#9662;</a>{_mega()}</li>
-      <li><a href="/locations/">Locations &#9662;</a>{_drop([(HUDSON["site"], "Hudson, OH"), (BARB["site"], "Barboursville, WV"), ("/telehealth/", "Telehealth (OH, WV, KY, FL)"), ("/locations/", "All locations")])}</li>
+      <li><a href="/locations/">Locations &#9662;</a>{_drop([(HUDSON["site"], "Serene Hudson, OH — office, pricing & booking"), (BARB["site"], "Serene Barboursville, WV — office, pricing & booking"), ("/telehealth/", "Serene Telehealth — OH, WV, KY & FL"), ("/locations/", "Compare locations, hours & directions")])}</li>
       <li><a href="/specials/">Specials</a></li>
       <li><a href="/membership/">Membership</a></li>
       <li><a href="/specials/">For Patients &#9662;</a>{_drop(PATIENT_MENU)}</li>
@@ -395,9 +417,9 @@ FOOTER = f'''<footer>
 
 LOCAL_JS = json.dumps({"map": LOCAL_MAP, "missing": LOCAL_MISSING}, separators=(",", ":"))
 LOC_JS = json.dumps({
-    "hudson": {"name": "Hudson, OH", "book": HUDSON["book"], "tel": HUDSON["tel"], "site": HUDSON["site"]},
-    "barboursville": {"name": "Barboursville, WV", "book": BARB["book"], "tel": BARB["tel"], "site": BARB["site"]},
-    "telehealth": {"name": "Telehealth", "book": TELE["spruce"], "tel": TELE["tel"], "site": "/telehealth/"}})
+    "hudson": {"name": "Hudson, OH", "book": HUDSON["book"], "tel": HUDSON["tel"], "site": HUDSON["site"], "shop": "/hudson/shop/"},
+    "barboursville": {"name": "Barboursville, WV", "book": BARB["book"], "tel": BARB["tel"], "site": BARB["site"], "shop": "/barboursville/shop/"},
+    "telehealth": {"name": "Telehealth", "book": TELE["spruce"], "tel": TELE["tel"], "site": "/telehealth/", "shop": ""}})
 
 SCRIPTS = f'''<script>
 (function(){{var LOC={LOC_JS},LOCAL={LOCAL_JS};
@@ -408,7 +430,8 @@ document.querySelectorAll('[data-loc-name]').forEach(function(el){{el.textConten
 document.querySelectorAll('[data-loc-book]').forEach(function(a){{if(L){{a.href=L.book;a.target='_blank';a.rel='noopener';}}else{{a.href='/#book';a.removeAttribute('target');}}}});
 document.querySelectorAll('[data-loc-tel]').forEach(function(a){{a.href=L?'tel:'+L.tel:'/contact-us/';}});
 document.querySelectorAll('[data-set-loc]').forEach(function(b){{b.classList.toggle('on',b.getAttribute('data-set-loc')===k);}});
-document.querySelectorAll('[data-loc-only]').forEach(function(el){{el.classList.toggle('hidden',!!L&&el.getAttribute('data-loc-only')!==k);}});localize(k);}}
+document.querySelectorAll('[data-loc-only]').forEach(function(el){{el.classList.toggle('hidden',!!L&&el.getAttribute('data-loc-only')!==k);}});document.querySelectorAll('[data-loc-any]').forEach(function(el){{el.classList.toggle('hidden',!L);}});document.querySelectorAll('[data-loc-none]').forEach(function(el){{el.classList.toggle('hidden',!!L);}});document.querySelectorAll('[data-loc-site]').forEach(function(a){{a.href=L?L.site:'/locations/';}});document.querySelectorAll('[data-loc-shop]').forEach(function(a){{if(L&&L.shop){{a.href=L.shop;a.removeAttribute('data-pick');}}else{{a.href='#';a.setAttribute('data-pick','1');}}}});localize(k);}}
+document.addEventListener('click',function(e){{var a=e.target.closest('[data-pick]');if(a){{e.preventDefault();var p=document.getElementById('locpick');if(p){{p.classList.add('open');p.scrollIntoView({{behavior:'smooth',block:'center'}});}}}}}});
 document.querySelectorAll('[data-set-loc]').forEach(function(b){{b.addEventListener('click',function(){{var k=b.getAttribute('data-set-loc');try{{localStorage.setItem('serene_loc',k);}}catch(e){{}}apply(k);var p=document.getElementById('locpick');if(p)p.classList.remove('open');}});}});
 document.addEventListener('click',function(e){{var p=document.getElementById('locpick');if(p&&!p.contains(e.target))p.classList.remove('open');}});
 apply(get());
