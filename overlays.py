@@ -83,5 +83,5 @@ open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write("\n".join(s
 print(f"overlays: sitemap.xml with {len(urls)} URLs")
 
 # 4. robots.txt
-open(os.path.join(SITE, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /wp-content/plugins/\nDisallow: /wp-includes/\n\nSitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/barboursville/sitemap.xml\n")
+open(os.path.join(SITE, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /wp-content/plugins/\nDisallow: /wp-includes/\n\nSitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/barboursville/sitemap.xml\nSitemap: {ORIGIN}/hudson/sitemap.xml\n")
 print("overlays: robots.txt")

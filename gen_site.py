@@ -146,7 +146,7 @@ def render_service(posts):
         items = sorted(groups[k], key=lambda p: p["title"])
         secs += f'''<section id="{k}" class="{'tint-sand' if i % 2 else ''}" style="padding:56px 0"><div class="wrap"><div class="section-head"><span class="eyebrow">{len(items)} treatments</span><h2>{CAT_NAME[k]}</h2></div><div class="grid g3">{"".join(post_card(p, False) for p in items)}</div></div></section>'''
     body = page_hero("Treatments &amp; services", "Physician-led aesthetics and wellness across two offices and by telehealth. Browse by category, or use the <a href='/recommendation-webapp/'>treatment finder</a> if you&rsquo;re not sure where to start.", [("/", "Home"), (None, "Treatments")], "Hudson, OH &middot; Barboursville, WV") + \
-        f'<section style="padding:36px 0 0"><div class="wrap">{nav}<p class="lede" style="font-size:1rem">Location-specific pricing and booking live on each office&rsquo;s site: <a href="{HUDSON["site"]}">Hudson</a> &middot; <a href="{BARB["site"]}">Barboursville</a>.</p></div></section>' + secs + book_band()
+        f'<section style="padding:36px 0 0"><div class="wrap">{nav}<p class="lede" style="font-size:1rem">Location-specific pricing and booking: <a href="{HUDSON["site"]}">Hudson</a> &middot; <a href="{BARB["site"]}">Barboursville</a>.</p></div></section>' + secs + book_band()
     return shell("/service/", "Med Spa Treatments & Services | Serene Med Spa – Hudson, OH & Barboursville, WV",
                  "Every treatment at Serene Med Spa — injectables, skin and laser, body contouring, wellness, intimate health and hair restoration — explained by our physician-led team.", body)
 

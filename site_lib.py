@@ -5,7 +5,7 @@ import re, html, os, json
 SITE_URL = "https://serenemedspas.com"
 LOGO = "/wp-content/uploads/2024/11/Serene_Logo-1024x574.png"
 HUDSON = {"name": "Hudson, OH", "addr1": "50 W Streetsboro St, Suite 2", "addr2": "Hudson, OH 44236", "tel": "+13304605915",
-          "phone": "(330) 460-5915", "book": "https://booking.mangomint.com/serenemedspa/Hudson", "site": "https://hudson.serenemedspas.com/",
+          "phone": "(330) 460-5915", "book": "https://booking.mangomint.com/serenemedspa/Hudson", "site": "/hudson/",  # folded into the main domain (Phase 3, Sep 2026)
           "map": "https://maps.google.com/maps?q=50+W+Streetsboro+St+Suite+2,+Hudson,+OH+44236", "state": "Ohio"}
 BARB = {"name": "Barboursville, WV", "addr1": "1 Chateau Grove Ln", "addr2": "Barboursville, WV 25504", "tel": "+13045200461",
         "phone": "(304) 520-0461", "book": "https://booking.mangomint.com/serenemedspa/Barboursville", "site": "/barboursville/",  # folded into the main domain (Phase 2, Sep 2026)
@@ -522,7 +522,7 @@ def book_band():
   <div class="wrap">
     <div class="section-head center"><span class="eyebrow">Book online</span><h2>Choose your location</h2><p class="lede" style="margin:0 auto">Same-week appointments at both offices. Video visits for weight management and hormone care through Serene Telehealth.</p></div>
     <div class="grid g3">
-      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br><a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn btn-sm btn-outline" href="{HUDSON["site"]}">Visit site</a></div></div>
+      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br><a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn btn-sm btn-outline" href="{HUDSON["site"]}">Pricing &amp; menu</a></div></div>
       <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">West Virginia</span><h3>Barboursville</h3><p>{BARB["addr1"]}<br>{BARB["addr2"]}<br><a href="tel:{BARB["tel"]}">{BARB["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a><a class="btn btn-sm btn-outline" href="{BARB["site"]}">Pricing &amp; menu</a></div></div>
       <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">OH &middot; WV &middot; KY &middot; FL</span><h3>Telehealth</h3><p>Weight management, hormone therapy &amp; wellness by secure video with Dr. Robin Arora.<br><a href="tel:{TELE["tel"]}">{TELE["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{TELE["spruce"]}" target="_blank" rel="noopener">Start a visit</a><a class="btn btn-sm btn-outline" href="/telehealth/">Learn more</a></div></div>
     </div>
