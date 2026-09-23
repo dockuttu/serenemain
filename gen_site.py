@@ -89,7 +89,7 @@ def fmt_date(iso):
     except Exception: return ""
 
 def post_card(r, show_cat=True):
-    img = f'<img src="{esc(r["og_image"])}" alt="" loading="lazy">' if r.get("og_image") else ""
+    img = f'<img src="{esc(r["og_image"])}" alt="{esc(r["title"])}" loading="lazy">' if r.get("og_image") else ""
     cat = f'<div class="pc-cat">{CAT_NAME[r["cat"]]}</div>' if show_cat else ""
     return f'''<a class="post-card reveal" href="{r["slug"]}">{img}<div class="pc-body">{cat}<h3>{esc(r["title"])}</h3><p>{esc(X.text_of(r["description"], 150) or X.text_of(r["content"], 150))}</p><span class="more">Read more &rsaquo;</span></div></a>'''
 
@@ -111,6 +111,24 @@ def extract_faq(body_html):
             if len(at) > 20: qa.append((qt, at[:1200]))
     return qa
 
+
+def fix_alts(body_html, fallback):
+    """Give content images a descriptive alt (from the filename) when the CMS left it empty."""
+    def alt_from(src):
+        name = re.sub(r"\.(jpe?g|png|webp|gif)$", "", src.rsplit("/", 1)[-1], flags=re.I)
+        name = re.sub(r"-\d+x\d+$|-scaled$|-\d+$", "", name)
+        words = re.sub(r"[-_]+", " ", name).strip()
+        if len(words) < 4 or re.match(r"^(img|image|dsc|screenshot|untitled)", words, re.I): return fallback
+        return (words[0].upper() + words[1:]).replace(" serene med spa", " — Serene Med Spa")
+    def fix(m):
+        tag = m.group(0)
+        if re.search(r'alt="[^"]+"', tag): return tag
+        src = re.search(r'src="([^"]+)"', tag)
+        alt = esc(alt_from(src.group(1)) if src else fallback)
+        tag = re.sub(r'\salt=""', "", tag)
+        return tag[:-1] + f' alt="{alt}">' if not tag.endswith("/>") else tag[:-2] + f' alt="{alt}">'
+    return re.sub(r"<img\b[^>]*>", fix, body_html)
+
 def post_author(body_html):
     m = re.search(r"\bBy\s+(?:Dr\.?\s+)?([A-Z][a-z]+\s+[A-Z][a-z]+)", X.text_of(body_html[:800]))
     if m:
@@ -126,6 +144,7 @@ def render_post(r, posts):
     body_html = r["content"]
     # drop a leading H1/H2 duplicating the title
     body_html = re.sub(r"^\s*<h[12]>[^<]*</h[12]>", "", body_html)
+    body_html = fix_alts(body_html, r["title"])
     related = [p for p in posts if p["cat"] == r["cat"] and p["slug"] != r["slug"] and not p.get("is_dup")][:3]
     date = fmt_date(r["published"]); mod = fmt_date(r["modified"])
     author = r["author"] or "Serene Med Spa"
@@ -210,7 +229,7 @@ def render_prose(r, path=None, title=None, lede="", eyebrow="", crumbs=None, ext
     path = path or r["slug"]
     title_html = title or esc(r["title"])
     title_txt = X.text_of(title_html)
-    content = re.sub(r"^\s*<h[12]>[^<]*</h[12]>", "", r["content"])
+    content = fix_alts(re.sub(r"^\s*<h[12]>[^<]*</h[12]>", "", r["content"]), title_txt)
     body = page_hero(title_html, lede, crumbs or [("/", "Home"), (None, title_html)], eyebrow) + f'<section><div class="wrap"><article class="prose">{content}{extra}</article></div></section>'
     return shell(path, title_txt + " | Serene Med Spa", r["description"] or X.text_of(content, 155), body, og_image=r.get("og_image"))
 

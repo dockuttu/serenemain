@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """site_lib.py — shared shell (head/nav/footer), brand constants and helpers for serenemedspas.com (static)."""
 import re, html, os, json
+import seo_meta as SEO
 
 SITE_URL = "https://serenemedspas.com"
 LOGO = "/wp-content/uploads/2024/11/Serene_Logo-1024x574.png"
@@ -465,17 +466,17 @@ fetch(f.action,{{method:'POST',body:new URLSearchParams(new FormData(f)),mode:'n
 document.addEventListener('click',function(e){{var a=e.target.closest('a[href*="booking.mangomint.com"]');if(a){{try{{gtag('event','conversion',{{'send_to':'{GTAG}/lQdCCL31zvUcEPiLl_gC'}});}}catch(x){{}}}}}},true);</script>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','{META_PIXEL}');fbq('track','PageView');</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={META_PIXEL}&ev=PageView&noscript=1"></noscript>'''
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id={META_PIXEL}&ev=PageView&noscript=1"></noscript>'''
 
 ORG_LD = json.dumps({
-    "@context": "https://schema.org", "@type": "MedicalBusiness", "name": "Serene Med Spa", "url": SITE_URL, "logo": SITE_URL + LOGO,
+    "@context": "https://schema.org", "@type": "MedicalBusiness", "@id": SITE_URL + "/#organization", "name": "Serene Med Spa", "url": SITE_URL, "logo": SITE_URL + LOGO,
     "image": SITE_URL + "/wp-content/uploads/2024/07/2148574924.jpg", "telephone": "+1-330-460-5915", "email": "info@serenemedspas.com",
     "founder": {"@type": "Person", "name": "Robin Arora, MD"},
-    "sameAs": ["https://www.instagram.com/serene.wellness.wv"],
+    "sameAs": SEO.SAME_AS, "priceRange": "$$", "medicalSpecialty": ["Dermatology", "PlasticSurgery", "Endocrinology"],
     "department": [
-        {"@type": "MedicalBusiness", "name": "Serene Med Spa — Hudson, OH", "url": (SITE_URL + HUDSON["site"]) if HUDSON["site"].startswith("/") else HUDSON["site"], "telephone": "+1-330-460-5915",
+        {"@type": "MedicalBusiness", "@id": SITE_URL + "/hudson/#business", "sameAs": SEO.SAME_AS_HUDSON, "hasMap": HUDSON["map"], "name": "Serene Med Spa — Hudson, OH", "url": (SITE_URL + HUDSON["site"]) if HUDSON["site"].startswith("/") else HUDSON["site"], "telephone": "+1-330-460-5915",
          "address": {"@type": "PostalAddress", "streetAddress": "50 W Streetsboro St, Suite 2", "addressLocality": "Hudson", "addressRegion": "OH", "postalCode": "44236", "addressCountry": "US"}},
-        {"@type": "MedicalBusiness", "name": "Serene Med Spa — Barboursville, WV", "url": (SITE_URL + BARB["site"]) if BARB["site"].startswith("/") else BARB["site"], "telephone": "+1-304-520-0461",
+        {"@type": "MedicalBusiness", "@id": SITE_URL + "/barboursville/#business", "sameAs": SEO.SAME_AS_BARB, "hasMap": BARB["map"], "name": "Serene Med Spa — Barboursville, WV", "url": (SITE_URL + BARB["site"]) if BARB["site"].startswith("/") else BARB["site"], "telephone": "+1-304-520-0461",
          "address": {"@type": "PostalAddress", "streetAddress": "1 Chateau Grove Ln", "addressLocality": "Barboursville", "addressRegion": "WV", "postalCode": "25504", "addressCountry": "US"}},
     ]}, ensure_ascii=False)
 
@@ -486,9 +487,13 @@ def shell(path, title, description, body, og_image=None, noindex=False, extra_he
     canonical = SITE_URL + path
     og = SITE_URL + (og_image if og_image and og_image.startswith("/") else (og_image or "/wp-content/uploads/2024/07/2148574924.jpg"))
     robots = '<meta name="robots" content="noindex, follow">' if noindex else '<meta name="robots" content="index, follow, max-image-preview:large">'
-    ldjson = ""
-    for block in ([ORG_LD] if path == "/" else []) + ([ld] if ld else []):
-        ldjson += f'<script type="application/ld+json">{block}</script>\n'
+    meta = SEO.PAGE_META.get(path, {})
+    title = meta.get("title", title); description = meta.get("description", description)
+    blocks = ([ORG_LD] if path == "/" else []) + ([ld] if ld else [])
+    if not noindex:
+        existing = "".join(blocks)
+        blocks += [json.dumps(b, ensure_ascii=False) for b in SEO.default_ld(path, title, description, existing) + meta.get("ld", [])]
+    ldjson = "".join(f'<script type="application/ld+json">{block}</script>\n' for block in blocks)
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>

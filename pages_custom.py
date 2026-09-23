@@ -393,7 +393,13 @@ def specials(pages):
   <div class="actions"><a class="btn" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a></div></div>
   <div class="card reveal"><span class="eyebrow">Members save every month</span><h3>Serene Elevate Membership</h3><p>Members get priority access to specials plus discounted pricing on every visit. See what&rsquo;s included and join online.</p><div class="actions"><a class="btn btn-sm" href="/membership/">Membership details</a><a class="btn btn-sm btn-outline" href="/financing/">Financing</a></div></div>
 </div></section>'''
-    return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: buy 2 get 1 free on V-Tone, Forma V, Morpheus V and Evolve X, and buy 1 get 1 free on PRP hair restoration.", body)
+    import calendar as _cal
+    _mnum = list(_cal.month_name).index(month); _last = _cal.monthrange(int(SPECIALS_YEAR), _mnum)[1]
+    offers_ld = json.dumps({"@context": "https://schema.org", "@type": "OfferCatalog", "name": f"{month} {SPECIALS_YEAR} specials — Serene Med Spa", "url": SITE_URL + "/specials/",
+        "itemListElement": [{"@type": "Offer", "name": f"{deal}: {X.text_of(name)}", "description": X.text_of(blurb), "url": SITE_URL + href, "category": "Promotion",
+                             "validFrom": f"{SPECIALS_YEAR}-{_mnum:02d}-01", "validThrough": f"{SPECIALS_YEAR}-{_mnum:02d}-{_last:02d}", "offeredBy": {"@id": SITE_URL + "/#organization"},
+                             "areaServed": ["Hudson, OH", "Barboursville, WV"]} for deal, items, note in SPECIALS for name, href, blurb in items]}, ensure_ascii=False)
+    return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: buy 2 get 1 free on V-Tone, Forma V, Morpheus V and Evolve X, and buy 1 get 1 free on PRP hair restoration.", body, ld=offers_ld)
 
 def telehealth():
     disc = open(os.path.join(HERE, "telehealth-disclosures.html"), encoding="utf-8").read()

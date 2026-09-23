@@ -29,7 +29,7 @@ POST_OVERRIDES = {
             ]}],
     },
     "/best-laser-for-tattoo-removal-guide/": {
-        "title": "Best Tattoo Removal Laser (2026): Pico vs Q-Switched Compared",
+        "title": "Best Tattoo Removal Laser 2026: Pico vs Q-Switched Compared",
         "description": "Which laser removes tattoos best? A physician compares picosecond vs Q-switched lasers on sessions, pain, ink colors and cost — with real prices at our Ohio and West Virginia offices.",
     },
     "/laser-tattoo-removal/": {
@@ -39,7 +39,7 @@ POST_OVERRIDES = {
         "title": "What Is Botox? How It Works, Results & What to Expect",
     },
     "/botox/": {
-        "title": "Botox for Frown Lines: Benefits, Risks & Results | Serene Med Spa",
+        "title": "Botox for Frown Lines: Benefits, Risks, Results & Cost",
     },
     "/peptide-therapy-benefits-skin-hair-wellness/": {
         "title": "Peptide Therapy Benefits: Skin, Hair, Healing & Metabolism",
@@ -48,7 +48,10 @@ POST_OVERRIDES = {
         "title": "Weight Loss Injections Explained by a Physician (OH & WV)",
     },
     "/dermaplaning-facial-treatment-serene-med-spas/": {
-        "title": "Dermaplaning Facial: Benefits, Results & Cost | Serene Med Spa",
+        "title": "Dermaplaning Facial: Benefits, Results & Cost in OH & WV",
+    },
+    "/semaglutide-weight-loss-program/": {
+        "title": "Semaglutide at a Med Spa: Physician-Led Program & Results",
     },
     "/botox-for-shoulder-slimming/": {
         "title": "Trap Botox (Shoulder Slimming): Units, Cost & Results",
