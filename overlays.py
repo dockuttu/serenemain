@@ -69,6 +69,9 @@ for root, dirs, files in os.walk(SITE):
         s = open(os.path.join(root, "index.html"), encoding="utf-8", errors="replace").read()
         if re.search(r'<meta name="robots" content="[^"]*noindex', s, re.I): continue
         path = "/" if rel == "." else "/" + rel.replace(os.sep, "/") + "/"
+        can = re.search(r'<link rel="canonical" href="([^"]+)"', s)
+        if can and can.group(1).replace(ORIGIN, "") not in (path, ""): continue   # duplicate pointing elsewhere
+        if 'http-equiv="refresh"' in s: continue                                  # redirect stub
         mtime = datetime.date.fromtimestamp(os.path.getmtime(os.path.join(root, "index.html"))).isoformat()
         urls.append((path, mtime))
 urls.sort()

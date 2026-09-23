@@ -183,6 +183,20 @@ header{position:sticky;top:0;z-index:60;background:rgba(251,250,247,.92);backdro
 /* embedded legacy widgets (contact, telehealth, tools) */
 .embed{padding:32px 0 60px}
 .embed .wrap>*{margin-left:auto;margin-right:auto}
+/* prose accordions (post-care etc.) */
+.prose details{border:1px solid var(--rule);border-radius:12px;padding:14px 18px;margin:12px 0;background:#fff}
+.prose details summary{cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:600;color:var(--teal-900);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.prose details summary::-webkit-details-marker{display:none}
+.prose details summary::after{content:"+";color:var(--sage);font-size:1.5rem;line-height:1}
+.prose details[open] summary::after{content:"\2013"}
+.prose details>*:not(summary){margin-top:10px}
+.prov img{max-height:480px}
+.loc.compact{grid-template-columns:1fr}
+.loc.compact .map{display:none}
+.filter{display:flex;gap:10px;align-items:center;margin:0 0 22px}
+.filter input{flex:1;font:inherit;font-size:1rem;padding:13px 16px;border:1.5px solid var(--rule);border-radius:30px;background:#fff}
+.filter input:focus{outline:none;border-color:var(--teal-500)}
+.hidden{display:none!important}
 /* footer */
 footer{background:var(--teal-900);color:rgba(255,255,255,.85);padding:64px 0 28px;margin-top:40px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:36px}
@@ -212,7 +226,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
   .nav .btn{display:none}.menu-toggle{display:block}
   .hero{min-height:70vh}
   .zf-grid{grid-template-columns:1fr}
-  .mbar{display:flex}body{padding-bottom:64px}
+  .mbar{display:flex}body{padding-bottom:64px}.promo-more{display:none}
   .foot-bottom{flex-direction:column}
 }
 @media (max-width:560px){.g4{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.foot-grid{grid-template-columns:1fr}}
@@ -220,7 +234,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 
 # ------------------------------------------------------------------ NAV / FOOTER
 SERVICE_MENU = [
-    ("Injectables", [("/wrinkle-treatments/", "Botox & Wrinkle Relaxers"), ("/service/#injectables", "Dermal Fillers"), ("/lip-filler-injection/", "Lip Filler"),
+    ("Injectables", [("/botox-treatment-benefits/", "Botox & Wrinkle Relaxers"), ("/service/#injectables", "Dermal Fillers"), ("/lip-filler-injection/", "Lip Filler"),
                      ("/kybella-treatment-for-double-chin/", "Kybella"), ("/pdo-thread-lift-face-neck/", "PDO Thread Lift")]),
     ("Skin & Laser", [("/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "Morpheus8"), ("/hydrafacial-treatment-benefits/", "HydraFacial"),
                       ("/microneedling-with-prp/", "Microneedling & PRP"), ("/chemical-peel-treatments-serene-med-spa/", "Chemical Peels"),
@@ -241,7 +255,7 @@ def _mega():
         cols.append(f'<div><h5>{cat}</h5>' + "".join(f'<a href="{h}">{t}</a>' for h, t in items) + '</div>')
     return '<div class="drop mega">' + "".join(cols) + '</div>'
 
-PROMO = '<div class="promo">&#10022; <a href="/specials/">This month&rsquo;s specials</a> at Hudson &amp; Barboursville &middot; New: <a href="/telehealth/">Serene Telehealth</a> with Dr. Arora &mdash; weight management &amp; hormone care by video</div>'
+PROMO = '<div class="promo">&#10022; <a href="/specials/">This month&rsquo;s specials</a> at Hudson &amp; Barboursville<span class="promo-more"> &middot; New: <a href="/telehealth/">Serene Telehealth</a> with Dr. Arora &mdash; weight management &amp; hormone care by video</span></div>'
 
 NAV = PROMO + f'''<header>
   <div class="wrap nav">
