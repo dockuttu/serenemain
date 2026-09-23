@@ -171,6 +171,12 @@ def render_post(r, posts):
         hl = f'<li><a href="/hudson/{lslug}/">Hudson, OH pricing &amp; booking &rsaquo;</a></li>' if lslug not in LOCAL_MISSING["hudson"] else ""
         bl = f'<li><a href="/barboursville/{lslug}/">Barboursville, WV pricing &amp; booking &rsaquo;</a></li>' if lslug not in LOCAL_MISSING["barboursville"] else ""
         local_card = f'<div class="card"><h3>Local pricing</h3><p style="font-size:.95rem">Each office publishes its own menu and prices.</p><ul>{hl}{bl}</ul></div>'
+    # sibling guides about the same treatment (priority: cost / what-is / main article first)
+    sibs = [p for p in posts if not p.get("is_dup") and p["slug"] != r["slug"] and LOCAL_MAP.get(p["slug"].strip("/")) == lslug] if lslug else []
+    sibs.sort(key=lambda p: (0 if "cost" in p["slug"] else 1 if "what-is" in p["slug"] else 2 if p["slug"].strip("/") == lslug else 3, p["title"]))
+    guides_card = ('<div class="card"><h3>Related guides</h3><ul>' + "".join(f'<li><a href="{p["slug"]}">{esc(POST_OVERRIDES.get(p["slug"], {}).get("h1") or p["title"])}</a></li>' for p in sibs[:4]) + '</ul></div>') if sibs else ""
+    if lslug in ("weight-loss", "medical-weight-loss", "hormone-optimization", "longevity"):
+        guides_card += '<div class="card"><h3>Prefer a video visit?</h3><p style="font-size:.95rem">Weight management and hormone care by telehealth in OH, WV, KY and FL.</p><ul><li><a href="/telehealth/">Serene Telehealth &rsaquo;</a></li></ul></div>'
     body = f'''<section class="post-hero"><div class="wrap">
   <div class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/service/">Treatments</a> &rsaquo; <a href="/service/#{r["cat"]}">{CAT_NAME[r["cat"]]}</a></div>
   <h1 style="max-width:24ch">{esc(ov.get("h1") or r["title"])}</h1>
@@ -186,7 +192,7 @@ def render_post(r, posts):
       <a class="btn btn-sm" href="{HUDSON["book"]}" target="_blank" rel="noopener">Hudson, OH</a>
       <a class="btn btn-sm" href="{BARB["book"]}" target="_blank" rel="noopener">Barboursville, WV</a>
       <a class="btn btn-sm btn-outline" href="/telehealth/">Telehealth visit</a></div>
-    {local_card}
+    {local_card}{guides_card}
     <div class="card"><h3>Call or text</h3><ul><li>Hudson &middot; <a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a></li><li>Barboursville &middot; <a href="tel:{BARB["tel"]}">{BARB["phone"]}</a></li><li>Telehealth &middot; <a href="tel:{TELE["tel"]}">{TELE["phone"]}</a></li></ul></div>
     <div class="card"><h3>Helpful links</h3><ul><li><a href="/post-care-instructions/">Post-care instructions</a></li><li><a href="/specials/">This month&rsquo;s specials</a></li><li><a href="/financing/">Financing &amp; payment plans</a></li><li><a href="/membership/">Membership</a></li><li><a href="/recommendation-webapp/">Treatment finder</a></li></ul></div>
   </aside>
@@ -271,6 +277,17 @@ def main():
             dup_redirects[r["slug"]] = r["canonical"]; out[r["slug"]] = redirect_page(r["canonical"])
         else:
             out[r["slug"]] = render_post(r, posts)
+    # guides.json: local treatment slug -> main-site guides (read by the office builds to link back to the articles)
+    guides = {}
+    for r in posts:
+        if r.get("is_dup"): continue
+        ls = LOCAL_MAP.get(r["slug"].strip("/"))
+        if ls: guides.setdefault(ls, []).append({"url": r["slug"], "title": POST_OVERRIDES.get(r["slug"], {}).get("h1") or r["title"],
+                                                  "rank": 0 if "cost" in r["slug"] else 1 if "what-is" in r["slug"] else 2 if r["slug"].strip("/") == ls else 3})
+    for ls in guides: guides[ls] = [dict(url=g["url"], title=g["title"]) for g in sorted(guides[ls], key=lambda g: (g["rank"], g["title"]))[:3]]
+    gj = json.dumps(guides, ensure_ascii=False)
+    open(os.path.join(SITE, "guides.json"), "w", encoding="utf-8").write(gj)
+    open(os.path.join(HERE, "guides.json"), "w", encoding="utf-8").write(gj)
     # nginx reads this map (see bundle/nginx.conf: map $uri $moved_to { include .../_redirects.map; })
     all_redirects = dict(REDIRECTS); all_redirects.update(dup_redirects)
     os.makedirs(SITE, exist_ok=True)

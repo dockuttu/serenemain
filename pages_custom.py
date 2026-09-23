@@ -434,8 +434,32 @@ def telehealth():
   <h2>Prefer an in-person visit?</h2><p>Serene Med Spa has two offices: <a href="{HUDSON["site"]}">Hudson, Ohio</a> and <a href="{BARB["site"]}">Barboursville, West Virginia</a>.</p>
   <p style="background:#fff5f2;border-left:5px solid #c0392b;padding:14px 18px;border-radius:8px;font-weight:600;max-width:760px">Telehealth is not for emergencies. If you have a medical emergency, call 911.</p>
 </div></section>'''
-    ld = json.dumps({"@context": "https://schema.org", "@type": "MedicalBusiness", "name": "Serene Telehealth with Dr. Robin Arora", "url": SITE_URL + "/telehealth/", "telephone": "+1-330-775-2452",
-                     "areaServed": ["Ohio", "West Virginia", "Kentucky", "Florida"], "medicalSpecialty": ["Weight management", "Hormone therapy"], "parentOrganization": {"@type": "Organization", "name": "Serene Medical Spa LLC", "url": SITE_URL}}, ensure_ascii=False)
+    states = [{"@type": "State", "name": n, "sameAs": u} for n, u in [("Ohio", "https://en.wikipedia.org/wiki/Ohio"), ("West Virginia", "https://en.wikipedia.org/wiki/West_Virginia"), ("Kentucky", "https://en.wikipedia.org/wiki/Kentucky"), ("Florida", "https://en.wikipedia.org/wiki/Florida")]]
+    tele_faq = [
+        ("Which states is Serene Telehealth available in?", "Ohio, West Virginia, Kentucky and Florida. You must be physically located in one of these states at the time of your video visit; Dr. Robin Arora is licensed in all four."),
+        ("How much does the telehealth program cost?", "The program is a flat $149 per month, which covers your video visits, follow-ups and secure messaging with the physician. Medication and labs are separate and paid directly to the pharmacy or lab. We do not bill insurance."),
+        ("Can I get GLP-1 weight-loss medication through telehealth?", "After a video evaluation, Dr. Arora may prescribe GLP-1 medication (such as semaglutide or tirzepatide) when it is medically appropriate. A prescription is never guaranteed, and prescriptions go to the pharmacy of your choice."),
+        ("Do you prescribe controlled substances by telehealth?", "No. Telehealth prescribing is limited to non-controlled medications. Testosterone and other controlled therapies are offered only in person at our Hudson, OH and Barboursville, WV offices."),
+        ("How do video visits work?", "Visits happen by live video in the HIPAA-secure Spruce Health app. Before your first visit you complete a short consent form and upload a photo ID; the physician confirms your identity on camera."),
+    ]
+    ld = json.dumps([
+        {"@context": "https://schema.org", "@type": "MedicalBusiness", "@id": SITE_URL + "/telehealth/#business", "name": "Serene Telehealth with Dr. Robin Arora", "url": SITE_URL + "/telehealth/", "telephone": "+1-330-775-2452",
+         "image": SITE_URL + "/wp-content/uploads/2026/08/Robin-683x1024-1.jpg", "priceRange": "$149/month", "areaServed": states, "medicalSpecialty": ["Endocrinology", "Primary Care"],
+         "parentOrganization": {"@id": SITE_URL + "/#organization"}, "founder": {"@type": "Person", "name": "Robin Arora, MD", "url": SITE_URL + "/our-providers/robin-arora-md/"},
+         "availableService": [
+             {"@type": "MedicalProcedure", "name": "Telehealth medical weight management", "procedureType": "https://schema.org/NoninvasiveProcedure", "description": "Physician-supervised weight-management program by video, which may include GLP-1 medication when appropriate."},
+             {"@type": "MedicalProcedure", "name": "Telehealth hormone therapy", "procedureType": "https://schema.org/NoninvasiveProcedure", "description": "Hormone optimization for women and men guided by symptoms and lab work (non-controlled therapies by telehealth)."},
+             {"@type": "MedicalProcedure", "name": "Wellness and longevity visits", "procedureType": "https://schema.org/NoninvasiveProcedure", "description": "Personalized wellness plans, lab review and prescription options."}],
+         "offers": {"@type": "Offer", "name": "Serene Telehealth program", "price": "149", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "149", "priceCurrency": "USD", "unitText": "per month"}, "url": SITE_URL + "/telehealth/"},
+         "potentialAction": {"@type": "ReserveAction", "target": TELE["spruce"], "name": "Start a telehealth visit"}},
+        {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in tele_faq]},
+        {"@context": "https://schema.org", "@type": "MedicalWebPage", "url": SITE_URL + "/telehealth/", "name": "Serene Telehealth", "about": {"@id": SITE_URL + "/telehealth/#business"}, "audience": {"@type": "MedicalAudience", "audienceType": "Patient", "geographicArea": states}},
+    ], ensure_ascii=False)
+    faq_html = '<section class="tint-sand"><div class="wrap"><div class="section-head"><span class="eyebrow">Telehealth FAQ</span><h2>Common questions</h2></div><div class="grid g2">' + "".join(f'<div class="card reveal"><h3>{q}</h3><p style="font-size:.97rem">{a}</p></div>' for q, a in tele_faq) + '</div></div></section>'
+    # place the FAQ just before the "Already a patient?" block
+    _k = body.find('<h2>Already a patient?</h2>')
+    _sec = body.rfind('<section', 0, _k) if _k != -1 else -1
+    body = (body[:_sec] + faq_html + body[_sec:]) if _sec != -1 else body + faq_html
     return shell("/telehealth/", "Serene Telehealth with Dr. Robin Arora | Weight Management & Hormone Care by Video",
                  "Telehealth weight management, hormone therapy and wellness visits with board-certified physician Robin Arora, MD for patients in Ohio, West Virginia, Kentucky and Florida. $149/month, HIPAA-secure video via Spruce.", body, ld=ld)
 

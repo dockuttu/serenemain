@@ -5,3 +5,4 @@ __pycache__/
 _test/
 MANIFEST.txt
 site/
+guides.json
