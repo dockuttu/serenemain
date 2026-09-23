@@ -39,8 +39,9 @@ def page_container(s):
     if inner:
         c = balanced(inner, r'<div data-elementor-type="wp-post"[^>]*>') or balanced(inner, r'<div class="elementor-widget-container">')
         if c: return c
-    c = balanced(s, r'<div data-elementor-type="wp-page"[^>]*>')
-    if c: return c
+    for rx in (r'<div data-elementor-type="wp-page"[^>]*>', r'<div data-elementor-type="landing-page"[^>]*>', r'<div data-elementor-type="wp-post"[^>]*>'):
+        c = balanced(s, rx)
+        if c and "elementor-widget-theme-post-content" not in c[:0] : return c
     return balanced(s, r'<div class="entry-content[^"]*"[^>]*>')
 
 def html_widgets(container):
