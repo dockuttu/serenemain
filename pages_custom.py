@@ -44,64 +44,83 @@ TOOLS = [
 
 def stars(): return '<div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>'
 
+# treatment categories shown as arches on the home page (real Serene photos in /img/)
+CATEGORIES = [
+    ("Injectables", "/service/#injectables", "/img/botox-inject.jpg"),
+    ("Fillers", "/filler-injection-treatments-at-serene-med-spa/", "/img/lip-inject.jpg"),
+    ("Facials &amp; Peels", "/service/#skin", "/img/hydrafacial.jpg"),
+    ("Laser &amp; RF", "/service/#laser", "/img/laser.jpg"),
+    ("Body", "/service/#body", "/img/morpheus8.jpg"),
+    ("Hair &amp; Wellness", "/service/#wellness", "/img/hair-ted.jpg"),
+]
+
 def home(posts):
-    FEATURED = ["/botox-treatment-benefits/", "/hydrafacial-treatment-benefits/", "/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "/lip-filler-injection/", "/laser-hair-removal-at-serene-med-spa/", "/kybella-treatment-for-double-chin/"]
+    FEATURED = ["/botox-treatment-benefits/", "/hydrafacial-treatment-benefits/", "/morpheus8-rf-microneedling-treatment-at-serene-med-spas/"]
     by = {p["slug"]: p for p in posts}
-    featured = [by[s] for s in FEATURED if s in by] or [p for p in posts if p["og_image"]][:6]
+    featured = [by[s] for s in FEATURED if s in by] or [p for p in posts if p["og_image"]][:3]
     from gen_site import post_card, CAT_NAME
-    body = f'''
-<section class="hero">
+    arches = "".join(f'<a class="arch reveal" href="{h}"><img src="{img}" alt="{X.text_of(t)} at Serene Med Spa" loading="lazy" width="600" height="800"><span>{t}</span></a>' for t, h, img in CATEGORIES)
+    provs = ""
+    for path, name, role, img, creds, blurb in PROVIDERS:
+        provs += f'<a class="provcard reveal" href="{path}"><img src="{img}" alt="{X.text_of(name)}" loading="lazy"><span class="role">{role}</span><h3>{name}</h3><p style="color:var(--ink-soft);font-size:.92rem">{creds[0]}</p></a>'
+    body = f"""
+<section class="hero" style="background-image:linear-gradient(90deg,rgba(16,50,47,.8) 0%,rgba(16,50,47,.5) 50%,rgba(16,50,47,.12) 100%),url('/img/lobby.jpg')">
   <div class="wrap">
-    <span class="eyebrow">Physician-led &middot; Hudson, OH &amp; Barboursville, WV &middot; Telehealth</span>
-    <h1>Look refreshed. Feel like yourself.</h1>
-    <p class="lede">Injectables, skin and laser treatments, body contouring and medical wellness &mdash; planned by board-certified physicians and performed with a light hand, so results look natural and stay that way.</p>
-    <div class="hero-cta"><a class="btn" href="#book">Book a visit</a><a class="btn btn-ghost" href="/service/">Explore treatments</a></div>
-    <div class="hero-chips"><span class="chip">Board-certified physicians</span><span class="chip">Allergan Platinum Partner</span><span class="chip">Complimentary consultations</span><span class="chip">Same-week appointments</span></div>
+    <span class="script">Physician-led aesthetics &amp; wellness</span>
+    <h1>Look refreshed.<br>Feel like yourself.</h1>
+    <p class="lede">Injectables, skin and laser treatments, body contouring and medical wellness in Hudson, Ohio and Barboursville, West Virginia &mdash; planned by board-certified physicians and performed with a light hand.</p>
+    <div class="hero-cta"><a class="btn btn-lav" href="/#book" data-loc-book>Book Now</a><a class="btn btn-ghost" href="/service/">Explore treatments</a></div>
+    <div class="hero-chips"><span class="chip">Board-certified physicians</span><span class="chip">Allergan Platinum Partner</span><span class="chip">Complimentary consultations</span><span class="chip">Telehealth in OH &middot; WV &middot; KY &middot; FL</span></div>
+  </div>
+</section>
+<div class="trust"><div class="wrap"><span>Physician-designed plans</span><span>Medical-grade products &amp; devices</span><span>Natural-looking results</span><span>5-star rated on Google</span></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow">Face &amp; body</span><h2>Treatments our physicians recommend</h2><p class="lede">Every plan starts with a complimentary consultation. Pick a category to see what we offer, how it works and what to expect.</p></div>
+    <div class="grid g6">{arches}</div>
+    <div class="actions" style="justify-content:center;margin-top:44px"><a class="btn" href="/#consult">Book a consult</a><a class="btn btn-outline" href="/service/">See all treatments</a></div>
   </div>
 </section>
 
-<section class="tint-sand" style="padding:36px 0"><div class="wrap"><div class="stats">
-  <div class="stat reveal"><b>2</b><span>Board-certified physicians</span></div>
-  <div class="stat reveal"><b>2</b><span>Offices &middot; OH &amp; WV</span></div>
-  <div class="stat reveal"><b>4</b><span>States by telehealth</span></div>
-  <div class="stat reveal"><b>5&#9733;</b><span>Google-rated care</span></div>
-</div></div></section>
-
-<section id="locations">
+<section class="tint-sand" id="locations">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Two offices, one team</span><h2>Choose your Serene</h2><p class="lede">Each office has its own site with local pricing, specials and online booking.</p></div>
-    <div class="grid g2">
-      {loc_card(HUDSON, "Serving Summit &amp; Portage counties, Cleveland and Akron. Full injectable, skin and laser menu; hormone and weight programs.", True)}
-      {loc_card(BARB, "Serving Huntington, Charleston and the Tri-State. Full injectable, skin and laser menu; IV therapy, hormones, sexual wellness and hair restoration.", True)}
+    <div class="section-head center"><span class="eyebrow">Two offices &middot; one standard of care</span><h2>Find your Serene</h2><p class="lede">Choose your office once and we&rsquo;ll remember it &mdash; booking, phone and pricing links across the site switch to your location.</p></div>
+    <div class="grid g3">
+      <a class="loctile reveal" href="{HUDSON["site"]}"><img src="/img/hudson-front-desk.jpg" alt="Serene Med Spa Hudson, Ohio" loading="lazy"><span class="state">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}, {HUDSON["addr2"]} &middot; Serving Akron, Stow, Twinsburg &amp; the Cleveland east side.</p><div class="actions"><span class="btn btn-lav btn-sm">Hudson site &amp; pricing</span></div></a>
+      <a class="loctile reveal" href="{BARB["site"]}"><img src="/img/lobby-2.jpg" alt="Serene Med Spa Barboursville, West Virginia" loading="lazy"><span class="state">West Virginia</span><h3>Barboursville</h3><p>{BARB["addr1"]}, {BARB["addr2"]} &middot; Serving Huntington, Charleston, Ashland &amp; the Tri-State.</p><div class="actions"><span class="btn btn-lav btn-sm">Barboursville site &amp; pricing</span></div></a>
+      <a class="loctile reveal" href="/telehealth/"><img src="/img/skin-analysis.jpg" alt="Serene Telehealth video visits" loading="lazy"><span class="state">OH &middot; WV &middot; KY &middot; FL</span><h3>Telehealth</h3><p>Medical weight management, hormone therapy and wellness by secure video with Dr. Robin Arora. $149/month program.</p><div class="actions"><span class="btn btn-lav btn-sm">How it works</span></div></a>
     </div>
+    <p style="text-align:center;margin-top:30px;font-size:.9rem;color:var(--ink-soft)">Hudson <a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a> &nbsp;&middot;&nbsp; Barboursville <a href="tel:{BARB["tel"]}">{BARB["phone"]}</a> &nbsp;&middot;&nbsp; Telehealth <a href="tel:{TELE["tel"]}">{TELE["phone"]}</a></p>
   </div>
 </section>
 
-<section class="tint-teal">
-  <div class="wrap band">
-    <div>
-      <span class="eyebrow">New</span>
-      <h2>Serene Telehealth with Dr. Robin Arora</h2>
-      <p class="lede" style="color:rgba(255,255,255,.85)">Medical weight management, hormone therapy and wellness care by secure video &mdash; for patients in Ohio, West Virginia, Kentucky and Florida. One flat program fee, follow-ups included, prescriptions only when medically appropriate.</p>
-      <div class="actions"><a class="btn btn-ghost" href="/telehealth/">How it works</a><a class="btn" style="background:#fff;color:var(--teal-900);border-color:#fff" href="{TELE["spruce"]}" target="_blank" rel="noopener">Start a visit</a></div>
-    </div>
-    <div class="card" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff">
-      <h3 style="color:#fff">What patients get</h3>
-      <ul style="list-style:none;display:grid;gap:10px;margin-top:10px">
-        <li>&#10003;&nbsp; Video visits with a board-certified internist</li><li>&#10003;&nbsp; Labs reviewed, plan built with you</li><li>&#10003;&nbsp; Dose changes and questions by secure message</li><li>&#10003;&nbsp; $149/month &middot; medication billed separately by the pharmacy</li>
-      </ul>
+<section>
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow">Highly trained experts</span><h2>Meet our medical team</h2><p class="lede">Two board-certified physicians and a board-certified nurse practitioner. Physician-designed plans, physician-supervised care &mdash; at both offices and by telehealth.</p></div>
+    <div class="grid g3">{provs}</div>
+    <div class="actions" style="justify-content:center;margin-top:40px"><a class="btn btn-outline" href="/our-providers/">Meet the whole team</a></div>
+  </div>
+</section>
+
+<section class="tint-sand" id="offer" style="padding-top:0">
+  <div class="wrap">
+    <div class="offer reveal">
+      <div><span class="eyebrow">New patients</span><h2>Your first visit, 20% off</h2><p class="lede">Applies to any product or service at either office &mdash; injectables, facials, lasers, IV therapy or skincare. Can&rsquo;t be combined with another discount. Mention it when you book.</p>
+        <div class="actions"><a class="btn" href="/#book" data-loc-book>Book Now</a><a class="btn btn-outline" href="/specials/">September specials</a></div></div>
+      <div class="big" style="text-align:center">20%<br><span style="font-size:.28em;letter-spacing:.2em">off your first visit</span></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="section-head center"><span class="eyebrow">Start with the concern</span><h2>What would you like to work on?</h2><p class="lede" style="margin:0 auto">Not sure which treatment fits? Pick a concern and we&rsquo;ll point you to the options &mdash; then a complimentary consultation turns it into a plan.</p></div>
+    <div class="section-head center"><span class="eyebrow">Start with the concern</span><h2>What would you like to work on?</h2><p class="lede">Not sure which treatment fits? Pick a concern and we&rsquo;ll point you to the options &mdash; then a complimentary consultation turns it into a plan.</p></div>
     <div class="grid g3">{"".join(f'<a class="tile reveal" href="{h}"><img src="{img}" alt="{X.text_of(t)}" loading="lazy"><span>{t}</span></a>' for t, h, img in CONCERNS)}</div>
   </div>
 </section>
 
-<section class="tint-sand">
+<section class="tint-sage">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">Serene Smart Tools&trade;</span><h2>Plan before you book</h2><p class="lede">Free, private planning tools built by our physicians. Nothing you enter is stored or sent.</p></div>
     <div class="grid g4">{"".join(f'<a class="tool reveal" href="{h}"><b>{i+1}</b><div><h4>{t}</h4><p>{d}</p></div></a>' for i, (h, t, d) in enumerate(TOOLS))}</div>
@@ -110,7 +129,7 @@ def home(posts):
 
 <section>
   <div class="wrap band">
-    <div class="reveal"><img src="/wp-content/uploads/2025/04/Robin-and-Shweta-768x1024.jpg" alt="Dr. Robin Arora and Dr. Shweta Arora, founders of Serene Med Spa" style="border-radius:var(--r);max-height:620px;object-fit:cover;width:100%"></div>
+    <div class="reveal"><img src="/img/team.jpg" alt="The Serene Med Spa team" style="border-radius:var(--r);max-height:640px;object-fit:cover;width:100%" loading="lazy"></div>
     <div>
       <span class="eyebrow">The Serene difference</span>
       <h2>Two physicians. One standard of care.</h2>
@@ -120,39 +139,48 @@ def home(posts):
         <li><strong>Personalized plans.</strong> We take time to understand your goals before recommending anything.</li>
         <li><strong>Advanced technology.</strong> Morpheus8, Ultherapy, Alma lasers, EmpowerRF and premium injectables from Allergan and Galderma.</li>
       </ul>
-      <div class="actions"><a class="btn" href="/our-providers/">Meet the providers</a><a class="btn btn-outline" href="/our-story/">Our story</a></div>
+      <div class="actions"><a class="btn" href="/our-story/">Our story</a><a class="btn btn-outline" href="/about-us/">About Serene</a></div>
     </div>
   </div>
 </section>
 
-<section class="tint-sage">
+<section class="tint-teal">
   <div class="wrap">
-    <div class="section-head center"><span class="eyebrow">Loved across two states</span><h2>What our patients say</h2></div>
-    <div class="grid g3">{"".join(f'<div class="rev reveal">{stars()}<p>&ldquo;{q}&rdquo;</p><div class="who">&mdash; {n} &middot; Google</div></div>' for n, q in REVIEWS)}</div>
-    <p style="text-align:center;margin-top:28px"><a class="btn btn-outline" href="/reviews/">Read more reviews</a></p>
+    <div class="section-head center"><span class="eyebrow">Loved across two states</span><h2>Patients love to love us</h2></div>
+    <div class="grid g3">{"".join(f'<div class="rev reveal"><p>{q}</p><div class="who">&mdash; {n} &middot; Google</div></div>' for n, q in REVIEWS[:3])}</div>
+    <p style="text-align:center;margin-top:34px"><a class="btn btn-ghost" href="/reviews/">Read more reviews</a></p>
+  </div>
+</section>
+
+<section class="tint-sand">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="card reveal"><span class="eyebrow">Serene Elevate</span><h3>Membership that pays you back</h3><p>Monthly credit that rolls over, member pricing on injectables, skin, laser and IV therapy, and first access to specials. No long-term contract.</p><a class="btn btn-sm" href="/membership/">Membership details</a></div>
+      <div class="card reveal"><span class="eyebrow">Easy Pay</span><h3>Financing in 60 seconds</h3><p>Cherry and CareCredit payment plans with 0% APR options for qualified patients. Pre-qualify in minutes without affecting your credit score.</p><a class="btn btn-sm btn-outline" href="/financing/">Financing options</a></div>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">From the journal</span><h2>Treatment guides</h2></div>
+    <div class="section-head center"><span class="eyebrow">From the journal</span><h2>Treatment guides</h2></div>
     <div class="grid g3">{"".join(post_card(p) for p in featured)}</div>
-    <p style="margin-top:26px"><a class="btn btn-outline" href="/blogs/">All articles</a></p>
+    <p style="margin-top:30px;text-align:center"><a class="btn btn-outline" href="/blogs/">All articles</a></p>
   </div>
 </section>
 
 <section class="tint-sand">
   <div class="wrap" style="max-width:900px">
-    <div class="section-head"><span class="eyebrow">Good to know</span><h2>Frequently asked questions</h2></div>
+    <div class="section-head center"><span class="eyebrow">Good to know</span><h2>Frequently asked questions</h2></div>
     <div class="faq">{"".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)}</div>
   </div>
 </section>
 
 {book_band()}
 {consult_form("serenemedspas.com/")}
-'''
+"""
     return shell("/", "Serene Med Spa | Physician-Led Med Spa in Hudson, OH & Barboursville, WV",
-                 "Physician-led medical spa and wellness in Hudson, Ohio and Barboursville, West Virginia, plus telehealth weight management and hormone care in OH, WV, KY and FL. Injectables, skin, laser, body contouring and IV therapy — natural results by board-certified physicians.", body)
+                 "Physician-led medical spa and wellness in Hudson, Ohio and Barboursville, West Virginia, plus telehealth weight management and hormone care in OH, WV, KY and FL. Injectables, skin, laser, body contouring and IV therapy — natural results by board-certified physicians.", body, og_image="/img/lobby.jpg")
 
 def loc_card(L, blurb, compact=False):
     return f'''<div class="loc reveal{" compact" if compact else ""}">

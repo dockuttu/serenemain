@@ -8,6 +8,7 @@ import extract as X
 from site_lib import *
 import pages_custom as P
 
+HERE = os.path.dirname(os.path.abspath(__file__))
 MIRROR = sys.argv[1] if len(sys.argv) > 1 else "mirror"
 SITE = sys.argv[2] if len(sys.argv) > 2 else "bundle/site"
 
@@ -185,6 +186,9 @@ def main():
     # assets: uploads only (images, pdfs); no plugins/themes/wp-includes
     up_src, up_dst = os.path.join(MIRROR, "wp-content", "uploads"), os.path.join(SITE, "wp-content", "uploads")
     shutil.copytree(up_src, up_dst, ignore=shutil.ignore_patterns("elementor", "*.css", "*.js", "._*", ".DS_Store"))
+    # brand photos (real office/team shots shared with the location sites) -> /img/
+    img_src = os.path.join(HERE, "assets", "img")
+    if os.path.isdir(img_src): shutil.copytree(img_src, os.path.join(SITE, "img"), ignore=shutil.ignore_patterns("._*", ".DS_Store"))
     css = CSS
     open(os.path.join(SITE, "main.css"), "w", encoding="utf-8").write(css)
     cssv = hashlib.md5(css.encode()).hexdigest()[:8]
