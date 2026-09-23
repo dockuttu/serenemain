@@ -261,7 +261,7 @@ PROVIDERS = [
     ("/our-providers/shweta-arora/", "Shweta Arora, MD", "Aesthetic Physician", "/wp-content/uploads/2026/08/Shweta-Arora-MD.png",
      ["Board Certified, Anesthesiology (ABA)", "Certified in Aesthetic Medicine (AAAM)", "Biote Certified Provider", "Licensed in Ohio &amp; West Virginia", "16+ years in practice"],
      "Dr. Shweta Arora is the artistic eye behind Serene&rsquo;s injectables &mdash; conservative, anatomy-first and known for results that look rested rather than done. She sees patients at both offices."),
-    ("/our-providers/stephanie-welker-fnp-bc/", "Stephanie Welker, FNP-BC", "Nurse Practitioner", "/wp-content/uploads/2025/10/Gemini_Generated_Image_mej6aumej6aumej6.png",
+    ("/our-providers/stephanie-welker-fnp-bc/", "Stephanie Welker, FNP-BC", "Nurse Practitioner", "/wp-content/uploads/2025/10/Stephanie-Welker.png",
      ["Board Certified Family Nurse Practitioner", "Biote Certified Provider", "Allergan &amp; InMode trained", "8+ years as an NP"],
      "Stephanie is a board-certified family nurse practitioner with a background in emergency nursing. Patients love her calm, thorough approach to injectables, hormone therapy and skin treatments."),
 ]
