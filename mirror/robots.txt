@@ -1,0 +1,9 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://serenemedspas.com/sitemap_index.xml

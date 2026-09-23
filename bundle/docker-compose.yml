@@ -1,0 +1,23 @@
+services:
+  serenemain:
+    image: nginx:alpine
+    container_name: serenemain-site
+    restart: always
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - root_default
+    labels:
+      - "traefik.enable=true"
+      # apex + www on one router; nginx 301s www -> apex
+      - "traefik.http.routers.serenemain.rule=Host(`serenemedspas.com`) || Host(`www.serenemedspas.com`)"
+      - "traefik.http.routers.serenemain.entrypoints=web,websecure"
+      - "traefik.http.routers.serenemain.tls=true"
+      - "traefik.http.routers.serenemain.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.serenemain.tls.domains[0].main=serenemedspas.com"
+      - "traefik.http.routers.serenemain.tls.domains[0].sans=www.serenemedspas.com"
+      - "traefik.http.services.serenemain.loadbalancer.server.port=80"
+networks:
+  root_default:
+    external: true
