@@ -62,7 +62,7 @@ def inventory():
         rec = X.load(MIRROR, slug)
         s = rec["raw"]
         bc = re.search(r'<body[^>]*class="([^"]*)"', s); bc = bc.group(1) if bc else ""
-        rec["is_post"] = "single-post" in bc
+        rec["is_post"] = bool(re.search(r"(^| )single-post( |$)", bc))   # not Astra's "ast-single-post"
         rec["cat"] = categorize(slug, rec["title"])
         if rec["is_post"]: posts.append(rec)
         else: pages[slug] = rec
