@@ -4,6 +4,9 @@ set -euo pipefail
 cd "$(dirname "$0")"
 echo "==> Generate site from snapshot + templates"
 python3 gen_site.py mirror bundle/site
+echo "==> Images: WebP variants (generated where Pillow exists; otherwise the committed assets/webp/ set is used)"
+python3 optimize_images.py bundle/site || echo "!!! optimize_images failed (continuing with committed variants)" >&2
+python3 imgopt.py bundle/site
 echo "==> Overlays (telehealth disclosures, 404, sitemap, robots)"
 python3 overlays.py bundle/site
 echo "==> Link check"
