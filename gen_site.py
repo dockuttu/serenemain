@@ -7,6 +7,7 @@ import os, re, sys, shutil, json, html, datetime, hashlib
 import extract as X
 from site_lib import *
 import pages_custom as P
+from post_overrides import POST_OVERRIDES, AUTHORS, REVIEWER
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 MIRROR = sys.argv[1] if len(sys.argv) > 1 else "mirror"
@@ -40,6 +41,7 @@ REDIRECTS = {
     "/juvederm-ultra-xc-filler-treatment-serene-med-spas/": BARB["site"] + "fillers/", "/top-filler-injection-treatments-serene-med-spas/": BARB["site"] + "fillers/",
     "/juvederm-volbella-xc-treatment-lip-filler-under-eye/": BARB["site"] + "lip-filler/",
     "/wrinkle-treatments/": HUDSON["site"] + "botox/",   # Hudson pricing menu lives on the Hudson site
+    "/semaglutide-weight-loss-program-at-serene-med-spa-in-huntington-and-barboursville-wv/": BARB["site"] + "weight-loss/",  # still gets search clicks (GSC 404)
 }
 SKIP_DIRS = {"wp-content", "wp-includes", "wp-json", "wp-admin", "cart", "checkout", "my-account", "login", "logout", "password-reset", "shop", "product", "feed", "_test"}
 
@@ -92,18 +94,58 @@ def post_card(r, show_cat=True):
     return f'''<a class="post-card reveal" href="{r["slug"]}">{img}<div class="pc-body">{cat}<h3>{esc(r["title"])}</h3><p>{esc(X.text_of(r["description"], 150) or X.text_of(r["content"], 150))}</p><span class="more">Read more &rsaquo;</span></div></a>'''
 
 # ---------------------------------------------------------------- renderers
+
+def extract_faq(body_html):
+    """FAQ section -> [(question, answer_text)] for FAQPage schema. Handles <h3>Q</h3><p>A</p>, <h2>Q</h2> A, and <p><strong>Q?</strong><br>A</p>."""
+    m = re.search(r"<h[2-4][^>]*>[^<]*(?:Frequently asked|FAQ)[^<]*</h[2-4]>", body_html, re.I)
+    if not m: return []
+    tail = body_html[m.end():]
+    qa = []
+    for q, a in re.findall(r"<strong>\s*([^<]*\?)\s*</strong>\s*(?:<br\s*/?>)?\s*(.*?)</p>", tail, re.S):
+        qt, at = X.text_of(q).strip(), X.text_of(a).strip()
+        if qt and len(at) > 20: qa.append((qt, at[:1200]))
+    if not qa:
+        for q, a in re.findall(r"<h[2-4][^>]*>(.*?)</h[2-4]>\s*((?:(?!<h[2-4]).)*)", tail, re.S):
+            qt, at = X.text_of(q).strip(), X.text_of(a).strip()
+            if not qt.endswith("?") and not re.match(r"(?i)^(how|what|when|why|is|are|can|do|does|will|should|who|which)\b", qt): break
+            if len(at) > 20: qa.append((qt, at[:1200]))
+    return qa
+
+def post_author(body_html):
+    m = re.search(r"\bBy\s+(?:Dr\.?\s+)?([A-Z][a-z]+\s+[A-Z][a-z]+)", X.text_of(body_html[:800]))
+    if m:
+        who = AUTHORS.get(m.group(1).lower())
+        if who: return who
+    return {"@type": "Organization", "name": "Serene Med Spa", "url": SITE_URL + "/"}
+
+def breadcrumb_ld(items):
+    """items: [(url, name), ...] absolute or site-relative urls"""
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": X.text_of(n), "item": (u if u.startswith("http") else SITE_URL + u)} for i, (u, n) in enumerate(items)]}
 def render_post(r, posts):
     body_html = r["content"]
     # drop a leading H1/H2 duplicating the title
     body_html = re.sub(r"^\s*<h[12]>[^<]*</h[12]>", "", body_html)
-    related = [p for p in posts if p["cat"] == r["cat"] and p["slug"] != r["slug"]][:3]
+    related = [p for p in posts if p["cat"] == r["cat"] and p["slug"] != r["slug"] and not p.get("is_dup")][:3]
     date = fmt_date(r["published"]); mod = fmt_date(r["modified"])
     author = r["author"] or "Serene Med Spa"
     fig = f'<div class="post-fig reveal"><img src="{esc(r["og_image"])}" alt="{esc(r["title"])}" width="1200" height="675"></div>' if r["og_image"] else ""
-    ld = json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": r["title"], "description": r["description"],
-                     "image": (SITE_URL + r["og_image"]) if r["og_image"] else None, "datePublished": r["published"], "dateModified": r["modified"] or r["published"],
-                     "author": {"@type": "Organization", "name": "Serene Med Spa"}, "publisher": {"@type": "Organization", "name": "Serene Med Spa", "logo": {"@type": "ImageObject", "url": SITE_URL + LOGO}},
-                     "mainEntityOfPage": SITE_URL + r["slug"]}, ensure_ascii=False)
+    ov = POST_OVERRIDES.get(r["slug"], {})
+    seo_title = ov.get("title") or r["title"]
+    if "Serene" not in seo_title and len(seo_title) <= 44: seo_title += " | Serene Med Spa"
+    seo_desc = ov.get("description") or r["description"] or X.text_of(body_html, 155)
+    article = {"@context": "https://schema.org", "@type": "Article", "headline": r["title"], "description": seo_desc,
+               "image": (SITE_URL + r["og_image"]) if r["og_image"] else None, "datePublished": r["published"], "dateModified": r["modified"] or r["published"],
+               "author": post_author(body_html), "reviewedBy": REVIEWER,
+               "publisher": {"@type": "Organization", "name": "Serene Med Spa", "logo": {"@type": "ImageObject", "url": SITE_URL + LOGO}},
+               "mainEntityOfPage": SITE_URL + r["slug"], "inLanguage": "en-US"}
+    blocks = [article, breadcrumb_ld([("/", "Home"), ("/service/", "Treatments"), ("/service/#" + r["cat"], CAT_NAME[r["cat"]]), (r["slug"], r["title"])])]
+    faq = extract_faq(body_html)
+    if len(faq) >= 2:
+        blocks.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq[:12]]})
+    blocks += ov.get("ld_extra", [])
+    ld = json.dumps(blocks, ensure_ascii=False)
     lslug = LOCAL_MAP.get(r["slug"].strip("/"))
     local_card = ""
     if lslug:
@@ -112,7 +154,7 @@ def render_post(r, posts):
         local_card = f'<div class="card"><h3>Local pricing</h3><p style="font-size:.95rem">Each office publishes its own menu and prices.</p><ul>{hl}{bl}</ul></div>'
     body = f'''<section class="post-hero"><div class="wrap">
   <div class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/service/">Treatments</a> &rsaquo; <a href="/service/#{r["cat"]}">{CAT_NAME[r["cat"]]}</a></div>
-  <h1 style="max-width:24ch">{esc(r["title"])}</h1>
+  <h1 style="max-width:24ch">{esc(ov.get("h1") or r["title"])}</h1>
   <div class="post-meta" style="margin-top:14px">{CAT_NAME[r["cat"]]}{(' &middot; ' + date) if date else ''}{(' &middot; Updated ' + mod) if mod and mod != date else ''} &middot; Medically reviewed by Robin Arora, MD</div>
   {fig}
 </div></section>
@@ -133,7 +175,7 @@ def render_post(r, posts):
 {('<section class="tint-sand related"><div class="wrap"><div class="section-head"><span class="eyebrow">Keep reading</span><h2>Related treatments</h2></div><div class="grid g3">' + "".join(post_card(p, False) for p in related) + '</div></div></section>') if related else ''}
 {book_band()}'''
     extra = f'<link rel="canonical" href="{SITE_URL}{r["canonical"]}">' if r.get("is_dup") else ""
-    page = shell(r["slug"], r["title"] + " | Serene Med Spa", r["description"] or X.text_of(body_html, 155), body, og_image=r["og_image"], ld=ld)
+    page = shell(r["slug"], seo_title, seo_desc, body, og_image=r["og_image"], ld=ld)
     if extra: page = re.sub(r'<link rel="canonical" href="[^"]*">', extra, page, count=1)
     return page
 
@@ -203,8 +245,20 @@ def main():
     if os.path.exists(os.path.join(SITE, fav.strip("/"))): shutil.copy(os.path.join(SITE, fav.strip("/")), os.path.join(SITE, "favicon.png"))
 
     out = {}
-    # posts
-    for r in posts: out[r["slug"]] = render_post(r, posts)
+    # posts (duplicate-slug copies of the same article become 301s to the primary instead of full pages)
+    dup_redirects = {}
+    for r in posts:
+        if r.get("is_dup"):
+            dup_redirects[r["slug"]] = r["canonical"]; out[r["slug"]] = redirect_page(r["canonical"])
+        else:
+            out[r["slug"]] = render_post(r, posts)
+    # nginx reads this map (see bundle/nginx.conf: map $uri $moved_to { include .../_redirects.map; })
+    all_redirects = dict(REDIRECTS); all_redirects.update(dup_redirects)
+    os.makedirs(SITE, exist_ok=True)
+    with open(os.path.join(SITE, "_redirects.map"), "w", encoding="utf-8") as f:
+        for src, dst in sorted(all_redirects.items()):
+            f.write(f'"{src}" "{dst}";\n"{src.rstrip("/")}" "{dst}";\n')
+    print(f"gen_site: {len(dup_redirects)} duplicate-slug articles -> 301, {len(all_redirects)} redirects in _redirects.map")
     # generated indexes
     out["/service/"] = render_service(posts)
     out["/blogs/"] = render_blogs(posts)
