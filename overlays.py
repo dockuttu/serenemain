@@ -26,6 +26,24 @@ if os.path.exists(tele):
 else:
     print("overlays: WARNING /telehealth/ missing from snapshot")
 
+# 1b. Site-wide nav fixes: "Choose Location" menu -> the two location sites (not the old WP location pages)
+NAV_FIXES = [
+    (re.compile(r'href="/locations/huntington-barboursville-wv/"(?=[^>]*class="elementor-sub-item[^"]*"[^>]*>\s*Barboursville, WV)'),
+     'href="https://barboursville.serenemedspas.com/"'),
+    (re.compile(r'href="/locations/visit-serene-med-spa-in-hudson-oh/"(?=[^>]*class="elementor-sub-item[^"]*"[^>]*>\s*Hudson, OH)'),
+     'href="https://hudson.serenemedspas.com/"'),
+]
+n_fixed = 0
+for root, dirs, files in os.walk(SITE):
+    if "index.html" not in files: continue
+    fp = os.path.join(root, "index.html")
+    s = open(fp, encoding="utf-8", errors="replace").read()
+    t = s
+    for rx, repl in NAV_FIXES: t = rx.sub(repl, t)
+    if t != s:
+        open(fp, "w", encoding="utf-8").write(t); n_fixed += 1
+print(f"overlays: location menu links fixed on {n_fixed} pages")
+
 # 2. Branded 404
 open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write('''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="robots" content="noindex, follow">
