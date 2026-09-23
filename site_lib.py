@@ -234,7 +234,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 
 # ------------------------------------------------------------------ NAV / FOOTER
 SERVICE_MENU = [
-    ("Injectables", [("/wrinkle-treatments/", "Botox & Wrinkle Relaxers"), ("/service/#injectables", "Dermal Fillers"), ("/lip-filler-injection/", "Lip Filler"),
+    ("Injectables", [("/botox-treatment-benefits/", "Botox & Wrinkle Relaxers"), ("/service/#injectables", "Dermal Fillers"), ("/lip-filler-injection/", "Lip Filler"),
                      ("/kybella-treatment-for-double-chin/", "Kybella"), ("/pdo-thread-lift-face-neck/", "PDO Thread Lift")]),
     ("Skin & Laser", [("/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "Morpheus8"), ("/hydrafacial-treatment-benefits/", "HydraFacial"),
                       ("/microneedling-with-prp/", "Microneedling & PRP"), ("/chemical-peel-treatments-serene-med-spa/", "Chemical Peels"),

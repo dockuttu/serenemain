@@ -24,7 +24,7 @@ FAQ = [
     ("Do you provide pre- and post-treatment instructions?", "Yes — every treatment comes with written aftercare, and our <a href='/post-care-instructions/'>Post-Care Instructions</a> page has the essentials for injectables, lasers, peels, microneedling and more. Questions after hours? Call the office where you were seen or email info@serenemedspas.com."),
 ]
 CONCERNS = [
-    ("Wrinkles &amp; fine lines", "/wrinkle-treatments/", "/wp-content/uploads/2025/09/Wrinkles.jpg"),
+    ("Wrinkles &amp; fine lines", "/service/#injectables", "/wp-content/uploads/2025/09/Wrinkles.jpg"),
     ("Volume loss &amp; contour", "/service/#injectables", "/wp-content/uploads/2025/09/Facial-Sagging.jpg"),
     ("Acne &amp; scarring", "/service/#skin", "/wp-content/uploads/2025/09/Acne-Scars.jpg"),
     ("Pigmentation &amp; sun damage", "/service/#skin", "/wp-content/uploads/2025/09/Pigmentation.jpg"),
@@ -326,7 +326,6 @@ PROSE_PAGES = {
     "/return-policy/": ("Return &amp; exchange policy", "For retail skincare and product purchases.", "Legal &amp; policies"),
     "/terms-and-conditions/": ("Terms and conditions", "For use of serenemedspas.com and purchases made through the site.", "Legal &amp; policies"),
     "/p-shot-and-o-shot-treatments/": ("P-Shot &amp; O-Shot treatments", "PRP-based intimate wellness treatments for men and women, performed by our physicians.", "Intimate wellness"),
-    "/wrinkle-treatments/": ("Wrinkle treatments in Hudson, OH", "Neuromodulator treatments &mdash; Botox, Dysport, Xeomin and Daxxify &mdash; with transparent pricing at our Hudson office.", "Hudson, OH"),
 }
 
 def build(pages, posts, render_prose, render_embed):

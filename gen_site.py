@@ -38,6 +38,7 @@ REDIRECTS = {
     "/cosmetic-filler-injectable-treatment-serene-med-spas/": BARB["site"] + "fillers/", "/juvederm-ultra-plus-filler-treatment/": BARB["site"] + "fillers/",
     "/juvederm-ultra-xc-filler-treatment-serene-med-spas/": BARB["site"] + "fillers/", "/top-filler-injection-treatments-serene-med-spas/": BARB["site"] + "fillers/",
     "/juvederm-volbella-xc-treatment-lip-filler-under-eye/": BARB["site"] + "lip-filler/",
+    "/wrinkle-treatments/": HUDSON["site"] + "botox/",   # Hudson pricing menu lives on the Hudson site
 }
 SKIP_DIRS = {"wp-content", "wp-includes", "wp-json", "wp-admin", "cart", "checkout", "my-account", "login", "logout", "password-reset", "shop", "product", "feed", "_test"}
 
@@ -66,6 +67,7 @@ def inventory():
         bc = re.search(r'<body[^>]*class="([^"]*)"', s); bc = bc.group(1) if bc else ""
         rec["is_post"] = bool(re.search(r"(^| )single-post( |$)", bc))   # not Astra's "ast-single-post"
         rec["cat"] = categorize(slug, rec["title"])
+        if "password protected" in rec["container"].lower() or "password-protected" in rec["raw"].lower(): continue
         if rec["is_post"]: posts.append(rec)
         else: pages[slug] = rec
     posts.sort(key=lambda r: r["published"] or "", reverse=True)
