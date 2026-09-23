@@ -59,6 +59,7 @@ def inventory():
         if "index.html" not in files: continue
         slug = "/" if rel == "." else "/" + rel.replace(os.sep, "/") + "/"
         if re.match(r"^/\d{4}/", slug): continue                       # date archives -> /blogs/
+        if re.search(r"/[a-z0-9]/$", slug): continue                    # crawl junk (/page/r/ etc.)
         if slug in REDIRECTS: continue
         rec = X.load(MIRROR, slug)
         s = rec["raw"]
