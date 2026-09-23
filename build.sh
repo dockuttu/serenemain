@@ -2,8 +2,8 @@
 # build.sh — turn the WordPress snapshot in mirror/ into the static site in bundle/site/ (stdlib Python; idempotent)
 set -euo pipefail
 cd "$(dirname "$0")"
-echo "==> Clean snapshot -> bundle/site"
-python3 clean_mirror.py mirror bundle/site
+echo "==> Generate site from snapshot + templates"
+python3 gen_site.py mirror bundle/site
 echo "==> Overlays (telehealth disclosures, 404, sitemap, robots)"
 python3 overlays.py bundle/site
 echo "==> Link check"
