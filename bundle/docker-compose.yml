@@ -6,6 +6,8 @@ services:
     volumes:
       - ./site:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      # Barboursville office site (built by /root/barboursville-src, promoted to /root/barboursville/site)
+      - /root/barboursville:/srv/barboursville:ro
     networks:
       - root_default
     labels:

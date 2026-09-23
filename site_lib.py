@@ -8,7 +8,7 @@ HUDSON = {"name": "Hudson, OH", "addr1": "50 W Streetsboro St, Suite 2", "addr2"
           "phone": "(330) 460-5915", "book": "https://booking.mangomint.com/serenemedspa/Hudson", "site": "https://hudson.serenemedspas.com/",
           "map": "https://maps.google.com/maps?q=50+W+Streetsboro+St+Suite+2,+Hudson,+OH+44236", "state": "Ohio"}
 BARB = {"name": "Barboursville, WV", "addr1": "1 Chateau Grove Ln", "addr2": "Barboursville, WV 25504", "tel": "+13045200461",
-        "phone": "(304) 520-0461", "book": "https://booking.mangomint.com/serenemedspa/Barboursville", "site": "https://barboursville.serenemedspas.com/",
+        "phone": "(304) 520-0461", "book": "https://booking.mangomint.com/serenemedspa/Barboursville", "site": "/barboursville/",  # folded into the main domain (Phase 2, Sep 2026)
         "map": "https://maps.google.com/maps?q=1+Chateau+Grove+Ln,+Barboursville,+WV+25504", "state": "West Virginia"}
 TELE = {"phone": "(330) 775-2452", "tel": "+13307752452", "spruce": "https://spruce.care/serene-telehealth", "consent": "https://form.jotform.com/262647300953054"}
 BLOG = "https://blog.serenemedspas.com/"
@@ -250,13 +250,13 @@ header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid 
 .offer .big{font-family:'Noto Serif Display',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:1;color:var(--forest);text-transform:uppercase}
 /* footer */
 footer{background:var(--forest);color:rgba(255,255,255,.82);padding:72px 0 28px;margin-top:0}
-.foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1.35fr 1.6fr;gap:36px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.35fr) minmax(0,1.6fr);gap:36px}
 footer h4{color:#fff;font-family:'Poppins',sans-serif;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:16px}
 footer ul{list-style:none}footer li{margin:7px 0;font-size:.92rem}
 footer a{color:rgba(255,255,255,.82)}footer a:hover{color:#fff}
 footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert(1)}
-.newsletter{display:flex;gap:8px;margin:10px 0 8px}
-.newsletter input{flex:1;font:inherit;font-size:.95rem;padding:13px 16px;border:1.5px solid rgba(255,255,255,.35);border-radius:30px;background:rgba(255,255,255,.06);color:#fff;min-width:0}
+.newsletter{display:flex;gap:8px;margin:10px 0 8px;min-width:0}
+.newsletter input{flex:1 1 0;width:0;font:inherit;font-size:.95rem;padding:13px 16px;border:1.5px solid rgba(255,255,255,.35);border-radius:30px;background:rgba(255,255,255,.06);color:#fff;min-width:0}
 .newsletter input::placeholder{color:rgba(255,255,255,.5)}
 .newsletter input:focus{outline:none;border-color:#fff}
 .newsletter .btn{background:var(--lav);border-color:var(--lav);color:var(--forest);padding:13px 20px;font-size:.66rem}
@@ -274,8 +274,8 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 /* responsive */
-@media (max-width:1180px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.drop.mega{min-width:760px;grid-template-columns:repeat(3,minmax(0,1fr))}.foot-grid{grid-template-columns:1fr 1fr 1fr}.nav ul a{padding:12px 9px;letter-spacing:.12em}}
-@media (max-width:1024px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.post-wrap{grid-template-columns:1fr}.side{position:static}.offer{grid-template-columns:1fr}.locpick>button span{display:none}}
+@media (max-width:1180px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.drop.mega{min-width:760px;grid-template-columns:repeat(3,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav ul a{padding:12px 9px;letter-spacing:.12em}}
+@media (max-width:1024px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.post-wrap{grid-template-columns:1fr}.side{position:static}.offer{grid-template-columns:1fr}.locpick>button span{display:none}}
 @media (max-width:900px){
   section{padding:56px 0}
   .g2,.g3{grid-template-columns:1fr}.loc,.prov,.band{grid-template-columns:1fr}.loc .map{min-height:220px}
@@ -294,7 +294,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
   .trust .wrap{justify-content:flex-start}
   .loctile{min-height:320px;padding:26px}
 }
-@media (max-width:560px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:1fr}.hero-chips{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:1fr}.offer{padding:28px}.arch span{font-size:.58rem;padding:8px 12px}}
+@media (max-width:560px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:1fr}.hero-chips{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:minmax(0,1fr)}.offer{padding:28px}.arch span{font-size:.58rem;padding:8px 12px}}
 """
 
 # ------------------------------------------------------------------ NAV / FOOTER
@@ -436,9 +436,9 @@ ORG_LD = json.dumps({
     "founder": {"@type": "Person", "name": "Robin Arora, MD"},
     "sameAs": ["https://www.instagram.com/serene.wellness.wv"],
     "department": [
-        {"@type": "MedicalBusiness", "name": "Serene Med Spa — Hudson, OH", "url": HUDSON["site"], "telephone": "+1-330-460-5915",
+        {"@type": "MedicalBusiness", "name": "Serene Med Spa — Hudson, OH", "url": (SITE_URL + HUDSON["site"]) if HUDSON["site"].startswith("/") else HUDSON["site"], "telephone": "+1-330-460-5915",
          "address": {"@type": "PostalAddress", "streetAddress": "50 W Streetsboro St, Suite 2", "addressLocality": "Hudson", "addressRegion": "OH", "postalCode": "44236", "addressCountry": "US"}},
-        {"@type": "MedicalBusiness", "name": "Serene Med Spa — Barboursville, WV", "url": BARB["site"], "telephone": "+1-304-520-0461",
+        {"@type": "MedicalBusiness", "name": "Serene Med Spa — Barboursville, WV", "url": (SITE_URL + BARB["site"]) if BARB["site"].startswith("/") else BARB["site"], "telephone": "+1-304-520-0461",
          "address": {"@type": "PostalAddress", "streetAddress": "1 Chateau Grove Ln", "addressLocality": "Barboursville", "addressRegion": "WV", "postalCode": "25504", "addressCountry": "US"}},
     ]}, ensure_ascii=False)
 
@@ -523,7 +523,7 @@ def book_band():
     <div class="section-head center"><span class="eyebrow">Book online</span><h2>Choose your location</h2><p class="lede" style="margin:0 auto">Same-week appointments at both offices. Video visits for weight management and hormone care through Serene Telehealth.</p></div>
     <div class="grid g3">
       <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br><a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn btn-sm btn-outline" href="{HUDSON["site"]}">Visit site</a></div></div>
-      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">West Virginia</span><h3>Barboursville</h3><p>{BARB["addr1"]}<br>{BARB["addr2"]}<br><a href="tel:{BARB["tel"]}">{BARB["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a><a class="btn btn-sm btn-outline" href="{BARB["site"]}">Visit site</a></div></div>
+      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">West Virginia</span><h3>Barboursville</h3><p>{BARB["addr1"]}<br>{BARB["addr2"]}<br><a href="tel:{BARB["tel"]}">{BARB["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a><a class="btn btn-sm btn-outline" href="{BARB["site"]}">Pricing &amp; menu</a></div></div>
       <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">OH &middot; WV &middot; KY &middot; FL</span><h3>Telehealth</h3><p>Weight management, hormone therapy &amp; wellness by secure video with Dr. Robin Arora.<br><a href="tel:{TELE["tel"]}">{TELE["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{TELE["spruce"]}" target="_blank" rel="noopener">Start a visit</a><a class="btn btn-sm btn-outline" href="/telehealth/">Learn more</a></div></div>
     </div>
   </div>
