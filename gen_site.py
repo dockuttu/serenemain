@@ -67,6 +67,7 @@ def inventory():
         bc = re.search(r'<body[^>]*class="([^"]*)"', s); bc = bc.group(1) if bc else ""
         rec["is_post"] = bool(re.search(r"(^| )single-post( |$)", bc))   # not Astra's "ast-single-post"
         rec["cat"] = categorize(slug, rec["title"])
+        if rec["og_image"] and not os.path.exists(os.path.join(MIRROR, rec["og_image"].split("?")[0].lstrip("/"))): rec["og_image"] = ""
         if "password protected" in rec["container"].lower() or "password-protected" in rec["raw"].lower(): continue
         if rec["is_post"]: posts.append(rec)
         else: pages[slug] = rec
