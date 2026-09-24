@@ -358,9 +358,9 @@ SPECIALS_SCHEDULE = {
         ], "Series pricing on Tite, Trim &amp; Tone"),
     ],
     "October": [
-        ("30% off Ultherapy", [
-            ("Ultherapy PRIME &middot; Barboursville", "/barboursville/ultherapy/", "Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;. Regular: brow $850, lower face $1,650, full face $2,200."),
-            ("Ultherapy PRIME &middot; Hudson", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $950, lower face $1,900, full face $2,600."),
+        ("30% off Ultherapy PRIME", [
+            ("Barboursville, WV", "/barboursville/ultherapy/", "Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;. Regular: brow $850, lower face $1,650, full face $2,200."),
+            ("Hudson, OH", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $950, lower face $1,900, full face $2,600."),
         ], "As seen on WSAZ Studio 3 &middot; first 20 clients &middot; mention &ldquo;Studio 3&rdquo;"),
     ],
 }
@@ -449,7 +449,8 @@ def specials(pages):
                              "validFrom": f"{SPECIALS_YEAR}-{_mnum:02d}-01", "validThrough": f"{SPECIALS_YEAR}-{_mnum:02d}-{_last:02d}", "offeredBy": {"@id": SITE_URL + "/#organization"},
                              "areaServed": ["Hudson, OH", "Barboursville, WV"]} for deal, items, note in SPECIALS for name, href, blurb in items]}, ensure_ascii=False)
     if studio3_ld: offers_ld = offers_ld + "</script>\n<script type=\"application/ld+json\">" + "</script>\n<script type=\"application/ld+json\">".join(json.dumps(b, ensure_ascii=False) for b in studio3_ld)
-    return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: buy 2 get 1 free on V-Tone, Forma V, Morpheus V and Evolve X, and buy 1 get 1 free on PRP hair restoration.", body, ld=offers_ld)
+    _deals = "; ".join(f"{X.text_of(deal)} — " + ", ".join(X.text_of(n) for n, _h, _b in items) for deal, items, _n in SPECIALS)
+    return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: {_deals}. Book online or mention the special when you check in.", body, ld=offers_ld)
 
 def telehealth():
     disc = open(os.path.join(HERE, "telehealth-disclosures.html"), encoding="utf-8").read()
