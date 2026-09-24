@@ -80,12 +80,12 @@ header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid 
 .drop a .car{display:none}
 .nav ul li:hover>a,.nav ul a:hover{color:var(--forest-500)}
 .drop{position:absolute;top:100%;left:0;min-width:250px;background:#fff;border:1px solid var(--rule);border-radius:0 0 16px 16px;padding:12px;box-shadow:var(--shadow);display:none;z-index:70}
-.drop.mega{min-width:900px;display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 26px;padding:26px 30px 28px;left:50%;transform:translateX(-50%)}
+.drop.mega{min-width:960px;display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding:26px 30px 28px;left:50%;transform:translateX(-50%)}
 .nav li:hover>.drop{display:block}.nav li:hover>.drop.mega{display:grid}
-.drop a{text-transform:none;letter-spacing:0;font-size:.9rem;padding:7px 8px;font-weight:400;border:0;color:var(--ink-soft)}
-.drop a:hover{color:var(--forest);background:var(--grey);border-radius:6px}
+.nav .drop a{text-transform:none;letter-spacing:0;font-size:.9rem;line-height:1.35;padding:7px 8px;font-weight:400;border:0;color:var(--ink-soft);white-space:normal}
+.nav .drop a:hover{color:var(--forest);background:var(--grey);border-radius:6px;border-bottom-color:transparent}
 .drop h5{font-family:'Poppins',sans-serif;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:4px 8px 8px}
-.drop .view-all{font-weight:600;color:var(--forest);margin-top:4px}
+.nav .drop .view-all{font-weight:600;color:var(--forest);margin-top:4px}
 .nav-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}
 .nav .btn{padding:14px 26px;font-size:.7rem}
 .locpick{position:relative}
@@ -330,15 +330,15 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 
 # ------------------------------------------------------------------ NAV / FOOTER
 SERVICE_MENU = [
-    ("Injectables", [("/botox-treatment-benefits/", "Botox & Wrinkle Relaxers"), ("/filler-injection-treatments-at-serene-med-spa/", "Dermal Fillers"), ("/lip-filler-injection/", "Lip Filler"),
-                     ("/cheek-filler-treatment/", "Cheek Filler"), ("/jawline-filler-treatment-at-serene-med-spa/", "Jawline Filler"), ("/kybella-treatment-for-double-chin/", "Kybella"),
-                     ("/sculptra/", "Sculptra"), ("/pdo-thread-lift-face-neck/", "PDO Thread Lift")]),
-    ("Skin & Laser", [("/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "Morpheus8"), ("/hydrafacial-treatment-benefits/", "HydraFacial"),
-                      ("/microneedling-with-prp/", "Microneedling & PRP"), ("/chemical-peel-treatments-serene-med-spa/", "Chemical Peels"), ("/laser-facial-treatment-at-serene-med-spa/", "Laser Facial"),
-                      ("/laser-hair-removal-at-serene-med-spa/", "Laser Hair Removal"), ("/laser-tattoo-removal-process/", "Tattoo Removal"), ("/expert-spider-vein-treatment/", "Spider Veins")]),
-    ("Body & Wellness", [("/inmode-evolvex-body-contouring/", "EvolveX Body Contouring"), ("/telehealth/", "Medical Weight Management"), ("/biote-hormone-therapy/", "Hormone Therapy"),
-                         ("/the-serene-hydration-bar/", "IV Therapy"), ("/natural-prp-hair-restoration/", "PRP Hair Restoration"), ("/empowerrf-vaginal-rejuvenation-treatment/", "Women's Wellness (EmpowerRF)"),
-                         ("/alma-duo-treatment-sexual-wellness/", "Sexual Wellness (Alma Duo)")]),
+    ("Injectables", [("/botox-treatment-benefits/", "Botox & Wrinkle Relaxers"), ("/filler-injection-treatments-at-serene-med-spa/", "Dermal Fillers"), ("/lip-filler/", "Lip Filler"),
+                     ("/cheek-filler/", "Cheek Filler"), ("/jawline-filler/", "Jawline Filler"), ("/under-eye-filler/", "Under-Eye Filler"),
+                     ("/kybella/", "Kybella"), ("/sculptra/", "Sculptra"), ("/pdo-thread-lift-face-neck/", "PDO Thread Lift")]),
+    ("Skin & Laser", [("/barboursville/ultherapy/", "Ultherapy"), ("/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "Morpheus8"), ("/hydrafacial/", "HydraFacial"),
+                      ("/microneedling-with-prp/", "Microneedling & PRP"), ("/chemical-peel-treatments-serene-med-spa/", "Chemical Peels"), ("/laser-facial/", "Laser Facial"),
+                      ("/laser-hair-removal/", "Laser Hair Removal"), ("/laser-tattoo-removal/", "Tattoo Removal"), ("/expert-spider-vein-treatment/", "Spider Veins")]),
+    ("Body & Wellness", [("/inmode-evolvex-body-contouring/", "Body Contouring (EvolveX)"), ("/telehealth/", "Weight Management"), ("/biote-hormone-therapy/", "Hormone Therapy"),
+                         ("/the-serene-hydration-bar/", "IV Therapy"), ("/natural-prp-hair-restoration/", "Hair Restoration"), ("/empowerrf-vaginal-rejuvenation-treatment/", "Women's Wellness"),
+                         ("/alma-duo/", "Sexual Wellness"), ("/comfort-options/", "Comfort Options")]),
     ("By Concern", [("/service/#injectables", "Wrinkles & fine lines"), ("/service/#injectables", "Volume loss & contour"), ("/service/#skin", "Acne & scarring"),
                     ("/service/#skin", "Pigmentation & sun damage"), ("/service/#body", "Stubborn fat & body"), ("/service/#hair", "Thinning hair"),
                     ("/recommendation-webapp/", "Not sure? Try the Treatment Finder"), ("/service/", "View all treatments")]),
@@ -436,7 +436,7 @@ LOC_JS = json.dumps({
 
 SCRIPTS = f'''<script>
 (function(){{var LOC={LOC_JS},LOCAL={LOCAL_JS};
-function localize(k){{var on=(k==='hudson'||k==='barboursville');document.querySelectorAll('header a[href^="/"],footer a[href^="/"],.side a[href^="/"],.post-card a[href^="/"],.arch[href^="/"]').forEach(function(a){{var orig=a.getAttribute('data-orig')||a.getAttribute('href');var slug=orig.replace(/^\/+|\/+$/g,'');var t=LOCAL.map[slug];if(!t)return;a.setAttribute('data-orig',orig);if(on&&LOCAL.missing[k].indexOf(t)<0){{a.setAttribute('href','/'+k+'/'+t+'/');}}else{{a.setAttribute('href',orig);}}}});}}
+function localize(k){{var on=(k==='hudson'||k==='barboursville');document.querySelectorAll('header a[href^="/"],footer a[href^="/"],.side a[href^="/"],.post-card a[href^="/"],.arch[href^="/"]').forEach(function(a){{var orig=a.getAttribute('data-orig')||a.getAttribute('href');var om=orig.match(/^\/(hudson|barboursville)\/(.+)$/);if(om){{a.setAttribute('data-orig',orig);a.setAttribute('href',on?'/'+k+'/'+om[2]:orig);return;}}var slug=orig.replace(/^\/+|\/+$/g,'');var t=LOCAL.map[slug];if(!t)return;a.setAttribute('data-orig',orig);if(on&&LOCAL.missing[k].indexOf(t)<0){{a.setAttribute('href','/'+k+'/'+t+'/');}}else{{a.setAttribute('href',orig);}}}});}}
 function get(){{try{{return localStorage.getItem('serene_loc')||'';}}catch(e){{return '';}}}}
 function apply(k){{var L=LOC[k];
 document.querySelectorAll('[data-loc-name]').forEach(function(el){{el.textContent=L?L.name:'Choose location';}});
