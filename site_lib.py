@@ -343,7 +343,7 @@ SERVICE_MENU = [
                     ("/service/#skin", "Pigmentation & sun damage"), ("/service/#body", "Stubborn fat & body"), ("/service/#hair", "Thinning hair"),
                     ("/recommendation-webapp/", "Not sure? Try the Treatment Finder"), ("/service/", "View all treatments")]),
 ]
-PATIENT_MENU = [("/specials/", "Monthly Specials"), ("/membership/", "Membership"), ("/financing/", "Financing"), ("/telehealth/", "Telehealth"),
+PATIENT_MENU = [("/specials/", "Monthly Specials"), ("/membership/", "Membership"), ("/financing/", "Financing"), ("/comfort-options/", "Comfort Options"), ("/telehealth/", "Telehealth"),
                 ("/post-care-instructions/", "Post-Care Instructions"), ("/recommendation-webapp/", "Treatment Finder"), ("/reviews/", "Patient Reviews"), ("/blogs/", "Journal")]
 ABOUT_MENU = [("/our-story/", "Our Story"), ("/our-providers/", "Our Providers"), ("/about-us/", "About Serene"), ("/reviews/", "Reviews"), ("/contact-us/", "Contact")]
 LOCATIONS = [("hudson", HUDSON), ("barboursville", BARB)]

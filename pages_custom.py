@@ -482,9 +482,66 @@ PROSE_PAGES = {
     "/p-shot-and-o-shot-treatments/": ("P-Shot &amp; O-Shot treatments", "PRP-based intimate wellness treatments for men and women, performed by our physicians.", "Intimate wellness"),
 }
 
+
+import html as _html
+# ---------------------------------------------------------------- /comfort-options/ (replaces the retired Pro-Nox article, Sep 2026)
+COMFORT_FAQ = [
+    ("Is Journavx an opioid?", "No. Journavx (suzetrigine) is a non-opioid pain medication that works on a sodium channel in peripheral nerves, blocking pain signals before they reach the brain. It is not a controlled substance and does not carry the addiction risk of opioids."),
+    ("Can I drive myself home after my treatment?", "Yes. Unlike nitrous oxide or opioid medication, Journavx does not cause the sedation that keeps you from driving, so you can come to and leave your appointment on your own. Individual reactions vary; if you feel unwell, please don&rsquo;t drive."),
+    ("How much does it cost?", "Serene does not charge for the prescription. Your pharmacy fills it like any other medication: it is often covered by insurance, and with a common discount card the cash price is usually around $15. The manufacturer also offers a savings card for eligible patients."),
+    ("Do you still offer Pro-Nox (nitrous oxide)?", "No. We retired Pro-Nox in 2026. In our experience the oral medication is more effective, it is not a controlled substance, and it doesn&rsquo;t leave you unable to drive. Topical numbing, cooling and lidocaine-containing fillers are still used as before."),
+    ("Can I take it with my other medications?", "Usually, but not always. Journavx should not be combined with strong CYP3A inhibitors (some antifungals, antibiotics and HIV medicines), grapefruit should be avoided while taking it, and it can make certain hormonal contraceptives less effective. Your provider reviews your medication list before prescribing."),
+    ("When do I take it?", "Pick the prescription up before your visit and take it as your provider instructs &mdash; typically about 30 minutes before the procedure. The first dose works best on an empty stomach (at least 1 hour before or 2 hours after food; water, coffee or tea are fine). Your provider will tell you whether any follow-up doses are needed."),
+]
+
+def comfort_options():
+    faq_html = "".join(f'<div class="card reveal"><h3>{q}</h3><p style="font-size:.97rem">{a}</p></div>' for q, a in COMFORT_FAQ)
+    body = page_hero("Comfort options for your treatment", "Numbing, cooling and &mdash; when you want more &mdash; a modern non-opioid pain medication prescribed by our physicians. Nothing that stops you from driving yourself home.", [("/", "Home"), ("/service/", "Treatments"), (None, "Comfort options")], "For patients") + f'''
+<section><div class="wrap prose">
+  <p class="lede">Most treatments at Serene need nothing more than numbing cream. For the ones that ask a little more of you &mdash; Morpheus8, CO&sup2; and Alma Hybrid resurfacing, Ultherapy, laser tattoo removal, PDO threads, Sculptra BBL, hormone pellet insertion &mdash; you now have a better option than laughing gas.</p>
+  <h2>We&rsquo;ve retired Pro-Nox (nitrous oxide)</h2>
+  <p>For years med spas, including ours, offered Pro-Nox: self-administered nitrous oxide breathed through a mouthpiece. It took the edge off, but it wore off within minutes, it left many patients light-headed, and it counted as a sedative. In 2026 we replaced it with something we think is simply better for our patients.</p>
+  <h2>Journavx&reg; (suzetrigine): a new kind of pain medicine</h2>
+  <p><strong>Journavx</strong> is the first new class of pain medication approved by the FDA in more than twenty years (January 2025). It is approved for adults with moderate-to-severe acute pain, including pain after procedures. Instead of dulling the brain the way opioids do, it blocks a specific sodium channel (Na<sub>V</sub>1.8) on the pain-sensing nerves themselves, so the signal is reduced before it ever reaches the brain.</p>
+  <p>What that means in practice:</p>
+  <ul>
+    <li><strong>Not an opioid, not a controlled substance.</strong> No addiction risk, no DEA paperwork, nothing to lock away.</li>
+    <li><strong>You can drive.</strong> It doesn&rsquo;t cause the sedation of nitrous or opioids, so you come and go on your own.</li>
+    <li><strong>It lasts.</strong> One dose covers the procedure and the hours after it, rather than the minutes nitrous gave you.</li>
+    <li><strong>It&rsquo;s a normal prescription.</strong> We call it in to your own pharmacy. It is often covered by insurance; with a popular discount card the cash price is usually around $15, and the manufacturer offers a savings card for eligible patients. Serene doesn&rsquo;t charge anything for it.</li>
+  </ul>
+  <h2>How it works at Serene</h2>
+  <ol>
+    <li><strong>Ask for it when you book</strong> or at your consultation. Your provider reviews your health history and medication list &mdash; Journavx isn&rsquo;t combined with strong CYP3A inhibitors, and it can reduce the effectiveness of some hormonal contraceptives.</li>
+    <li><strong>We call the prescription in</strong> to the pharmacy you choose. Pick it up before your appointment.</li>
+    <li><strong>Take it as instructed</strong> &mdash; typically about 30 minutes before your procedure. The first dose works best on an empty stomach (at least 1 hour before or 2 hours after food; water, black coffee or tea are fine).</li>
+    <li><strong>Numbing as usual.</strong> We still apply topical anesthetic before microneedling, RF and laser treatments, and our fillers contain lidocaine. Journavx is in addition to, not instead of, those.</li>
+  </ol>
+  <h2>Good to know</h2>
+  <ul>
+    <li>The most common side effects in studies were itching, muscle spasms, rash and a temporary rise in a muscle enzyme (CPK). Tell us if you have liver problems.</li>
+    <li>Avoid grapefruit and grapefruit juice while taking it.</li>
+    <li>If you use a hormonal contraceptive, use a backup method during treatment and for 28 days after your last dose. Journavx may also temporarily reduce fertility while you are taking it.</li>
+    <li>It has not been studied in pregnancy, breastfeeding or in anyone under 18 &mdash; please tell your provider if any of these apply.</li>
+    <li>Journavx is prescribed only when your provider judges it appropriate; it is never required for a treatment.</li>
+  </ul>
+  <p style="font-size:.9rem;color:var(--muted)">Journavx&reg; is a registered trademark of Vertex Pharmaceuticals Incorporated. Serene Med Spa has no financial relationship with the manufacturer. This page is general information, not a substitute for the prescribing information or your provider&rsquo;s advice.</p>
+</div></section>
+<section class="tint-sand"><div class="wrap"><div class="section-head"><span class="eyebrow">Comfort FAQ</span><h2>Common questions</h2></div><div class="grid g2">{faq_html}</div></div></section>
+{book_band()}'''
+    ld = json.dumps([
+        {"@context": "https://schema.org", "@type": "MedicalWebPage", "url": SITE_URL + "/comfort-options/", "name": "Comfort options for your treatment",
+         "about": {"@type": "Drug", "name": "Journavx", "nonProprietaryName": "suzetrigine", "manufacturer": {"@type": "Organization", "name": "Vertex Pharmaceuticals"}, "prescriptionStatus": "https://schema.org/PrescriptionOnly", "drugClass": "Non-opioid analgesic (NaV1.8 sodium channel blocker)", "url": "https://www.journavx.com/"},
+         "audience": {"@type": "MedicalAudience", "audienceType": "Patient"}, "lastReviewed": "2026-09-24",
+         "reviewedBy": {"@type": "Person", "name": "Robin Arora, MD", "url": SITE_URL + "/our-providers/robin-arora-md/"}, "isPartOf": {"@type": "WebSite", "@id": SITE_URL + "/#website"}},
+        {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": _html.unescape(a)}} for q, a in COMFORT_FAQ]},
+    ], ensure_ascii=False)
+    return shell("/comfort-options/", "Comfort Options for Your Treatment | Serene Med Spa",
+                 "How Serene Med Spa keeps treatments comfortable: topical numbing, lidocaine fillers and Journavx (suzetrigine), a non-opioid, non-controlled prescription called in to your pharmacy — often covered by insurance or about $15 with a discount card.", body, ld=ld)
+
 def build(pages, posts, render_prose, render_embed):
     out = {"/": home(posts), "/locations/": locations(), "/our-providers/": providers(pages), "/about-us/": about(pages), "/reviews/": reviews(),
-           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/thank-you/": thank_you()}
+           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/thank-you/": thank_you()}
     for p in EMBED_PAGES:
         if p in pages: out[p] = render_embed(pages[p])
     for p, (title, lede, eyebrow) in PROSE_PAGES.items():
