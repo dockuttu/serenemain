@@ -357,8 +357,39 @@ SPECIALS = [
     ], "Series pricing on Tite, Trim &amp; Tone"),
 ]
 
+# Featured, date-limited offer shown above the monthly cards (hidden automatically after validThrough).
+STUDIO3 = {"through": "2026-10-31", "vimeo": "1228988348",
+           "thumb": "https://i.vimeocdn.com/video/2203534769-9df18cf4bcf6ef3f14c3a1ce6c37a5fdaa4957b5937dff689e47836bf0f9886f-d_1280"}
+
+def studio3_block():
+    import datetime as _dt
+    if _dt.date.today() > _dt.date.fromisoformat(STUDIO3["through"]): return "", []
+    html = f'''
+<section class="tint-sand" id="studio3" data-through="{STUDIO3["through"]}"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span><h2>30% off Ultherapy &mdash; Barboursville</h2>
+    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. The first 20 clients who book after the segment save 30% on any Ultherapy treatment at our Barboursville office. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Ends <strong>October 31, 2026</strong>.</p></div>
+  <div class="grid g2" style="align-items:center">
+    <div class="studio3-wrap reveal"><iframe src="https://player.vimeo.com/video/{STUDIO3["vimeo"]}?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Ultherapy live demo on WSAZ Studio 3 with Dr. Robin Arora" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="card reveal"><span class="eyebrow">Studio 3 special</span><h3>Ultherapy PRIME, 30% off</h3>
+      <p>A non-surgical lift for the brow, jowls, neck and d&eacute;collet&eacute; &mdash; one session, no downtime, results that build over two to three months. Regular Barboursville pricing: brow $850, neck $1,400, lower face $1,650, full face $2,200, full face + neck $2,900.</p>
+      <p class="deal-note">First 20 clients &middot; Barboursville only &middot; through Oct 31, 2026</p>
+      <p style="margin-top:14px"><a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a> <a class="btn btn-outline" href="{BARB["site"]}ultherapy/">About Ultherapy</a> <a class="btn btn-outline" href="{BARB["site"]}pricing/">Pricing</a></p></div>
+  </div>
+  <style>.studio3-wrap{{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);background:#000}}.studio3-wrap iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}</style>
+  <script>(function(){{var s=document.getElementById("studio3");if(s&&new Date()>new Date(s.dataset.through+"T23:59:59"))s.style.display="none";}})();</script>
+</div></section>'''
+    ld = [{"@context": "https://schema.org", "@type": "Offer", "name": "Studio 3 special: 30% off Ultherapy PRIME", "url": SITE_URL + "/specials/#studio3",
+           "description": "First 20 clients who book Ultherapy after the WSAZ Studio 3 segment save 30% at Serene Med Spa Barboursville. Mention Studio 3 when booking.",
+           "validFrom": "2026-09-18", "validThrough": STUDIO3["through"], "category": "Promotion", "areaServed": "Barboursville, WV", "offeredBy": {"@id": SITE_URL + "/#organization"}},
+          {"@context": "https://schema.org", "@type": "VideoObject", "name": "Ultherapy Live Demo on WSAZ Studio 3 — Dr. Robin Arora, Serene Med Spa",
+           "description": "Dr. Robin Arora performs a live Ultherapy PRIME demonstration on WSAZ's Studio 3 (aired September 18, 2026).", "thumbnailUrl": [STUDIO3["thumb"]],
+           "uploadDate": "2026-09-21T18:27:07-04:00", "duration": "PT6M4S", "embedUrl": "https://player.vimeo.com/video/" + STUDIO3["vimeo"], "contentUrl": "https://vimeo.com/" + STUDIO3["vimeo"],
+           "publisher": {"@id": SITE_URL + "/#organization"}, "actor": {"@type": "Person", "name": "Robin Arora, MD", "url": SITE_URL + "/our-providers/robin-arora-md/"}}]
+    return html, ld
+
 def specials(pages):
     month = SPECIALS_MONTH
+    studio3_html, studio3_ld = studio3_block()
     cards = ""
     for deal, items, note in SPECIALS:
         rows = "".join(f'<li><a href="{href}"><strong>{name}</strong></a><span>{blurb}</span></li>' for name, href, blurb in items)
@@ -382,6 +413,7 @@ def specials(pages):
 .deal-note{{margin-top:auto;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-500);font-weight:600}}
 .fine{{font-size:.9rem;color:var(--ink-soft);max-width:760px}}
 </style>
+{studio3_html}
 <section><div class="wrap">
   <div class="grid g3">{cards}
   </div>
@@ -399,6 +431,7 @@ def specials(pages):
         "itemListElement": [{"@type": "Offer", "name": f"{deal}: {X.text_of(name)}", "description": X.text_of(blurb), "url": SITE_URL + href, "category": "Promotion",
                              "validFrom": f"{SPECIALS_YEAR}-{_mnum:02d}-01", "validThrough": f"{SPECIALS_YEAR}-{_mnum:02d}-{_last:02d}", "offeredBy": {"@id": SITE_URL + "/#organization"},
                              "areaServed": ["Hudson, OH", "Barboursville, WV"]} for deal, items, note in SPECIALS for name, href, blurb in items]}, ensure_ascii=False)
+    if studio3_ld: offers_ld = offers_ld + "</script>\n<script type=\"application/ld+json\">" + "</script>\n<script type=\"application/ld+json\">".join(json.dumps(b, ensure_ascii=False) for b in studio3_ld)
     return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: buy 2 get 1 free on V-Tone, Forma V, Morpheus V and Evolve X, and buy 1 get 1 free on PRP hair restoration.", body, ld=offers_ld)
 
 def telehealth():
