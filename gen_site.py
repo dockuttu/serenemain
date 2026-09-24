@@ -264,6 +264,9 @@ def main():
     # brand photos (real office/team shots shared with the location sites) -> /img/
     img_src = os.path.join(HERE, "assets", "img")
     if os.path.isdir(img_src): shutil.copytree(img_src, os.path.join(SITE, "img"), ignore=shutil.ignore_patterns("._*", ".DS_Store"))
+    # self-hosted video (social-media source files, WSAZ segments) -> /media/  (assets/media/; keep files < 90 MB for GitHub)
+    med_src = os.path.join(HERE, "assets", "media")
+    if os.path.isdir(med_src): shutil.copytree(med_src, os.path.join(SITE, "media"), ignore=shutil.ignore_patterns("._*", ".DS_Store"))
     css = CSS
     open(os.path.join(SITE, "main.css"), "w", encoding="utf-8").write(css)
     cssv = hashlib.md5(css.encode()).hexdigest()[:8]
