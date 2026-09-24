@@ -365,8 +365,12 @@ def _locpick():
     return ('<div class="locpick" id="locpick"><button type="button" aria-haspopup="true" onclick="this.parentNode.classList.toggle(\'open\')">&#9906; <span data-loc-name>Choose location</span><i class="car"></i></button>'
             '<div class="drop"><b>Your Serene</b>' + opts + '<button type="button" data-set-loc="telehealth"><strong>Telehealth</strong><small>Video visits &middot; OH, WV, KY &amp; FL</small></button></div></div>')
 
-PROMO = '<div class="promo">&#10022; <a href="/specials/">September specials</a> are here &mdash; buy 2, get 1 free on V-Tone, Forma V, Morpheus V &amp; Evolve X<span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
-
+import datetime as _dt
+_SEPT_PROMO = '<div class="promo">&#10022; <a href="/specials/">September specials</a> are here &mdash; buy 2, get 1 free on V-Tone, Forma V, Morpheus V &amp; Evolve X<span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
+_OCT_PROMO = '<div class="promo">&#10022; <a href="/specials/">October special</a>: 30% off Ultherapy at both offices &mdash; as seen on WSAZ Studio 3<span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
+_NOV_PROMO = '<div class="promo">&#10022; <a href="/specials/">This month&rsquo;s specials</a><span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
+_today = _dt.date.today()
+PROMO = _SEPT_PROMO if _today < _dt.date(2026, 10, 1) else (_OCT_PROMO if _today <= _dt.date(2026, 10, 31) else _NOV_PROMO)
 NAV = PROMO + f'''<header>
   <div class="wrap nav">
     <a class="logo" href="/"><img src="{LOGO}" alt="Serene Med Spa" width="220" height="123"></a>

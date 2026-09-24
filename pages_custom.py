@@ -339,23 +339,40 @@ def financing():
 {book_band()}'''
     return shell("/financing/", "Financing Options | Serene Med Spa", "Pay over time for treatments at Serene Med Spa with Cherry or CareCredit. 0% APR options for qualified patients; pre-qualify without affecting your credit score.", body)
 
-# ---- Monthly specials: edit SPECIALS_MONTH / SPECIALS each month (no flyer image needed) ----
-SPECIALS_MONTH = "September"
+# ---- Monthly specials: add a month to SPECIALS_SCHEDULE; the build picks the current month automatically ----
+import datetime as _dt
 SPECIALS_YEAR = "2026"
-SPECIALS = [
-    # (deal, [(treatment, href, one-line blurb)], note)
-    ("Buy 2, get 1 free", [
-        ("V-Tone", "/empowerrf-vaginal-rejuvenation-treatment/", "Gentle electrical muscle stimulation for pelvic-floor strength and bladder control."),
-        ("Forma V", "/empowerrf-vaginal-rejuvenation-treatment/", "Radiofrequency for intimate comfort, tissue quality and blood flow &mdash; no downtime."),
-        ("Morpheus V", "/empowerrf-vaginal-rejuvenation-treatment/", "Fractional RF microneedling for deeper remodeling of vaginal and vulvar tissue."),
-    ], "EmpowerRF women&rsquo;s wellness &middot; series of 3 recommended"),
-    ("Buy 1, get 1 free", [
-        ("PRP Hair Restoration", "/natural-prp-hair-restoration/", "Your own platelet-rich plasma, injected into the scalp to wake up thinning follicles."),
-    ], "Two sessions for the price of one"),
-    ("Buy 2, get 1 free", [
-        ("Evolve X", "/inmode-evolvex-body-contouring/", "Hands-free RF body contouring &mdash; tighten skin, reduce fat and tone muscle in one platform."),
-    ], "Series pricing on Tite, Trim &amp; Tone"),
-]
+SPECIALS_SCHEDULE = {
+    "September": [
+        # (deal, [(treatment, href, one-line blurb)], note)
+        ("Buy 2, get 1 free", [
+            ("V-Tone", "/empowerrf-vaginal-rejuvenation-treatment/", "Gentle electrical muscle stimulation for pelvic-floor strength and bladder control."),
+            ("Forma V", "/empowerrf-vaginal-rejuvenation-treatment/", "Radiofrequency for intimate comfort, tissue quality and blood flow &mdash; no downtime."),
+            ("Morpheus V", "/empowerrf-vaginal-rejuvenation-treatment/", "Fractional RF microneedling for deeper remodeling of vaginal and vulvar tissue."),
+        ], "EmpowerRF women&rsquo;s wellness &middot; series of 3 recommended"),
+        ("Buy 1, get 1 free", [
+            ("PRP Hair Restoration", "/natural-prp-hair-restoration/", "Your own platelet-rich plasma, injected into the scalp to wake up thinning follicles."),
+        ], "Two sessions for the price of one"),
+        ("Buy 2, get 1 free", [
+            ("Evolve X", "/inmode-evolvex-body-contouring/", "Hands-free RF body contouring &mdash; tighten skin, reduce fat and tone muscle in one platform."),
+        ], "Series pricing on Tite, Trim &amp; Tone"),
+    ],
+    "October": [
+        ("30% off Ultherapy", [
+            ("Ultherapy PRIME &middot; Barboursville", "/barboursville/ultherapy/", "Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;. Regular: brow $850, lower face $1,650, full face $2,200."),
+            ("Ultherapy PRIME &middot; Hudson", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $950, lower face $1,900, full face $2,600."),
+        ], "As seen on WSAZ Studio 3 &middot; first 20 clients &middot; mention &ldquo;Studio 3&rdquo;"),
+    ],
+}
+def _current_month():
+    today = _dt.date.today()
+    names = [m for m in SPECIALS_SCHEDULE]
+    # latest scheduled month that has started (falls back to the first one)
+    import calendar as _c
+    started = [m for m in names if today >= _dt.date(int(SPECIALS_YEAR), list(_c.month_name).index(m), 1)]
+    return started[-1] if started else names[0]
+SPECIALS_MONTH = _current_month()
+SPECIALS = SPECIALS_SCHEDULE[SPECIALS_MONTH]
 
 # Featured, date-limited offer shown above the monthly cards (hidden automatically after validThrough).
 STUDIO3 = {"through": "2026-10-31", "vimeo": "1228988348",
@@ -366,21 +383,21 @@ def studio3_block():
     if _dt.date.today() > _dt.date.fromisoformat(STUDIO3["through"]): return "", []
     html = f'''
 <section class="tint-sand" id="studio3" data-through="{STUDIO3["through"]}"><div class="wrap">
-  <div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span><h2>30% off Ultherapy &mdash; Barboursville</h2>
-    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. The first 20 clients who book after the segment save 30% on any Ultherapy treatment at our Barboursville office. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Ends <strong>October 31, 2026</strong>.</p></div>
+  <div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span><h2>30% off Ultherapy &mdash; Hudson &amp; Barboursville</h2>
+    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. The first 20 clients who book after the segment save 30% on any Ultherapy PRIME treatment at either office &mdash; Hudson, OH or Barboursville, WV. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Ends <strong>October 31, 2026</strong>.</p></div>
   <div class="grid g2" style="align-items:center">
     <div class="studio3-wrap reveal"><iframe src="https://player.vimeo.com/video/{STUDIO3["vimeo"]}?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Ultherapy live demo on WSAZ Studio 3 with Dr. Robin Arora" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     <div class="card reveal"><span class="eyebrow">Studio 3 special</span><h3>Ultherapy PRIME, 30% off</h3>
-      <p>A non-surgical lift for the brow, jowls, neck and d&eacute;collet&eacute; &mdash; one session, no downtime, results that build over two to three months. Regular Barboursville pricing: brow $850, neck $1,400, lower face $1,650, full face $2,200, full face + neck $2,900.</p>
-      <p class="deal-note">First 20 clients &middot; Barboursville only &middot; through Oct 31, 2026</p>
-      <p style="margin-top:14px"><a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a> <a class="btn btn-outline" href="{BARB["site"]}ultherapy/">About Ultherapy</a> <a class="btn btn-outline" href="{BARB["site"]}pricing/">Pricing</a></p></div>
+      <p>A non-surgical lift for the brow, jowls, neck and d&eacute;collet&eacute; &mdash; one session, no downtime, results that build over two to three months. Regular pricing &mdash; Barboursville: brow $850, lower face $1,650, full face $2,200. Hudson: brow $950, lower face $1,900, full face $2,600. See each office&rsquo;s price list for every area.</p>
+      <p class="deal-note">First 20 clients &middot; both offices &middot; through Oct 31, 2026</p>
+      <p style="margin-top:14px"><a class="btn" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a> <a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a> <a class="btn btn-outline" href="{HUDSON["site"]}ultherapy/">Ultherapy &middot; Hudson</a> <a class="btn btn-outline" href="{BARB["site"]}ultherapy/">Ultherapy &middot; Barboursville</a></p></div>
   </div>
   <style>.studio3-wrap{{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);background:#000}}.studio3-wrap iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}</style>
   <script>(function(){{var s=document.getElementById("studio3");if(s&&new Date()>new Date(s.dataset.through+"T23:59:59"))s.style.display="none";}})();</script>
 </div></section>'''
     ld = [{"@context": "https://schema.org", "@type": "Offer", "name": "Studio 3 special: 30% off Ultherapy PRIME", "url": SITE_URL + "/specials/#studio3",
-           "description": "First 20 clients who book Ultherapy after the WSAZ Studio 3 segment save 30% at Serene Med Spa Barboursville. Mention Studio 3 when booking.",
-           "validFrom": "2026-09-18", "validThrough": STUDIO3["through"], "category": "Promotion", "areaServed": "Barboursville, WV", "offeredBy": {"@id": SITE_URL + "/#organization"}},
+           "description": "First 20 clients who book Ultherapy after the WSAZ Studio 3 segment save 30% at Serene Med Spa in Hudson, OH or Barboursville, WV. Mention Studio 3 when booking.",
+           "validFrom": "2026-09-18", "validThrough": STUDIO3["through"], "category": "Promotion", "areaServed": ["Hudson, OH", "Barboursville, WV"], "offeredBy": {"@id": SITE_URL + "/#organization"}},
           {"@context": "https://schema.org", "@type": "VideoObject", "name": "Ultherapy Live Demo on WSAZ Studio 3 — Dr. Robin Arora, Serene Med Spa",
            "description": "Dr. Robin Arora performs a live Ultherapy PRIME demonstration on WSAZ's Studio 3 (aired September 18, 2026).", "thumbnailUrl": [STUDIO3["thumb"]],
            "uploadDate": "2026-09-21T18:27:07-04:00", "duration": "PT6M4S", "embedUrl": "https://player.vimeo.com/video/" + STUDIO3["vimeo"], "contentUrl": "https://vimeo.com/" + STUDIO3["vimeo"],
@@ -389,6 +406,8 @@ def studio3_block():
 
 def specials(pages):
     month = SPECIALS_MONTH
+    import calendar as _cal
+    _mnum = list(_cal.month_name).index(month); _last = _cal.monthrange(int(SPECIALS_YEAR), _mnum)[1]
     studio3_html, studio3_ld = studio3_block()
     cards = ""
     for deal, items, note in SPECIALS:
@@ -417,7 +436,7 @@ def specials(pages):
 <section><div class="wrap">
   <div class="grid g3">{cards}
   </div>
-  <p class="fine" style="margin-top:28px">Offers valid through {month} 30, {SPECIALS_YEAR} at both offices. Free session is of equal or lesser value and must be used by the same patient. Can&rsquo;t be combined with another discount or membership pricing; a consultation may be required to confirm candidacy.</p>
+  <p class="fine" style="margin-top:28px">Offers valid through {month} {_last}, {SPECIALS_YEAR} at both offices. Free session is of equal or lesser value and must be used by the same patient. Can&rsquo;t be combined with another discount or membership pricing; a consultation may be required to confirm candidacy.</p>
 </div></section>
 <section class="tint-sand"><div class="wrap band">
   <div class="prose"><h2>How to claim a special</h2><p>Book online or call the office and mention the {month} special when you check in. Specials can&rsquo;t be combined with other discounts, and some require a consultation first so we can confirm you&rsquo;re a good candidate.</p>
@@ -425,8 +444,6 @@ def specials(pages):
   <div class="actions"><a class="btn" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a></div></div>
   <div class="card reveal"><span class="eyebrow">Members save every month</span><h3>Serene Elevate Membership</h3><p>Members get priority access to specials plus discounted pricing on every visit. See what&rsquo;s included and join online.</p><div class="actions"><a class="btn btn-sm" href="/membership/">Membership details</a><a class="btn btn-sm btn-outline" href="/financing/">Financing</a></div></div>
 </div></section>'''
-    import calendar as _cal
-    _mnum = list(_cal.month_name).index(month); _last = _cal.monthrange(int(SPECIALS_YEAR), _mnum)[1]
     offers_ld = json.dumps({"@context": "https://schema.org", "@type": "OfferCatalog", "name": f"{month} {SPECIALS_YEAR} specials — Serene Med Spa", "url": SITE_URL + "/specials/",
         "itemListElement": [{"@type": "Offer", "name": f"{deal}: {X.text_of(name)}", "description": X.text_of(blurb), "url": SITE_URL + href, "category": "Promotion",
                              "validFrom": f"{SPECIALS_YEAR}-{_mnum:02d}-01", "validThrough": f"{SPECIALS_YEAR}-{_mnum:02d}-{_last:02d}", "offeredBy": {"@id": SITE_URL + "/#organization"},
