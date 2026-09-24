@@ -12,14 +12,23 @@ ORG_ID = SITE_URL + "/#organization"
 HUD_ID = SITE_URL + "/hudson/#business"
 BV_ID = SITE_URL + "/barboursville/#business"
 
-# social / map profiles — add Facebook + Hudson Instagram when confirmed
+# social / map profiles (handles confirmed from the Metricool brand settings, Sep 24 2026)
 SAME_AS = [
+    "https://www.facebook.com/337269716139255",            # Serene Med Spa (Barboursville) Facebook page
+    "https://www.facebook.com/1052651711266753",           # Serene Med Spa of Hudson Ohio Facebook page
     "https://www.instagram.com/serene.wellness.wv",
+    "https://www.instagram.com/serene.hudson",
+    "https://www.tiktok.com/@serenemedspas",
+    "https://www.tiktok.com/@serenemedspashudson",
+    "https://www.youtube.com/channel/UC5BaFyuqiV3DYG_yKDrr07Q",
+    "https://www.pinterest.com/serenemedspas",
     "https://maps.google.com/maps?q=50+W+Streetsboro+St+Suite+2,+Hudson,+OH+44236",
     "https://maps.google.com/maps?q=1+Chateau+Grove+Ln,+Barboursville,+WV+25504",
 ]
-SAME_AS_HUDSON = ["https://maps.google.com/maps?q=50+W+Streetsboro+St+Suite+2,+Hudson,+OH+44236"]
-SAME_AS_BARB = ["https://maps.google.com/maps?q=1+Chateau+Grove+Ln,+Barboursville,+WV+25504", "https://www.instagram.com/serene.wellness.wv"]
+SAME_AS_HUDSON = ["https://www.facebook.com/1052651711266753", "https://www.instagram.com/serene.hudson", "https://www.tiktok.com/@serenemedspashudson",
+                  "https://maps.google.com/maps?q=50+W+Streetsboro+St+Suite+2,+Hudson,+OH+44236"]
+SAME_AS_BARB = ["https://www.facebook.com/337269716139255", "https://www.instagram.com/serene.wellness.wv", "https://www.tiktok.com/@serenemedspas",
+                "https://maps.google.com/maps?q=1+Chateau+Grove+Ln,+Barboursville,+WV+25504"]
 
 def person(name, role, url, img, creds, alumni=None, same=None):
     p = {"@type": ["Person", "Physician"] if "MD" in name else "Person", "name": name, "jobTitle": role, "url": SITE_URL + url, "image": SITE_URL + img,
