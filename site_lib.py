@@ -70,7 +70,7 @@ section{padding:84px 0}
 .promo{background:var(--lav);color:var(--forest);text-align:center;font-size:.8rem;letter-spacing:.02em;padding:9px 16px;font-weight:500}
 .promo a{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
 header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--rule)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:18px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:18px;position:relative}
 .nav .logo img{height:50px;width:auto}
 .nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex:1;justify-content:center}
 .nav ul li{position:relative}
@@ -80,7 +80,7 @@ header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid 
 .drop a .car{display:none}
 .nav ul li:hover>a,.nav ul a:hover{color:var(--forest-500)}
 .drop{position:absolute;top:100%;left:0;min-width:250px;background:#fff;border:1px solid var(--rule);border-radius:0 0 16px 16px;padding:12px;box-shadow:var(--shadow);display:none;z-index:70}
-.drop.mega{min-width:960px;display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding:26px 30px 28px;left:50%;transform:translateX(-50%)}
+.nav ul li.has-mega{position:static}.drop.mega{min-width:0;width:min(1000px,calc(100vw - 32px));display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding:26px 30px 28px;left:50%;transform:translateX(-50%)}
 .nav li:hover>.drop{display:block}.nav li:hover>.drop.mega{display:grid}
 .nav .drop a{text-transform:none;letter-spacing:0;font-size:.9rem;line-height:1.35;padding:7px 8px;font-weight:400;border:0;color:var(--ink-soft);white-space:normal}
 .nav .drop a:hover{color:var(--forest);background:var(--grey);border-radius:6px;border-bottom-color:transparent}
@@ -299,7 +299,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 /* responsive */
-@media (max-width:1180px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.drop.mega{min-width:760px;grid-template-columns:repeat(3,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav ul a{padding:12px 8px;letter-spacing:.1em;font-size:.68rem}}
+@media (max-width:1180px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.drop.mega{grid-template-columns:repeat(3,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav ul a{padding:12px 8px;letter-spacing:.1em;font-size:.68rem}}
 @media (max-width:1024px){.shopband{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.post-wrap{grid-template-columns:1fr}.side{position:static}.offer{grid-template-columns:1fr}}
 @media (max-width:1040px){
   .nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:12px 16px 20px;border-bottom:1px solid var(--rule);gap:2px;max-height:calc(100vh - 84px);overflow:auto}
@@ -375,7 +375,7 @@ NAV = PROMO + f'''<header>
   <div class="wrap nav">
     <a class="logo" href="/"><img src="{LOGO}" alt="Serene Med Spa" width="220" height="123"></a>
     <ul id="menu">
-      <li><a href="/service/">Treatments<i class="car"></i></a>{_mega()}</li>
+      <li class="has-mega"><a href="/service/">Treatments<i class="car"></i></a>{_mega()}</li>
       <li><a href="/locations/">Locations<i class="car"></i></a>{_drop([(HUDSON["site"], "Serene Hudson, OH — office, pricing & booking"), (BARB["site"], "Serene Barboursville, WV — office, pricing & booking"), ("/telehealth/", "Serene Telehealth — OH, WV, KY & FL"), ("/locations/", "Compare locations, hours & directions")])}</li>
       <li><a href="/specials/">Specials</a></li>
       <li><a href="/membership/">Membership</a></li>
