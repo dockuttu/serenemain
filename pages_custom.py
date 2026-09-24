@@ -64,6 +64,7 @@ def home(posts):
     for path, name, role, img, creds, blurb in PROVIDERS:
         provs += f'<a class="provcard reveal" href="{path}"><img src="{img}" alt="{X.text_of(name)}" loading="lazy"><span class="role">{role}</span><h3>{name}</h3><p style="color:var(--ink-soft);font-size:.92rem">{creds[0]}</p></a>'
     body = f"""
+{featured_video_section()}
 <section class="hero" style="background-image:linear-gradient(90deg,rgba(16,50,47,.8) 0%,rgba(16,50,47,.5) 50%,rgba(16,50,47,.12) 100%),url('/img/lobby.jpg')">
   <div class="wrap">
     <span class="script" data-loc-none>Physician-led aesthetics &amp; wellness</span>
@@ -172,6 +173,7 @@ def home(posts):
   </div>
 </section>
 
+{latest_video_section()}
 <section class="tint-sage">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">Serene Smart Tools&trade;</span><h2>Plan before you book</h2><p class="lede">Free, private planning tools built by our physicians. Nothing you enter is stored or sent.</p></div>

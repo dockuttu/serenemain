@@ -328,6 +328,56 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 @media (max-width:560px){.locpick>button span{display:none}.g6{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:1fr}.hero-chips{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid{grid-template-columns:minmax(0,1fr)}.offer{padding:28px}.arch span{font-size:.58rem;padding:8px 12px}}
 """
 
+# ------------------------------------------------------------------ video blocks (shared by the main site and both office builds via v2_merge)
+VIMEO_USER = "221277662"   # Robin Arora, MD — Serene Med Spa on Vimeo
+FEATURED_VIDEO = {"id": "1228988348", "through": "2026-10-31",
+                  "eyebrow": "As seen on WSAZ Studio 3", "title": "Watch Dr. Arora&rsquo;s live Ultherapy demo",
+                  "lede": "Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18, 2026 &mdash; see what a treatment looks like, how the ultrasound imaging guides each pass, and why there&rsquo;s no downtime.",
+                  "offer_h": "Studio 3 special: 30% off Ultherapy",
+                  "offer_p": "The first 20 clients who book Ultherapy after the segment save <strong>30%</strong> on any Ultherapy PRIME treatment at either Serene office &mdash; Hudson or Barboursville. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Offer ends <strong>October 31, 2026</strong>; can&rsquo;t be combined with other discounts."}
+VIDEO_CSS = ('.vid-wrap{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);margin:0 auto 28px;max-width:960px;background:#000}'
+             '.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}'
+             '.vid-offer{max-width:760px;margin:0 auto;text-align:center}.vid-offer .btn{margin:6px 4px 0}'
+             '.vid-latest .vid-meta{max-width:760px;margin:0 auto;text-align:center}.vid-latest .vid-meta h3{margin:0 0 8px}.vid-latest .vid-meta p{color:var(--ink-soft)}')
+
+def _vimeo_iframe(vid, title):
+    return (f'<div class="vid-wrap reveal"><iframe src="https://player.vimeo.com/video/{vid}?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="{title}" '
+            f'loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>')
+
+def featured_video_section(book_href="/#book", book_attrs=' data-loc-book', pricing_href="/barboursville/ultherapy/#pricing", pricing_label="See Ultherapy pricing"):
+    """Top-of-home block (WSAZ Studio 3 demo + October offer). Empty string after FEATURED_VIDEO['through']."""
+    import datetime as _d
+    F = FEATURED_VIDEO
+    if _d.date.today() > _d.date.fromisoformat(F["through"]): return ""
+    return (f'<section id="studio3" class="tint-sand"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">{F["eyebrow"]}</span><h2>{F["title"]}</h2>'
+            f'<p style="max-width:720px;margin:10px auto 0">{F["lede"]}</p></div>'
+            + _vimeo_iframe(F["id"], "Ultherapy live demo on WSAZ Studio 3 with Dr. Robin Arora") +
+            f'<div class="card reveal vid-offer"><div class="ico">&#10022;</div><h3>{F["offer_h"]}</h3><p>{F["offer_p"]}</p>'
+            f'<p><a class="btn" href="{book_href}"{book_attrs}>Book a Consultation</a> <a class="btn btn-outline" href="{pricing_href}">{pricing_label}</a></p></div>'
+            f'<style>{VIDEO_CSS}</style></div></section>\n')
+
+def _vimeo_latest():
+    """Newest public video on the account at build time (fallback: the featured video). The page also refreshes itself client-side."""
+    try:
+        import urllib.request, json as _j
+        with urllib.request.urlopen(f"https://vimeo.com/api/v2/user{VIMEO_USER}/videos.json", timeout=6) as r:
+            v = _j.loads(r.read().decode("utf-8"))[0]
+        return {"id": str(v["id"]), "title": v.get("title", ""), "desc": (v.get("description") or "").split("\n")[0][:220]}
+    except Exception:
+        return {"id": FEATURED_VIDEO["id"], "title": "Ultherapy Live Demo on WSAZ Studio 3 — Dr. Robin Arora, Serene Med Spa", "desc": "Dr. Robin Arora performs a live Ultherapy PRIME demonstration on WSAZ's Studio 3."}
+
+def latest_video_section():
+    """Mid-page block that always shows the newest video on Serene's Vimeo (rendered at build, refreshed in the browser)."""
+    import html as _h
+    v = _vimeo_latest()
+    js = ("<script>(function(){var s=document.getElementById('latest-video');if(!s)return;fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){var v=a&&a[0];if(!v||String(v.id)===s.dataset.vid)return;"
+          "s.dataset.vid=v.id;s.querySelector('iframe').src='https://player.vimeo.com/video/'+v.id+'?dnt=1&title=0&byline=0&portrait=0';s.querySelector('h3').textContent=v.title||'';s.querySelector('.vid-desc').textContent=(v.description||'').split('\\n')[0].slice(0,220);}).catch(function(){});})();</script>")
+    return (f'<section id="latest-video" class="vid-latest" data-vid="{v["id"]}"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">Latest from Serene</span><h2>Our newest video</h2></div>'
+            + _vimeo_iframe(v["id"], _h.escape(v["title"])) +
+            f'<div class="vid-meta reveal"><h3>{_h.escape(v["title"])}</h3><p class="vid-desc">{_h.escape(v["desc"])}</p>'
+            f'<p><a class="btn btn-outline" href="https://vimeo.com/user{VIMEO_USER}" target="_blank" rel="noopener">More videos on Vimeo</a></p></div>'
+            f'<style>{VIDEO_CSS}</style>{js}</div></section>\n')
+
 # ------------------------------------------------------------------ NAV / FOOTER
 SERVICE_MENU = [
     ("Injectables", [("/botox-treatment-benefits/", "Botox & Wrinkle Relaxers"), ("/filler-injection-treatments-at-serene-med-spa/", "Dermal Fillers"), ("/lip-filler/", "Lip Filler"),
