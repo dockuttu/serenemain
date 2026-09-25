@@ -50,16 +50,48 @@ def log(line):
     # metadata only (no message bodies, no client details)
     with open(os.path.join(DATA, "hook.log"), "a") as f: f.write(datetime.datetime.utcnow().isoformat() + "Z " + line[:300] + "\n")
 
+SCHEDULE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "schedule.json")))
+API_TOKEN = os.environ.get("HOSTINGER_MAIL_TOKEN", "")      # optional: lets us read the message when the webhook sends only an id
+MAILBOX = os.environ.get("HOSTINGER_MAILBOX_ID", "")
+
+def _find_uid(obj):
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k.lower() in ("uid", "messageuid", "message_uid") and isinstance(v, (int, str)): return v
+            r = _find_uid(v)
+            if r is not None: return r
+    if isinstance(obj, list):
+        for v in obj:
+            r = _find_uid(v)
+            if r is not None: return r
+    return None
+
+def _fetch_text(uid):
+    if not (API_TOKEN and MAILBOX and uid is not None): return ""
+    import urllib.request
+    req = urllib.request.Request(f"https://api.mail.hostinger.com/api/v1/mailboxes/{MAILBOX}/folders/INBOX/messages/{uid}/text",
+                                 headers={"Authorization": "Bearer " + API_TOKEN, "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=10) as r: return r.read().decode("utf-8", "replace")
+    except Exception as e:
+        log(f"fetch failed: {type(e).__name__}"); return ""
+
 def classify(payload):
-    """Return 'hudson' / 'barboursville' / None from a webhook payload (subject/snippet fields, whatever Hostinger sends)."""
-    flat = json.dumps(payload, ensure_ascii=False)
-    low = flat.lower()
-    if "mangomint" not in low and "gift card" not in low: return None, "not-mangomint"
-    if not re.search(r"gift\s*card", low): return None, "no-gift-card-words"
-    has_h, has_b = "hudson deal" in low, "barboursville deal" in low
-    if has_h and not has_b: return "hudson", "ok"
-    if has_b and not has_h: return "barboursville", "ok"
-    return None, "office-not-found"
+    """Mangomint's internal email: subject 'Online gift card purchase', body '... bought an online gift card ...
+    Gift card value: $150.00'. Today's two deals always have different values, so the value picks the office."""
+    text = json.dumps(payload, ensure_ascii=False)
+    low = text.lower()
+    if "gift card" not in low: return None, "not-gift-card"
+    if not re.search(r"gift card value", low):
+        extra = _fetch_text(_find_uid(payload))
+        if extra: text, low = text + " " + extra, (text + " " + extra).lower()
+    m = re.search(r"gift card value[^0-9$]*\$?\s*([0-9][0-9,]*(?:\.[0-9]{2})?)", low)
+    if not m: return None, "no-value"
+    value = float(m.group(1).replace(",", ""))
+    today = SCHEDULE.get(eastern_today(), {})
+    hits = [o for o, d in today.items() if abs(float(d["value"]) - value) < 0.01]
+    if len(hits) == 1: return hits[0], f"value {value:g}"
+    return None, f"value {value:g} matches {len(hits)} deals"
 
 class H(BaseHTTPRequestHandler):
     server_version = "serene-deals/1"
