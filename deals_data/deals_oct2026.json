@@ -1,0 +1,560 @@
+[
+ {
+  "date": "2026-10-01",
+  "office": "hudson",
+  "treatment": "HydraFacial",
+  "covers": "One signature HydraFacial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-01",
+  "office": "barboursville",
+  "treatment": "SKNLAB Facial",
+  "covers": "One SKNLAB facial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-02",
+  "office": "hudson",
+  "treatment": "Botox — 40 units",
+  "covers": "40 units of Botox (forehead, 11s or crow's feet)",
+  "regular": 440,
+  "price": 320,
+  "off": 27
+ },
+ {
+  "date": "2026-10-02",
+  "office": "barboursville",
+  "treatment": "Morpheus8 RF",
+  "covers": "One Morpheus8 face treatment",
+  "regular": 800,
+  "price": 449,
+  "off": 44
+ },
+ {
+  "date": "2026-10-03",
+  "office": "hudson",
+  "treatment": "Morpheus8 RF",
+  "covers": "One Morpheus8 face treatment",
+  "regular": 800,
+  "price": 449,
+  "off": 44
+ },
+ {
+  "date": "2026-10-03",
+  "office": "barboursville",
+  "treatment": "Botox — 40 units",
+  "covers": "40 units of Botox (forehead, 11s or crow's feet)",
+  "regular": 400,
+  "price": 299,
+  "off": 25
+ },
+ {
+  "date": "2026-10-04",
+  "office": "hudson",
+  "treatment": "Glow Drip IV",
+  "covers": "One Glow Drip IV infusion",
+  "regular": 149,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-04",
+  "office": "barboursville",
+  "treatment": "Glow Drip IV",
+  "covers": "One Glow Drip IV infusion",
+  "regular": 149,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-05",
+  "office": "hudson",
+  "treatment": "Lip Filler — full syringe",
+  "covers": "1 mL Juvéderm lip filler",
+  "regular": 500,
+  "price": 375,
+  "off": 25
+ },
+ {
+  "date": "2026-10-05",
+  "office": "barboursville",
+  "treatment": "Lip Flip",
+  "covers": "Lip flip (8 units)",
+  "regular": 80,
+  "price": 49,
+  "off": 39
+ },
+ {
+  "date": "2026-10-06",
+  "office": "hudson",
+  "treatment": "DiamondGlow",
+  "covers": "One DiamondGlow facial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-06",
+  "office": "barboursville",
+  "treatment": "HydraFacial",
+  "covers": "One signature HydraFacial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-07",
+  "office": "hudson",
+  "treatment": "Sciton Moxi",
+  "covers": "One Moxi laser treatment, full face",
+  "regular": 500,
+  "price": 279,
+  "off": 44
+ },
+ {
+  "date": "2026-10-07",
+  "office": "barboursville",
+  "treatment": "Opus Plasma",
+  "covers": "One Opus Plasma resurfacing treatment",
+  "regular": 400,
+  "price": 219,
+  "off": 45
+ },
+ {
+  "date": "2026-10-08",
+  "office": "hudson",
+  "treatment": "Skinvive",
+  "covers": "One syringe of Skinvive skin booster",
+  "regular": 400,
+  "price": 279,
+  "off": 30
+ },
+ {
+  "date": "2026-10-08",
+  "office": "barboursville",
+  "treatment": "Sculptra",
+  "covers": "One vial of Sculptra",
+  "regular": 600,
+  "price": 449,
+  "off": 25
+ },
+ {
+  "date": "2026-10-09",
+  "office": "hudson",
+  "treatment": "EMSCULPT NEO",
+  "covers": "One EMSCULPT NEO session",
+  "regular": 400,
+  "price": 199,
+  "off": 50
+ },
+ {
+  "date": "2026-10-09",
+  "office": "barboursville",
+  "treatment": "Sciton Moxi",
+  "covers": "One Moxi laser treatment, full face",
+  "regular": 500,
+  "price": 279,
+  "off": 44
+ },
+ {
+  "date": "2026-10-10",
+  "office": "hudson",
+  "treatment": "Baby Botox — 20 units",
+  "covers": "20 units of Botox, soft 'baby Botox' dosing",
+  "regular": 220,
+  "price": 149,
+  "off": 32
+ },
+ {
+  "date": "2026-10-10",
+  "office": "barboursville",
+  "treatment": "Lip Filler — full syringe",
+  "covers": "1 mL Juvéderm lip filler",
+  "regular": 500,
+  "price": 375,
+  "off": 25
+ },
+ {
+  "date": "2026-10-11",
+  "office": "hudson",
+  "treatment": "Microneedling with PRP",
+  "covers": "One microneedling session with PRP",
+  "regular": 500,
+  "price": 279,
+  "off": 44
+ },
+ {
+  "date": "2026-10-11",
+  "office": "barboursville",
+  "treatment": "Microneedling",
+  "covers": "One microneedling session",
+  "regular": 200,
+  "price": 109,
+  "off": 46
+ },
+ {
+  "date": "2026-10-12",
+  "office": "hudson",
+  "treatment": "CoolPeel",
+  "covers": "One CoolPeel CO₂ laser treatment",
+  "regular": 400,
+  "price": 219,
+  "off": 45
+ },
+ {
+  "date": "2026-10-12",
+  "office": "barboursville",
+  "treatment": "Skinvive",
+  "covers": "One syringe of Skinvive skin booster",
+  "regular": 400,
+  "price": 279,
+  "off": 30
+ },
+ {
+  "date": "2026-10-13",
+  "office": "hudson",
+  "treatment": "Kybella",
+  "covers": "One vial of Kybella (double chin)",
+  "regular": 600,
+  "price": 399,
+  "off": 34
+ },
+ {
+  "date": "2026-10-13",
+  "office": "barboursville",
+  "treatment": "PDO Smooth Threads",
+  "covers": "PDO smooth (collagen) threads, one area",
+  "regular": 275,
+  "price": 179,
+  "off": 35
+ },
+ {
+  "date": "2026-10-14",
+  "office": "hudson",
+  "treatment": "Opus Plasma",
+  "covers": "One Opus Plasma resurfacing treatment",
+  "regular": 400,
+  "price": 219,
+  "off": 45
+ },
+ {
+  "date": "2026-10-14",
+  "office": "barboursville",
+  "treatment": "Alma Hybrid CO₂ Fractional",
+  "covers": "One fractional CO₂ treatment",
+  "regular": 600,
+  "price": 349,
+  "off": 42
+ },
+ {
+  "date": "2026-10-15",
+  "office": "hudson",
+  "treatment": "Dysport — 120 units",
+  "covers": "120 units of Dysport",
+  "regular": 479,
+  "price": 359,
+  "off": 25
+ },
+ {
+  "date": "2026-10-15",
+  "office": "barboursville",
+  "treatment": "Baby Botox — 20 units",
+  "covers": "20 units of Botox, soft 'baby Botox' dosing",
+  "regular": 200,
+  "price": 139,
+  "off": 30
+ },
+ {
+  "date": "2026-10-16",
+  "office": "hudson",
+  "treatment": "Sciton BBL Heroic",
+  "covers": "One BBL Heroic photofacial",
+  "regular": 400,
+  "price": 219,
+  "off": 45
+ },
+ {
+  "date": "2026-10-16",
+  "office": "barboursville",
+  "treatment": "EvolveX Body Contouring",
+  "covers": "One EvolveX session",
+  "regular": 250,
+  "price": 129,
+  "off": 48
+ },
+ {
+  "date": "2026-10-17",
+  "office": "hudson",
+  "treatment": "Sculptra",
+  "covers": "One vial of Sculptra",
+  "regular": 750,
+  "price": 549,
+  "off": 27
+ },
+ {
+  "date": "2026-10-17",
+  "office": "barboursville",
+  "treatment": "Kybella",
+  "covers": "One vial of Kybella (double chin)",
+  "regular": 600,
+  "price": 399,
+  "off": 34
+ },
+ {
+  "date": "2026-10-18",
+  "office": "hudson",
+  "treatment": "EvolveX Body Contouring",
+  "covers": "One EvolveX session",
+  "regular": 250,
+  "price": 129,
+  "off": 48
+ },
+ {
+  "date": "2026-10-18",
+  "office": "barboursville",
+  "treatment": "Serene IV Drip",
+  "covers": "Any one Serene IV drip",
+  "regular": 99,
+  "price": 59,
+  "off": 40
+ },
+ {
+  "date": "2026-10-19",
+  "office": "hudson",
+  "treatment": "Mini Pout — half syringe",
+  "covers": "0.5 mL lip filler",
+  "regular": 300,
+  "price": 219,
+  "off": 27
+ },
+ {
+  "date": "2026-10-19",
+  "office": "barboursville",
+  "treatment": "Sciton BBL Heroic",
+  "covers": "One BBL Heroic photofacial",
+  "regular": 400,
+  "price": 219,
+  "off": 45
+ },
+ {
+  "date": "2026-10-20",
+  "office": "hudson",
+  "treatment": "Laser Facial",
+  "covers": "One laser facial",
+  "regular": 400,
+  "price": 219,
+  "off": 45
+ },
+ {
+  "date": "2026-10-20",
+  "office": "barboursville",
+  "treatment": "Under-Eye PRP",
+  "covers": "One under-eye PRP treatment",
+  "regular": 400,
+  "price": 249,
+  "off": 38
+ },
+ {
+  "date": "2026-10-21",
+  "office": "hudson",
+  "treatment": "Under-Eye PRP",
+  "covers": "One under-eye PRP treatment",
+  "regular": 400,
+  "price": 249,
+  "off": 38
+ },
+ {
+  "date": "2026-10-21",
+  "office": "barboursville",
+  "treatment": "Microneedling with PRP",
+  "covers": "One microneedling session with PRP",
+  "regular": 500,
+  "price": 279,
+  "off": 44
+ },
+ {
+  "date": "2026-10-22",
+  "office": "hudson",
+  "treatment": "Deka CO₂ Fractional Resurfacing",
+  "covers": "One fractional CO₂ treatment",
+  "regular": 600,
+  "price": 349,
+  "off": 42
+ },
+ {
+  "date": "2026-10-22",
+  "office": "barboursville",
+  "treatment": "Dysport — 120 units",
+  "covers": "120 units of Dysport",
+  "regular": 479,
+  "price": 359,
+  "off": 25
+ },
+ {
+  "date": "2026-10-23",
+  "office": "hudson",
+  "treatment": "Xeomin — 40 units",
+  "covers": "40 units of Xeomin",
+  "regular": 440,
+  "price": 320,
+  "off": 27
+ },
+ {
+  "date": "2026-10-23",
+  "office": "barboursville",
+  "treatment": "Laser Facial",
+  "covers": "One laser facial",
+  "regular": 400,
+  "price": 219,
+  "off": 45
+ },
+ {
+  "date": "2026-10-24",
+  "office": "hudson",
+  "treatment": "PRP Hair Restoration",
+  "covers": "One PRP scalp treatment",
+  "regular": 500,
+  "price": 299,
+  "off": 40
+ },
+ {
+  "date": "2026-10-24",
+  "office": "barboursville",
+  "treatment": "Mini Pout — half syringe",
+  "covers": "0.5 mL lip filler",
+  "regular": 300,
+  "price": 219,
+  "off": 27
+ },
+ {
+  "date": "2026-10-25",
+  "office": "hudson",
+  "treatment": "Microneedling",
+  "covers": "One microneedling session",
+  "regular": 200,
+  "price": 109,
+  "off": 46
+ },
+ {
+  "date": "2026-10-25",
+  "office": "barboursville",
+  "treatment": "Spider Vein Sclerotherapy",
+  "covers": "One sclerotherapy session",
+  "regular": 300,
+  "price": 179,
+  "off": 40
+ },
+ {
+  "date": "2026-10-26",
+  "office": "hudson",
+  "treatment": "Serene IV Drip",
+  "covers": "Any one Serene IV drip",
+  "regular": 149,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-26",
+  "office": "barboursville",
+  "treatment": "PRP Hair Restoration",
+  "covers": "One PRP scalp treatment",
+  "regular": 500,
+  "price": 299,
+  "off": 40
+ },
+ {
+  "date": "2026-10-27",
+  "office": "hudson",
+  "treatment": "Alma TED Hair Restoration",
+  "covers": "One Alma TED session",
+  "regular": 500,
+  "price": 299,
+  "off": 40
+ },
+ {
+  "date": "2026-10-27",
+  "office": "barboursville",
+  "treatment": "Acne Peel",
+  "covers": "One acne peel",
+  "regular": 100,
+  "price": 49,
+  "off": 51
+ },
+ {
+  "date": "2026-10-28",
+  "office": "hudson",
+  "treatment": "Acne Peel",
+  "covers": "One acne peel",
+  "regular": 100,
+  "price": 49,
+  "off": 51
+ },
+ {
+  "date": "2026-10-28",
+  "office": "barboursville",
+  "treatment": "Alma TED Hair Restoration",
+  "covers": "One Alma TED session",
+  "regular": 500,
+  "price": 299,
+  "off": 40
+ },
+ {
+  "date": "2026-10-29",
+  "office": "hudson",
+  "treatment": "Under-Eye Filler",
+  "covers": "One syringe of under-eye filler",
+  "regular": 500,
+  "price": 375,
+  "off": 25
+ },
+ {
+  "date": "2026-10-29",
+  "office": "barboursville",
+  "treatment": "SKNLAB Facial",
+  "covers": "One SKNLAB facial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
+ },
+ {
+  "date": "2026-10-30",
+  "office": "hudson",
+  "treatment": "Morpheus8 RF",
+  "covers": "One Morpheus8 face treatment",
+  "regular": 800,
+  "price": 449,
+  "off": 44
+ },
+ {
+  "date": "2026-10-30",
+  "office": "barboursville",
+  "treatment": "Morpheus8 RF",
+  "covers": "One Morpheus8 face treatment",
+  "regular": 800,
+  "price": 449,
+  "off": 44
+ },
+ {
+  "date": "2026-10-31",
+  "office": "hudson",
+  "treatment": "Boo-tox — 50 units",
+  "covers": "Halloween special: 50 units of Botox",
+  "regular": 550,
+  "price": 399,
+  "off": 27
+ },
+ {
+  "date": "2026-10-31",
+  "office": "barboursville",
+  "treatment": "Boo-tox — 50 units",
+  "covers": "Halloween special: 50 units of Botox",
+  "regular": 500,
+  "price": 369,
+  "off": 26
+ }
+]

@@ -3,6 +3,7 @@
 import re, os, json
 import extract as X
 from site_lib import *
+import deals_page as DP
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -434,6 +435,7 @@ def specials(pages):
 .deal-note{{margin-top:auto;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-500);font-weight:600}}
 .fine{{font-size:.9rem;color:var(--ink-soft);max-width:760px}}
 </style>
+{DP.specials_banner()}
 {studio3_html}
 <section><div class="wrap">
   <div class="grid g3">{cards}
@@ -594,7 +596,7 @@ def comfort_options():
 
 def build(pages, posts, render_prose, render_embed):
     out = {"/": home(posts), "/locations/": locations(), "/our-providers/": providers(pages), "/about-us/": about(pages), "/reviews/": reviews(),
-           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/thank-you/": thank_you()}
+           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day()}
     for p in EMBED_PAGES:
         if p in pages: out[p] = render_embed(pages[p])
     for p, (title, lede, eyebrow) in PROSE_PAGES.items():
