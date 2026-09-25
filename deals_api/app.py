@@ -48,7 +48,9 @@ def status():
 
 def log(line):
     # metadata only (no message bodies, no client details)
-    with open(os.path.join(DATA, "hook.log"), "a") as f: f.write(datetime.datetime.utcnow().isoformat() + "Z " + line[:300] + "\n")
+    line = datetime.datetime.utcnow().isoformat() + "Z " + line[:300]
+    print(line, flush=True)
+    with open(os.path.join(DATA, "hook.log"), "a") as f: f.write(line + "\n")
 
 SCHEDULE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "schedule.json")))
 API_TOKEN = os.environ.get("HOSTINGER_MAIL_TOKEN", "")      # optional: lets us read the message when the webhook sends only an id
@@ -120,7 +122,11 @@ class H(BaseHTTPRequestHandler):
         try: payload = json.loads(raw or b"{}")
         except Exception: payload = {"raw": raw.decode("utf-8", "replace")}
         office, why = classify(payload)
-        keys = list(payload.keys()) if isinstance(payload, dict) else type(payload).__name__
+        def shape(o, d=0):
+            if isinstance(o, dict) and d < 3: return {k: shape(v, d + 1) for k, v in list(o.items())[:25]}
+            if isinstance(o, list): return [shape(o[0], d + 1)] if o else []
+            return type(o).__name__
+        keys = json.dumps(shape(payload))[:280]
         log(f"hook keys={keys} result={office or '-'} ({why})")
         if office: set_sold(office, True, "mangomint")
         return self._send(200, {"ok": True})
