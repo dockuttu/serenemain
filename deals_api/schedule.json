@@ -1,0 +1,312 @@
+{
+"2026-10-01": {
+"hudson": {
+"value": 150,
+"treatment": "HydraFacial"
+},
+"barboursville": {
+"value": 800,
+"treatment": "Morpheus8 RF"
+}
+},
+"2026-10-02": {
+"hudson": {
+"value": 440,
+"treatment": "Botox \u2014 40 units"
+},
+"barboursville": {
+"value": 150,
+"treatment": "SKNLAB Facial"
+}
+},
+"2026-10-03": {
+"hudson": {
+"value": 800,
+"treatment": "Morpheus8 RF"
+},
+"barboursville": {
+"value": 400,
+"treatment": "Botox \u2014 40 units"
+}
+},
+"2026-10-04": {
+"hudson": {
+"value": 149,
+"treatment": "Glow Drip IV"
+},
+"barboursville": {
+"value": 80,
+"treatment": "Lip Flip"
+}
+},
+"2026-10-05": {
+"hudson": {
+"value": 500,
+"treatment": "Lip Filler \u2014 full syringe"
+},
+"barboursville": {
+"value": 149,
+"treatment": "Glow Drip IV"
+}
+},
+"2026-10-06": {
+"hudson": {
+"value": 150,
+"treatment": "DiamondGlow"
+},
+"barboursville": {
+"value": 400,
+"treatment": "Opus Plasma"
+}
+},
+"2026-10-07": {
+"hudson": {
+"value": 500,
+"treatment": "Sciton Moxi"
+},
+"barboursville": {
+"value": 150,
+"treatment": "HydraFacial"
+}
+},
+"2026-10-08": {
+"hudson": {
+"value": 400,
+"treatment": "Skinvive"
+},
+"barboursville": {
+"value": 600,
+"treatment": "Sculptra"
+}
+},
+"2026-10-09": {
+"hudson": {
+"value": 400,
+"treatment": "EMSCULPT NEO"
+},
+"barboursville": {
+"value": 500,
+"treatment": "Sciton Moxi"
+}
+},
+"2026-10-10": {
+"hudson": {
+"value": 220,
+"treatment": "Baby Botox \u2014 20 units"
+},
+"barboursville": {
+"value": 500,
+"treatment": "Lip Filler \u2014 full syringe"
+}
+},
+"2026-10-11": {
+"hudson": {
+"value": 500,
+"treatment": "Microneedling with PRP"
+},
+"barboursville": {
+"value": 200,
+"treatment": "Microneedling"
+}
+},
+"2026-10-12": {
+"hudson": {
+"value": 400,
+"treatment": "CoolPeel"
+},
+"barboursville": {
+"value": 275,
+"treatment": "PDO Smooth Threads"
+}
+},
+"2026-10-13": {
+"hudson": {
+"value": 600,
+"treatment": "Kybella"
+},
+"barboursville": {
+"value": 400,
+"treatment": "Skinvive"
+}
+},
+"2026-10-14": {
+"hudson": {
+"value": 400,
+"treatment": "Opus Plasma"
+},
+"barboursville": {
+"value": 600,
+"treatment": "Alma Hybrid CO\u2082 Fractional"
+}
+},
+"2026-10-15": {
+"hudson": {
+"value": 479,
+"treatment": "Dysport \u2014 120 units"
+},
+"barboursville": {
+"value": 200,
+"treatment": "Baby Botox \u2014 20 units"
+}
+},
+"2026-10-16": {
+"hudson": {
+"value": 400,
+"treatment": "Sciton BBL Heroic"
+},
+"barboursville": {
+"value": 250,
+"treatment": "EvolveX Body Contouring"
+}
+},
+"2026-10-17": {
+"hudson": {
+"value": 750,
+"treatment": "Sculptra"
+},
+"barboursville": {
+"value": 600,
+"treatment": "Kybella"
+}
+},
+"2026-10-18": {
+"hudson": {
+"value": 250,
+"treatment": "EvolveX Body Contouring"
+},
+"barboursville": {
+"value": 99,
+"treatment": "Serene IV Drip"
+}
+},
+"2026-10-19": {
+"hudson": {
+"value": 300,
+"treatment": "Mini Pout \u2014 half syringe"
+},
+"barboursville": {
+"value": 400,
+"treatment": "Sciton BBL Heroic"
+}
+},
+"2026-10-20": {
+"hudson": {
+"value": 400,
+"treatment": "Laser Facial"
+},
+"barboursville": {
+"value": 479,
+"treatment": "Dysport \u2014 120 units"
+}
+},
+"2026-10-21": {
+"hudson": {
+"value": 400,
+"treatment": "Under-Eye PRP"
+},
+"barboursville": {
+"value": 500,
+"treatment": "Microneedling with PRP"
+}
+},
+"2026-10-22": {
+"hudson": {
+"value": 600,
+"treatment": "Deka CO\u2082 Fractional Resurfacing"
+},
+"barboursville": {
+"value": 400,
+"treatment": "Under-Eye PRP"
+}
+},
+"2026-10-23": {
+"hudson": {
+"value": 440,
+"treatment": "Xeomin \u2014 40 units"
+},
+"barboursville": {
+"value": 400,
+"treatment": "Laser Facial"
+}
+},
+"2026-10-24": {
+"hudson": {
+"value": 500,
+"treatment": "PRP Hair Restoration"
+},
+"barboursville": {
+"value": 300,
+"treatment": "Mini Pout \u2014 half syringe"
+}
+},
+"2026-10-25": {
+"hudson": {
+"value": 200,
+"treatment": "Microneedling"
+},
+"barboursville": {
+"value": 300,
+"treatment": "Spider Vein Sclerotherapy"
+}
+},
+"2026-10-26": {
+"hudson": {
+"value": 149,
+"treatment": "Serene IV Drip"
+},
+"barboursville": {
+"value": 500,
+"treatment": "PRP Hair Restoration"
+}
+},
+"2026-10-27": {
+"hudson": {
+"value": 500,
+"treatment": "Alma TED Hair Restoration"
+},
+"barboursville": {
+"value": 100,
+"treatment": "Acne Peel"
+}
+},
+"2026-10-28": {
+"hudson": {
+"value": 100,
+"treatment": "Acne Peel"
+},
+"barboursville": {
+"value": 500,
+"treatment": "Alma TED Hair Restoration"
+}
+},
+"2026-10-29": {
+"hudson": {
+"value": 500,
+"treatment": "Under-Eye Filler"
+},
+"barboursville": {
+"value": 800,
+"treatment": "Morpheus8 RF"
+}
+},
+"2026-10-30": {
+"hudson": {
+"value": 800,
+"treatment": "Morpheus8 RF"
+},
+"barboursville": {
+"value": 150,
+"treatment": "SKNLAB Facial"
+}
+},
+"2026-10-31": {
+"hudson": {
+"value": 550,
+"treatment": "Boo-tox \u2014 50 units"
+},
+"barboursville": {
+"value": 500,
+"treatment": "Boo-tox \u2014 50 units"
+}
+}
+}

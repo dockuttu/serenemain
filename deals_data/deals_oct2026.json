@@ -11,11 +11,11 @@
  {
   "date": "2026-10-01",
   "office": "barboursville",
-  "treatment": "SKNLAB Facial",
-  "covers": "One SKNLAB facial",
-  "regular": 150,
-  "price": 79,
-  "off": 47
+  "treatment": "Morpheus8 RF",
+  "covers": "One Morpheus8 face treatment",
+  "regular": 800,
+  "price": 449,
+  "off": 44
  },
  {
   "date": "2026-10-02",
@@ -29,11 +29,11 @@
  {
   "date": "2026-10-02",
   "office": "barboursville",
-  "treatment": "Morpheus8 RF",
-  "covers": "One Morpheus8 face treatment",
-  "regular": 800,
-  "price": 449,
-  "off": 44
+  "treatment": "SKNLAB Facial",
+  "covers": "One SKNLAB facial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
  },
  {
   "date": "2026-10-03",
@@ -65,11 +65,11 @@
  {
   "date": "2026-10-04",
   "office": "barboursville",
-  "treatment": "Glow Drip IV",
-  "covers": "One Glow Drip IV infusion",
-  "regular": 149,
-  "price": 79,
-  "off": 47
+  "treatment": "Lip Flip",
+  "covers": "Lip flip (8 units)",
+  "regular": 80,
+  "price": 49,
+  "off": 39
  },
  {
   "date": "2026-10-05",
@@ -83,11 +83,11 @@
  {
   "date": "2026-10-05",
   "office": "barboursville",
-  "treatment": "Lip Flip",
-  "covers": "Lip flip (8 units)",
-  "regular": 80,
-  "price": 49,
-  "off": 39
+  "treatment": "Glow Drip IV",
+  "covers": "One Glow Drip IV infusion",
+  "regular": 149,
+  "price": 79,
+  "off": 47
  },
  {
   "date": "2026-10-06",
@@ -101,11 +101,11 @@
  {
   "date": "2026-10-06",
   "office": "barboursville",
-  "treatment": "HydraFacial",
-  "covers": "One signature HydraFacial",
-  "regular": 150,
-  "price": 79,
-  "off": 47
+  "treatment": "Opus Plasma",
+  "covers": "One Opus Plasma resurfacing treatment",
+  "regular": 400,
+  "price": 219,
+  "off": 45
  },
  {
   "date": "2026-10-07",
@@ -119,11 +119,11 @@
  {
   "date": "2026-10-07",
   "office": "barboursville",
-  "treatment": "Opus Plasma",
-  "covers": "One Opus Plasma resurfacing treatment",
-  "regular": 400,
-  "price": 219,
-  "off": 45
+  "treatment": "HydraFacial",
+  "covers": "One signature HydraFacial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
  },
  {
   "date": "2026-10-08",
@@ -209,11 +209,11 @@
  {
   "date": "2026-10-12",
   "office": "barboursville",
-  "treatment": "Skinvive",
-  "covers": "One syringe of Skinvive skin booster",
-  "regular": 400,
-  "price": 279,
-  "off": 30
+  "treatment": "PDO Smooth Threads",
+  "covers": "PDO smooth (collagen) threads, one area",
+  "regular": 275,
+  "price": 179,
+  "off": 35
  },
  {
   "date": "2026-10-13",
@@ -227,11 +227,11 @@
  {
   "date": "2026-10-13",
   "office": "barboursville",
-  "treatment": "PDO Smooth Threads",
-  "covers": "PDO smooth (collagen) threads, one area",
-  "regular": 275,
-  "price": 179,
-  "off": 35
+  "treatment": "Skinvive",
+  "covers": "One syringe of Skinvive skin booster",
+  "regular": 400,
+  "price": 279,
+  "off": 30
  },
  {
   "date": "2026-10-14",
@@ -353,11 +353,11 @@
  {
   "date": "2026-10-20",
   "office": "barboursville",
-  "treatment": "Under-Eye PRP",
-  "covers": "One under-eye PRP treatment",
-  "regular": 400,
-  "price": 249,
-  "off": 38
+  "treatment": "Dysport — 120 units",
+  "covers": "120 units of Dysport",
+  "regular": 479,
+  "price": 359,
+  "off": 25
  },
  {
   "date": "2026-10-21",
@@ -389,11 +389,11 @@
  {
   "date": "2026-10-22",
   "office": "barboursville",
-  "treatment": "Dysport — 120 units",
-  "covers": "120 units of Dysport",
-  "regular": 479,
-  "price": 359,
-  "off": 25
+  "treatment": "Under-Eye PRP",
+  "covers": "One under-eye PRP treatment",
+  "regular": 400,
+  "price": 249,
+  "off": 38
  },
  {
   "date": "2026-10-23",
@@ -515,11 +515,11 @@
  {
   "date": "2026-10-29",
   "office": "barboursville",
-  "treatment": "SKNLAB Facial",
-  "covers": "One SKNLAB facial",
-  "regular": 150,
-  "price": 79,
-  "off": 47
+  "treatment": "Morpheus8 RF",
+  "covers": "One Morpheus8 face treatment",
+  "regular": 800,
+  "price": 449,
+  "off": 44
  },
  {
   "date": "2026-10-30",
@@ -533,11 +533,11 @@
  {
   "date": "2026-10-30",
   "office": "barboursville",
-  "treatment": "Morpheus8 RF",
-  "covers": "One Morpheus8 face treatment",
-  "regular": 800,
-  "price": 449,
-  "off": 44
+  "treatment": "SKNLAB Facial",
+  "covers": "One SKNLAB facial",
+  "regular": 150,
+  "price": 79,
+  "off": 47
  },
  {
   "date": "2026-10-31",
