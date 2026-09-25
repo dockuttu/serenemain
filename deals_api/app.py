@@ -19,7 +19,7 @@ LOCK = threading.Lock()
 os.makedirs(DATA, exist_ok=True)
 
 def eastern_today(now=None):
-    now = now or datetime.datetime.utcnow()
+    now = now or datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
     y = now.year
     # US DST: 2nd Sunday of March 2:00 local (07:00 UTC) -> 1st Sunday of November 2:00 local (06:00 UTC)
     mar = datetime.datetime(y, 3, 8); start = mar + datetime.timedelta(days=(6 - mar.weekday()) % 7, hours=7)
@@ -38,7 +38,7 @@ def set_sold(office, sold, source):
     with LOCK:
         st = load(); d = eastern_today()
         day = st.setdefault(d, {o: {"sold": False} for o in OFFICES})
-        day[office] = {"sold": bool(sold), "at": datetime.datetime.utcnow().isoformat() + "Z", "by": source}
+        day[office] = {"sold": bool(sold), "at": datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None).isoformat() + "Z", "by": source}
         for k in sorted(st)[:-14]: st.pop(k, None)          # keep two weeks
         save(st)
 
@@ -48,7 +48,7 @@ def status():
 
 def log(line):
     # metadata only (no message bodies, no client details)
-    line = datetime.datetime.utcnow().isoformat() + "Z " + line[:300]
+    line = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None).isoformat() + "Z " + line[:300]
     print(line, flush=True)
     with open(os.path.join(DATA, "hook.log"), "a") as f: f.write(line + "\n")
 
@@ -127,7 +127,7 @@ class H(BaseHTTPRequestHandler):
             if isinstance(o, list): return [shape(o[0], d + 1)] if o else []
             return type(o).__name__
         keys = json.dumps(shape(payload))[:280]
-        log(f"hook keys={keys} result={office or '-'} ({why})")
+        log(f"hook result={office or '-'} ({why}) keys={keys}")
         if office: set_sold(office, True, "mangomint")
         return self._send(200, {"ok": True})
 
