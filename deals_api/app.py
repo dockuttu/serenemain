@@ -78,17 +78,27 @@ def _fetch_text(uid):
     except Exception as e:
         log(f"fetch failed: {type(e).__name__}"); return ""
 
+def _norm(t):
+    t = t.replace("\\n", " ").replace("\\r", " ").replace("\\t", " ")
+    t = re.sub(r"<[^>]+>", " ", t)
+    t = t.replace("&nbsp;", " ").replace("&#36;", "$").replace("&#x24;", "$").replace("&amp;", "&")
+    t = t.replace("\u00a0", " ").replace("\u202f", " ").replace("\\u00a0", " ")
+    return re.sub(r"\s+", " ", t).lower()
+
+VALUE_RE = re.compile(r"gift ?card ?value\W{0,12}\$?\s*([0-9][0-9,]*(?:\.[0-9]{2})?)")
+
 def classify(payload):
     """Mangomint's internal email: subject 'Online gift card purchase', body '... bought an online gift card ...
     Gift card value: $150.00'. Today's two deals always have different values, so the value picks the office."""
-    text = json.dumps(payload, ensure_ascii=False)
-    low = text.lower()
+    low = _norm(json.dumps(payload, ensure_ascii=False))
     if "gift card" not in low: return None, "not-gift-card"
-    if not re.search(r"gift card value", low):
+    m = VALUE_RE.search(low)
+    if not m:
         extra = _fetch_text(_find_uid(payload))
-        if extra: text, low = text + " " + extra, (text + " " + extra).lower()
-    m = re.search(r"gift card value[^0-9$]*\$?\s*([0-9][0-9,]*(?:\.[0-9]{2})?)", low)
-    if not m: return None, "no-value"
+        if extra: low = low + " " + _norm(extra); m = VALUE_RE.search(low)
+    if not m:
+        i = low.find("value")
+        return None, "no-value near=" + re.sub(r"[a-z]{3,}", "w", low[max(0, i - 25): i + 25]) if i >= 0 else "no-value"
     value = float(m.group(1).replace(",", ""))
     today = SCHEDULE.get(eastern_today(), {})
     hits = [o for o, d in today.items() if abs(float(d["value"]) - value) < 0.01]
