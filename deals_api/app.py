@@ -78,6 +78,20 @@ def _fetch_text(uid):
     except Exception as e:
         log(f"fetch failed: {type(e).__name__}"); return ""
 
+_LAST = {}
+
+def _fetch_url(url):
+    """Some webhook payloads carry the message body at a (signed) bodyUrl instead of inline."""
+    import urllib.request
+    try:
+        req = urllib.request.Request(url, headers={"Accept": "application/json, text/plain, */*", "User-Agent": "serene-deals/1"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            raw = r.read(2_000_000).decode("utf-8", "replace")
+            return raw, f"bodyUrl {r.status} {len(raw)}b"
+    except Exception as e:
+        code = getattr(e, "code", "")
+        return "", f"bodyUrl failed {type(e).__name__} {code}"
+
 def _norm(t):
     t = t.replace("\\n", " ").replace("\\r", " ").replace("\\t", " ")
     t = re.sub(r"<[^>]+>", " ", t)
@@ -93,6 +107,11 @@ def classify(payload):
     low = _norm(json.dumps(payload, ensure_ascii=False))
     if "gift card" not in low: return None, "not-gift-card"
     m = VALUE_RE.search(low)
+    data = payload.get("data", {}) if isinstance(payload, dict) else {}
+    if not m and isinstance(data, dict) and str(data.get("bodyUrl", "")).startswith("https://"):
+        body, info = _fetch_url(data["bodyUrl"])
+        _LAST["body"] = info
+        if body: low = low + " " + _norm(body); m = VALUE_RE.search(low)
     if not m:
         extra = _fetch_text(_find_uid(payload))
         if extra: low = low + " " + _norm(extra); m = VALUE_RE.search(low)
@@ -131,7 +150,12 @@ class H(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length") or 0); raw = self.rfile.read(min(n, 1_000_000))
         try: payload = json.loads(raw or b"{}")
         except Exception: payload = {"raw": raw.decode("utf-8", "replace")}
+        _LAST.clear()
         office, why = classify(payload)
+        d = payload.get("data", {}) if isinstance(payload, dict) else {}
+        if isinstance(d, dict):
+            why += f" plain={len(str(d.get('plainBody') or ''))} html={len(str(d.get('htmlBody') or ''))}"
+        if _LAST.get("body"): why += " " + _LAST["body"]
         def shape(o, d=0):
             if isinstance(o, dict) and d < 3: return {k: shape(v, d + 1) for k, v in list(o.items())[:25]}
             if isinstance(o, list): return [shape(o[0], d + 1)] if o else []
