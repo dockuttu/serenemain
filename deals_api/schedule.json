@@ -35,8 +35,8 @@
 "treatment": "Glow Drip IV"
 },
 "barboursville": {
-"value": 80,
-"treatment": "Lip Flip"
+"value": 300,
+"treatment": "PDO Lifting Threads \u2014 small area"
 }
 },
 "2026-10-05": {
@@ -175,8 +175,8 @@
 "treatment": "EvolveX Body Contouring"
 },
 "barboursville": {
-"value": 99,
-"treatment": "Serene IV Drip"
+"value": 500,
+"treatment": "Under-Eye Filler"
 }
 },
 "2026-10-19": {
@@ -265,14 +265,14 @@
 "treatment": "Alma TED Hair Restoration"
 },
 "barboursville": {
-"value": 100,
-"treatment": "Acne Peel"
+"value": 200,
+"treatment": "Microneedling"
 }
 },
 "2026-10-28": {
 "hudson": {
-"value": 100,
-"treatment": "Acne Peel"
+"value": 250,
+"treatment": "VI Peel"
 },
 "barboursville": {
 "value": 500,

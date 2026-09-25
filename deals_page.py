@@ -96,7 +96,7 @@ def deal_of_day():
       '<a class="btn buy" href="'+D.gift+'" target="_blank" rel="noopener">Buy now</a><div class="soldout">Sold out &mdash; new deal at midnight</div>'+
       '<p class="how">On the next screen, choose <strong>&ldquo;'+esc(d.promo)+'&rdquo;</strong>, then book your visit at the '+NAMES[d.office]+' office.</p></div>'; }).join('');
   } else if (first && today < first){
-    cards.innerHTML = '<div class="card dotd" style="grid-column:1/-1;text-align:center"><span class="eyebrow">Coming October 1</span><h3>Deal of the Day starts '+new Date(first+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric'})+'</h3><p class="covers">One treatment a day at each office, one available, at a price you won&rsquo;t see anywhere else. The first deals go live at midnight.</p></div>';
+    cards.innerHTML = '<div class="card dotd" style="grid-column:1/-1;text-align:center"><span class="eyebrow">Coming October 1</span><h3>Deal of the Day starts '+new Date(first+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric'})+'</h3><p class="covers">One treatment a day at each office, one available, at a price just for that day. The first deals go live at midnight.</p></div>';
   } else {
     cards.innerHTML = '<div class="card dotd" style="grid-column:1/-1;text-align:center"><span class="eyebrow">Stay tuned</span><h3>New deals are on the way</h3><p class="covers">In the meantime, see <a href="/specials/">this month&rsquo;s specials</a>.</p></div>';
   }
@@ -111,7 +111,7 @@ def deal_of_day():
   else document.getElementById('glow').style.display='none';
 })();
 </script>'''
-    return shell("/deal-of-the-day/", "Deal of the Day | Serene Med Spa", "One med spa treatment a day at each office, Hudson, OH and Barboursville, WV. One available, deep discount, new deal every midnight. Plus the Daily Glow.", body)
+    return shell("/deal-of-the-day/", "Deal of the Day | Serene Med Spa", "One med spa treatment a day at each office, Hudson, OH and Barboursville, WV. One available, new deal every midnight. Plus the Daily Glow.", body)
 
 def specials_banner():
     return '''<section style="padding-bottom:0"><div class="wrap"><div class="card" style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;border-top:4px solid var(--rose)">
