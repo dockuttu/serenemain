@@ -418,10 +418,27 @@ def _locpick():
 
 import datetime as _dt
 _SEPT_PROMO = '<div class="promo">&#10022; <a href="/specials/">September specials</a> are here &mdash; buy 2, get 1 free on V-Tone, Forma V, Morpheus V &amp; Evolve X<span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
-_OCT_PROMO = '<div class="promo">&#10022; <a href="/specials/">October special</a>: 30% off Ultherapy at both offices &mdash; as seen on WSAZ Studio 3<span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
-_NOV_PROMO = '<div class="promo">&#10022; <a href="/specials/">This month&rsquo;s specials</a><span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span></div>'
+_B = "https://serenemedspas.com"
+_NP = '<span class="promo-more"> &middot; New patients: <a href="/#offer">20% off your first visit</a></span>'
+# October variants (Robin OK'd Sep 26): one per location, chosen in the browser by page path + date,
+# so the banner flips at midnight Oct 1 without a rebuild. Links are absolute because the office sites share this shell.
+_OCT_BV = ('<div class="promo" data-promo="oct-bv" style="display:none">&#10022; <a href="' + _B + '/barboursville/sciton-moxi/">Fall Laser Season in Barboursville</a>: '
+           'BBL + MOXI same visit $750 (reg. $900) &middot; BBL HEROic buy 3, get 1 free &middot; laser hair removal buy 5, get 2 free'
+           '<span class="promo-more"> &middot; Through Oct 31; can&rsquo;t be combined with another discount</span></div>')
+_OCT_HUD = ('<div class="promo" data-promo="oct-hud" style="display:none">&#10022; <a href="' + _B + '/hudson/ultherapy/#studio3">October special</a>: '
+            '30% off Ultherapy for the first 20 clients &mdash; as seen on WSAZ Studio 3<span class="promo-more"> &middot; Through Oct 31</span></div>')
+_OCT_MAIN = ('<div class="promo" data-promo="oct-main" style="display:none">&#10022; October: <a href="' + _B + '/hudson/ultherapy/#studio3">30% off Ultherapy</a> (first 20 clients) '
+             '&middot; <a href="' + _B + '/barboursville/sciton-moxi/">Fall Laser Season in Barboursville</a>: BBL + MOXI $750'
+             '<span class="promo-more"> &middot; Through Oct 31</span></div>')
+_NOV_PROMO = '<div class="promo" data-promo="nov">&#10022; <a href="/specials/">This month&rsquo;s specials</a>' + _NP + '</div>'
+_PROMO_JS = ('<script>(function(){try{var d=new Date();if(d<new Date(2026,9,1))return;'
+             'var p=location.pathname,k=d>=new Date(2026,10,1)?"nov-js":(p.indexOf("/barboursville")==0?"oct-bv":(p.indexOf("/hudson")==0?"oct-hud":"oct-main"));'
+             'var s=document.querySelector(\'.promo[data-promo="sep"]\'),n=document.querySelector(\'.promo[data-promo="\'+k+\'"]\');'
+             'if(s&&n){s.style.display="none";n.style.display="";}}catch(e){}})();</script>')
+_NOV_JS = ('<div class="promo" data-promo="nov-js" style="display:none">&#10022; <a href="' + _B + '/specials/">This month&rsquo;s specials</a>' + _NP + '</div>')
+_SEPT_PROMO = _SEPT_PROMO.replace('<div class="promo">', '<div class="promo" data-promo="sep">', 1)
 _today = _dt.date.today()
-PROMO = _SEPT_PROMO if _today < _dt.date(2026, 10, 1) else (_OCT_PROMO if _today <= _dt.date(2026, 10, 31) else _NOV_PROMO)
+PROMO = (_SEPT_PROMO + _OCT_BV + _OCT_HUD + _OCT_MAIN + _NOV_JS + _PROMO_JS) if _today <= _dt.date(2026, 10, 31) else _NOV_PROMO
 NAV = PROMO + f'''<header>
   <div class="wrap nav">
     <a class="logo" href="/"><img src="{LOGO}" alt="Serene Med Spa" width="220" height="123"></a>
