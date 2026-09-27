@@ -157,11 +157,14 @@ def home(posts):
     <div class="logos reveal">
       <img src="/img/logos/evolvex-dark.png" alt="EvolveX by InMode" class="tall"><img src="/img/logos/morpheus8-dark.png" alt="Morpheus8 by InMode"><img src="/img/logos/empowerrf-dark.png" alt="EmpowerRF by InMode" class="tall"><img src="/img/logos/morpheus8v-dark.png" alt="Morpheus8V by InMode"><img src="/img/logos/formav-dark.png" alt="FormaV by InMode">
     </div>
+    <div class="logos reveal" style="margin-top:18px">
+      <img src="/img/logos/ignite-dark.png" alt="IgniteRF by InMode" class="tall"><img src="/img/logos/bodytite-dark.png" alt="BodyTite by InMode"><img src="/img/logos/facetite-dark.png" alt="FaceTite by InMode"><img src="/img/logos/accutite-dark.png" alt="AccuTite by InMode"><img src="/img/logos/quantumrf10-dark.png" alt="QuantumRF by InMode"><img src="/img/logos/morpheus8-burst-dark.png" alt="Morpheus8 Burst by InMode">
+    </div>
     <p style="text-align:center;margin:34px 0 18px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600">Hormones &amp; skincare</p>
     <div class="logos reveal">
       <img src="/img/logos/biote-dark.png" alt="Biote" class="tall"><img src="/img/logos/obagi-medical-logo.png" alt="Obagi Medical" class="tall">
     </div>
-    <p style="text-align:center;margin-top:26px;font-size:.9rem;color:var(--ink-soft)">Plus Forma, BodyTite and FaceTite by InMode, Sciton BBL &amp; MOXI, and HydraFacial.</p>
+    <p style="text-align:center;margin-top:26px;font-size:.9rem;color:var(--ink-soft)">Plus Forma by InMode, Sciton BBL &amp; MOXI, and HydraFacial.</p>
   </div>
 </section>
 
