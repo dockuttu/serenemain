@@ -178,6 +178,24 @@ def render_post(r, posts):
     guides_card = ('<div class="card"><h3>Related guides</h3><ul>' + "".join(f'<li><a href="{p["slug"]}">{esc(POST_OVERRIDES.get(p["slug"], {}).get("h1") or p["title"])}</a></li>' for p in sibs[:4]) + '</ul></div>') if sibs else ""
     if lslug in ("weight-loss", "medical-weight-loss", "hormone-optimization", "longevity"):
         guides_card += '<div class="card"><h3>Prefer a video visit?</h3><p style="font-size:.95rem">Weight management and hormone care by telehealth in OH, WV, KY and FL.</p><ul><li><a href="/telehealth/">Serene Telehealth &rsaquo;</a></li></ul></div>'
+    # partner / verified-provider card for the treatment this guide is about (same badges as the office sites)
+    PARTNER_CARDS = {
+        "morpheus8": ("inmode-morpheus8-verified.png", "InMode Morpheus8 Verified Provider", "Serene Med Spa is an InMode Morpheus8 Verified Provider: genuine devices and tips, InMode-trained physicians."),
+        "empowerrf": ("inmode-morpheus8-verified.png", "InMode Verified Provider", "EmpowerRF (Morpheus8V, FormaV and VTone) by InMode, performed under physician direction."),
+        "botox": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine BOTOX&reg; Cosmetic, Juv&eacute;derm&reg;, SKINVIVE&trade; and Kybella&reg; from Allergan Aesthetics."),
+        "fillers": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Juv&eacute;derm&reg; fillers from Allergan Aesthetics."),
+        "lip-filler": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Juv&eacute;derm&reg; fillers from Allergan Aesthetics."),
+        "cheek-filler": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Juv&eacute;derm&reg; fillers from Allergan Aesthetics."),
+        "under-eye-filler": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Juv&eacute;derm&reg; fillers from Allergan Aesthetics."),
+        "jawline-filler": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Juv&eacute;derm&reg; fillers from Allergan Aesthetics."),
+        "skinvive": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine SKINVIVE&trade; by Juv&eacute;derm&reg;."),
+        "kybella": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Kybella&reg; from Allergan Aesthetics."),
+        "hormone-optimization": ("biote-certified-provider.webp", "Biote Certified Provider", "Physician-led hormone optimization with Biote lab panels."),
+    }
+    pc = PARTNER_CARDS.get(lslug or "")
+    if pc:
+        guides_card = (f'<div class="card" style="text-align:center"><img src="/img/badges/{pc[0]}" alt="{pc[1]}" style="width:120px;height:auto;display:block;margin:0 auto 12px" loading="lazy">'
+                       f'<h3>{pc[1]}</h3><p style="font-size:.95rem">{pc[2]}</p></div>') + guides_card
     body = f'''<section class="post-hero"><div class="wrap">
   <div class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/service/">Treatments</a> &rsaquo; <a href="/service/#{r["cat"]}">{CAT_NAME[r["cat"]]}</a></div>
   <h1 style="max-width:24ch">{esc(ov.get("h1") or r["title"])}</h1>
