@@ -70,6 +70,16 @@ section{padding:84px 0}
 .promo{background:var(--lav);color:var(--forest);text-align:center;font-size:.8rem;letter-spacing:.02em;padding:9px 16px;font-weight:500}
 .promo a{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
 header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--rule)}
+/* ABIM board-certification bar at the bottom of the header (every page, all three sites) */
+.cred-bar{border-top:1px solid var(--rule);background:#fff}
+.cred-bar .wrap{display:flex;justify-content:center;align-items:center;min-height:34px;padding-top:4px;padding-bottom:4px}
+.cred-link{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 10px;font-size:.72rem;line-height:1.3;color:var(--ink-soft);text-decoration:none;text-align:center}
+.cred-link b{color:var(--forest);font-weight:600}
+.cred-link img{width:26px;height:26px;display:block;flex:0 0 auto}
+.cred-verify{color:var(--forest);text-decoration:underline;text-underline-offset:2px}
+.cred-short{display:none}
+@media (max-width:640px){.nav~.cred-bar .cred-long{display:none}.nav~.cred-bar .cred-short{display:inline}.nav~.cred-bar .cred-link{flex-wrap:nowrap;font-size:.68rem;gap:8px}.nav~.cred-bar .wrap{min-height:30px}}
+
 .nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:18px;position:relative}
 .nav .logo img{height:50px;width:auto}
 .nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex:1;justify-content:center}
@@ -456,6 +466,7 @@ NAV = PROMO + f'''<header>
       <button class="menu-toggle" aria-label="Menu" aria-controls="menu" onclick="document.getElementById('menu').classList.toggle('open')">&#9776;</button>
     </div>
   </div>
+  <div class="cred-bar"><div class="wrap"><a class="cred-link" href="https://badges.abim.org/5fd362be-e972-4798-ad03-bc41774dc4c6" target="_blank" rel="noopener" title="Verify Dr. Arora&rsquo;s ABIM board certification"><img src="/img/badges/abim-board-certified.png" alt="American Board of Internal Medicine — Board Certified" width="26" height="26"><span><b>Robin Arora, MD</b> &middot; <span class="cred-long">Board Certified, American Board of Internal Medicine</span><span class="cred-short">ABIM Board Certified</span></span><span class="cred-verify">Verify</span></a></div></div>
 </header>'''
 
 FOOT_TREATMENTS = [("/botox-treatment-benefits/", "Botox & Dysport"), ("/filler-injection-treatments-at-serene-med-spa/", "Dermal Fillers"), ("/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "Morpheus8"),
