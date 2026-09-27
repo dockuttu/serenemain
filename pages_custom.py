@@ -153,15 +153,15 @@ def home(posts):
     <div class="logos reveal">
       <img src="/img/logos/alma-dark.png" alt="Alma Lasers"><img src="/img/logos/soprano-ice-platinum-dark.png" alt="Soprano ICE Platinum"><img src="/img/logos/opus-plasma-dark.png" alt="Opus Plasma"><img src="/img/logos/alma-hybrid-dark.png" alt="Alma Hybrid"><img src="/img/logos/alma-ted-dark.png" alt="Alma TED"><img src="/img/logos/alma-duo-dark.png" alt="Alma Duo" class="tall"><img src="/img/logos/harmony-bio-boost-dark.png" alt="Harmony Bio-Boost" class="tall"><img src="/img/logos/sknlab-dark.png" alt="SKNLAB">
     </div>
-    <p style="text-align:center;margin:34px 0 18px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600">InMode &middot; RF microneedling &amp; women&rsquo;s wellness</p>
+    <p style="text-align:center;margin:34px 0 18px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600">InMode &middot; body, RF microneedling &amp; women&rsquo;s wellness</p>
     <div class="logos reveal">
-      <img src="/img/logos/morpheus8-dark.png" alt="Morpheus8 by InMode"><img src="/img/logos/empowerrf-dark.png" alt="EmpowerRF by InMode" class="tall"><img src="/img/logos/morpheus8v-dark.png" alt="Morpheus8V by InMode"><img src="/img/logos/formav-dark.png" alt="FormaV by InMode">
+      <img src="/img/logos/evolvex-dark.png" alt="EvolveX by InMode" class="tall"><img src="/img/logos/morpheus8-dark.png" alt="Morpheus8 by InMode"><img src="/img/logos/empowerrf-dark.png" alt="EmpowerRF by InMode" class="tall"><img src="/img/logos/morpheus8v-dark.png" alt="Morpheus8V by InMode"><img src="/img/logos/formav-dark.png" alt="FormaV by InMode">
     </div>
     <p style="text-align:center;margin:34px 0 18px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600">Hormones &amp; skincare</p>
     <div class="logos reveal">
       <img src="/img/logos/biote-dark.png" alt="Biote" class="tall"><img src="/img/logos/obagi-medical-logo.png" alt="Obagi Medical" class="tall">
     </div>
-    <p style="text-align:center;margin-top:26px;font-size:.9rem;color:var(--ink-soft)">Plus EvolveX, Forma, BodyTite and FaceTite by InMode, Sciton BBL &amp; MOXI, and HydraFacial.</p>
+    <p style="text-align:center;margin-top:26px;font-size:.9rem;color:var(--ink-soft)">Plus Forma, BodyTite and FaceTite by InMode, Sciton BBL &amp; MOXI, and HydraFacial.</p>
   </div>
 </section>
 
