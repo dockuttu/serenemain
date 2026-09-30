@@ -19,7 +19,7 @@ def _price_offer(name, price, area_url, area_name, unit="unit"):
 POST_OVERRIDES = {
     "/how-much-botox-cost/": {
         "title": "How Much Is Botox? $10–$20 Per Unit — 2026 Prices by Area",
-        "description": "Botox costs $10–$20 per unit in 2026; frown lines (20 units) run $200–$400. See units and prices for every area, and Serene's price: $10/unit in Barboursville, WV and $11/unit in Hudson, OH.",
+        "description": "Botox costs $10–$20 per unit in 2026; frown lines (20 units) run $200–$400. See units and prices by area. Serene: $10/unit in WV, $11/unit in OH.",
         "ld_extra": [{
             "@context": "https://schema.org", "@type": "Service", "name": "Botox Cosmetic (per unit)", "serviceType": "Botox injections",
             "provider": SERENE_ORG, "areaServed": ["Hudson, OH", "Barboursville, WV"],
@@ -30,7 +30,7 @@ POST_OVERRIDES = {
     },
     "/best-laser-for-tattoo-removal-guide/": {
         "title": "Best Tattoo Removal Laser 2026: Pico vs Q-Switched Compared",
-        "description": "Which laser removes tattoos best? A physician compares picosecond vs Q-switched lasers on sessions, pain, ink colors and cost — with real prices at our Ohio and West Virginia offices.",
+        "description": "Which laser removes tattoos best? A physician compares picosecond vs Q-switched lasers on sessions, pain, ink colors and cost, with real OH and WV prices.",
     },
     "/laser-tattoo-removal/": {
         "title": "How Laser Tattoo Removal Works: Sessions, Stages & Healing",
@@ -49,9 +49,11 @@ POST_OVERRIDES = {
     },
     "/dermaplaning-facial-treatment-serene-med-spas/": {
         "title": "Dermaplaning Facial: Benefits, Results & Cost in OH & WV",
+        "description": "Dermaplaning at Serene Med Spa in Hudson, OH and Barboursville, WV: a physician-led exfoliating facial for smoother, brighter skin. Benefits and cost.",
     },
     "/semaglutide-weight-loss-program/": {
         "title": "Semaglutide at a Med Spa: Physician-Led Program & Results",
+        "description": "How our physician-supervised semaglutide program works in Hudson, OH and Barboursville, WV: who qualifies, dosing, follow-up visits and results.",
     },
     "/botox-for-shoulder-slimming/": {
         "title": "Trap Botox (Shoulder Slimming): Units, Cost & Results",

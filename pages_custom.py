@@ -466,7 +466,7 @@ def specials(pages):
                              "areaServed": ["Hudson, OH", "Barboursville, WV"]} for deal, items, note in SPECIALS for name, href, blurb in items]}, ensure_ascii=False)
     if studio3_ld: offers_ld = offers_ld + "</script>\n<script type=\"application/ld+json\">" + "</script>\n<script type=\"application/ld+json\">".join(json.dumps(b, ensure_ascii=False) for b in studio3_ld)
     _deals = "; ".join(f"{X.text_of(deal)} — " + ", ".join(X.text_of(n) for n, _h, _b in items) for deal, items, _n in SPECIALS)
-    return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: {_deals}. Book online or mention the special when you check in.", body, ld=offers_ld)
+    return shell("/specials/", f"{month} Med Spa Specials | Serene Med Spa", f"{month} {SPECIALS_YEAR} specials at Serene Med Spa in Hudson, OH and Barboursville, WV: {_deals}"[:150].rsplit(" ", 1)[0].rstrip(",;—- ") + ". Book online.", body, ld=offers_ld)
 
 def telehealth():
     disc = open(os.path.join(HERE, "telehealth-disclosures.html"), encoding="utf-8").read()
