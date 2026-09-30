@@ -26,7 +26,7 @@ HOURS_LD = ["Mo-Fr 09:00-17:00"]      # keep in sync with HOURS (schema.org open
 EMAIL = "info@serenemedspas.com"
 
 BOOK_URL = "https://www.vagaro.com/serenemedspapaintsville"   # TODO(Robin): confirm the Vagaro booking URL
-JOTFORM_ID = "TODO"          # TODO(Robin): paste the Jotform form id (digits) — contact page embeds it when set
+JOTFORM_ID = "262724028776060"  # Jotform "Serene Med Spa Paintsville — Consultation Request" (notifications → info@serenemedspas.com)
 GBP_REVIEW_URL = "TODO"      # TODO(Robin): Google Business Profile "write a review" link (https://g.page/r/.../review)
 GA4_ID = ""                  # TODO(Robin): e.g. "G-XXXXXXXXXX" — analytics tag is only emitted when set
 META_PIXEL_ID = ""           # TODO(Robin): Meta pixel id — only emitted when set
