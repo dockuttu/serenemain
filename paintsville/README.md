@@ -50,3 +50,11 @@ cd bundle/paintsville/site && python3 -m http.server 8080
 ## Deploy
 Handled by serenemain's existing auto-push + VPS autodeploy once the snippets in `DEPLOY-SNIPPETS.md` are added.
 The site is served by container `paintsville-site` (nginx:alpine) for `serenemedspaky.com` + `www` via traefik.
+
+## Deploy gotcha (learned 2026-09-30)
+The VPS runs `deploy.sh` from the checkout it is *about* to update. Bash keeps reading the file it opened,
+so a changed `deploy.sh` used to take effect only on the *next* deploy. `deploy.sh` now re-execs itself
+right after `git reset --hard` (guarded by `DEPLOY_REEXEC`), so changes apply on the same run.
+Symptom of the old behaviour: `paintsville-site` stuck in `Created` because Docker had auto-created
+empty directories at the bind-mount paths (`/root/serenemain/paintsville/{site,nginx.conf}`) before the
+promote step existed; `deploy.sh` now clears a directory left at `nginx.conf` before copying the file.

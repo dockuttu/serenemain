@@ -16,6 +16,13 @@ git fetch --all --quiet
 git reset --hard "origin/$BRANCH"
 echo "    now at: $(git rev-parse --short HEAD) — $(git log -1 --pretty=%s)"
 
+# bash keeps reading the deploy.sh it opened even after `git reset` swaps the file, so a changed deploy.sh
+# would otherwise only take effect one deploy late. Re-exec the freshly pulled copy exactly once.
+if [ -z "${DEPLOY_REEXEC:-}" ]; then
+  echo "==> Re-running the freshly pulled deploy.sh"
+  DEPLOY_REEXEC=1 exec bash "$0" "$@"
+fi
+
 echo "==> Building"
 bash ./build.sh
 
