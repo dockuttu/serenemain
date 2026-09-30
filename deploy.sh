@@ -27,15 +27,20 @@ rm -rf "$LIVE/site.old"
 [ -d "$LIVE/site" ] && mv "$LIVE/site" "$LIVE/site.old"
 mv "$LIVE/site.new" "$LIVE/site"
 
-if [ -d bundle/paintsville/site ]; then
-  echo "==> Promoting paintsville (serenemedspaky.com)"
-  mkdir -p "$LIVE/paintsville"
+echo "==> Paintsville (serenemedspaky.com): promote"
+mkdir -p "$LIVE/paintsville"
+# A failed first start leaves docker-auto-created *directories* at the bind-mount paths; clear the conf one.
+if [ -d "$LIVE/paintsville/nginx.conf" ]; then rm -rf "$LIVE/paintsville/nginx.conf"; fi
+cp -f paintsville/nginx.conf "$LIVE/paintsville/nginx.conf"
+if [ -s bundle/paintsville/site/index.html ]; then
   rm -rf "$LIVE/paintsville/site.new" "$LIVE/paintsville/site.old"
   cp -a bundle/paintsville/site "$LIVE/paintsville/site.new"
-  cp -f paintsville/nginx.conf "$LIVE/paintsville/nginx.conf"
-  [ -d "$LIVE/paintsville/site" ] && mv "$LIVE/paintsville/site" "$LIVE/paintsville/site.old"
+  if [ -d "$LIVE/paintsville/site" ]; then mv "$LIVE/paintsville/site" "$LIVE/paintsville/site.old"; fi
   mv "$LIVE/paintsville/site.new" "$LIVE/paintsville/site"
   rm -rf "$LIVE/paintsville/site.old"
+else
+  echo "!!! paintsville build output missing — keeping whatever is live" >&2
+  mkdir -p "$LIVE/paintsville/site"
 fi
 
 cp -f bundle/docker-compose.yml "$LIVE/docker-compose.yml"
@@ -44,5 +49,5 @@ cp -f bundle/nginx.conf "$LIVE/nginx.conf"
 echo "==> Restarting container"
 cd "$LIVE"
 docker compose up -d --force-recreate --remove-orphans
-docker ps --format 'table {{.Names}}\t{{.Status}}' | grep -E 'NAMES|serenemain' || true
+docker ps --format 'table {{.Names}}\t{{.Status}}' | grep -E 'NAMES|serenemain|paintsville' || true
 echo "==> Deploy complete. Rollback:  rm -rf $LIVE/site && mv $LIVE/site.old $LIVE/site && cd $LIVE && docker compose up -d --force-recreate"
