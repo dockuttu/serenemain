@@ -29,9 +29,9 @@ else:
 # 1b. Site-wide nav fixes: "Choose Location" menu -> the two location sites (not the old WP location pages)
 NAV_FIXES = [
     (re.compile(r'href="/locations/huntington-barboursville-wv/"(?=[^>]*class="elementor-sub-item[^"]*"[^>]*>\s*Barboursville, WV)'),
-     'href="https://barboursville.serenemedspas.com/"'),
+     'href="/barboursville/"'),
     (re.compile(r'href="/locations/visit-serene-med-spa-in-hudson-oh/"(?=[^>]*class="elementor-sub-item[^"]*"[^>]*>\s*Hudson, OH)'),
-     'href="https://hudson.serenemedspas.com/"'),
+     'href="/hudson/"'),
 ]
 n_fixed = 0
 for root, dirs, files in os.walk(SITE):
@@ -57,7 +57,7 @@ a.g{color:#3C8296;font-weight:700}</style></head><body><div>
 <h1>We couldn&rsquo;t find that page</h1>
 <p>The page may have moved. Try one of these instead.</p>
 <a class="b" href="/">Home</a> <a class="b" href="/service/">Treatments</a> <a class="b" href="/locations/">Locations</a> <a class="b" href="/contact-us/">Contact</a>
-<p style="margin-top:28px"><a class="g" href="https://hudson.serenemedspas.com/">Hudson, OH</a> &middot; <a class="g" href="https://barboursville.serenemedspas.com/">Barboursville, WV</a> &middot; <a class="g" href="/telehealth/">Telehealth</a></p>
+<p style="margin-top:28px"><a class="g" href="/hudson/">Hudson, OH</a> &middot; <a class="g" href="/barboursville/">Barboursville, WV</a> &middot; <a class="g" href="/telehealth/">Telehealth</a></p>
 </div></body></html>''')
 
 # 3. Sitemap from the indexable HTML pages
