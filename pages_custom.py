@@ -609,8 +609,10 @@ def comfort_options():
 def build(pages, posts, render_prose, render_embed):
     out = {"/": home(posts), "/locations/": locations(), "/our-providers/": providers(pages), "/about-us/": about(pages), "/reviews/": reviews(),
            "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day()}
+    # self-contained tools whose only <h1> is rendered client-side get a static hero (crawlers see an H1)
+    EMBED_HERO = {"/vitalityiq/": page_hero("VitalityIQ: Hormone &amp; Wellness Self-Check", "A free physician-built self-check for energy, sleep, mood, weight and libido changes &mdash; and whether lab testing or a hormone consult makes sense for you.", [("/", "Home"), ("/vitalityiq/", "VitalityIQ")], "Free tool")}
     for p in EMBED_PAGES:
-        if p in pages: out[p] = render_embed(pages[p])
+        if p in pages: out[p] = render_embed(pages[p], hero=EMBED_HERO.get(p))
     for p, (title, lede, eyebrow) in PROSE_PAGES.items():
         if p in pages: out[p] = render_prose(pages[p], title=title, lede=lede, eyebrow=eyebrow)
     return out
