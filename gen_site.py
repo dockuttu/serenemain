@@ -308,7 +308,8 @@ def main():
         ls = LOCAL_MAP.get(r["slug"].strip("/"))
         if ls: guides.setdefault(ls, []).append({"url": r["slug"], "title": POST_OVERRIDES.get(r["slug"], {}).get("h1") or r["title"],
                                                   "rank": 0 if "cost" in r["slug"] else 1 if "what-is" in r["slug"] else 2 if r["slug"].strip("/") == ls else 3})
-    for ls in guides: guides[ls] = [dict(url=g["url"], title=g["title"]) for g in sorted(guides[ls], key=lambda g: (g["rank"], g["title"]))[:3]]
+    for ls in guides: guides[ls] = [dict(url=g["url"], title=g["title"], **({"only": GUIDES_ONLY[g["url"].strip("/")]} if g["url"].strip("/") in GUIDES_ONLY else {}))
+                       for g in sorted(guides[ls], key=lambda g: (g["rank"], g["title"]))[:3]]
     gj = json.dumps(guides, ensure_ascii=False)
     open(os.path.join(SITE, "guides.json"), "w", encoding="utf-8").write(gj)
     open(os.path.join(HERE, "guides.json"), "w", encoding="utf-8").write(gj)
