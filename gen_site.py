@@ -43,6 +43,8 @@ REDIRECTS = {
     "/wrinkle-treatments/": HUDSON["site"] + "botox/",   # Hudson pricing menu lives on the Hudson site
     "/semaglutide-weight-loss-program-at-serene-med-spa-in-huntington-and-barboursville-wv/": BARB["site"] + "weight-loss/",  # still gets search clicks (GSC 404)
     "/pro-nox-nitrous-treatment/": "/comfort-options/",  # Pro-Nox retired Sep 2026 -> Journavx comfort page
+    # MOXI + BBL HEROic are Barboursville-only (Sep 26, 2026): the Hudson aftercare pages were removed (serenehudson/build_aftercare.py)
+    HUDSON["site"] + "aftercare/moxi/": HUDSON["site"] + "aftercare/", HUDSON["site"] + "aftercare/bbl-hero/": HUDSON["site"] + "aftercare/",
 }
 SKIP_DIRS = {"wp-content", "wp-includes", "wp-json", "wp-admin", "cart", "checkout", "my-account", "login", "logout", "password-reset", "shop", "product", "feed", "_test"}
 
