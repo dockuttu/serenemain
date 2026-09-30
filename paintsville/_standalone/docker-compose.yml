@@ -1,0 +1,22 @@
+# STANDALONE compose (not used inside serenemain — see ../DEPLOY-SNIPPETS.md for the service block to add there).
+services:
+  paintsville:
+    image: nginx:alpine
+    container_name: paintsville-site
+    restart: unless-stopped
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - root_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.paintsville.rule=Host(`serenemedspaky.com`) || Host(`www.serenemedspaky.com`)"
+      - "traefik.http.routers.paintsville.entrypoints=web,websecure"
+      - "traefik.http.routers.paintsville.tls=true"
+      - "traefik.http.routers.paintsville.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.paintsville.loadbalancer.server.port=80"
+
+networks:
+  root_default:
+    external: true
