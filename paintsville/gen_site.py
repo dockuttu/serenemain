@@ -320,9 +320,11 @@ def images():
         d = os.path.join(dst, rel) if rel != "." else dst
         os.makedirs(d, exist_ok=True)
         for fn in files:
+            if fn.startswith("._") or fn == ".DS_Store":  # macOS metadata (external drives)
+                continue
             src = os.path.join(root, fn); out = os.path.join(d, fn)
             if not os.path.exists(out) or os.path.getmtime(src) > os.path.getmtime(out) or os.path.getsize(src) != os.path.getsize(out):
-                shutil.copy2(src, out)
+                shutil.copyfile(src, out)  # copyfile, not copy2: xattrs on external volumes can't be copied
     # optional: fill in any missing 800px variant (dev convenience only)
     try:
         from PIL import Image

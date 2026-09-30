@@ -21,6 +21,24 @@ services:
       - "traefik.http.routers.serenemain.tls.domains[0].main=serenemedspas.com"
       - "traefik.http.routers.serenemain.tls.domains[0].sans=www.serenemedspas.com"
       - "traefik.http.services.serenemain.loadbalancer.server.port=80"
+  paintsville:
+    image: nginx:alpine
+    container_name: paintsville-site
+    restart: always
+    volumes:
+      - ./paintsville/site:/usr/share/nginx/html:ro
+      - ./paintsville/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - root_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.paintsville.rule=Host(`serenemedspaky.com`) || Host(`www.serenemedspaky.com`)"
+      - "traefik.http.routers.paintsville.entrypoints=web,websecure"
+      - "traefik.http.routers.paintsville.tls=true"
+      - "traefik.http.routers.paintsville.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.paintsville.tls.domains[0].main=serenemedspaky.com"
+      - "traefik.http.routers.paintsville.tls.domains[0].sans=www.serenemedspaky.com"
+      - "traefik.http.services.paintsville.loadbalancer.server.port=80"
 networks:
   root_default:
     external: true

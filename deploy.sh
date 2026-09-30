@@ -27,6 +27,17 @@ rm -rf "$LIVE/site.old"
 [ -d "$LIVE/site" ] && mv "$LIVE/site" "$LIVE/site.old"
 mv "$LIVE/site.new" "$LIVE/site"
 
+if [ -d bundle/paintsville/site ]; then
+  echo "==> Promoting paintsville (serenemedspaky.com)"
+  mkdir -p "$LIVE/paintsville"
+  rm -rf "$LIVE/paintsville/site.new" "$LIVE/paintsville/site.old"
+  cp -a bundle/paintsville/site "$LIVE/paintsville/site.new"
+  cp -f paintsville/nginx.conf "$LIVE/paintsville/nginx.conf"
+  [ -d "$LIVE/paintsville/site" ] && mv "$LIVE/paintsville/site" "$LIVE/paintsville/site.old"
+  mv "$LIVE/paintsville/site.new" "$LIVE/paintsville/site"
+  rm -rf "$LIVE/paintsville/site.old"
+fi
+
 cp -f bundle/docker-compose.yml "$LIVE/docker-compose.yml"
 cp -f bundle/nginx.conf "$LIVE/nginx.conf"
 
