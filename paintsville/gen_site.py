@@ -295,6 +295,9 @@ def statics():
                    "icons": [{"src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml"}]}, f, indent=1)
     with open(os.path.join(OUT, "robots.txt"), "w") as f:
         f.write(f"User-agent: *\nAllow: /\nDisallow: /404.html\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+    # Google Search Console ownership file (URL-prefix property https://serenemedspaky.com/, added Oct 1 2026). Keep forever.
+    with open(os.path.join(OUT, "googleedf07ec694035423.html"), "w") as f:
+        f.write("google-site-verification: googleedf07ec694035423.html")
     urls = [p for p in PAGES if p.endswith("/")]
     pri = lambda p: "1.0" if p == "/" else ("0.9" if p in ("/services/", "/pricing/", "/contact/") or p.strip("/") in C.BY_SLUG else ("0.3" if p in ("/privacy-policy/", "/terms/") else "0.7"))
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
