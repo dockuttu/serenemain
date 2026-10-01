@@ -27,7 +27,7 @@ EMAIL = "info@serenemedspas.com"
 
 BOOK_URL = "https://www.vagaro.com/serenemedspapaintsville"  # Vagaro listing for Serene Med Spa Paintsville (slug set by Katrina; rename in Vagaro Business Profile → update here)
 JOTFORM_ID = "262724028776060"  # Jotform "Serene Med Spa Paintsville — Consultation Request" (notifications → info@serenemedspas.com)
-GBP_REVIEW_URL = "TODO"      # TODO(Robin): Google Business Profile "write a review" link (https://g.page/r/.../review)
+GBP_REVIEW_URL = "https://g.page/r/CffoOTxD0IVvEBM/review"  # Google Business Profile "write a review" link (set Oct 1 2026)
 GA4_ID = ""                  # TODO(Robin): e.g. "G-XXXXXXXXXX" — analytics tag is only emitted when set
 META_PIXEL_ID = ""           # TODO(Robin): Meta pixel id — only emitted when set
 
