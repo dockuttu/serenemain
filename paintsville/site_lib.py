@@ -25,7 +25,7 @@ HOURS = "Mon–Fri 9:00 AM – 5:00 PM"   # confirmed by Robin; used in footer, 
 HOURS_LD = ["Mo-Fr 09:00-17:00"]      # keep in sync with HOURS (schema.org openingHours format)
 EMAIL = "info@serenemedspas.com"
 
-BOOK_URL = "https://www.vagaro.com/serenemedspaonhudsonllc"  # Vagaro listing for Serene Med Spa Paintsville (slug set by Katrina; rename in Vagaro Business Profile → update here)
+BOOK_URL = "https://www.vagaro.com/serenemedspapaintsville"  # Vagaro listing for Serene Med Spa Paintsville (slug set by Katrina; rename in Vagaro Business Profile → update here)
 JOTFORM_ID = "262724028776060"  # Jotform "Serene Med Spa Paintsville — Consultation Request" (notifications → info@serenemedspas.com)
 GBP_REVIEW_URL = "TODO"      # TODO(Robin): Google Business Profile "write a review" link (https://g.page/r/.../review)
 GA4_ID = ""                  # TODO(Robin): e.g. "G-XXXXXXXXXX" — analytics tag is only emitted when set
