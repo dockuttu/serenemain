@@ -19,9 +19,14 @@ LHR_AREAS = [("Upper lip", "$75"), ("Chin", "$120"), ("Lip &amp; chin", "$175"),
              ("Half back", "$300&ndash;$400"), ("Full back", "$500&ndash;$600"), ("Bikini line", "$200"), ("Upper leg", "$325"), ("Lower leg", "$325"), ("Full leg", "$600")]
 
 PRICES = [
+    ("Consultation", "/contact/", [
+        ("Complimentary consultation", "Free", "30 minutes with Katrina to review goals and build a plan; no obligation")]),
     ("Injectables", "/botox-xeomin/", [
         ("Xeomin&reg;", "$10 / unit", "Wrinkle relaxer; units determined at consultation"),
-        ("Botox&reg; Cosmetic", "$12 / unit", "Wrinkle relaxer; units determined at consultation")]),
+        ("Botox&reg; Cosmetic", "$12 / unit", "Wrinkle relaxer; units determined at consultation"),
+        ("Dermal filler (Juv&eacute;derm&reg;)", "$650 / syringe", "Cheeks, chin, jawline, smile lines and more; syringes confirmed at consultation"),
+        ("Lip filler (Juv&eacute;derm&reg;)", "$500 / syringe", "Natural-looking lip volume and shape"),
+        ("Lip flip", "$100", "A few units of wrinkle relaxer along the upper lip for a subtle, fuller look")]),
     ("Skin &amp; body radiofrequency", None, [
         ("Forma skin tightening", "$100 / area / treatment", "Collagen &amp; skin tightening; results can be seen after one session"),
         ("Forma face &amp; neck combo", "$150 / treatment", ""),
@@ -90,7 +95,8 @@ SERVICES = [
              ("Treatment in about 15 minutes", "A series of very small injections with an ultra-fine needle. Most people describe a quick pinch; no numbing is needed and there is no downtime."),
              ("Results in 3&ndash;14 days", "Movement begins to soften around day 3 and is fully settled by two weeks. Results typically last 3&ndash;4 months."),
              ("Two-week check-in", "Come back at no charge so we can look at your result together and touch up if needed. Most patients maintain every 3&ndash;4 months.")],
-  "prices": [("Xeomin&reg;", "$10 / unit", "Typical areas use 10&ndash;30 units each; total units confirmed at consultation"), ("Botox&reg; Cosmetic", "$12 / unit", "")],
+  "prices": [("Xeomin&reg;", "$10 / unit", "Typical areas use 10&ndash;30 units each; total units confirmed at consultation"), ("Botox&reg; Cosmetic", "$12 / unit", ""),
+             ("Dermal filler (Juv&eacute;derm&reg;)", "$650 / syringe", "Cheeks, chin, jawline, smile lines; syringes confirmed at consultation"), ("Lip filler (Juv&eacute;derm&reg;)", "$500 / syringe", ""), ("Lip flip", "$100", "")],
   "faqs": [("How many units will I need?", "It depends on the area and how strong your muscles are. As a rough guide, frown lines often use 15&ndash;25 units, the forehead 10&ndash;20 and crow&rsquo;s feet 10&ndash;24 in total. Katrina will give you an exact unit count and price at your consultation before treating."),
            ("Botox or Xeomin &mdash; which is better?", "Both work the same way and both are excellent. Xeomin contains only the active neurotoxin without accessory proteins and is a little less expensive per unit; Botox has the longest track record. Katrina will recommend one based on your history and goals, and you can switch later if you like."),
            ("Will I look frozen?", "Not at Serene. We dose to soften lines while keeping natural expression, and we would rather add a few units at your two-week check than over-treat on day one."),

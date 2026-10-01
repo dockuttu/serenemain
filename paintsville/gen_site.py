@@ -169,7 +169,7 @@ def pricing():
 {book_band("Ready to book?", "Prices are confirmed at your complimentary consultation. Book online through Vagaro or call the Paintsville clinic.")}'''
     title = "Med Spa Prices in Paintsville, KY | Serene Med Spa"
     desc = "Full price list for Serene Med Spa Paintsville, KY: Botox $12/unit, Xeomin $10/unit, laser hair removal from $75, Morpheus8 $600, Biote pellets $675."
-    offers = [{"@type": "Offer", "name": text_of(l), "price": re.sub(r"[^\d.]", "", p.split("&ndash;")[0].split("/")[0]), "priceCurrency": "USD", "category": text_of(g)} for g, _, rows in C.PRICES for l, p, n in rows]
+    offers = [{"@type": "Offer", "name": text_of(l), "price": re.sub(r"[^\d.]", "", p.split("&ndash;")[0].split("/")[0]) or "0", "priceCurrency": "USD", "category": text_of(g)} for g, _, rows in C.PRICES for l, p, n in rows]
     ld = [{"@context": "https://schema.org", "@type": "WebPage", "url": SITE_URL + path, "name": "Med Spa Pricing in Paintsville", "description": desc, "about": {"@id": ORG_ID},
            "mainEntity": {"@type": "OfferCatalog", "name": "Serene Med Spa Paintsville price list", "itemListElement": offers}}]
     write(path, shell(path, title, desc, body, ld=ld, crumbs=crumbs))
