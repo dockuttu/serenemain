@@ -39,7 +39,8 @@ SISTER = [("https://serenemedspas.com/", "Serene Med Spa (main site)"),
           ("https://serenemedspas.com/hudson/", "Serene Hudson, OH"),
           ("https://serenemedspas.com/barboursville/", "Serene Barboursville, WV"),
           ("https://blog.serenemedspas.com/", "Serene blog")]
-SAME_AS = [u for u, _ in SISTER] + [MAP_LINK]
+FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61590974563966"  # Serene Med Spa Paintsville page (Katrina created; Robin admin since Oct 1 2026)
+SAME_AS = [u for u, _ in SISTER] + [MAP_LINK, FACEBOOK_URL]
 
 SERVICE_AREA = ["Paintsville", "Johnson County", "Prestonsburg", "Pikeville", "Salyersville", "Louisa", "Ashland"]
 
