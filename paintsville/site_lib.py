@@ -29,7 +29,7 @@ BOOK_URL = "https://www.vagaro.com/serenemedspapaintsville"  # Vagaro listing fo
 JOTFORM_ID = "262724028776060"  # Jotform "Serene Med Spa Paintsville — Consultation Request" (notifications → info@serenemedspas.com)
 GBP_REVIEW_URL = "https://g.page/r/CffoOTxD0IVvEBM/review"  # Google Business Profile "write a review" link (set Oct 1 2026)
 GA4_ID = ""                  # TODO(Robin): e.g. "G-XXXXXXXXXX" — analytics tag is only emitted when set
-META_PIXEL_ID = ""           # TODO(Robin): Meta pixel id — only emitted when set
+META_PIXEL_ID = "475660982946848"  # Serene Med Spa business Meta pixel (same as serenemedspas.com; set Oct 3 2026)
 
 MAP_QUERY = "705+Broadway+St+Suite+2,+Paintsville,+KY+41240"
 MAP_LINK = f"https://maps.google.com/maps?q={MAP_QUERY}"
@@ -385,7 +385,10 @@ def analytics():
         out += "<!-- GA4: set GA4_ID in site_lib.py to enable -->"
     if META_PIXEL_ID:
         out += ("<!-- Meta Pixel --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');"
-                f"fbq('init','{META_PIXEL_ID}');fbq('track','PageView');</script>")
+                f"fbq('init','{META_PIXEL_ID}');fbq('track','PageView');"
+                # booking-intent click → Meta 'Lead' (+ GA4 'book_click' when GA4 is on)
+                "document.addEventListener('click',function(e){var a=e.target.closest('a[href*=\"vagaro.com\"]');if(a){try{fbq('track','Lead',{content_name:'vagaro_book'});}catch(x){}try{if(window.gtag){gtag('event','book_click',{link_url:a.href});}}catch(x){}}},true);</script>"
+                f'<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id={META_PIXEL_ID}&ev=PageView&noscript=1"></noscript>')
     else:
         out += "<!-- Meta Pixel: set META_PIXEL_ID in site_lib.py to enable -->"
     return out

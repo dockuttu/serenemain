@@ -43,7 +43,7 @@ def run(out):
     pages = []
     for root, _, files in os.walk(out):
         for f in files:
-            if f.endswith(".html"): pages.append(os.path.join(root, f))
+            if f.endswith(".html") and not f.startswith("google"): pages.append(os.path.join(root, f))  # skip Search Console verification file
     for fp in sorted(pages):
         n += 1
         rel = "/" + os.path.relpath(fp, out).replace(os.sep, "/")
