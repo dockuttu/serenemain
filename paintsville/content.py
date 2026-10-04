@@ -39,6 +39,7 @@ PRICES = [
         ("Forma skin tightening", "$100 / area / treatment", "Collagen &amp; skin tightening; results can be seen after one session"),
         ("Forma face &amp; neck combo", "$150 / treatment", ""),
         ("EvolveX body toning &amp; tightening", "$100 / area / treatment", "Typically a series of 5&ndash;6 treatments"),
+        ("Morpheus8 Face RF microneedling", "$600 / treatment", "Face and neck: firmness, texture, acne scars and fine lines"),
         ("Morpheus8 Body RF microneedling", "$600 / treatment", "Typically 1&ndash;2 treatments; results can last up to a year")]),
     ("Light &amp; laser", None, [
         ("Lumecca IPL photofacial", "$175 / treatment", "Sun spots, dark spots, redness")]),
@@ -278,7 +279,7 @@ SERVICES = [
              ("Numbing &amp; treatment", "Strong topical numbing is applied for 30&ndash;45 minutes. The treatment itself takes 30&ndash;60 minutes and feels like warmth and pressure."),
              ("Recovery", "Expect redness and a sunburn-like feeling for 1&ndash;3 days, with tiny grid marks that fade within a week. Most patients return to work the next day."),
              ("Results", "Tightening begins within a few weeks and peaks around 3 months as collagen rebuilds. Results can last up to a year; many patients repeat annually.")],
-  "prices": [("Morpheus8 Body", "$600 / treatment", "Typically 1&ndash;2 treatments; results can last up to a year")],
+  "prices": [("Morpheus8 Body", "$600 / treatment", "Typically 1&ndash;2 treatments; results can last up to a year"), ("Morpheus8 Face", "$600 / treatment", "Face and neck; typically 1&ndash;3 treatments")],
   "faqs": [("How is Morpheus8 different from regular microneedling?", "Standard microneedling creates micro-channels at the surface. Morpheus8 adds radiofrequency energy delivered through the needle tips at controlled depths, heating the deep dermis and the tissue below it. That is what allows true tightening and remodeling, not just texture improvement."),
            ("How many treatments do I need?", "Most patients see a meaningful change after one session and are happiest after two, spaced 4&ndash;6 weeks apart. Because it stimulates your own collagen, results continue improving for about 3 months."),
            ("How long do results last?", "Up to a year or more, depending on age, skin quality and lifestyle. Many patients schedule a single maintenance session annually."),

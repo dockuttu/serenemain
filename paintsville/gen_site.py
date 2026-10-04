@@ -250,10 +250,10 @@ def halloween_block():
   <div class="card reveal"><span class="eyebrow">Halloween special &middot; Oct 12&ndash;23</span><h3>Ghouls just want to have glow</h3>
     <ul>
       <li><strong>Botox or Xeomin:</strong> $9 per unit (35-unit minimum)</li>
-      <li><strong>Laser hair removal, face &amp; neck:</strong> 5-treatment packages $275&ndash;$1,000 depending on area</li>
+      <li><strong>Laser hair removal, face &amp; neck (5 treatments):</strong> upper lip, chin or sideburns $275 &middot; lip &amp; chin $360 &middot; neck or full face $520 &middot; full face &amp; neck $1,000</li>
       <li><strong>Lumecca IPL:</strong> 5 treatments for $600</li>
       <li><strong>EvolveX:</strong> 5 treatments for $375</li>
-      <li><strong>Morpheus8 face or body:</strong> 2 treatments for $950</li>
+      <li><strong>Morpheus8 face or body:</strong> 2 treatments for $950 (regularly $600 each)</li>
       <li><strong>Lip filler:</strong> full syringe $480 &middot; lip flip $75</li>
     </ul>
     <p class="fine">Oct 12&ndash;23, 2026 only. Treatment is provided if appropriate after your consultation. Can&rsquo;t be combined with another discount.</p>
