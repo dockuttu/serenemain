@@ -296,9 +296,9 @@ footer .flogo{height:56px;width:auto;margin-bottom:14px;filter:brightness(0) inv
 # ================================================================== NAV / FOOTER
 # (href, label) — the service list is shared by the mega menu, footer and sitemap. Filled by content.py at import time.
 NAV_SERVICES = [
-    ("Face & Skin", [("/botox-xeomin/", "Botox & Xeomin"), ("/forma/", "Forma skin tightening"), ("/lumecca-ipl/", "Lumecca IPL photofacial"), ("/morpheus8/", "Morpheus8 RF microneedling")]),
+    ("Face & Skin", [("/botox-xeomin/", "Botox, Xeomin & Dysport"), ("/vi-peel/", "VI Peel & microneedling"), ("/forma/", "Forma skin tightening"), ("/lumecca-ipl/", "Lumecca IPL photofacial"), ("/morpheus8/", "Morpheus8 RF microneedling")]),
     ("Body & Laser", [("/laser-hair-removal/", "Laser hair removal (DiolazeXL)"), ("/evolvex/", "EvolveX body toning"), ("/intimate-wellness/", "Intimate & pelvic wellness")]),
-    ("Wellness", [("/hormone-therapy/", "Biote hormone therapy"), ("/iv-therapy/", "IV therapy"), ("/pricing/", "Full price list"), ("/services/", "View all treatments")]),
+    ("Wellness", [("/hormone-therapy/", "Biote hormone therapy"), ("/iv-therapy/", "IV therapy & B-12 shots"), ("/pricing/", "Full price list"), ("/services/", "View all treatments")]),
 ]
 ABOUT_MENU = [("/about/", "Meet the team"), ("/specials/", "Specials"), ("/contact/", "Contact & directions")]
 

@@ -65,16 +65,16 @@ def medical_webpage(path, title, desc):
 def home():
     trust = '<div class="trust"><div class="wrap"><span>Board-certified NP</span><span>Physician medical director</span><span>InMode technology</span><span>Biote Certified</span></div></div>'
     arches = "".join(f'<a class="arch reveal" href="/{slug}/">{img(im, C.BY_SLUG[slug]["hero_alt"] if im == C.BY_SLUG[slug]["hero"] else text_of(label) + " at Serene Med Spa Paintsville", sizes="(max-width:560px) 50vw, 25vw")}<span>{label}</span></a>' for slug, im, label in C.HOME_ARCHES)
-    hl = [("Xeomin&reg;", "$10 / unit", "/botox-xeomin/"), ("Botox&reg;", "$12 / unit", "/botox-xeomin/"), ("Laser hair removal", "from $75", "/laser-hair-removal/"),
-          ("Lumecca IPL", "$175", "/lumecca-ipl/"), ("Forma face &amp; neck", "$150", "/forma/"), ("Morpheus8 Body", "$600", "/morpheus8/"),
-          ("VTone / FormaV", "$350", "/intimate-wellness/"), ("Myers&rsquo; Cocktail IV", "$175", "/iv-therapy/")]
+    hl = [("Botox&reg;", "$10 / unit", "/botox-xeomin/"), ("Xeomin&reg;", "$9 / unit", "/botox-xeomin/"), ("Dysport&reg;", "$4 / unit", "/botox-xeomin/"), ("Laser hair removal", "from $75", "/laser-hair-removal/"),
+          ("Lumecca IPL", "$150", "/lumecca-ipl/"), ("VI Peel", "from $250", "/vi-peel/"), ("Morpheus8 Body", "$600", "/morpheus8/"),
+          ("Myers&rsquo; Cocktail IV", "$175", "/iv-therapy/")]
     highlights = "".join(f'<a class="card reveal" href="{h}"><span class="state">Regular rate</span><h3 style="font-size:1.15rem;margin-top:6px">{n}</h3><span class="price">{p}</span><span class="more">Details &rsaquo;</span></a>' for n, p, h in hl)
     review_link = GBP_REVIEW_URL if GBP_REVIEW_URL != "TODO" else "/contact/#review"
     body = f'''<section class="hero"><div class="wrap">
   <div class="hero-copy"><span class="eyebrow">Now open &middot; Paintsville, Kentucky</span><span class="script">Welcome to</span><h1>Serene Med Spa Paintsville</h1>
   <p class="lede">Physician-directed aesthetics and wellness in the heart of Johnson County &mdash; Botox&reg; and Xeomin&reg;, InMode laser and radiofrequency treatments, women&rsquo;s wellness, hormone therapy and IV therapy, all with Katrina Watkins, NP.</p>
   <div class="hero-cta"><a class="btn btn-lav" href="{BOOK_URL}" target="_blank" rel="noopener">Book Online</a><a class="btn btn-ghost" href="/pricing/">See Pricing</a></div>
-  <div class="hero-chips"><span class="chip">Botox from $12 / unit</span><span class="chip">Xeomin $10 / unit</span><span class="chip">Laser hair removal from $75</span><span class="chip">Complimentary consults</span></div></div>
+  <div class="hero-chips"><span class="chip">Botox $10 / unit</span><span class="chip">Xeomin $9 / unit</span><span class="chip">Dysport $4 / unit</span><span class="chip">Laser hair removal from $75</span><span class="chip">Complimentary consults</span></div></div>
   <div class="hero-fig">{img("/img/katrina-optimas.jpg", "Katrina Watkins, NP with the InMode Optimas platform at Serene Med Spa Paintsville, KY", lazy=False, sizes="(max-width:900px) 100vw, 45vw")}<div class="tag"><span>Your provider</span><b>Katrina Watkins, NP</b></div></div>
 </div></section>
 {trust}
@@ -112,7 +112,7 @@ def home():
 <iframe class="map" src="{MAP_EMBED}" title="Map to Serene Med Spa, {ADDR1}, {ADDR2}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section>
 {book_band()}'''
     title = "Serene Med Spa Paintsville, KY | Botox, Laser & Wellness"
-    desc = "Physician-directed med spa in Paintsville, KY: Botox $12/unit, Xeomin $10/unit, laser hair removal, Morpheus8, EmpowerRF, Biote hormones and IV therapy."
+    desc = "Physician-directed med spa in Paintsville, KY: Botox $10/unit, Xeomin $9/unit, Dysport $4/unit, laser hair removal, VI Peel, Morpheus8, Biote hormones and IV therapy."
     write("/", shell("/", title, desc, body, og_image="/img/katrina-optimas.jpg", ld=[webpage_ld("/", title, desc)]))
 
 
@@ -140,7 +140,7 @@ def service_page(s):
 def services():
     path = "/services/"
     crumbs = [("/", "Home"), (None, "Treatments")]
-    groups = [("Face &amp; skin", ["botox-xeomin", "forma", "lumecca-ipl", "morpheus8"]), ("Body &amp; laser", ["laser-hair-removal", "evolvex", "intimate-wellness"]), ("Wellness", ["hormone-therapy", "iv-therapy"])]
+    groups = [("Face &amp; skin", ["botox-xeomin", "vi-peel", "forma", "lumecca-ipl", "morpheus8"]), ("Body &amp; laser", ["laser-hair-removal", "evolvex", "intimate-wellness"]), ("Wellness", ["hormone-therapy", "iv-therapy"])]
     secs = ""
     for i, (g, slugs) in enumerate(groups):
         cards = "".join(f'<a class="card reveal" href="/{sl}/">{img(C.BY_SLUG[sl]["hero"], C.BY_SLUG[sl]["hero_alt"], sizes="(max-width:900px) 100vw, 33vw")}<h3 style="margin-top:18px">{C.BY_SLUG[sl]["name"]}</h3><p>{C.BY_SLUG[sl]["short"]}</p><span class="price" style="font-size:1.2rem">{C.BY_SLUG[sl]["price_pill"][0]}</span><span class="more">Learn more &rsaquo;</span></a>' for sl in slugs)
@@ -168,7 +168,7 @@ def pricing():
 {cta_row("/specials/", "Current specials")}</div></section>
 {book_band("Ready to book?", "Prices are confirmed at your complimentary consultation. Book online through Vagaro or call the Paintsville clinic.")}'''
     title = "Med Spa Prices in Paintsville, KY | Serene Med Spa"
-    desc = "Full price list for Serene Med Spa Paintsville, KY: Botox $12/unit, Xeomin $10/unit, laser hair removal from $75, Morpheus8 $600, Biote pellets $675."
+    desc = "Full price list for Serene Med Spa Paintsville, KY: Botox $10/unit, Xeomin $9, Dysport $4, filler $550, VI Peel $250, laser hair removal from $75, Biote $675."
     offers = [{"@type": "Offer", "name": text_of(l), "price": re.sub(r"[^\d.]", "", p.split("&ndash;")[0].split("/")[0]) or "0", "priceCurrency": "USD", "category": text_of(g)} for g, _, rows in C.PRICES for l, p, n in rows]
     ld = [{"@context": "https://schema.org", "@type": "WebPage", "url": SITE_URL + path, "name": "Med Spa Pricing in Paintsville", "description": desc, "about": {"@id": ORG_ID},
            "mainEntity": {"@type": "OfferCatalog", "name": "Serene Med Spa Paintsville price list", "itemListElement": offers}}]
