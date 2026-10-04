@@ -65,8 +65,8 @@ def medical_webpage(path, title, desc):
 def home():
     trust = '<div class="trust"><div class="wrap"><span>Board-certified NP</span><span>Physician medical director</span><span>InMode technology</span><span>Biote Certified</span></div></div>'
     arches = "".join(f'<a class="arch reveal" href="/{slug}/">{img(im, C.BY_SLUG[slug]["hero_alt"] if im == C.BY_SLUG[slug]["hero"] else text_of(label) + " at Serene Med Spa Paintsville", sizes="(max-width:560px) 50vw, 25vw")}<span>{label}</span></a>' for slug, im, label in C.HOME_ARCHES)
-    hl = [("Botox&reg;", "$10 / unit", "/botox-xeomin/"), ("Xeomin&reg;", "$9 / unit", "/botox-xeomin/"), ("Dysport&reg;", "$4 / unit", "/botox-xeomin/"), ("Laser hair removal", "from $75", "/laser-hair-removal/"),
-          ("Lumecca IPL", "$150", "/lumecca-ipl/"), ("VI Peel", "from $250", "/vi-peel/"), ("Morpheus8 Body", "$600", "/morpheus8/"),
+    hl = [("Botox&reg;", "$12 / unit", "/botox-xeomin/"), ("Xeomin&reg;", "$10 / unit", "/botox-xeomin/"), ("Dysport&reg;", "$4 / unit", "/botox-xeomin/"), ("Laser hair removal", "from $75", "/laser-hair-removal/"),
+          ("Lumecca IPL", "$175", "/lumecca-ipl/"), ("VI Peel", "from $250", "/vi-peel/"), ("Morpheus8 Body", "$600", "/morpheus8/"),
           ("Myers&rsquo; Cocktail IV", "$175", "/iv-therapy/")]
     highlights = "".join(f'<a class="card reveal" href="{h}"><span class="state">Regular rate</span><h3 style="font-size:1.15rem;margin-top:6px">{n}</h3><span class="price">{p}</span><span class="more">Details &rsaquo;</span></a>' for n, p, h in hl)
     review_link = GBP_REVIEW_URL if GBP_REVIEW_URL != "TODO" else "/contact/#review"
@@ -74,7 +74,7 @@ def home():
   <div class="hero-copy"><span class="eyebrow">Now open &middot; Paintsville, Kentucky</span><span class="script">Welcome to</span><h1>Serene Med Spa Paintsville</h1>
   <p class="lede">Physician-directed aesthetics and wellness in the heart of Johnson County &mdash; Botox&reg; and Xeomin&reg;, InMode laser and radiofrequency treatments, women&rsquo;s wellness, hormone therapy and IV therapy, all with Katrina Watkins, NP.</p>
   <div class="hero-cta"><a class="btn btn-lav" href="{BOOK_URL}" target="_blank" rel="noopener">Book Online</a><a class="btn btn-ghost" href="/pricing/">See Pricing</a></div>
-  <div class="hero-chips"><span class="chip">Botox $10 / unit</span><span class="chip">Xeomin $9 / unit</span><span class="chip">Dysport $4 / unit</span><span class="chip">Laser hair removal from $75</span><span class="chip">Complimentary consults</span></div></div>
+  <div class="hero-chips"><span class="chip">Botox $12 / unit</span><span class="chip">Xeomin $10 / unit</span><span class="chip">Dysport $4 / unit</span><span class="chip">Laser hair removal from $75</span><span class="chip">Complimentary consults</span></div></div>
   <div class="hero-fig">{img("/img/katrina-optimas.jpg", "Katrina Watkins, NP with the InMode Optimas platform at Serene Med Spa Paintsville, KY", lazy=False, sizes="(max-width:900px) 100vw, 45vw")}<div class="tag"><span>Your provider</span><b>Katrina Watkins, NP</b></div></div>
 </div></section>
 {trust}
@@ -112,7 +112,7 @@ def home():
 <iframe class="map" src="{MAP_EMBED}" title="Map to Serene Med Spa, {ADDR1}, {ADDR2}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section>
 {book_band()}'''
     title = "Serene Med Spa Paintsville, KY | Botox, Laser & Wellness"
-    desc = "Physician-directed med spa in Paintsville, KY: Botox $10/unit, Xeomin $9, Dysport $4, laser hair removal, VI Peel, Morpheus8, Biote hormones, IV therapy."
+    desc = "Physician-directed med spa in Paintsville, KY: Botox $12/unit, Xeomin $10, Dysport $4, laser hair removal, VI Peel, Morpheus8, Biote hormones, IV therapy."
     write("/", shell("/", title, desc, body, og_image="/img/katrina-optimas.jpg", ld=[webpage_ld("/", title, desc)]))
 
 
@@ -182,7 +182,7 @@ def pricing():
 {cta_row("/specials/", "Current specials")}</div></section>
 {book_band("Ready to book?", "Prices are confirmed at your complimentary consultation. Book online through Vagaro or call the Paintsville clinic.")}'''
     title = "Med Spa Prices in Paintsville, KY | Serene Med Spa"
-    desc = "Full price list for Serene Med Spa Paintsville, KY: Botox $10/unit, Xeomin $9, Dysport $4, filler $550, VI Peel $250, laser hair removal from $75."
+    desc = "Full price list for Serene Med Spa Paintsville, KY: Botox $12/unit, Xeomin $10, Dysport $4, filler $600, VI Peel $250, laser hair removal from $75."
     offers = [{"@type": "Offer", "name": text_of(l), "price": re.sub(r"[^\d.]", "", p.split("&ndash;")[0].split("/")[0]) or "0", "priceCurrency": "USD", "category": text_of(g)} for g, _, rows in C.PRICES for l, p, n in rows]
     ld = [{"@context": "https://schema.org", "@type": "WebPage", "url": SITE_URL + path, "name": "Med Spa Pricing in Paintsville", "description": desc, "about": {"@id": ORG_ID},
            "mainEntity": {"@type": "OfferCatalog", "name": "Serene Med Spa Paintsville price list", "itemListElement": offers}}]
@@ -252,7 +252,7 @@ def holiday_block():
       <p>Buy a Serene Med Spa Paintsville gift card and we add a bonus: <strong>$25 extra on a $200 card</strong> or <strong>$75 extra on a $500 card</strong>. Good for any treatment or product in Paintsville, and gift cards never expire. Buy online or at the front desk; we load the bonus onto your card.</p>
       <a class="btn btn-sm" href="{GIFT_URL}" target="_blank" rel="noopener">Buy a gift card</a></div>
     <div class="card reveal" id="black-friday" data-until="2026-11-30"><span class="eyebrow">Black Friday weekend &middot; Nov 27&ndash;30</span><h3>Double bonus + prepaid savings</h3>
-      <p><strong>Double gift card bonus:</strong> $50 extra on $200, $150 extra on $500.<br><strong>50 units of Botox or Xeomin, prepaid:</strong> $400 ($8/unit).<br><strong>2 syringes of Juv&eacute;derm filler:</strong> $900.</p>
+      <p><strong>Double gift card bonus:</strong> $50 extra on $200, $150 extra on $500.<br><strong>50 units of Botox or Xeomin, prepaid:</strong> $400 ($8/unit).<br><strong>2 syringes of dermal filler:</strong> $900.</p>
       <p class="fine">Prepaid offers sold Nov 27&ndash;30 only; use within 12 months. Treatment is provided if appropriate after your consultation. Can&rsquo;t be combined with another discount.</p>
       <a class="btn btn-sm" href="{PACKAGES_URL}" target="_blank" rel="noopener">Shop Black Friday</a></div>
   </div>
