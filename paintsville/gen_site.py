@@ -166,7 +166,7 @@ def packages_block(heading="Save with a package"):
     return (f'<div class="reveal" id="packages" style="margin:8px 0 44px"><h2 style="font-size:1.6rem;margin-bottom:8px">{heading}</h2>'
             f'<p class="lede" style="font-size:1rem">Prepay for a series and save. Buy online through our secure Vagaro checkout (pay over time with Affirm), or at the front desk.</p>'
             f'<div class="grid g2" style="margin-top:18px">{cards}{gift}</div>'
-            f'<p class="fine" style="margin-top:12px">Package prices can&rsquo;t be combined with other discounts. Packages are non-refundable but transferable to a friend or family member.</p></div>')
+            f'<p class="fine" style="margin-top:12px">Package prices can&rsquo;t be combined with other discounts. Packages are non-refundable but transferable to a friend or family member, and expire 12 months from purchase.</p></div>')
 
 
 def pricing():

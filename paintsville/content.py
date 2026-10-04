@@ -57,7 +57,7 @@ PRICES = [
 
 # Prepaid packages sold online through Vagaro (Settings > Packages; keep names/prices in sync). (name, price, regular, note)
 PACKAGES = [
-    ("Vitamin B-12 &mdash; 4-pack", "$70", "4 &times; $20 = $80", "Four walk-in B-12 shots; use within 6 months"),
+    ("Vitamin B-12 &mdash; 4-pack", "$70", "4 &times; $20 = $80", "Four walk-in B-12 shots; packages expire 12 months from purchase"),
     ("VI Peel&reg; Original &mdash; series of 3", "$650", "3 &times; $250 = $750", "Spaced 4&ndash;6 weeks apart; aftercare kits included"),
     ("Juv&eacute;derm&reg; filler &mdash; 2 syringes", "$1,000", "2 &times; $550 = $1,100", "Cheeks, chin, jawline, smile lines or lips"),
     ("Sculptra&reg; &mdash; 2 vials", "$1,250", "2 &times; $650 = $1,300", "A typical first session for gradual, natural volume"),
