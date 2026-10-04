@@ -244,6 +244,23 @@ def contact():
     write(path, shell(path, title, desc, body, ld=ld, crumbs=crumbs))
 
 
+def halloween_block():
+    """Katrina's Halloween special, Oct 12-23 2026 (shown/hidden by the visitor's date)."""
+    return f'''<div id="halloween" data-from="2026-10-12" data-until="2026-10-23" style="display:none;margin-bottom:40px">
+  <div class="card reveal"><span class="eyebrow">Halloween special &middot; Oct 12&ndash;23</span><h3>Ghouls just want to have glow</h3>
+    <ul>
+      <li><strong>Botox or Xeomin:</strong> $9 per unit (35-unit minimum)</li>
+      <li><strong>Laser hair removal, face &amp; neck:</strong> 5-treatment packages $275&ndash;$1,000 depending on area</li>
+      <li><strong>Lumecca IPL:</strong> 5 treatments for $600</li>
+      <li><strong>EvolveX:</strong> 5 treatments for $375</li>
+      <li><strong>Morpheus8 face or body:</strong> 2 treatments for $950</li>
+      <li><strong>Lip filler:</strong> full syringe $480 &middot; lip flip $75</li>
+    </ul>
+    <p class="fine">Oct 12&ndash;23, 2026 only. Treatment is provided if appropriate after your consultation. Can&rsquo;t be combined with another discount.</p>
+    <a class="btn btn-sm" href="{PACKAGES_URL}" target="_blank" rel="noopener">Buy a package online</a> <a class="btn btn-sm btn-outline" href="tel:+16069630001">Call or text (606) 963-0001</a></div>
+  <script>(function(){{try{{var s=document.getElementById("halloween"),n=new Date();if(n>=new Date(s.dataset.from+"T00:00:00")&&n<=new Date(s.dataset.until+"T23:59:59"))s.style.display="";}}catch(e){{}}}})();</script>
+</div>'''
+
 def holiday_block():
     """Gift card bonus Nov 1 - Dec 24 and Black Friday weekend Nov 27-30; shown/hidden by the visitor's date."""
     return f'''<div id="holiday" data-from="2026-11-01" data-until="2026-12-24" style="display:none;margin-bottom:40px">
@@ -271,7 +288,7 @@ def specials():
                 f'<div class="card reveal" style="margin-top:28px"><span class="eyebrow">Claim your offer</span><h3>Tell us what you&rsquo;re interested in</h3><p>Send this short form and Katrina will call or text to set up your complimentary consultation. Or <a href="{BOOK_URL}" target="_blank" rel="noopener">book online</a> and mention the offer.</p>{form}</div>')
     else:
         main = f'''<div class="offer reveal"><div><span class="eyebrow">Coming soon</span><h2>New client special coming soon</h2><p class="lede">We are putting the finishing touches on our opening offer for Paintsville. Book a complimentary consultation now and we will apply any special that is live on the day of your first treatment.</p>{cta_row("/pricing/", "See regular rates")}</div><div style="text-align:center"><span class="big">Soon</span><p class="fine">Follow Serene on social or check back here</p></div></div>'''
-    body = page_hero("Specials", "Current offers at Serene Med Spa Paintsville. " + C.PRICE_NOTE, crumbs, "Paintsville offers", cta=False) + f'<section><div class="wrap">{holiday_block()}{main}<div style="margin-top:48px">{packages_block("Packages &amp; gift cards")}</div></div></section>{book_band()}'
+    body = page_hero("Specials", "Current offers at Serene Med Spa Paintsville. " + C.PRICE_NOTE, crumbs, "Paintsville offers", cta=False) + f'<section><div class="wrap">{halloween_block()}{holiday_block()}{main}<div style="margin-top:48px">{packages_block("Packages &amp; gift cards")}</div></div></section>{book_band()}'
     title = "Specials | Serene Med Spa Paintsville, KY"
     desc = "Current specials and new-client offers at Serene Med Spa Paintsville, KY — Botox, Xeomin, laser hair removal, InMode treatments, hormone and IV therapy."
     write(path, shell(path, title, desc, body, crumbs=crumbs))
