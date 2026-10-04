@@ -393,8 +393,22 @@ SPECIALS_SCHEDULE = {
             ("A new deal every midnight", "/deal-of-the-day/", "One treatment a day at each office, one available &mdash; including Black Friday Morpheus8."),
         ], "All November &middot; one per office per day"),
     ],
+    "December": [
+        ("Holiday gift card bonus", [
+            ("$225 gift card for $200", "/specials/#holiday", "Good for any treatment or product at Hudson or Barboursville. Gift cards never expire."),
+            ("$575 gift card for $500", "/specials/#holiday", "Last-minute gift, done in a minute &mdash; buy online and it lands in their inbox."),
+        ], "Through Dec 24 &middot; buy online or at either office"),
+        ("Party-ready glow: 15% off", [
+            ("HydraFacial", "/hydrafacial/", "Deep cleanse, extract and hydrate &mdash; glowing skin the same day, no downtime."),
+            ("VI Peel", "/vi-peel-near-me-benefits-cost/", "Brighter, smoother skin for the new year; book it a week or two before your event."),
+        ], "Dec 1&ndash;19 &middot; Hudson &amp; Barboursville"),
+        ("New Year prepay: 15% off", [
+            ("Any series of 3", "/specials/", "Prepay any 3-treatment series Dec 26&ndash;31 and save 15% &mdash; start the new year with a plan."),
+        ], "Dec 26&ndash;31 &middot; prepaid, use within 12 months"),
+    ],
 }
 SPECIALS_FINE = {
+    "December": "Holiday gift card bonuses are built into the card value (through Dec 24) and gift cards never expire. Party-ready pricing applies to HydraFacial and VI Peel treatments performed Dec 1&ndash;19. New Year prepay applies to series of 3 purchased Dec 26&ndash;31 and used within 12 months. Treatment is provided only if it&rsquo;s appropriate after your consultation. Can&rsquo;t be combined with another discount or membership pricing.",
     "November": "Holiday gift card bonuses are built into the card value (Nov 1 &ndash; Dec 24; doubled Nov 27&ndash;30) and gift cards never expire. Black Friday prepaid offers are sold Nov 27&ndash;30 only and must be used within 12 months. Treatment is provided only if it&rsquo;s appropriate after your consultation; if you&rsquo;re not a candidate, choose a full refund or keep the full value toward any other service or product. Can&rsquo;t be combined with another discount or membership pricing.",
 }
 def _current_month():
@@ -479,16 +493,17 @@ def specials(pages):
         return out
     _default_fine = f"Offers valid through {month} {_last}, {SPECIALS_YEAR} at both offices. Free session is of equal or lesser value and must be used by the same patient. Can&rsquo;t be combined with another discount or membership pricing; a consultation may be required to confirm candidacy."
     _fine = SPECIALS_FINE.get(month, _default_fine)
-    # Pre-render next month's cards (hidden) so the page flips at midnight on the 1st without a rebuild.
+    # Pre-render every later scheduled month (hidden) so the page flips at midnight on the 1st without a rebuild.
     _names = list(SPECIALS_SCHEDULE); _next_html = ""
-    if _names.index(month) + 1 < len(_names):
-        _nm = _names[_names.index(month) + 1]; _nnum = list(_cal.month_name).index(_nm)
+    for _nm in _names[_names.index(month) + 1:]:
+        _nnum = list(_cal.month_name).index(_nm)
         _nfine = SPECIALS_FINE.get(_nm, _default_fine.replace(f"{month} {_last}", f"{_nm} {_cal.monthrange(int(SPECIALS_YEAR), _nnum)[1]}"))
-        _next_html = (f'<section id="sp-next" data-from="{SPECIALS_YEAR}-{_nnum:02d}-01" data-month="{_nm}" style="display:none"><div class="wrap"><div class="grid g3">' + _cards_for(_nm, SPECIALS_SCHEDULE[_nm]) +
-                      f'</div><p class="fine" style="margin-top:28px">{_nfine}</p></div></section>'
-                      '<script>(function(){try{var x=document.getElementById("sp-next");if(!x||new Date()<new Date(x.dataset.from+"T00:00:00"))return;'
-                      'var c=document.getElementById("sp-cur");if(c)c.style.display="none";x.style.display="";'
-                      'var h=document.querySelector("h1");if(h)h.innerHTML=x.dataset.month+" specials";}catch(e){}})();</script>')
+        _next_html += (f'<section class="sp-later" data-from="{SPECIALS_YEAR}-{_nnum:02d}-01" data-month="{_nm}" style="display:none"><div class="wrap"><div class="grid g3">' + _cards_for(_nm, SPECIALS_SCHEDULE[_nm]) +
+                       f'</div><p class="fine" style="margin-top:28px">{_nfine}</p></div></section>')
+    if _next_html:
+        _next_html += ('<script>(function(){try{var n=new Date(),pick=null;document.querySelectorAll(".sp-later").forEach(function(x){if(n>=new Date(x.dataset.from+"T00:00:00"))pick=x;});'
+                       'if(!pick)return;var c=document.getElementById("sp-cur");if(c)c.style.display="none";pick.style.display="";'
+                       'var h=document.querySelector("h1");if(h)h.innerHTML=pick.dataset.month+" specials";}catch(e){}})();</script>')
     cards = ""
     for deal, items, note in SPECIALS:
         rows = "".join(f'<li><a href="{href}"><strong>{name}</strong></a><span>{blurb}</span></li>' for name, href, blurb in items)

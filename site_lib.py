@@ -449,7 +449,7 @@ _NOV_TXT = ('&#10022; <a href="' + _B + '/specials/#holiday">Holiday gift card b
 _BF_TXT = ('&#10022; <a href="' + _B + '/specials/#black-friday">Black Friday weekend</a>: $250 gift card for $200 &middot; $650 for $500, plus prepaid Botox &amp; filler savings'
            '<span class="promo-more"> &middot; Through Nov 30</span>')
 _DEC_TXT = ('&#10022; <a href="' + _B + '/specials/#holiday">Holiday gift card bonus</a>: $225 card for $200 &middot; $575 card for $500'
-            '<span class="promo-more"> &middot; Through Dec 24</span>')
+            '<span class="promo-more"> &middot; Through Dec 24 &middot; plus 15% off HydraFacial &amp; VI Peel through Dec 19</span>')
 _NOV_JS = ('<div class="promo" data-promo="nov-js" style="display:none">' + _NOV_TXT + '</div>'
            '<div class="promo" data-promo="bf-js" style="display:none">' + _BF_TXT + '</div>'
            '<div class="promo" data-promo="dec-js" style="display:none">' + _DEC_TXT + '</div>'
