@@ -443,15 +443,28 @@ _OCT_HUD = ('<div class="promo" data-promo="oct-hud" style="display:none">&#1002
 _OCT_MAIN = ('<div class="promo" data-promo="oct-main" style="display:none">&#10022; October: <a href="' + _B + '/hudson/ultherapy/#studio3">30% off Ultherapy</a> (first 20 clients) '
              '&middot; <a href="' + _B + '/barboursville/sciton-moxi/">Fall Laser Season in Barboursville</a>: BBL + MOXI $750'
              '<span class="promo-more"> &middot; Through Oct 31</span></div>')
-_NOV_PROMO = '<div class="promo" data-promo="nov">&#10022; <a href="/specials/">This month&rsquo;s specials</a>' + _NP + '</div>'
+# November-December variants (Robin OK'd Oct 4): holiday gift card bonus Nov 1 - Dec 24, doubled Black Friday weekend Nov 27-30.
+_NOV_TXT = ('&#10022; <a href="' + _B + '/specials/#holiday">Holiday gift card bonus</a>: $225 card for $200 &middot; $575 card for $500'
+            '<span class="promo-more"> &middot; Black Friday weekend (Nov 27&ndash;30) it doubles</span>')
+_BF_TXT = ('&#10022; <a href="' + _B + '/specials/#black-friday">Black Friday weekend</a>: $250 gift card for $200 &middot; $650 for $500, plus prepaid Botox &amp; filler savings'
+           '<span class="promo-more"> &middot; Through Nov 30</span>')
+_DEC_TXT = ('&#10022; <a href="' + _B + '/specials/#holiday">Holiday gift card bonus</a>: $225 card for $200 &middot; $575 card for $500'
+            '<span class="promo-more"> &middot; Through Dec 24</span>')
+_NOV_JS = ('<div class="promo" data-promo="nov-js" style="display:none">' + _NOV_TXT + '</div>'
+           '<div class="promo" data-promo="bf-js" style="display:none">' + _BF_TXT + '</div>'
+           '<div class="promo" data-promo="dec-js" style="display:none">' + _DEC_TXT + '</div>'
+           '<div class="promo" data-promo="gen-js" style="display:none">&#10022; <a href="' + _B + '/specials/">This month&rsquo;s specials</a>' + _NP + '</div>')
 _PROMO_JS = ('<script>(function(){try{var d=new Date();if(d<new Date(2026,9,1))return;'
-             'var p=location.pathname,k=d>=new Date(2026,10,1)?"nov-js":(p.indexOf("/barboursville")==0?"oct-bv":(p.indexOf("/hudson")==0?"oct-hud":"oct-main"));'
+             'var p=location.pathname,k=d>=new Date(2026,11,25)?"gen-js":d>=new Date(2026,11,1)?"dec-js":d>=new Date(2026,10,27)?"bf-js":d>=new Date(2026,10,1)?"nov-js":'
+             '(p.indexOf("/barboursville")==0?"oct-bv":(p.indexOf("/hudson")==0?"oct-hud":"oct-main"));'
              'var s=document.querySelector(\'.promo[data-promo="sep"]\'),n=document.querySelector(\'.promo[data-promo="\'+k+\'"]\');'
              'if(s&&n){s.style.display="none";n.style.display="";}}catch(e){}})();</script>')
-_NOV_JS = ('<div class="promo" data-promo="nov-js" style="display:none">&#10022; <a href="' + _B + '/specials/">This month&rsquo;s specials</a>' + _NP + '</div>')
 _SEPT_PROMO = _SEPT_PROMO.replace('<div class="promo">', '<div class="promo" data-promo="sep">', 1)
 _today = _dt.date.today()
-PROMO = (_SEPT_PROMO + _OCT_BV + _OCT_HUD + _OCT_MAIN + _NOV_JS + _PROMO_JS) if _today <= _dt.date(2026, 10, 31) else _NOV_PROMO
+# Base bar (visible without JS) follows the build date; the script swaps in the right variant by the visitor's date.
+_BASE = (_SEPT_PROMO if _today <= _dt.date(2026, 10, 31) else
+         '<div class="promo" data-promo="sep">' + (_NOV_TXT if _today < _dt.date(2026, 11, 27) else _BF_TXT if _today <= _dt.date(2026, 11, 30) else _DEC_TXT if _today <= _dt.date(2026, 12, 24) else '&#10022; <a href="' + _B + '/specials/">This month&rsquo;s specials</a>' + _NP) + '</div>')
+PROMO = _BASE + _OCT_BV + _OCT_HUD + _OCT_MAIN + _NOV_JS + _PROMO_JS
 NAV = PROMO + f'''<header>
   <div class="wrap nav">
     <a class="logo" href="/"><img src="{LOGO}" alt="Serene Med Spa" width="220" height="123"></a>
