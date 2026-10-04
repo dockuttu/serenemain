@@ -39,6 +39,8 @@ SISTER = [("https://serenemedspas.com/", "Serene Med Spa (main site)"),
           ("https://serenemedspas.com/hudson/", "Serene Hudson, OH"),
           ("https://serenemedspas.com/barboursville/", "Serene Barboursville, WV"),
           ("https://blog.serenemedspas.com/", "Serene blog")]
+PACKAGES_URL = BOOK_URL + "/memberships"  # Vagaro public Packages tab (online cart activated Oct 4 2026; 4 packages Show Online)
+GIFT_URL = BOOK_URL + "/gift-certificates"  # Vagaro public Gift Cards tab (Sell Gift Cards online ON Oct 4 2026; no expiry)
 FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61590974563966"  # Serene Med Spa Paintsville page (Katrina created; Robin admin since Oct 1 2026)
 SAME_AS = [u for u, _ in SISTER] + [MAP_LINK, FACEBOOK_URL]
 

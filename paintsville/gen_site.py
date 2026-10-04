@@ -155,6 +155,20 @@ def services():
     write(path, shell(path, title, desc, body, ld=ld, crumbs=crumbs))
 
 
+def packages_block(heading="Save with a package"):
+    """Prepaid Vagaro packages + gift cards, bought online. Used on /pricing/ and /specials/."""
+    cards = "".join(f'<div class="card reveal"><span class="eyebrow">Package</span><h3 style="font-size:1.25rem">{n}</h3>'
+                    f'<p><span class="price" style="font-size:1.4rem">{p}</span> <span class="fine" style="text-decoration:line-through">{reg}</span></p><p>{note}</p>'
+                    f'<a class="btn btn-sm" href="{PACKAGES_URL}" target="_blank" rel="noopener">Buy online</a></div>' for n, p, reg, note in C.PACKAGES)
+    gift = (f'<div class="card reveal"><span class="eyebrow">Gift cards</span><h3 style="font-size:1.25rem">Give a Serene gift card</h3>'
+            f'<p>Any amount, delivered by email or printed at home, good for every treatment in Paintsville. Gift cards never expire.</p>'
+            f'<a class="btn btn-sm" href="{GIFT_URL}" target="_blank" rel="noopener">Buy a gift card</a></div>')
+    return (f'<div class="reveal" id="packages" style="margin:8px 0 44px"><h2 style="font-size:1.6rem;margin-bottom:8px">{heading}</h2>'
+            f'<p class="lede" style="font-size:1rem">Prepay for a series and save. Buy online through our secure Vagaro checkout (pay over time with Affirm), or at the front desk.</p>'
+            f'<div class="grid g2" style="margin-top:18px">{cards}{gift}</div>'
+            f'<p class="fine" style="margin-top:12px">Package prices can&rsquo;t be combined with other discounts. Packages are non-refundable but transferable to a friend or family member.</p></div>')
+
+
 def pricing():
     path = "/pricing/"
     crumbs = [("/", "Home"), (None, "Pricing")]
@@ -163,7 +177,7 @@ def pricing():
         more = f'<p style="margin-top:14px"><a class="more" href="{link}" style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600">About this treatment &rsaquo;</a></p>' if link else ""
         secs += f'<div class="reveal" id="{re.sub(r"[^a-z0-9]+", "-", text_of(g).lower()).strip("-")}" style="margin-bottom:44px"><h2 style="font-size:1.6rem;margin-bottom:16px">{g}</h2>{price_table(rows, note=False, caption=text_of(g) + " prices")}{more}</div>'
     body = page_hero("Med Spa Pricing in Paintsville", "Every regular rate at our Paintsville office, published. " + C.PRICE_NOTE + " Complimentary consultations; your total is confirmed before any treatment.", crumbs, "Transparent pricing") + f'''
-<section><div class="wrap narrow">{secs}
+<section><div class="wrap narrow">{secs}{packages_block()}
 <div class="disclaim">All prices are regular rates in US dollars and may change. Current specials may apply &mdash; see <a href="/specials/">specials</a> or ask us. Unit counts, areas and number of sessions are determined at your consultation; the treatment plan and total cost are confirmed with you before anything is done. Individual results vary.</div>
 {cta_row("/specials/", "Current specials")}</div></section>
 {book_band("Ready to book?", "Prices are confirmed at your complimentary consultation. Book online through Vagaro or call the Paintsville clinic.")}'''
@@ -241,7 +255,7 @@ def specials():
                 f'<div class="card reveal" style="margin-top:28px"><span class="eyebrow">Claim your offer</span><h3>Tell us what you&rsquo;re interested in</h3><p>Send this short form and Katrina will call or text to set up your complimentary consultation. Or <a href="{BOOK_URL}" target="_blank" rel="noopener">book online</a> and mention the offer.</p>{form}</div>')
     else:
         main = f'''<div class="offer reveal"><div><span class="eyebrow">Coming soon</span><h2>New client special coming soon</h2><p class="lede">We are putting the finishing touches on our opening offer for Paintsville. Book a complimentary consultation now and we will apply any special that is live on the day of your first treatment.</p>{cta_row("/pricing/", "See regular rates")}</div><div style="text-align:center"><span class="big">Soon</span><p class="fine">Follow Serene on social or check back here</p></div></div>'''
-    body = page_hero("Specials", "Current offers at Serene Med Spa Paintsville. " + C.PRICE_NOTE, crumbs, "Paintsville offers", cta=False) + f'<section><div class="wrap">{main}</div></section>{book_band()}'
+    body = page_hero("Specials", "Current offers at Serene Med Spa Paintsville. " + C.PRICE_NOTE, crumbs, "Paintsville offers", cta=False) + f'<section><div class="wrap">{main}<div style="margin-top:48px">{packages_block("Packages &amp; gift cards")}</div></div></section>{book_band()}'
     title = "Specials | Serene Med Spa Paintsville, KY"
     desc = "Current specials and new-client offers at Serene Med Spa Paintsville, KY — Botox, Xeomin, laser hair removal, InMode treatments, hormone and IV therapy."
     write(path, shell(path, title, desc, body, crumbs=crumbs))
