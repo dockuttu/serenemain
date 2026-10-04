@@ -386,7 +386,7 @@ SPECIALS_SCHEDULE = {
         ("Black Friday weekend", [
             ("Double gift card bonus", "/specials/#black-friday", "$250 gift card for $200 &middot; $650 gift card for $500, Nov 27&ndash;30 only."),
             ("50 units of Botox or Xeomin, prepaid", "/specials/#black-friday", "Hudson $450 ($9/unit) &middot; Barboursville $400 ($8/unit). Use within 12 months."),
-            ("3 syringes of Juv&eacute;derm filler", "/specials/#black-friday", "$1,200 at either office (regularly $1,400 Hudson, $1,300 Barboursville). Prepay by phone or at the front desk."),
+            ("3 syringes of Juv&eacute;derm filler", "/specials/#black-friday", "$1,200 at either office (regularly $1,400 Hudson, $1,300 Barboursville). Buy online Nov 27&ndash;30 or at the front desk."),
             ("20% off any series of 3", "/specials/#black-friday", "Prepay any 3-treatment series Nov 27&ndash;30 and save 20%."),
         ], "Nov 27&ndash;30 &middot; prepaid offers, use within 12 months"),
         ("Deal of the Day", [
@@ -451,7 +451,7 @@ def holiday_block():
     <div class="card reveal special" id="black-friday" data-until="2026-11-30"><span class="eyebrow">Black Friday weekend &middot; Nov 27&ndash;30</span><h3 class="deal">Double bonus + prepaid savings</h3>
       <ul class="deal-list"><li><strong>$250 gift card for $200 &middot; $650 for $500</strong><span>Double the holiday bonus, four days only</span></li>
         <li><strong>50 units of Botox or Xeomin, prepaid</strong><span>Hudson $450 ($9/unit) &middot; Barboursville $400 ($8/unit)</span></li>
-        <li><strong>3 syringes of Juv&eacute;derm filler for $1,200</strong><span>Either office; regularly $1,400 Hudson, $1,300 Barboursville &middot; prepay by phone or at the front desk</span></li>
+        <li><strong>3 syringes of Juv&eacute;derm filler for $1,200</strong><span>Either office; regularly $1,400 Hudson, $1,300 Barboursville &middot; buy online or at the front desk</span></li>
         <li><strong>20% off any series of 3</strong><span>Prepay Nov 27&ndash;30</span></li></ul>
       <p class="deal-note">Prepaid offers: use within 12 months &middot; can&rsquo;t be combined with another discount</p>
       <p style="margin-top:14px"><a class="btn" href="{GIFT_CARDS_URL}" target="_blank" rel="noopener">Shop Black Friday</a> <a class="btn btn-outline" href="/deal-of-the-day/">Deal of the Day</a></p></div>
