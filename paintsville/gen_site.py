@@ -112,7 +112,7 @@ def home():
 <iframe class="map" src="{MAP_EMBED}" title="Map to Serene Med Spa, {ADDR1}, {ADDR2}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section>
 {book_band()}'''
     title = "Serene Med Spa Paintsville, KY | Botox, Laser & Wellness"
-    desc = "Physician-directed med spa in Paintsville, KY: Botox $10/unit, Xeomin $9/unit, Dysport $4/unit, laser hair removal, VI Peel, Morpheus8, Biote hormones and IV therapy."
+    desc = "Physician-directed med spa in Paintsville, KY: Botox $10/unit, Xeomin $9, Dysport $4, laser hair removal, VI Peel, Morpheus8, Biote hormones, IV therapy."
     write("/", shell("/", title, desc, body, og_image="/img/katrina-optimas.jpg", ld=[webpage_ld("/", title, desc)]))
 
 
@@ -168,7 +168,7 @@ def pricing():
 {cta_row("/specials/", "Current specials")}</div></section>
 {book_band("Ready to book?", "Prices are confirmed at your complimentary consultation. Book online through Vagaro or call the Paintsville clinic.")}'''
     title = "Med Spa Prices in Paintsville, KY | Serene Med Spa"
-    desc = "Full price list for Serene Med Spa Paintsville, KY: Botox $10/unit, Xeomin $9, Dysport $4, filler $550, VI Peel $250, laser hair removal from $75, Biote $675."
+    desc = "Full price list for Serene Med Spa Paintsville, KY: Botox $10/unit, Xeomin $9, Dysport $4, filler $550, VI Peel $250, laser hair removal from $75."
     offers = [{"@type": "Offer", "name": text_of(l), "price": re.sub(r"[^\d.]", "", p.split("&ndash;")[0].split("/")[0]) or "0", "priceCurrency": "USD", "category": text_of(g)} for g, _, rows in C.PRICES for l, p, n in rows]
     ld = [{"@context": "https://schema.org", "@type": "WebPage", "url": SITE_URL + path, "name": "Med Spa Pricing in Paintsville", "description": desc, "about": {"@id": ORG_ID},
            "mainEntity": {"@type": "OfferCatalog", "name": "Serene Med Spa Paintsville price list", "itemListElement": offers}}]
