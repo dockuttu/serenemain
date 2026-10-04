@@ -315,7 +315,14 @@ def _mega():
 def _drop(items):
     return '<div class="drop">' + "".join(f'<a href="{h}">{t}</a>' for h, t in items) + '</div>'
 
-PROMO = '<div class="promo">&#10022; Now open in Paintsville &mdash; <a href="/specials/">see our current specials</a> or <a href="' + BOOK_URL + '" target="_blank" rel="noopener">book online</a></div>'
+PROMO = '<div class="promo" data-promo="base">&#10022; Now open in Paintsville &mdash; <a href="/specials/">see our current specials</a> or <a href="' + BOOK_URL + '" target="_blank" rel="noopener">book online</a></div>'
+# Holiday variants (Robin OK'd Oct 4 2026), swapped in by the visitor's date so no rebuild is needed:
+# gift card bonus Nov 1 - Dec 24 (front desk loads the bonus; Vagaro has no bonus promos), doubled + prepaid packages Nov 27-30.
+PROMO += ('<div class="promo" data-promo="nov" style="display:none">&#10022; <a href="/specials/#holiday">Holiday gift card bonus</a>: $25 extra on a $200 card &middot; $75 extra on $500</div>'
+          '<div class="promo" data-promo="bf" style="display:none">&#10022; <a href="/specials/#holiday">Black Friday weekend</a>: double gift card bonus, 50 units Botox or Xeomin $400 &middot; 2 syringes filler $900</div>'
+          '<div class="promo" data-promo="dec" style="display:none">&#10022; <a href="/specials/#holiday">Holiday gift card bonus</a>: $25 extra on a $200 card &middot; $75 extra on $500 &middot; through Dec 24</div>'
+          '<script>(function(){try{var d=new Date(),k=d>=new Date(2026,11,25)?"":d>=new Date(2026,11,1)?"dec":d>=new Date(2026,10,27)?"bf":d>=new Date(2026,10,1)?"nov":"";'
+          'if(!k)return;var b=document.querySelector(\'.promo[data-promo="base"]\'),n=document.querySelector(\'.promo[data-promo="\'+k+\'"]\');if(b&&n){b.style.display="none";n.style.display="";}}catch(e){}})();</script>')
 
 def nav():
     return PROMO + f'''<header>

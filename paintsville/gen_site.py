@@ -244,6 +244,22 @@ def contact():
     write(path, shell(path, title, desc, body, ld=ld, crumbs=crumbs))
 
 
+def holiday_block():
+    """Gift card bonus Nov 1 - Dec 24 and Black Friday weekend Nov 27-30; shown/hidden by the visitor's date."""
+    return f'''<div id="holiday" data-from="2026-11-01" data-until="2026-12-24" style="display:none;margin-bottom:40px">
+  <div class="grid g2">
+    <div class="card reveal"><span class="eyebrow">Holiday gift cards &middot; Nov 1 &ndash; Dec 24</span><h3>Give more this season</h3>
+      <p>Buy a Serene Med Spa Paintsville gift card and we add a bonus: <strong>$25 extra on a $200 card</strong> or <strong>$75 extra on a $500 card</strong>. Good for any treatment or product in Paintsville, and gift cards never expire. Buy online or at the front desk; we load the bonus onto your card.</p>
+      <a class="btn btn-sm" href="{GIFT_URL}" target="_blank" rel="noopener">Buy a gift card</a></div>
+    <div class="card reveal" id="black-friday" data-until="2026-11-30"><span class="eyebrow">Black Friday weekend &middot; Nov 27&ndash;30</span><h3>Double bonus + prepaid savings</h3>
+      <p><strong>Double gift card bonus:</strong> $50 extra on $200, $150 extra on $500.<br><strong>50 units of Botox or Xeomin, prepaid:</strong> $400 ($8/unit).<br><strong>2 syringes of Juv&eacute;derm filler:</strong> $900.</p>
+      <p class="fine">Prepaid offers sold Nov 27&ndash;30 only; use within 12 months. Treatment is provided if appropriate after your consultation. Can&rsquo;t be combined with another discount.</p>
+      <a class="btn btn-sm" href="{PACKAGES_URL}" target="_blank" rel="noopener">Shop Black Friday</a></div>
+  </div>
+  <script>(function(){{try{{var n=new Date();["holiday","black-friday"].forEach(function(id){{var s=document.getElementById(id);if(!s)return;var f=s.dataset.from,u=s.dataset.until;
+    if(f&&n<new Date(f+"T00:00:00")){{s.style.display="none";return;}}if(u&&n>new Date(u+"T23:59:59")){{s.style.display="none";return;}}s.style.display="";}});}}catch(e){{}}}})();</script>
+</div>'''
+
 def specials():
     path = "/specials/"
     crumbs = [("/", "Home"), (None, "Specials")]
@@ -255,7 +271,7 @@ def specials():
                 f'<div class="card reveal" style="margin-top:28px"><span class="eyebrow">Claim your offer</span><h3>Tell us what you&rsquo;re interested in</h3><p>Send this short form and Katrina will call or text to set up your complimentary consultation. Or <a href="{BOOK_URL}" target="_blank" rel="noopener">book online</a> and mention the offer.</p>{form}</div>')
     else:
         main = f'''<div class="offer reveal"><div><span class="eyebrow">Coming soon</span><h2>New client special coming soon</h2><p class="lede">We are putting the finishing touches on our opening offer for Paintsville. Book a complimentary consultation now and we will apply any special that is live on the day of your first treatment.</p>{cta_row("/pricing/", "See regular rates")}</div><div style="text-align:center"><span class="big">Soon</span><p class="fine">Follow Serene on social or check back here</p></div></div>'''
-    body = page_hero("Specials", "Current offers at Serene Med Spa Paintsville. " + C.PRICE_NOTE, crumbs, "Paintsville offers", cta=False) + f'<section><div class="wrap">{main}<div style="margin-top:48px">{packages_block("Packages &amp; gift cards")}</div></div></section>{book_band()}'
+    body = page_hero("Specials", "Current offers at Serene Med Spa Paintsville. " + C.PRICE_NOTE, crumbs, "Paintsville offers", cta=False) + f'<section><div class="wrap">{holiday_block()}{main}<div style="margin-top:48px">{packages_block("Packages &amp; gift cards")}</div></div></section>{book_band()}'
     title = "Specials | Serene Med Spa Paintsville, KY"
     desc = "Current specials and new-client offers at Serene Med Spa Paintsville, KY — Botox, Xeomin, laser hair removal, InMode treatments, hormone and IV therapy."
     write(path, shell(path, title, desc, body, crumbs=crumbs))

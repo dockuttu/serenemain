@@ -378,6 +378,24 @@ SPECIALS_SCHEDULE = {
             ("Hudson, OH", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $950, lower face $1,900, full face $2,600."),
         ], "As seen on WSAZ Studio 3 &middot; first 20 clients &middot; mention &ldquo;Studio 3&rdquo;"),
     ],
+    "November": [
+        ("Holiday gift card bonus", [
+            ("$225 gift card for $200", "/specials/#holiday", "Good for any treatment or product at Hudson or Barboursville. Gift cards never expire."),
+            ("$575 gift card for $500", "/specials/#holiday", "The bigger bonus &mdash; $75 extra to spend on yourself or someone you love."),
+        ], "Nov 1 &ndash; Dec 24 &middot; buy online or at either office"),
+        ("Black Friday weekend", [
+            ("Double gift card bonus", "/specials/#black-friday", "$250 gift card for $200 &middot; $650 gift card for $500, Nov 27&ndash;30 only."),
+            ("50 units of Botox or Xeomin, prepaid", "/specials/#black-friday", "Hudson $450 ($9/unit) &middot; Barboursville $400 ($8/unit). Use within 12 months."),
+            ("3 syringes of Juv&eacute;derm filler", "/specials/#black-friday", "$1,200 at either office (regularly $1,400 Hudson, $1,300 Barboursville)."),
+            ("20% off any series of 3", "/specials/#black-friday", "Prepay any 3-treatment series Nov 27&ndash;30 and save 20%."),
+        ], "Nov 27&ndash;30 &middot; prepaid offers, use within 12 months"),
+        ("Deal of the Day", [
+            ("A new deal every midnight", "/deal-of-the-day/", "One treatment a day at each office, one available &mdash; including Black Friday Morpheus8."),
+        ], "All November &middot; one per office per day"),
+    ],
+}
+SPECIALS_FINE = {
+    "November": "Holiday gift card bonuses are built into the card value (Nov 1 &ndash; Dec 24; doubled Nov 27&ndash;30) and gift cards never expire. Black Friday prepaid offers are sold Nov 27&ndash;30 only and must be used within 12 months. Treatment is provided only if it&rsquo;s appropriate after your consultation; if you&rsquo;re not a candidate, choose a full refund or keep the full value toward any other service or product. Can&rsquo;t be combined with another discount or membership pricing.",
 }
 def _current_month():
     today = _dt.date.today()
@@ -419,11 +437,58 @@ def studio3_block():
            "publisher": {"@id": SITE_URL + "/#organization"}, "actor": {"@type": "Person", "name": "Robin Arora, MD", "url": SITE_URL + "/our-providers/robin-arora-md/"}}]
     return html, ld
 
+GIFT_CARDS_URL = "https://clients.mangomint.com/gift-cards/serenemedspa"
+def holiday_block():
+    """Gift card bonus (Nov 1 - Dec 24) + Black Friday weekend (Nov 27-30). Shown/hidden in the browser by date so no rebuild is needed."""
+    return f'''
+<section class="tint-sand" id="holiday" data-from="2026-11-01" data-until="2026-12-24" style="display:none"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">Holiday gift cards &middot; Hudson &amp; Barboursville</span><h2>Give more this season</h2>
+    <p style="max-width:720px;margin:10px auto 0">Buy a Serene Med Spa gift card and we add a bonus: <strong>$225 for $200</strong> or <strong>$575 for $500</strong>, November 1 through December 24. Good for any treatment or product at either office, and gift cards never expire.</p></div>
+  <div class="grid g2">
+    <div class="card reveal special"><span class="eyebrow">Nov 1 &ndash; Dec 24</span><h3 class="deal">Holiday bonus</h3>
+      <ul class="deal-list"><li><strong>$225 gift card for $200</strong><span>$25 bonus built in</span></li><li><strong>$575 gift card for $500</strong><span>$75 bonus built in</span></li></ul>
+      <p style="margin-top:14px"><a class="btn" href="{GIFT_CARDS_URL}" target="_blank" rel="noopener">Buy a gift card</a></p></div>
+    <div class="card reveal special" id="black-friday" data-until="2026-11-30"><span class="eyebrow">Black Friday weekend &middot; Nov 27&ndash;30</span><h3 class="deal">Double bonus + prepaid savings</h3>
+      <ul class="deal-list"><li><strong>$250 gift card for $200 &middot; $650 for $500</strong><span>Double the holiday bonus, four days only</span></li>
+        <li><strong>50 units of Botox or Xeomin, prepaid</strong><span>Hudson $450 ($9/unit) &middot; Barboursville $400 ($8/unit)</span></li>
+        <li><strong>3 syringes of Juv&eacute;derm filler for $1,200</strong><span>Either office; regularly $1,400 Hudson, $1,300 Barboursville</span></li>
+        <li><strong>20% off any series of 3</strong><span>Prepay Nov 27&ndash;30</span></li></ul>
+      <p class="deal-note">Prepaid offers: use within 12 months &middot; can&rsquo;t be combined with another discount</p>
+      <p style="margin-top:14px"><a class="btn" href="{GIFT_CARDS_URL}" target="_blank" rel="noopener">Shop Black Friday</a> <a class="btn btn-outline" href="/deal-of-the-day/">Deal of the Day</a></p></div>
+  </div>
+  <script>(function(){{try{{var n=new Date();["holiday","black-friday"].forEach(function(id){{var s=document.getElementById(id);if(!s)return;var f=s.dataset.from,u=s.dataset.until;
+    if(f&&n<new Date(f+"T00:00:00")){{s.style.display="none";return;}}if(u&&n>new Date(u+"T23:59:59")){{s.style.display="none";return;}}s.style.display="";}});}}catch(e){{}}}})();</script>
+</div></section>'''
+
 def specials(pages):
     month = SPECIALS_MONTH
     import calendar as _cal
     _mnum = list(_cal.month_name).index(month); _last = _cal.monthrange(int(SPECIALS_YEAR), _mnum)[1]
     studio3_html, studio3_ld = studio3_block()
+    def _cards_for(mname, specs):
+        out = ""
+        for deal, items, note in specs:
+            rows = "".join(f'<li><a href="{href}"><strong>{name}</strong></a><span>{blurb}</span></li>' for name, href, blurb in items)
+            out += f'''
+    <div class="card reveal special">
+      <span class="eyebrow">{mname} special</span>
+      <h3 class="deal">{deal}</h3>
+      <ul class="deal-list">{rows}</ul>
+      <p class="deal-note">{note}</p>
+    </div>'''
+        return out
+    _default_fine = f"Offers valid through {month} {_last}, {SPECIALS_YEAR} at both offices. Free session is of equal or lesser value and must be used by the same patient. Can&rsquo;t be combined with another discount or membership pricing; a consultation may be required to confirm candidacy."
+    _fine = SPECIALS_FINE.get(month, _default_fine)
+    # Pre-render next month's cards (hidden) so the page flips at midnight on the 1st without a rebuild.
+    _names = list(SPECIALS_SCHEDULE); _next_html = ""
+    if _names.index(month) + 1 < len(_names):
+        _nm = _names[_names.index(month) + 1]; _nnum = list(_cal.month_name).index(_nm)
+        _nfine = SPECIALS_FINE.get(_nm, _default_fine.replace(f"{month} {_last}", f"{_nm} {_cal.monthrange(int(SPECIALS_YEAR), _nnum)[1]}"))
+        _next_html = (f'<section id="sp-next" data-from="{SPECIALS_YEAR}-{_nnum:02d}-01" data-month="{_nm}" style="display:none"><div class="wrap"><div class="grid g3">' + _cards_for(_nm, SPECIALS_SCHEDULE[_nm]) +
+                      f'</div><p class="fine" style="margin-top:28px">{_nfine}</p></div></section>'
+                      '<script>(function(){try{var x=document.getElementById("sp-next");if(!x||new Date()<new Date(x.dataset.from+"T00:00:00"))return;'
+                      'var c=document.getElementById("sp-cur");if(c)c.style.display="none";x.style.display="";'
+                      'var h=document.querySelector("h1");if(h)h.innerHTML=x.dataset.month+" specials";}catch(e){}})();</script>')
     cards = ""
     for deal, items, note in SPECIALS:
         rows = "".join(f'<li><a href="{href}"><strong>{name}</strong></a><span>{blurb}</span></li>' for name, href, blurb in items)
@@ -449,11 +514,13 @@ def specials(pages):
 </style>
 {DP.specials_banner()}
 {studio3_html}
-<section><div class="wrap">
+{holiday_block()}
+<section id="sp-cur" data-until="{SPECIALS_YEAR}-{_mnum:02d}-{_last:02d}"><div class="wrap">
   <div class="grid g3">{cards}
   </div>
-  <p class="fine" style="margin-top:28px">Offers valid through {month} {_last}, {SPECIALS_YEAR} at both offices. Free session is of equal or lesser value and must be used by the same patient. Can&rsquo;t be combined with another discount or membership pricing; a consultation may be required to confirm candidacy.</p>
+  <p class="fine" style="margin-top:28px">{_fine}</p>
 </div></section>
+{_next_html}
 <section class="tint-sand"><div class="wrap band">
   <div class="prose"><h2>How to claim a special</h2><p>Book online or call the office and mention the {month} special when you check in. Specials can&rsquo;t be combined with other discounts, and some require a consultation first so we can confirm you&rsquo;re a good candidate.</p>
   <p>Want them in your inbox? Ask the front desk to add you to our monthly email, or follow <a href="https://www.instagram.com/serene.wellness.wv" target="_blank" rel="noopener">@serene.wellness.wv</a>.</p>
