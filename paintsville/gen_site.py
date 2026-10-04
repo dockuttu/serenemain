@@ -95,7 +95,7 @@ def home():
 <p class="fine" style="margin-top:18px">{C.BY_SLUG["intimate-wellness"]["disclaimer"]}</p></div></div></section>
 <section><div class="wrap"><div class="section-head"><span class="eyebrow">Feel as good as you look</span><h2>Hormone &amp; IV wellness</h2></div>
 <div class="grid g2">
-  <a class="card reveal" href="/hormone-therapy/"><img src="/img/logos/biote-dark.png" alt="Biote" width="120" height="40" loading="lazy" style="height:40px;width:auto;margin-bottom:14px"><h3>Biote hormone pellet therapy</h3><p>Lab-guided bioidentical testosterone and estrogen pellets for women and men, with dosing approved by our physician medical director. Pellets $675 &middot; labs $125.</p><span class="more">Hormone therapy &rsaquo;</span></a>
+  <a class="card reveal" href="/hormone-therapy/"><img src="/img/logos/biote-dark.png" alt="Biote" width="120" height="40" loading="lazy" style="height:40px;width:auto;margin-bottom:14px"><h3>Biote hormone pellet therapy</h3><p>Lab-guided bioidentical testosterone and estrogen pellets for women and men, with dosing approved by our physician medical director. Pellets women $405, men from $465 &middot; labs $125.</p><span class="more">Hormone therapy &rsaquo;</span></a>
   <a class="card reveal" href="/iv-therapy/"><h3 style="margin-top:54px">IV therapy &mdash; Myers&rsquo; Cocktail</h3><p>B vitamins, vitamin C, magnesium and calcium in a relaxing 45-minute infusion for energy, immunity and recovery. $175.</p><span class="more">IV therapy &rsaquo;</span></a>
 </div></div></section>
 {logos_strip()}
