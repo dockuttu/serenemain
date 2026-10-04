@@ -110,11 +110,11 @@
  {
   "date": "2026-10-07",
   "office": "hudson",
-  "treatment": "Sciton Moxi",
-  "covers": "One Moxi laser treatment, full face",
-  "regular": 500,
-  "price": 429,
-  "off": 14
+  "treatment": "Laser Facial",
+  "covers": "One laser facial",
+  "regular": 400,
+  "price": 349,
+  "off": 13
  },
  {
   "date": "2026-10-07",
@@ -272,11 +272,11 @@
  {
   "date": "2026-10-16",
   "office": "hudson",
-  "treatment": "Sciton BBL Heroic",
-  "covers": "One BBL Heroic photofacial",
-  "regular": 400,
-  "price": 349,
-  "off": 13
+  "treatment": "DiamondGlow",
+  "covers": "One DiamondGlow facial",
+  "regular": 150,
+  "price": 129,
+  "off": 14
  },
  {
   "date": "2026-10-16",

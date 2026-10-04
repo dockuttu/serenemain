@@ -61,8 +61,8 @@
  },
  "2026-10-07": {
   "hudson": {
-   "value": 500,
-   "treatment": "Sciton Moxi"
+   "value": 400,
+   "treatment": "Laser Facial"
   },
   "barboursville": {
    "value": 150,
@@ -151,8 +151,8 @@
  },
  "2026-10-16": {
   "hudson": {
-   "value": 400,
-   "treatment": "Sciton BBL Heroic"
+   "value": 150,
+   "treatment": "DiamondGlow"
   },
   "barboursville": {
    "value": 250,
