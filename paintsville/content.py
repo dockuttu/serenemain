@@ -72,7 +72,10 @@ PROVIDERS = [KATRINA, DR_ARORA]
 # ------------------------------------------------------------------ specials
 # One entry per live special: (title, detail, ends). Empty list = "coming soon" placeholder on /specials/.
 SPECIALS = [
-    # ("New client special", "Save 20% on your first Botox or Xeomin visit in Paintsville. Mention this page when you book.", "Through October 31, 2026"),
+    # (title, description, eyebrow) — wording of the new-patient offer is Robin's standard (Oct 4 2026); keep verbatim.
+    ("New-patient welcome: 20% off your first visit",
+     "20% off your first visit, applies to any product or service, can&rsquo;t be combined with another discount. Mention the offer when you book, or send us the form below and Katrina will reach out.",
+     "New patients &middot; Paintsville"),
 ]
 
 # ------------------------------------------------------------------ services

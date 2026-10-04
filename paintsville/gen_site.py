@@ -235,7 +235,10 @@ def specials():
     crumbs = [("/", "Home"), (None, "Specials")]
     if C.SPECIALS:
         cards = "".join(f'<div class="card reveal"><span class="eyebrow">{e}</span><h3>{t}</h3><p>{d}</p><a class="btn btn-sm" href="{BOOK_URL}" target="_blank" rel="noopener">Book now</a></div>' for t, d, e in C.SPECIALS)
-        main = f'<div class="grid g2">{cards}</div><p class="fine" style="margin-top:18px">Specials can&rsquo;t be combined with other discounts. Mention the offer when you book.</p>'
+        form = (f'<div class="jf"><iframe src="https://form.jotform.com/{JOTFORM_ID}" title="Claim your offer - Serene Med Spa Paintsville" loading="lazy" allow="geolocation; microphone; camera"></iframe></div>'
+                f'<p class="fine" style="margin-top:10px">Please don&rsquo;t include private medical details in this form &mdash; we&rsquo;ll gather anything clinical securely at your visit.</p>') if JOTFORM_ID and JOTFORM_ID != "TODO" else ""
+        main = (f'<div class="grid g2">{cards}</div><p class="fine" style="margin-top:18px">Specials can&rsquo;t be combined with other discounts. Mention the offer when you book.</p>'
+                f'<div class="card reveal" style="margin-top:28px"><span class="eyebrow">Claim your offer</span><h3>Tell us what you&rsquo;re interested in</h3><p>Send this short form and Katrina will call or text to set up your complimentary consultation. Or <a href="{BOOK_URL}" target="_blank" rel="noopener">book online</a> and mention the offer.</p>{form}</div>')
     else:
         main = f'''<div class="offer reveal"><div><span class="eyebrow">Coming soon</span><h2>New client special coming soon</h2><p class="lede">We are putting the finishing touches on our opening offer for Paintsville. Book a complimentary consultation now and we will apply any special that is live on the day of your first treatment.</p>{cta_row("/pricing/", "See regular rates")}</div><div style="text-align:center"><span class="big">Soon</span><p class="fine">Follow Serene on social or check back here</p></div></div>'''
     body = page_hero("Specials", "Current offers at Serene Med Spa Paintsville. " + C.PRICE_NOTE, crumbs, "Paintsville offers", cta=False) + f'<section><div class="wrap">{main}</div></section>{book_band()}'
