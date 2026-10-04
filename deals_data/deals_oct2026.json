@@ -2,7 +2,7 @@
  {
   "date": "2026-10-01",
   "office": "hudson",
-  "treatment": "HydraFacial",
+  "treatment": "Pumpkin Spice HydraFacial",
   "covers": "One signature HydraFacial",
   "regular": 150,
   "price": 129,
@@ -11,7 +11,7 @@
  {
   "date": "2026-10-01",
   "office": "barboursville",
-  "treatment": "Morpheus8 RF",
+  "treatment": "Morpheus8 Monster Mash",
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 679,
@@ -20,7 +20,7 @@
  {
   "date": "2026-10-02",
   "office": "hudson",
-  "treatment": "Botox — 40 units",
+  "treatment": "Boo-tox — 40 units",
   "covers": "40 units of Botox (forehead, 11s or crow's feet)",
   "regular": 440,
   "price": 389,
@@ -29,7 +29,7 @@
  {
   "date": "2026-10-02",
   "office": "barboursville",
-  "treatment": "SKNLAB Facial",
+  "treatment": "Spellbound SKNLAB Facial",
   "covers": "One SKNLAB facial",
   "regular": 150,
   "price": 129,
@@ -38,7 +38,7 @@
  {
   "date": "2026-10-03",
   "office": "hudson",
-  "treatment": "Morpheus8 RF",
+  "treatment": "Morpheus8 Monster Mash",
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 689,
@@ -47,7 +47,7 @@
  {
   "date": "2026-10-03",
   "office": "barboursville",
-  "treatment": "Botox — 40 units",
+  "treatment": "Boo-tox — 40 units",
   "covers": "40 units of Botox (forehead, 11s or crow's feet)",
   "regular": 400,
   "price": 349,
@@ -56,7 +56,7 @@
  {
   "date": "2026-10-04",
   "office": "hudson",
-  "treatment": "Glow Drip IV",
+  "treatment": "Witch's Brew Glow Drip IV",
   "covers": "One Glow Drip IV infusion",
   "regular": 149,
   "price": 129,
@@ -65,7 +65,7 @@
  {
   "date": "2026-10-04",
   "office": "barboursville",
-  "treatment": "PDO Lifting Threads — small area",
+  "treatment": "Bewitched PDO Thread Lift — small area",
   "covers": "PDO lifting threads, one small area",
   "regular": 300,
   "price": 259,
@@ -74,7 +74,7 @@
  {
   "date": "2026-10-05",
   "office": "hudson",
-  "treatment": "Lip Filler — full syringe",
+  "treatment": "Bewitching Lips — full syringe",
   "covers": "1 mL Juvéderm lip filler",
   "regular": 500,
   "price": 449,
@@ -83,7 +83,7 @@
  {
   "date": "2026-10-05",
   "office": "barboursville",
-  "treatment": "Glow Drip IV",
+  "treatment": "Witch's Brew Glow Drip IV",
   "covers": "One Glow Drip IV infusion",
   "regular": 149,
   "price": 129,
@@ -92,7 +92,7 @@
  {
   "date": "2026-10-06",
   "office": "hudson",
-  "treatment": "DiamondGlow",
+  "treatment": "Ghostly Glow DiamondGlow",
   "covers": "One DiamondGlow facial",
   "regular": 150,
   "price": 129,
@@ -101,7 +101,7 @@
  {
   "date": "2026-10-06",
   "office": "barboursville",
-  "treatment": "Opus Plasma",
+  "treatment": "Opus Plasma Potion",
   "covers": "One Opus Plasma resurfacing treatment",
   "regular": 400,
   "price": 349,
@@ -110,7 +110,7 @@
  {
   "date": "2026-10-07",
   "office": "hudson",
-  "treatment": "Laser Facial",
+  "treatment": "Moonlit Laser Facial",
   "covers": "One laser facial",
   "regular": 400,
   "price": 349,
@@ -119,7 +119,7 @@
  {
   "date": "2026-10-07",
   "office": "barboursville",
-  "treatment": "HydraFacial",
+  "treatment": "Pumpkin Spice HydraFacial",
   "covers": "One signature HydraFacial",
   "regular": 150,
   "price": 129,
@@ -128,7 +128,7 @@
  {
   "date": "2026-10-08",
   "office": "hudson",
-  "treatment": "Skinvive",
+  "treatment": "Skinvive Elixir",
   "covers": "One syringe of Skinvive skin booster",
   "regular": 400,
   "price": 359,
@@ -137,7 +137,7 @@
  {
   "date": "2026-10-08",
   "office": "barboursville",
-  "treatment": "Sculptra",
+  "treatment": "Sculptra Spell",
   "covers": "One vial of Sculptra",
   "regular": 600,
   "price": 509,
@@ -146,7 +146,7 @@
  {
   "date": "2026-10-09",
   "office": "hudson",
-  "treatment": "EMSCULPT NEO",
+  "treatment": "EMSCULPT NEO Skeleton Crew",
   "covers": "One EMSCULPT NEO session",
   "regular": 400,
   "price": 349,
@@ -155,7 +155,7 @@
  {
   "date": "2026-10-09",
   "office": "barboursville",
-  "treatment": "Sciton Moxi",
+  "treatment": "Midnight MOXI",
   "covers": "One Moxi laser treatment, full face",
   "regular": 500,
   "price": 449,
@@ -164,7 +164,7 @@
  {
   "date": "2026-10-10",
   "office": "hudson",
-  "treatment": "Baby Botox — 20 units",
+  "treatment": "Baby Boo-tox — 20 units",
   "covers": "20 units of Botox, soft 'baby Botox' dosing",
   "regular": 220,
   "price": 189,
@@ -173,7 +173,7 @@
  {
   "date": "2026-10-10",
   "office": "barboursville",
-  "treatment": "Lip Filler — full syringe",
+  "treatment": "Bewitching Lips — full syringe",
   "covers": "1 mL Juvéderm lip filler",
   "regular": 500,
   "price": 439,
@@ -182,7 +182,7 @@
  {
   "date": "2026-10-11",
   "office": "hudson",
-  "treatment": "Microneedling with PRP",
+  "treatment": "Blood Moon Microneedling with PRP",
   "covers": "One microneedling session with PRP",
   "regular": 500,
   "price": 429,
@@ -191,7 +191,7 @@
  {
   "date": "2026-10-11",
   "office": "barboursville",
-  "treatment": "Microneedling",
+  "treatment": "Skeleton Key Microneedling",
   "covers": "One microneedling session",
   "regular": 200,
   "price": 169,
@@ -200,7 +200,7 @@
  {
   "date": "2026-10-12",
   "office": "hudson",
-  "treatment": "CoolPeel",
+  "treatment": "CoolPeel Creature Feature",
   "covers": "One CoolPeel CO₂ laser treatment",
   "regular": 400,
   "price": 359,
@@ -209,7 +209,7 @@
  {
   "date": "2026-10-12",
   "office": "barboursville",
-  "treatment": "PDO Smooth Threads",
+  "treatment": "Spiderweb PDO Smooth Threads",
   "covers": "PDO smooth (collagen) threads, one area",
   "regular": 275,
   "price": 239,
@@ -218,7 +218,7 @@
  {
   "date": "2026-10-13",
   "office": "hudson",
-  "treatment": "Kybella",
+  "treatment": "Ghoul-Free Chin Kybella",
   "covers": "One vial of Kybella (double chin)",
   "regular": 600,
   "price": 519,
@@ -227,7 +227,7 @@
  {
   "date": "2026-10-13",
   "office": "barboursville",
-  "treatment": "Skinvive",
+  "treatment": "Skinvive Elixir",
   "covers": "One syringe of Skinvive skin booster",
   "regular": 400,
   "price": 349,
@@ -236,7 +236,7 @@
  {
   "date": "2026-10-14",
   "office": "hudson",
-  "treatment": "Opus Plasma",
+  "treatment": "Opus Plasma Potion",
   "covers": "One Opus Plasma resurfacing treatment",
   "regular": 400,
   "price": 339,
@@ -245,7 +245,7 @@
  {
   "date": "2026-10-14",
   "office": "barboursville",
-  "treatment": "Alma Hybrid CO₂ Fractional",
+  "treatment": "Phantom CO₂ — Alma Hybrid Fractional",
   "covers": "One fractional CO₂ treatment",
   "regular": 600,
   "price": 519,
@@ -254,7 +254,7 @@
  {
   "date": "2026-10-15",
   "office": "hudson",
-  "treatment": "Dysport — 120 units",
+  "treatment": "Dysport Fright Night — 120 units",
   "covers": "120 units of Dysport",
   "regular": 479,
   "price": 429,
@@ -263,7 +263,7 @@
  {
   "date": "2026-10-15",
   "office": "barboursville",
-  "treatment": "Baby Botox — 20 units",
+  "treatment": "Baby Boo-tox — 20 units",
   "covers": "20 units of Botox, soft 'baby Botox' dosing",
   "regular": 200,
   "price": 169,
@@ -272,7 +272,7 @@
  {
   "date": "2026-10-16",
   "office": "hudson",
-  "treatment": "DiamondGlow",
+  "treatment": "Ghostly Glow DiamondGlow",
   "covers": "One DiamondGlow facial",
   "regular": 150,
   "price": 129,
@@ -281,7 +281,7 @@
  {
   "date": "2026-10-16",
   "office": "barboursville",
-  "treatment": "EvolveX Body Contouring",
+  "treatment": "EvolveX Monster Sculpt",
   "covers": "One EvolveX session",
   "regular": 250,
   "price": 219,
@@ -290,7 +290,7 @@
  {
   "date": "2026-10-17",
   "office": "hudson",
-  "treatment": "Sculptra",
+  "treatment": "Sculptra Spell",
   "covers": "One vial of Sculptra",
   "regular": 750,
   "price": 649,
@@ -299,7 +299,7 @@
  {
   "date": "2026-10-17",
   "office": "barboursville",
-  "treatment": "Kybella",
+  "treatment": "Ghoul-Free Chin Kybella",
   "covers": "One vial of Kybella (double chin)",
   "regular": 600,
   "price": 519,
@@ -308,7 +308,7 @@
  {
   "date": "2026-10-18",
   "office": "hudson",
-  "treatment": "EvolveX Body Contouring",
+  "treatment": "EvolveX Monster Sculpt",
   "covers": "One EvolveX session",
   "regular": 250,
   "price": 219,
@@ -317,7 +317,7 @@
  {
   "date": "2026-10-18",
   "office": "barboursville",
-  "treatment": "Under-Eye Filler",
+  "treatment": "Eye of Newt Under-Eye Filler",
   "covers": "One syringe of under-eye filler",
   "regular": 500,
   "price": 429,
@@ -326,7 +326,7 @@
  {
   "date": "2026-10-19",
   "office": "hudson",
-  "treatment": "Mini Pout — half syringe",
+  "treatment": "Trick-or-Treat Mini Pout — half syringe",
   "covers": "0.5 mL lip filler",
   "regular": 300,
   "price": 269,
@@ -335,7 +335,7 @@
  {
   "date": "2026-10-19",
   "office": "barboursville",
-  "treatment": "Sciton BBL Heroic",
+  "treatment": "Harvest Moon BBL HEROic",
   "covers": "One BBL Heroic photofacial",
   "regular": 400,
   "price": 359,
@@ -344,7 +344,7 @@
  {
   "date": "2026-10-20",
   "office": "hudson",
-  "treatment": "Laser Facial",
+  "treatment": "Moonlit Laser Facial",
   "covers": "One laser facial",
   "regular": 400,
   "price": 349,
@@ -353,7 +353,7 @@
  {
   "date": "2026-10-20",
   "office": "barboursville",
-  "treatment": "Dysport — 120 units",
+  "treatment": "Dysport Fright Night — 120 units",
   "covers": "120 units of Dysport",
   "regular": 479,
   "price": 419,
@@ -362,7 +362,7 @@
  {
   "date": "2026-10-21",
   "office": "hudson",
-  "treatment": "Under-Eye PRP",
+  "treatment": "Blood Moon Under-Eye PRP",
   "covers": "One under-eye PRP treatment",
   "regular": 400,
   "price": 339,
@@ -371,7 +371,7 @@
  {
   "date": "2026-10-21",
   "office": "barboursville",
-  "treatment": "Microneedling with PRP",
+  "treatment": "Blood Moon Microneedling with PRP",
   "covers": "One microneedling session with PRP",
   "regular": 500,
   "price": 429,
@@ -380,7 +380,7 @@
  {
   "date": "2026-10-22",
   "office": "hudson",
-  "treatment": "Deka CO₂ Fractional Resurfacing",
+  "treatment": "Phantom CO₂ — Deka Fractional Resurfacing",
   "covers": "One fractional CO₂ treatment",
   "regular": 600,
   "price": 539,
@@ -389,7 +389,7 @@
  {
   "date": "2026-10-22",
   "office": "barboursville",
-  "treatment": "Under-Eye PRP",
+  "treatment": "Blood Moon Under-Eye PRP",
   "covers": "One under-eye PRP treatment",
   "regular": 400,
   "price": 339,
@@ -398,7 +398,7 @@
  {
   "date": "2026-10-23",
   "office": "hudson",
-  "treatment": "Xeomin — 40 units",
+  "treatment": "Spellcaster Xeomin — 40 units",
   "covers": "40 units of Xeomin",
   "regular": 440,
   "price": 389,
@@ -407,7 +407,7 @@
  {
   "date": "2026-10-23",
   "office": "barboursville",
-  "treatment": "Laser Facial",
+  "treatment": "Moonlit Laser Facial",
   "covers": "One laser facial",
   "regular": 400,
   "price": 359,
@@ -416,7 +416,7 @@
  {
   "date": "2026-10-24",
   "office": "hudson",
-  "treatment": "PRP Hair Restoration",
+  "treatment": "Hair-Raising PRP Hair Restoration",
   "covers": "One PRP scalp treatment",
   "regular": 500,
   "price": 429,
@@ -425,7 +425,7 @@
  {
   "date": "2026-10-24",
   "office": "barboursville",
-  "treatment": "Mini Pout — half syringe",
+  "treatment": "Trick-or-Treat Mini Pout — half syringe",
   "covers": "0.5 mL lip filler",
   "regular": 300,
   "price": 259,
@@ -434,7 +434,7 @@
  {
   "date": "2026-10-25",
   "office": "hudson",
-  "treatment": "Microneedling",
+  "treatment": "Skeleton Key Microneedling",
   "covers": "One microneedling session",
   "regular": 200,
   "price": 169,
@@ -443,7 +443,7 @@
  {
   "date": "2026-10-25",
   "office": "barboursville",
-  "treatment": "Spider Vein Sclerotherapy",
+  "treatment": "Spider Vein Vanish Sclerotherapy",
   "covers": "One sclerotherapy session",
   "regular": 300,
   "price": 259,
@@ -452,7 +452,7 @@
  {
   "date": "2026-10-26",
   "office": "hudson",
-  "treatment": "Serene IV Drip",
+  "treatment": "Witch's Brew IV Drip",
   "covers": "Any one Serene IV drip",
   "regular": 149,
   "price": 129,
@@ -461,7 +461,7 @@
  {
   "date": "2026-10-26",
   "office": "barboursville",
-  "treatment": "PRP Hair Restoration",
+  "treatment": "Hair-Raising PRP Hair Restoration",
   "covers": "One PRP scalp treatment",
   "regular": 500,
   "price": 449,
@@ -470,7 +470,7 @@
  {
   "date": "2026-10-27",
   "office": "hudson",
-  "treatment": "Alma TED Hair Restoration",
+  "treatment": "Hair-Raising Alma TED",
   "covers": "One Alma TED session",
   "regular": 500,
   "price": 439,
@@ -479,7 +479,7 @@
  {
   "date": "2026-10-27",
   "office": "barboursville",
-  "treatment": "Microneedling",
+  "treatment": "Skeleton Key Microneedling",
   "covers": "One microneedling session",
   "regular": 200,
   "price": 179,
@@ -488,7 +488,7 @@
  {
   "date": "2026-10-28",
   "office": "hudson",
-  "treatment": "VI Peel",
+  "treatment": "Unmasked VI Peel",
   "covers": "One VI chemical peel",
   "regular": 250,
   "price": 219,
@@ -497,7 +497,7 @@
  {
   "date": "2026-10-28",
   "office": "barboursville",
-  "treatment": "Alma TED Hair Restoration",
+  "treatment": "Hair-Raising Alma TED",
   "covers": "One Alma TED session",
   "regular": 500,
   "price": 429,
@@ -506,7 +506,7 @@
  {
   "date": "2026-10-29",
   "office": "hudson",
-  "treatment": "Under-Eye Filler",
+  "treatment": "Eye of Newt Under-Eye Filler",
   "covers": "One syringe of under-eye filler",
   "regular": 500,
   "price": 449,
@@ -515,7 +515,7 @@
  {
   "date": "2026-10-29",
   "office": "barboursville",
-  "treatment": "Morpheus8 RF",
+  "treatment": "Morpheus8 Monster Mash",
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 679,
@@ -524,7 +524,7 @@
  {
   "date": "2026-10-30",
   "office": "hudson",
-  "treatment": "Morpheus8 RF",
+  "treatment": "Morpheus8 Monster Mash",
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 699,
@@ -533,7 +533,7 @@
  {
   "date": "2026-10-30",
   "office": "barboursville",
-  "treatment": "SKNLAB Facial",
+  "treatment": "Spellbound SKNLAB Facial",
   "covers": "One SKNLAB facial",
   "regular": 150,
   "price": 129,
