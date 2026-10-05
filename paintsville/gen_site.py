@@ -262,12 +262,12 @@ def halloween_block():
 </div>'''
 
 def botoxday_block():
-    """Paintsville Botox Day, Tue Nov 24 2026 (Robin, Oct 5): $9/unit Botox that day only. Shown Nov 1-24 by the visitor's date."""
+    """Paintsville Botox & Xeomin Day, Tue Nov 24 2026 (Robin, Oct 5): $9/unit Botox or Xeomin, 25-unit minimum, that day only. Shown Nov 1-24 by the visitor's date."""
     return f'''<div id="botox-day" data-from="2026-11-01" data-until="2026-11-24" style="display:none;margin-bottom:40px">
-  <div class="card reveal"><span class="eyebrow">Botox Day &middot; Tuesday, November 24</span><h3>Botox $9 per unit, one day only</h3>
-    <p>Get holiday-ready before Thanksgiving: on <strong>Tuesday, November 24</strong>, Botox is <strong>$9 per unit</strong> (regularly $12) at Serene Med Spa Paintsville with Katrina Watkins, NP. Appointments fill fast, so book ahead.</p>
-    <p class="fine">Nov 24, 2026 only, for treatments done that day. Treatment is provided if appropriate after your consultation. Can&rsquo;t be combined with another discount.</p>
-    <a class="btn btn-sm" href="{C.BOOK_URL if hasattr(C,'BOOK_URL') else 'https://www.vagaro.com/serenemedspapaintsville'}" target="_blank" rel="noopener">Book Botox Day</a> <a class="btn btn-sm btn-outline" href="tel:+16069630001">Call or text (606) 963-0001</a></div>
+  <div class="card reveal"><span class="eyebrow">Botox &amp; Xeomin Day &middot; Tuesday, November 24</span><h3>Botox or Xeomin $9 per unit, one day only</h3>
+    <p>Get holiday-ready before Thanksgiving: on <strong>Tuesday, November 24</strong>, Botox and Xeomin are <strong>$9 per unit</strong> (Botox regularly $12, Xeomin regularly $10) at Serene Med Spa Paintsville with Katrina Watkins, NP. 25-unit minimum. Appointments fill fast, so book ahead.</p>
+    <p class="fine">Nov 24, 2026 only, for treatments done that day. 25-unit minimum. Treatment is provided if appropriate after your consultation. Can&rsquo;t be combined with another discount.</p>
+    <a class="btn btn-sm" href="{C.BOOK_URL if hasattr(C,'BOOK_URL') else 'https://www.vagaro.com/serenemedspapaintsville'}" target="_blank" rel="noopener">Book Botox &amp; Xeomin Day</a> <a class="btn btn-sm btn-outline" href="tel:+16069630001">Call or text (606) 963-0001</a></div>
   <script>(function(){{try{{var s=document.getElementById("botox-day"),n=new Date();if(n>=new Date(s.dataset.from+"T00:00:00")&&n<=new Date(s.dataset.until+"T23:59:59"))s.style.display="";}}catch(e){{}}}})();</script>
 </div>'''
 
