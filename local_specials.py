@@ -95,6 +95,15 @@ CSS = ('#loc-specials .ls-grid{display:grid;gap:22px;grid-template-columns:repea
        '#loc-specials .ls-note{margin-top:auto;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--forest-500,#3E7F78);font-weight:600}'
        '#loc-specials .ls-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}'
        '#loc-specials .ls-tag{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;background:var(--lav-100,#eceefa);color:var(--forest,#10322F);border-radius:30px;padding:4px 10px;margin-bottom:6px}'
+       '#loc-specials .ls-dotd{margin-top:56px;padding-top:44px;border-top:1px solid #e6e0d8}'
+       '#loc-specials .ls-dhead{display:flex;align-items:center;justify-content:center;gap:18px;text-align:center}'
+       '#loc-specials .ls-dhead img{width:96px;height:60px;flex:0 0 auto}'
+       '#loc-specials .ls-dhead h2{margin:4px 0 0}'
+       '#loc-specials .ls-new{display:block;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#d23c3c}'
+       '#loc-specials .ls-dintro{text-align:center;max-width:620px;margin:14px auto 24px;color:var(--ink-soft,#555)}'
+       '#loc-specials .ls-dgrid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,420px));justify-content:center}'
+       '#loc-specials .ls-dcard{border-top-color:#d23c3c}'
+       '@media (max-width:560px){#loc-specials .ls-dhead img{width:56px;height:35px}#loc-specials .ls-dhead{gap:8px}}'
        '#loc-specials .section-head{text-align:center;max-width:none;margin-left:auto;margin-right:auto}#loc-specials .section-head h2{margin-left:auto;margin-right:auto}#loc-specials .ls-more{text-align:center;margin-top:22px}')
 
 # Renders in the browser from the embedded JSON: picks today's date in Eastern time, the office (fixed on /hudson/ and
@@ -105,10 +114,10 @@ var t=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new 
 var M=['January','February','March','April','May','June','July','August','September','October','November','December'];
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function office(){if(C.office)return C.office;var k='';try{k=localStorage.getItem('serene_loc')||'';}catch(e){}return (k==='hudson'||k==='barboursville')?k:'';}
-function render(){var o=office(),both=!o,N={hudson:'Hudson',barboursville:'Barboursville'},h='';
+function render(){var o=office(),both=!o,N={hudson:'Hudson',barboursville:'Barboursville'},h='',dh='';
  var offs=both?['hudson','barboursville']:[o];
  offs.forEach(function(of){var d=null;C.deals.forEach(function(x){if(x.office===of&&x.date===t)d=x;});if(!d)return;
-  h+='<div class="card" data-dotd="'+of+'">'+(both?'<span class="ls-tag">'+N[of]+'</span>':'')+'<span class="eyebrow">Deal of the Day &middot; today only</span><h3>'+esc(d.treatment)+'</h3>'
+  dh+='<div class="card ls-dcard" data-dotd="'+of+'">'+(both?'<span class="ls-tag">'+N[of]+'</span>':'')+'<span class="eyebrow">Deal of the Day &middot; today only</span><h3>'+esc(d.treatment)+'</h3>'
    +'<p style="color:var(--ink-soft);margin:0 0 10px">'+esc(d.covers||'')+'</p><div class="ls-price"><s>$'+esc(d.regular)+'</s><b>$'+esc(d.price)+'</b></div>'
    +'<p class="ls-note ls-left" style="margin-top:6px">Only 1 available &middot; new deal every midnight</p>'
    +'<div class="ls-actions"><a class="btn ls-buy" href="/deal-of-the-day/">Get today&rsquo;s deal</a></div></div>';});
@@ -120,10 +129,10 @@ function render(){var o=office(),both=!o,N={hudson:'Hudson',barboursville:'Barbo
    +items.map(function(i){return '<li>'+i+'</li>';}).join('')+'</ul>'+(x.note?'<p class="ls-note">'+x.note+'</p>':'')+'<div class="ls-actions">'
    +x.buttons.map(function(b,i){var href=b[1];if(both&&x.offices.length>1&&/booking\.mangomint|\/(hudson|barboursville)\//.test(href)){href=/booking\.mangomint/.test(href)?'/#book':'/specials/';}
      var ext=/^https?:/.test(href);return '<a class="btn'+(i?' btn-outline':'')+'" href="'+href+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+b[0]+'</a>';}).join('')+'</div></div>';});
- var g=S.querySelector('.ls-grid');g.innerHTML=h;S.style.display=h?'':'none';
+ var g=S.querySelector('.ls-grid');g.innerHTML=h;g.style.display=h?'':'none';var D=S.querySelector('.ls-dotd');D.querySelector('.ls-dgrid').innerHTML=dh;D.style.display=dh?'':'none';S.style.display=(h||dh)?'':'none';
  var hd=S.querySelector('[data-ls-month]');if(hd)hd.textContent=M[+t.slice(5,7)-1]+' specials'+(both?' at Serene':' in '+N[o]);
  var e=S.querySelector('[data-ls-eyebrow]');if(e)e.textContent=both?'This month at both offices':'This month at Serene '+N[o];
- if(h.indexOf('data-dotd')>-1)fetch('/api/deals/status',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(s){if(!s||s.date!==t)return;
+ if(dh)fetch('/api/deals/status',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(s){if(!s||s.date!==t)return;
   S.querySelectorAll('[data-dotd]').forEach(function(c){var of=c.getAttribute('data-dotd');if(s[of]&&s[of].sold){c.querySelector('.ls-left').textContent='Sold out today · a new deal drops at midnight';var b=c.querySelector('.ls-buy');if(b)b.textContent='See Deal of the Day';}});}).catch(function(){});
 }
 render();if(!C.office)document.addEventListener('serene:loc',render);
@@ -140,7 +149,11 @@ def section(office=None, book=None):
     return (MARK[0] + '<section id="loc-specials" style="display:none"><div class="wrap">'
             '<div class="section-head reveal"><span class="eyebrow" data-ls-eyebrow>This month at Serene</span><h2 data-ls-month>This month&rsquo;s specials</h2></div>'
             '<div class="ls-grid"></div>'
-            '<p class="ls-more"><a class="btn btn-outline" href="/specials/">All specials</a> <a class="btn btn-outline" href="/deal-of-the-day/">Deal of the Day</a></p>'
+            '<p class="ls-more"><a class="btn btn-outline" href="/specials/">All specials</a></p>'
+            '<div class="ls-dotd" style="display:none"><div class="ls-dhead"><img src="/img/email/deal-beacon.gif" alt="" width="96" height="60">'
+            '<div><span class="ls-new">New deal every midnight</span><h2>Deal of the Day</h2></div><img src="/img/email/deal-beacon.gif" alt="" width="96" height="60"></div>'
+            '<p class="ls-dintro">Every day each office puts one treatment on sale, and only one is available. When it&rsquo;s gone, it&rsquo;s gone.</p>'
+            '<div class="ls-dgrid"></div><p class="ls-more"><a class="btn" href="/deal-of-the-day/">See today&rsquo;s deals</a></p></div>'
             '<script type="application/json" id="ls-data">' + blob + '</script><style>' + CSS + '</style>' + JS +
             '</div></section>' + MARK[1] + '\n')
 
