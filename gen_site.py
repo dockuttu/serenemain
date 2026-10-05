@@ -143,6 +143,14 @@ def breadcrumb_ld(items):
     """items: [(url, name), ...] absolute or site-relative urls"""
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": X.text_of(n), "item": (u if u.startswith("http") else SITE_URL + u)} for i, (u, n) in enumerate(items)]}
+# Vimeo videos shown at the top of specific articles (slug -> video)
+POST_VIDEOS = {
+    "/5-benefits-of-dysport-treatment/": {"id": "1232974406", "title": "Dysport at Serene Med Spa",
+        "description": "Dysport (abobotulinumtoxinA) wrinkle relaxer, offered at Serene Med Spa in Hudson, OH and Barboursville, WV.",
+        "thumb": "https://i.vimeocdn.com/video/2208517564-4b926ede95709102db7b7367225c0bb62811f849587aeedbcc492eccadb28296-d_1280",
+        "upload": "2026-10-05T06:35:08-04:00", "duration": "PT2M6S"},
+}
+
 def render_post(r, posts):
     body_html = r["content"]
     # drop a leading H1/H2 duplicating the title
@@ -167,6 +175,14 @@ def render_post(r, posts):
         blocks.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq[:12]]})
     blocks += ov.get("ld_extra", [])
+    pv = POST_VIDEOS.get(r["slug"])   # Vimeo video embedded at the top of the article (Oct 5 2026)
+    video_html = ""
+    if pv:
+        import site_lib as _SLV
+        video_html = _SLV._vimeo_iframe(pv["id"], esc(pv["title"])) + f'<style>{VIDEO_CSS}</style>'
+        blocks.append({"@context": "https://schema.org", "@type": "VideoObject", "name": pv["title"], "description": pv["description"],
+                       "thumbnailUrl": pv["thumb"], "uploadDate": pv["upload"], "duration": pv["duration"],
+                       "embedUrl": "https://player.vimeo.com/video/" + pv["id"], "contentUrl": "https://vimeo.com/" + pv["id"]})
     ld = json.dumps(blocks, ensure_ascii=False)
     lslug = LOCAL_MAP.get(r["slug"].strip("/"))
     local_card = ""
@@ -206,7 +222,7 @@ def render_post(r, posts):
   {fig}
 </div></section>
 <section style="padding-top:20px"><div class="wrap post-wrap">
-  <article class="prose">{body_html}
+  <article class="prose">{video_html}{body_html}
     <p style="margin-top:34px;font-size:.9rem;color:var(--muted)">Individual results vary. This article is educational and is not a substitute for a consultation with a licensed medical provider. Treatments are performed at Serene Med Spa in Hudson, OH and Barboursville, WV under the medical direction of Robin Arora, MD.</p>
   </article>
   <aside class="side">
