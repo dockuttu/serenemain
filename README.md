@@ -41,3 +41,13 @@ Goal: one brand, one nav, one domain for SEO — `serenemedspas.com/hudson/…` 
 Rules: never change DNS or Google Ads final URLs without Robin's OK; keep the free-card pages untouched; every old URL must 301 (check with `check_links.py` + Search Console coverage after each phase).
 5. **SEO pass 2 (DONE Sep 23, 2026):** `seo_meta.py` (per-page titles/descriptions/JSON-LD + default BreadcrumbList/WebPage, applied in `site_lib.shell()`), `post_overrides.py` (article title/description/price-Offer overrides, author → provider Person LD; articles get Article + BreadcrumbList + FAQPage when ≥2 Q&As), `optimize_images.py` (Mac, Pillow → `assets/webp/` variants + manifest, committed) and `imgopt.py` (VPS, stdlib: copies variants, rewrites `<img>` to srcset/sizes/lazy, preloads the hero). Duplicate-slug articles and retired URLs are 301'd via `_redirects.map` (written by `gen_site.py` into the site root, loaded by `map $uri $moved_to` in `bundle/nginx.conf`, hidden from the web). `guides.json` (slug → related main-site guides) feeds the office builds' "From our treatment guides" blocks.
    - nginx gotchas learned the hard way: the map keys are long URLs, so `map_hash_bucket_size 128;` is required (default 64 → container crash-loops with "could not build map_hash"); `absolute_redirect off;` keeps 301 Location headers relative (nginx listens on :80 behind Traefik, so absolute redirects would bounce through http://). Validate config changes against the REAL `_redirects.map` (`nginx -t`) before pushing.
+
+## Keeping serenemedspas.com, /hudson/ and /barboursville/ in sync (Oct 5, 2026)
+- **One specials list:** `local_specials.py` (OFFERS + Deal of the Day from `deals_data/`) renders the specials block right under
+  the featured video on the main home, /hudson/ and /barboursville/ (`site_lib.local_specials_section` / `inject_local_specials`,
+  called from `pages_custom.home` and both repos' `v2_merge.py`). Add or change an offer there only.
+- **One deploy:** `deploy.sh` now rebuilds /root/hudson-src and /root/barboursville-src after the main site, so any change to
+  `site_lib.py` (header, scripts, location picker, specials) reaches all three. Their `deploy.sh` take a flock so two runs never overlap.
+- **Location picker jumps:** choosing an office takes the visitor there: home/locations/contact → that office's home; an article
+  with a local page (`LOCAL_MAP`) → the office page; on an office page → the same page at the other office (if it exists).
+  Office pages also set the remembered office to themselves.

@@ -95,7 +95,7 @@ CSS = ('#loc-specials .ls-grid{display:grid;gap:22px;grid-template-columns:repea
        '#loc-specials .ls-note{margin-top:auto;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--forest-500,#3E7F78);font-weight:600}'
        '#loc-specials .ls-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}'
        '#loc-specials .ls-tag{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;background:var(--lav-100,#eceefa);color:var(--forest,#10322F);border-radius:30px;padding:4px 10px;margin-bottom:6px}'
-       '#loc-specials .section-head{text-align:center}#loc-specials .ls-more{text-align:center;margin-top:22px}')
+       '#loc-specials .section-head{text-align:center;max-width:none;margin-left:auto;margin-right:auto}#loc-specials .section-head h2{margin-left:auto;margin-right:auto}#loc-specials .ls-more{text-align:center;margin-top:22px}')
 
 # Renders in the browser from the embedded JSON: picks today's date in Eastern time, the office (fixed on /hudson/ and
 # /barboursville/; on the main home it follows the saved location, or shows both offices with a tag on each card).
