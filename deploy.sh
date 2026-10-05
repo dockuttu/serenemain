@@ -57,4 +57,10 @@ echo "==> Restarting container"
 cd "$LIVE"
 docker compose up -d --force-recreate --remove-orphans
 docker ps --format 'table {{.Names}}\t{{.Status}}' | grep -E 'NAMES|serenemain|paintsville' || true
+echo "==> Rebuilding the Hudson and Barboursville sites so /hudson/ and /barboursville/ pick up shared code + specials from this repo"
+for sub in /root/hudson-src /root/barboursville-src; do
+  if [ -f "$sub/deploy.sh" ]; then
+    ( cd "$sub" && bash ./deploy.sh ) || echo "!!! $sub rebuild failed; its last good site stays live" >&2
+  fi
+done
 echo "==> Deploy complete. Rollback:  rm -rf $LIVE/site && mv $LIVE/site.old $LIVE/site && cd $LIVE && docker compose up -d --force-recreate"

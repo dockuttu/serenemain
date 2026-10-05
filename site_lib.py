@@ -540,8 +540,10 @@ document.querySelectorAll('[data-loc-tel]').forEach(function(a){{a.href=L?'tel:'
 document.querySelectorAll('[data-set-loc]').forEach(function(b){{b.classList.toggle('on',b.getAttribute('data-set-loc')===k);}});
 document.querySelectorAll('[data-loc-only]').forEach(function(el){{el.classList.toggle('hidden',!!L&&el.getAttribute('data-loc-only')!==k);}});document.querySelectorAll('[data-loc-any]').forEach(function(el){{el.classList.toggle('hidden',!L);}});document.querySelectorAll('[data-loc-none]').forEach(function(el){{el.classList.toggle('hidden',!!L);}});document.querySelectorAll('[data-loc-site]').forEach(function(a){{a.href=L?L.site:'/locations/';}});document.querySelectorAll('[data-loc-shop]').forEach(function(a){{if(L&&L.shop){{a.href=L.shop;a.removeAttribute('data-pick');}}else{{a.href='#';a.setAttribute('data-pick','1');}}}});localize(k);}}
 document.addEventListener('click',function(e){{var a=e.target.closest('[data-pick]');if(a){{e.preventDefault();var p=document.getElementById('locpick');if(p){{p.classList.add('open');p.scrollIntoView({{behavior:'smooth',block:'center'}});}}}}}});
-document.querySelectorAll('[data-set-loc]').forEach(function(b){{b.addEventListener('click',function(){{var k=b.getAttribute('data-set-loc');try{{localStorage.setItem('serene_loc',k);}}catch(e){{}}apply(k);var p=document.getElementById('locpick');if(p)p.classList.remove('open');}});}});
+document.querySelectorAll('[data-set-loc]').forEach(function(b){{b.addEventListener('click',function(){{var k=b.getAttribute('data-set-loc');try{{localStorage.setItem('serene_loc',k);}}catch(e){{}}apply(k);var p=document.getElementById('locpick');if(p)p.classList.remove('open');try{{document.dispatchEvent(new Event('serene:loc'));}}catch(e){{}}go(k);}});}});
+function go(k){{var path=location.pathname,dest='';if(k==='telehealth'){{if(path.indexOf('/telehealth')!==0)dest='/telehealth/';}}else if(k==='hudson'||k==='barboursville'){{var m=path.match(/^\/(hudson|barboursville)(\/.*)?$/);if(m){{if(m[1]===k)return;var cand='/'+k+(m[2]||'/');fetch(cand,{{method:'HEAD'}}).then(function(r){{location.href=r.ok?cand:'/'+k+'/';}}).catch(function(){{location.href='/'+k+'/';}});return;}}var slug=path.replace(/^\/+|\/+$/g,'');if(slug===''||slug==='locations'||slug==='contact-us'){{dest='/'+k+'/';}}else{{var t=LOCAL.map[slug];if(t&&LOCAL.missing[k].indexOf(t)<0)dest='/'+k+'/'+t+'/';}}}}if(dest&&dest!==path)location.href=dest;}}
 document.addEventListener('click',function(e){{var p=document.getElementById('locpick');if(p&&!p.contains(e.target))p.classList.remove('open');}});
+(function(){{var pm=location.pathname.match(/^\/(hudson|barboursville)(\/|$)/);if(pm){{try{{localStorage.setItem('serene_loc',pm[1]);}}catch(e){{}}}}}})();
 apply(get());
 var n=document.getElementById('zf-news');if(n){{n.addEventListener('submit',function(e){{e.preventDefault();var em=n.querySelector('input[type=email]');if(!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]{{2,}}$/.test(em.value.trim())){{em.focus();return;}}
 fetch(n.action,{{method:'POST',body:new URLSearchParams(new FormData(n)),mode:'no-cors',credentials:'omit'}}).then(function(){{n.hidden=true;document.getElementById('zf-news-done').hidden=false;try{{if(window.gtag)gtag('event','generate_lead',{{event_category:'form',event_label:'newsletter'}});}}catch(x){{}}}}).catch(function(){{n.submit();}});}});}}
@@ -675,3 +677,15 @@ def page_hero(title, lede="", crumbs=None, eyebrow=""):
     if crumbs:
         c = '<div class="crumbs">' + " &rsaquo; ".join(f'<a href="{h}">{t}</a>' if h else t for h, t in crumbs) + '</div>'
     return f'''<section class="page-hero"><div class="wrap">{c}{f'<span class="eyebrow">{eyebrow}</span>' if eyebrow else ''}<h1>{title}</h1>{f'<p class="lede">{lede}</p>' if lede else ''}</div></section>'''
+
+
+def local_specials_section(office=None):
+    """Office specials right under the featured video, same data on serenemedspas.com/, /hudson/ and /barboursville/
+    (local_specials.py is the single source of truth)."""
+    import local_specials as _LS
+    return _LS.section(office, {"hudson": HUDSON["book"], "barboursville": BARB["book"]})
+
+
+def inject_local_specials(html, office):
+    import local_specials as _LS
+    return _LS.inject_after_video(html, office, {"hudson": HUDSON["book"], "barboursville": BARB["book"]})
