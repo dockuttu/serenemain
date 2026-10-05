@@ -95,7 +95,9 @@ CSS = ('#loc-specials .ls-grid{display:grid;gap:22px;grid-template-columns:repea
        '#loc-specials .ls-note{margin-top:auto;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--forest-500,#3E7F78);font-weight:600}'
        '#loc-specials .ls-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}'
        '#loc-specials .ls-tag{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;background:var(--lav-100,#eceefa);color:var(--forest,#10322F);border-radius:30px;padding:4px 10px;margin-bottom:6px}'
-       '#loc-specials .ls-dotd{margin-top:56px;padding-top:44px;border-top:1px solid #e6e0d8}'
+       '#loc-specials .ls-dotd{max-width:1100px;margin:56px auto 0;padding-top:44px;border-top:1px solid #e6e0d8}'
+       '#loc-specials .ls-dcard{text-align:center;align-items:center}#loc-specials .ls-dcard .ls-price{justify-content:center}'
+       '#loc-specials .ls-dcard .ls-actions{justify-content:center;width:100%}#loc-specials .ls-dcard .eyebrow{align-self:center}'
        '#loc-specials .ls-dhead{display:flex;align-items:center;justify-content:center;gap:18px;text-align:center}'
        '#loc-specials .ls-dhead img{width:96px;height:60px;flex:0 0 auto}'
        '#loc-specials .ls-dhead h2{margin:4px 0 0}'
@@ -153,7 +155,7 @@ def section(office=None, book=None):
             '<div class="ls-dotd" style="display:none"><div class="ls-dhead"><img src="/img/email/deal-beacon.gif" alt="" width="96" height="60">'
             '<div><span class="ls-new">New deal every midnight</span><h2>Deal of the Day</h2></div><img src="/img/email/deal-beacon.gif" alt="" width="96" height="60"></div>'
             '<p class="ls-dintro">Every day each office puts one treatment on sale, and only one is available. When it&rsquo;s gone, it&rsquo;s gone.</p>'
-            '<div class="ls-dgrid"></div><p class="ls-more"><a class="btn" href="/deal-of-the-day/">See today&rsquo;s deals</a></p></div>'
+            '<div class="ls-dgrid"></div></div>'
             '<script type="application/json" id="ls-data">' + blob + '</script><style>' + CSS + '</style>' + JS +
             '</div></section>' + MARK[1] + '\n')
 
