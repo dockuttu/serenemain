@@ -561,7 +561,7 @@ fetch(f.action,{{method:'POST',body:new URLSearchParams(new FormData(f)),mode:'n
 </script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={GTAG}"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GTAG}');
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GTAG}');if(!window.__sereneGA4){{window.__sereneGA4=1;gtag('config','G-BE2Z65PN2X');}}
 document.addEventListener('click',function(e){{var a=e.target.closest('a[href*="booking.mangomint.com"]');if(a){{try{{gtag('event','conversion',{{'send_to':'{GTAG}/lQdCCL31zvUcEPiLl_gC'}});}}catch(x){{}}}}}},true);</script>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','{META_PIXEL}');fbq('track','PageView');</script>
