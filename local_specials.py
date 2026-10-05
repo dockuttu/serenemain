@@ -117,7 +117,7 @@ function office(){if(C.office)return C.office;var k='';try{k=localStorage.getIte
 function render(){var o=office(),both=!o,N={hudson:'Hudson',barboursville:'Barboursville'},h='',dh='';
  var offs=both?['hudson','barboursville']:[o];
  offs.forEach(function(of){var d=null;C.deals.forEach(function(x){if(x.office===of&&x.date===t)d=x;});if(!d)return;
-  dh+='<div class="card ls-dcard" data-dotd="'+of+'">'+(both?'<span class="ls-tag">'+N[of]+'</span>':'')+'<span class="eyebrow">Deal of the Day &middot; today only</span><h3>'+esc(d.treatment)+'</h3>'
+  dh+='<div class="card ls-dcard" data-dotd="'+of+'">'+'<span class="eyebrow">'+(both?N[of]+' &middot; ':'')+'Today only</span><h3>'+esc(d.treatment)+'</h3>'
    +'<p style="color:var(--ink-soft);margin:0 0 10px">'+esc(d.covers||'')+'</p><div class="ls-price"><s>$'+esc(d.regular)+'</s><b>$'+esc(d.price)+'</b></div>'
    +'<p class="ls-note ls-left" style="margin-top:6px">Only 1 available &middot; new deal every midnight</p>'
    +'<div class="ls-actions"><a class="btn ls-buy" href="/deal-of-the-day/">Get today&rsquo;s deal</a></div></div>';});
