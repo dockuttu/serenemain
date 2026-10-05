@@ -137,9 +137,10 @@ def home(posts):
 
 <section class="tint-sand">
   <div class="wrap">
-    <div class="section-head center"><span class="eyebrow">Trusted partners &amp; technology</span><h2>The brands behind the results</h2><p class="lede">Top-tier partner status with the makers of Botox, Xeomin and Ultherapy, and the same devices you&rsquo;d find in a university aesthetics department.</p></div>
+    <div class="section-head center"><span class="eyebrow">Trusted partners &amp; technology</span><h2>The brands behind the results</h2><p class="lede">Top-tier partner status with the makers of Botox, Dysport, Xeomin and Ultherapy, and the same devices you&rsquo;d find in a university aesthetics department.</p></div>
     <div class="badges">
       <div class="badge reveal"><img src="/img/badges/allergan-platinum-2026.png" alt="Allergan Partner Privileges Platinum 2026"><div><b>Allergan Platinum Partner</b><small>Botox, Juv&eacute;derm, SkinVive, Kybella</small></div></div>
+      <div class="badge reveal"><img src="/img/badges/galderma-aspire-president-2026.png" alt="Galderma ASPIRE President 2026"><div><b>Galderma ASPIRE President</b><small>Dysport, Restylane &amp; Sculptra</small></div></div>
       <div class="badge reveal"><img src="/img/badges/merz-elite-plus.png" alt="Merz Aesthetics ELITE+ Provider"><div><b>Merz Aesthetics ELITE+</b><small>Xeomin, Radiesse &amp; Ultherapy</small></div></div>
       <div class="badge reveal"><img src="/img/badges/ultherapy-prime.png" alt="Ultherapy PRIME provider"><div><b>Ultherapy PRIME</b><small>Non-surgical lifting</small></div></div>
       <div class="badge reveal"><img src="/img/badges/inmode-morpheus8-verified.png" alt="InMode Morpheus8 Verified Provider"><div><b>InMode Verified Provider</b><small>Morpheus8 &amp; EmpowerRF</small></div></div>

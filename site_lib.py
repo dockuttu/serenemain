@@ -573,7 +573,7 @@ ORG_LD = json.dumps({
     "@context": "https://schema.org", "@type": "MedicalBusiness", "@id": SITE_URL + "/#organization", "name": "Serene Med Spa", "url": SITE_URL, "logo": SITE_URL + LOGO,
     "image": SITE_URL + "/wp-content/uploads/2024/07/2148574924.jpg", "telephone": "+1-330-460-5915", "email": "info@serenemedspas.com",
     "founder": {"@type": "Person", "name": "Robin Arora, MD"},
-    "sameAs": SEO.SAME_AS, "award": ["Allergan Partner Privileges Platinum Partner 2026", "InMode Morpheus8 Verified Provider", "Merz Aesthetics ELITE+ Provider", "Ultherapy PRIME Provider", "Biote Certified Provider"], "priceRange": "$$", "medicalSpecialty": ["Dermatology", "PlasticSurgery", "Endocrinology"],
+    "sameAs": SEO.SAME_AS, "award": ["Allergan Partner Privileges Platinum Partner 2026", "Galderma ASPIRE President 2026", "InMode Morpheus8 Verified Provider", "Merz Aesthetics ELITE+ Provider", "Ultherapy PRIME Provider", "Biote Certified Provider"], "priceRange": "$$", "medicalSpecialty": ["Dermatology", "PlasticSurgery", "Endocrinology"],
     "department": [
         {"@type": "MedicalBusiness", "@id": SITE_URL + "/hudson/#business", "sameAs": SEO.SAME_AS_HUDSON, "hasMap": HUDSON["map"], "name": "Serene Med Spa — Hudson, OH", "url": (SITE_URL + HUDSON["site"]) if HUDSON["site"].startswith("/") else HUDSON["site"], "telephone": "+1-330-460-5915",
          "address": {"@type": "PostalAddress", "streetAddress": "50 W Streetsboro St, Suite 2", "addressLocality": "Hudson", "addressRegion": "OH", "postalCode": "44236", "addressCountry": "US"}},

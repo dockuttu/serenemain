@@ -192,6 +192,7 @@ def render_post(r, posts):
         "jawline-filler": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Juv&eacute;derm&reg; fillers from Allergan Aesthetics."),
         "skinvive": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine SKINVIVE&trade; by Juv&eacute;derm&reg;."),
         "kybella": ("allergan-platinum-2026.png", "Allergan Platinum Partner 2026", "Genuine Kybella&reg; from Allergan Aesthetics."),
+        "sculptra": ("galderma-aspire-president-2026.png", "Galderma ASPIRE President 2026", "Genuine Sculptra&reg;, Restylane&reg; and Dysport&reg; from Galderma."),
         "hormone-optimization": ("biote-certified-provider.webp", "Biote Certified Provider", "Physician-led hormone optimization with Biote lab panels."),
     }
     pc = PARTNER_CARDS.get(lslug or "")
