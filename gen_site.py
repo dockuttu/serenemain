@@ -143,13 +143,51 @@ def breadcrumb_ld(items):
     """items: [(url, name), ...] absolute or site-relative urls"""
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": X.text_of(n), "item": (u if u.startswith("http") else SITE_URL + u)} for i, (u, n) in enumerate(items)]}
-# Vimeo videos shown at the top of specific articles (slug -> video)
+# Vimeo videos on specific articles (Oct 5 2026). "top": videos above the article text; "bottom": a titled block after it.
+def _v(vid, title, desc, thumb, upload, duration, portrait=False):
+    return {"id": vid, "title": title, "description": desc, "thumb": thumb, "upload": upload, "duration": duration, "portrait": portrait}
+V_DYSPORT = _v("1232974406", "Dysport at Serene Med Spa",
+    "Dysport (abobotulinumtoxinA) wrinkle relaxer, offered at Serene Med Spa in Hudson, OH and Barboursville, WV.",
+    "https://i.vimeocdn.com/video/2208517564-4b926ede95709102db7b7367225c0bb62811f849587aeedbcc492eccadb28296-d_1280", "2026-10-05T06:35:08-04:00", "PT2M6S")
+V_SCULPTRA = _v("1232975341", "Sculptra at Serene Med Spa",
+    "Sculptra, the collagen biostimulator from Galderma, offered at Serene Med Spa in Hudson, OH and Barboursville, WV.",
+    "https://i.vimeocdn.com/video/2208518999-d1e09c62b7c9e97e63c2293b4bd8ad39168065806f344f6a3c1103c4a79ed093-d_1280", "2026-10-05T06:38:43-04:00", "PT59S")
+V_SCULPT_LIFT = _v("1232975343", "After GLP-1 Weight Loss: Sculpt & Lift with Restylane and Sculptra",
+    "Sculpt & Lift with Restylane and Sculptra helps restore a youthful-looking face after GLP-1 weight loss.",
+    "https://i.vimeocdn.com/video/2208519062-3f0a09019b7da86e102a193bbc8f4b2a43c9247860357b835b6b3c77899ceea3-d_960", "2026-10-05T06:38:43-04:00", "PT1M", True)
+V_LAURA = _v("1232975340", "Laura's Story: GLP-1 Weight Loss, Restylane and Sculptra",
+    "Laura on pairing GLP-1 weight loss with Restylane and Sculptra.",
+    "https://i.vimeocdn.com/video/2208519028-ef821d943daf8536e3f9e310fbedd7580ea496567a74321a591a6a2e8f053e1c-d_1280", "2026-10-05T06:38:43-04:00", "PT26S", True)
+_AFTER_GLP1 = {"eyebrow": "After GLP-1 weight loss", "h": "Your &ldquo;after-after&rdquo;: Sculpt &amp; Lift",
+    "p": "Losing weight on a GLP-1 can leave the face looking older or hollow. Restylane and Sculptra restore volume and support your skin&rsquo;s own collagen, so your face catches up with the rest of your results.",
+    "links": [("/sculptra-treatment-guide/", "Read the Sculptra guide"), ("/what-are-dermal-fillers/", "Dermal fillers")], "vids": [V_SCULPT_LIFT, V_LAURA]}
 POST_VIDEOS = {
-    "/5-benefits-of-dysport-treatment/": {"id": "1232974406", "title": "Dysport at Serene Med Spa",
-        "description": "Dysport (abobotulinumtoxinA) wrinkle relaxer, offered at Serene Med Spa in Hudson, OH and Barboursville, WV.",
-        "thumb": "https://i.vimeocdn.com/video/2208517564-4b926ede95709102db7b7367225c0bb62811f849587aeedbcc492eccadb28296-d_1280",
-        "upload": "2026-10-05T06:35:08-04:00", "duration": "PT2M6S"},
+    "/5-benefits-of-dysport-treatment/": {"top": [V_DYSPORT]},
+    "/sculptra-treatment-guide/": {"top": [V_SCULPTRA], "bottom": dict(_AFTER_GLP1, links=[("/what-are-dermal-fillers/", "Dermal fillers")])},
+    "/weight-loss/": {"bottom": _AFTER_GLP1},
+    "/weight-loss-injections-guide/": {"bottom": _AFTER_GLP1},
+    "/semaglutide-weight-loss-program/": {"bottom": _AFTER_GLP1},
+    "/tirzepatide-weight-loss-treatment/": {"bottom": _AFTER_GLP1},
+    "/medical-weight-loss-benefits-serene-med-spas/": {"bottom": _AFTER_GLP1},
 }
+POST_VIDEO_CSS = (".vid-row{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;margin:8px 0 22px}"
+                  ".vid-wrap.vid-portrait{padding-top:0;aspect-ratio:9/16;width:300px;max-width:100%;margin:0}"
+                  ".post-vids{margin:40px 0 0;padding:28px 24px;border-radius:18px;background:var(--sand,#f6f1ea);text-align:center}"
+                  ".post-vids h2{margin:6px 0 10px}.post-vids p{max-width:620px;margin:0 auto 18px}")
+
+def _post_video_html(vids):
+    import site_lib as _SLV
+    out = []
+    for v in vids:
+        h = _SLV._vimeo_iframe(v["id"], esc(v["title"]))
+        if v.get("portrait"): h = h.replace('class="vid-wrap reveal"', 'class="vid-wrap vid-portrait reveal"', 1)
+        out.append(h)
+    return ('<div class="vid-row">' + "".join(out) + '</div>') if len(out) > 1 or any(v.get("portrait") for v in vids) else "".join(out)
+
+def _video_ld(v):
+    return {"@context": "https://schema.org", "@type": "VideoObject", "name": v["title"], "description": v["description"],
+            "thumbnailUrl": v["thumb"], "uploadDate": v["upload"], "duration": v["duration"],
+            "embedUrl": "https://player.vimeo.com/video/" + v["id"], "contentUrl": "https://vimeo.com/" + v["id"]}
 
 def render_post(r, posts):
     body_html = r["content"]
@@ -175,14 +213,19 @@ def render_post(r, posts):
         blocks.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq[:12]]})
     blocks += ov.get("ld_extra", [])
-    pv = POST_VIDEOS.get(r["slug"])   # Vimeo video embedded at the top of the article (Oct 5 2026)
-    video_html = ""
-    if pv:
-        import site_lib as _SLV
-        video_html = _SLV._vimeo_iframe(pv["id"], esc(pv["title"])) + f'<style>{VIDEO_CSS}</style>'
-        blocks.append({"@context": "https://schema.org", "@type": "VideoObject", "name": pv["title"], "description": pv["description"],
-                       "thumbnailUrl": pv["thumb"], "uploadDate": pv["upload"], "duration": pv["duration"],
-                       "embedUrl": "https://player.vimeo.com/video/" + pv["id"], "contentUrl": "https://vimeo.com/" + pv["id"]})
+    pv = POST_VIDEOS.get(r["slug"]) or {}   # Vimeo videos (see POST_VIDEOS)
+    video_html = video_bottom = ""
+    if pv.get("top"):
+        video_html = _post_video_html(pv["top"])
+        blocks += [_video_ld(v) for v in pv["top"]]
+    if pv.get("bottom"):
+        b = pv["bottom"]
+        links = " ".join(f'<a class="btn btn-sm btn-outline" href="{u}">{t}</a>' for u, t in b.get("links", []))
+        video_bottom = (f'<div class="post-vids reveal"><span class="eyebrow">{b["eyebrow"]}</span><h2>{b["h"]}</h2><p>{b["p"]}</p>'
+                        + _post_video_html(b["vids"]) + (f'<p>{links}</p>' if links else "") + '</div>')
+        blocks += [_video_ld(v) for v in b["vids"]]
+    if video_html or video_bottom:
+        video_html += f'<style>{VIDEO_CSS}{POST_VIDEO_CSS}</style>'
     ld = json.dumps(blocks, ensure_ascii=False)
     lslug = LOCAL_MAP.get(r["slug"].strip("/"))
     local_card = ""
@@ -222,7 +265,7 @@ def render_post(r, posts):
   {fig}
 </div></section>
 <section style="padding-top:20px"><div class="wrap post-wrap">
-  <article class="prose">{video_html}{body_html}
+  <article class="prose">{video_html}{body_html}{video_bottom}
     <p style="margin-top:34px;font-size:.9rem;color:var(--muted)">Individual results vary. This article is educational and is not a substitute for a consultation with a licensed medical provider. Treatments are performed at Serene Med Spa in Hudson, OH and Barboursville, WV under the medical direction of Robin Arora, MD.</p>
   </article>
   <aside class="side">

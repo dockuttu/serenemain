@@ -339,6 +339,8 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 """
 
 # ------------------------------------------------------------------ video blocks (shared by the main site and both office builds via v2_merge)
+# Manufacturer (Galderma) videos embedded on treatment pages: never shown as "Our newest video" on the home page
+VIMEO_NOT_LATEST = ["1232974406", "1232975341", "1232975343", "1232975340"]
 VIMEO_USER = "221277662"   # Robin Arora, MD — Serene Med Spa on Vimeo
 FEATURED_VIDEO = {"id": "1228988348", "through": "2026-10-31",
                   "eyebrow": "As seen on WSAZ Studio 3", "title": "Watch Dr. Arora&rsquo;s live Ultherapy demo",
@@ -372,7 +374,7 @@ def _vimeo_latest():
     try:
         import urllib.request, json as _j
         with urllib.request.urlopen(f"https://vimeo.com/api/v2/user{VIMEO_USER}/videos.json", timeout=6) as r:
-            v = _j.loads(r.read().decode("utf-8"))[0]
+            v = [x for x in _j.loads(r.read().decode("utf-8")) if str(x["id"]) not in VIMEO_NOT_LATEST][0]
         return {"id": str(v["id"]), "title": v.get("title", ""), "desc": (v.get("description") or "").split("\n")[0][:220]}
     except Exception:
         return {"id": FEATURED_VIDEO["id"], "title": "Ultherapy Live Demo on WSAZ Studio 3 — Dr. Robin Arora, Serene Med Spa", "desc": "Dr. Robin Arora performs a live Ultherapy PRIME demonstration on WSAZ's Studio 3."}
@@ -381,7 +383,7 @@ def latest_video_section():
     """Mid-page block that always shows the newest video on Serene's Vimeo (rendered at build, refreshed in the browser)."""
     import html as _h
     v = _vimeo_latest()
-    js = ("<script>(function(){var s=document.getElementById('latest-video');if(!s)return;fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){var v=a&&a[0];if(!v||String(v.id)===s.dataset.vid)return;"
+    js = ("<script>(function(){var s=document.getElementById('latest-video');if(!s)return;fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){var skip=" + json.dumps(VIMEO_NOT_LATEST) + ";a=(a||[]).filter(function(x){return skip.indexOf(String(x.id))<0;});var v=a[0];if(!v||String(v.id)===s.dataset.vid)return;"
           "s.dataset.vid=v.id;s.querySelector('iframe').src='https://player.vimeo.com/video/'+v.id+'?dnt=1&title=0&byline=0&portrait=0';s.querySelector('h3').textContent=v.title||'';s.querySelector('.vid-desc').textContent=(v.description||'').split('\\n')[0].slice(0,220);}).catch(function(){});})();</script>")
     return (f'<section id="latest-video" class="vid-latest" data-vid="{v["id"]}"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">Latest from Serene</span><h2>Our newest video</h2></div>'
             + _vimeo_iframe(v["id"], _h.escape(v["title"])) +
