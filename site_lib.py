@@ -510,7 +510,7 @@ FOOTER = f'''<footer>
         <p style="font-size:.9rem">Join our list for monthly specials and new treatments. New patients get 20% off their first visit &mdash; any product or service.</p>
         <form class="newsletter" id="zf-news" action="https://crm.zoho.com/crm/WebToLeadForm" method="POST" accept-charset="UTF-8" novalidate>
           <input type="hidden" name="xnQsjsdp" value="29c1b6f4e6219d1e5682cd0434b1ce181ccda55241b6394ae70c33a7f83e1dfa"><input type="hidden" name="xmIwtLD" value="139bc9e7ae4c09a2ea84b820c0c3b10459ed2d907a8c88693956f8d217af21d20ea75c0d1b75b947bf1bf59cc28d7274"><input type="hidden" name="actionType" value="TGVhZHM="><input type="hidden" name="returnURL" value="https://serenemedspas.com/thank-you/">
-          <input type="hidden" name="Last Name" value="Email signup"><input type="hidden" name="Lead Status" value="Not Contacted"><input type="hidden" name="LEADCF1" value="Website form: newsletter">
+          <input type="hidden" name="Last Name" value="Email signup"><input type="hidden" name="Lead Status" value="Not Contacted"><input type="hidden" name="LEADCF1" value="Website form: newsletter"><input type="text" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off" class="zf-hp" aria-hidden="true">
           <input type="email" name="Email" placeholder="Your email" aria-label="Email address" required autocomplete="email" inputmode="email"><button class="btn" type="submit">Subscribe</button>
         </form>
         <p id="zf-news-done" hidden style="font-size:.9rem;color:#fff">Thanks &mdash; you&rsquo;re on the list. Mention the offer when you book.</p>

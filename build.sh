@@ -9,6 +9,8 @@ python3 optimize_images.py bundle/site || echo "!!! optimize_images failed (cont
 python3 imgopt.py bundle/site
 echo "==> Overlays (telehealth disclosures, 404, sitemap, robots)"
 python3 overlays.py bundle/site
+echo "==> Form spam guard (Zoho consult + newsletter forms)"
+python3 form_guard_inject.py bundle/site || echo "!!! form_guard_inject failed (continuing)" >&2
 echo "==> Link check"
 python3 check_links.py bundle/site | tail -8 || echo "!!! WARNING: some page links are missing (see above)" >&2
 if [ ! -s bundle/site/index.html ] || [ "$(wc -c < bundle/site/index.html)" -lt 5000 ]; then
