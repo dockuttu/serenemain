@@ -50,10 +50,34 @@
   }
   function val(f, n) { var e = f.querySelector('[name="' + n + '"]'); return e ? e.value : ""; }
 
+
+  /* Google Ads "Consult form submission" (Oct 7 2026). The forms send in the background and show an
+     inline thank-you (#zf-done / popup .np-ok) instead of loading /thank-you/, so that page-load
+     conversion never fired. Fire it here when a REAL submission succeeds (not junk-tagged, not honeypot). */
+  var CONV = "AW-788907512/t1anCJXh6_0cEPiLl_gC", sgLast = null, fired = false;
+  function fire() {
+    if (fired || !sgLast || sgLast.hp || sgLast.junk) return;
+    fired = true;
+    try { if (window.gtag) gtag("event", "conversion", { send_to: CONV }); } catch (x) {}
+  }
+  if (window.MutationObserver) {
+    new MutationObserver(function (ms) {
+      for (var k = 0; k < ms.length; k++) {
+        var m = ms[k];
+        if (m.type === "attributes" && m.target.id === "zf-done" && !m.target.hidden) fire();
+        if (m.type === "childList") for (var a = 0; a < m.addedNodes.length; a++) {
+          var nd = m.addedNodes[a];
+          if (nd.nodeType === 1 && (nd.classList.contains("np-ok") || (nd.querySelector && nd.querySelector(".np-ok")))) fire();
+        }
+      }
+    }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ["hidden"] });
+  }
+
   document.addEventListener("submit", function (e) {
     var f = e.target;
     if (!f || !(f.id === "zf-consult" || f.id === "zf-news" || (f.classList && f.classList.contains("np-zf")))) return;
     var hp = f.querySelector('[name="aG9uZXlwb3Q"]');
+    if (f.id !== "zf-news") sgLast = { hp: !!(hp && hp.value.trim()), junk: false };
     if (hp && hp.value.trim()) {
       e.preventDefault(); e.stopImmediatePropagation();
       if (f.id === "zf-consult") { f.hidden = true; var d = document.getElementById("zf-done"); if (d) d.hidden = false; }
@@ -67,6 +91,7 @@
     var text = [desc && desc.tagName === "TEXTAREA" ? desc.value : "", first, last].join(" ");
     var why = suspicious(text, Date.now() - T0) || structural(first, last, phone, email);
     if (why) {
+      if (f.id !== "zf-news" && sgLast) sgLast.junk = true;
       setHidden(f, "Lead Status", "Junk Lead");
       if (desc) desc.value = "[Auto-flagged: " + why + "] " + desc.value;
     }
