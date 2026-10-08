@@ -350,7 +350,7 @@ FEATURED_VIDEO = {"id": "1228988348", "through": "2026-10-31",
 VIDEO_CSS = ('.vid-wrap{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);margin:0 auto 28px;max-width:960px;background:#000}'
              '.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}'
              '.vid-offer{max-width:760px;margin:0 auto;text-align:center}.vid-offer .btn{margin:6px 4px 0}'
-             '#studio3 .section-head,.vid-latest .section-head{text-align:center}#studio3 .section-head p,.vid-latest .section-head p{margin-left:auto;margin-right:auto}#studio3 .section-head h2,.vid-latest .section-head h2{margin-left:auto;margin-right:auto}'
+             '#studio3 .section-head,.vid-latest .section-head{text-align:center;margin-left:auto;margin-right:auto}#studio3 .section-head p,.vid-latest .section-head p{margin-left:auto;margin-right:auto}#studio3 .section-head h2,.vid-latest .section-head h2{margin-left:auto;margin-right:auto}'
              '.vid-latest .vid-meta{max-width:760px;margin:0 auto;text-align:center}.vid-latest .vid-meta h3{margin:0 0 8px}.vid-latest .vid-meta p{color:var(--ink-soft)}')
 
 def _vimeo_iframe(vid, title):
@@ -404,7 +404,7 @@ def evolvex_video_section(loc=None, prefix=""):
             f'<ul class="deal-list" style="list-style:none;padding:0;margin:0 0 14px;display:grid;gap:8px">{rows}</ul>'
             f'<p style="font-size:.9rem;color:var(--ink-soft)">Complimentary consultation. Most people do a series of about six sessions; results build over the series and vary from person to person.</p>'
             f'<p>{btns}</p></div>'
-            f'<style>{VIDEO_CSS}#evolvex-video .section-head{{text-align:center}}#evolvex-video .section-head h2,#evolvex-video .section-head p{{margin-left:auto;margin-right:auto}}'
+            f'<style>{VIDEO_CSS}#evolvex-video .section-head{{text-align:center;margin-left:auto;margin-right:auto}}#evolvex-video .section-head h2,#evolvex-video .section-head p{{margin-left:auto;margin-right:auto}}'
             f'#evolvex-video .deal-list li{{display:grid;gap:2px}}#evolvex-video .deal-list span{{font-size:.92rem;color:var(--ink-soft)}}</style>'
             f'<script type="application/ld+json">{ld}</script></div></section>\n')
 
