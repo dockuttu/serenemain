@@ -369,21 +369,63 @@ def featured_video_section(book_href="/#book", book_attrs=' data-loc-book', pric
             f'<p><a class="btn" href="{book_href}"{book_attrs}>Book a Consultation</a> <a class="btn btn-outline" href="{pricing_href}">{pricing_label}</a></p></div>'
             f'<style>{VIDEO_CSS}</style></div></section>\n')
 
+EVOLVEX_VIDEO = {"id": "1233802650", "aired": "2026-10-07", "upload": "2026-10-07T13:29:41-04:00", "duration": "PT2M50S",
+                 "thumb": "https://i.vimeocdn.com/video/2209598942-dafe73dba86e2fc96168df259f5550126eb356274119792f514578bfbde56aad-d_1280",
+                 "title": "EvolveX Body Contouring on WSAZ Studio 3 — Serene Med Spa (Oct 7, 2026)"}
+
+def evolvex_video_ld(page_url):
+    V = EVOLVEX_VIDEO
+    return {"@context": "https://schema.org", "@type": "VideoObject", "name": V["title"],
+            "description": "Stephanie Welker, NP and Cami, licensed esthetician, demonstrate InMode EvolveX body contouring live on WSAZ's Studio 3 (aired October 7, 2026).",
+            "thumbnailUrl": [V["thumb"]], "uploadDate": V["upload"], "duration": V["duration"],
+            "embedUrl": "https://player.vimeo.com/video/" + V["id"], "contentUrl": "https://vimeo.com/" + V["id"], "url": page_url,
+            "publisher": {"@type": "Organization", "name": "Serene Med Spa", "url": SITE_URL}}
+
+def evolvex_video_section(loc=None, prefix=""):
+    """Home-page block right after the Ultherapy demo: WSAZ Studio 3 EvolveX segment (Oct 7, 2026). loc = None (main site) | 'hudson' | 'barboursville'."""
+    V = EVOLVEX_VIDEO
+    hud = ('<li><strong>Hudson</strong><span>$250 a session &middot; series of 6 for $1,350</span></li>', '/hudson/evolve-x/', HUDSON["book"])
+    bv = ('<li><strong>Barboursville</strong><span>$149 a session &middot; series of 6 for $799</span></li>', '/barboursville/evolve-x/', BARB["book"])
+    offices = {"hudson": [hud], "barboursville": [bv]}.get(loc, [hud, bv])
+    rows = "".join(o[0] for o in offices)
+    if loc:
+        btns = (f'<a class="btn" href="{offices[0][2]}" target="_blank" rel="noopener">Book a Consultation</a> '
+                f'<a class="btn btn-outline" href="{prefix}/evolve-x/">About EvolveX</a>')
+    else:
+        btns = (f'<a class="btn" href="/hudson/evolve-x/">EvolveX &middot; Hudson</a> <a class="btn" href="/barboursville/evolve-x/">EvolveX &middot; Barboursville</a> '
+                f'<a class="btn btn-outline" href="/#book" data-loc-book>Book a Consultation</a>')
+    ld = json.dumps(evolvex_video_ld(SITE_URL + (prefix or "") + "/"), ensure_ascii=False)
+    return (f'<section id="evolvex-video" class="vid-latest"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span>'
+            f'<h2>EvolveX body contouring, live on TV</h2>'
+            f'<p style="max-width:720px;margin:10px auto 0">Stephanie Welker, NP and Cami, our licensed esthetician, demonstrated InMode EvolveX on WSAZ&rsquo;s Studio 3 on October 7, 2026. '
+            f'Hands-free radiofrequency heat works on skin and stubborn fat while muscle stimulation tones the muscle underneath &mdash; most often on the abdomen, but also the arms, thighs and buttocks.</p></div>'
+            + _vimeo_iframe(V["id"], "EvolveX body contouring demo on WSAZ Studio 3 with Serene Med Spa") +
+            f'<div class="card reveal vid-offer"><div class="ico">&#10022;</div><h3>EvolveX at Serene</h3>'
+            f'<ul class="deal-list" style="list-style:none;padding:0;margin:0 0 14px;display:grid;gap:8px">{rows}</ul>'
+            f'<p style="font-size:.9rem;color:var(--ink-soft)">Complimentary consultation. Most people do a series of about six sessions; results build over the series and vary from person to person.</p>'
+            f'<p>{btns}</p></div>'
+            f'<style>{VIDEO_CSS}#evolvex-video .section-head{{text-align:center}}#evolvex-video .section-head h2,#evolvex-video .section-head p{{margin-left:auto;margin-right:auto}}'
+            f'#evolvex-video .deal-list li{{display:grid;gap:2px}}#evolvex-video .deal-list span{{font-size:.92rem;color:var(--ink-soft)}}</style>'
+            f'<script type="application/ld+json">{ld}</script></div></section>\n')
+
 def _vimeo_latest():
     """Newest public video on the account at build time (fallback: the featured video). The page also refreshes itself client-side."""
     try:
         import urllib.request, json as _j
         with urllib.request.urlopen(f"https://vimeo.com/api/v2/user{VIMEO_USER}/videos.json", timeout=6) as r:
-            v = [x for x in _j.loads(r.read().decode("utf-8")) if str(x["id"]) not in VIMEO_NOT_LATEST][0]
+            _skip = set(VIMEO_NOT_LATEST) | {FEATURED_VIDEO["id"], EVOLVEX_VIDEO["id"]}
+            v = [x for x in _j.loads(r.read().decode("utf-8")) if str(x["id"]) not in _skip][0]
         return {"id": str(v["id"]), "title": v.get("title", ""), "desc": (v.get("description") or "").split("\n")[0][:220]}
     except Exception:
-        return {"id": FEATURED_VIDEO["id"], "title": "Ultherapy Live Demo on WSAZ Studio 3 — Dr. Robin Arora, Serene Med Spa", "desc": "Dr. Robin Arora performs a live Ultherapy PRIME demonstration on WSAZ's Studio 3."}
+        return None  # nothing newer than the videos already featured on the page (or Vimeo unreachable): hide the block
 
 def latest_video_section():
     """Mid-page block that always shows the newest video on Serene's Vimeo (rendered at build, refreshed in the browser)."""
     import html as _h
     v = _vimeo_latest()
-    js = ("<script>(function(){var s=document.getElementById('latest-video');if(!s)return;fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){var skip=" + json.dumps(VIMEO_NOT_LATEST) + ";a=(a||[]).filter(function(x){return skip.indexOf(String(x.id))<0;});var v=a[0];if(!v||String(v.id)===s.dataset.vid)return;"
+    if not v: return ""
+    _skip = VIMEO_NOT_LATEST + [FEATURED_VIDEO["id"], EVOLVEX_VIDEO["id"]]
+    js = ("<script>(function(){var s=document.getElementById('latest-video');if(!s)return;fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){var skip=" + json.dumps(_skip) + ";a=(a||[]).filter(function(x){return skip.indexOf(String(x.id))<0;});var v=a[0];if(!v||String(v.id)===s.dataset.vid)return;"
           "s.dataset.vid=v.id;s.querySelector('iframe').src='https://player.vimeo.com/video/'+v.id+'?dnt=1&title=0&byline=0&portrait=0';s.querySelector('h3').textContent=v.title||'';s.querySelector('.vid-desc').textContent=(v.description||'').split('\\n')[0].slice(0,220);}).catch(function(){});})();</script>")
     return (f'<section id="latest-video" class="vid-latest" data-vid="{v["id"]}"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">Latest from Serene</span><h2>Our newest video</h2></div>'
             + _vimeo_iframe(v["id"], _h.escape(v["title"])) +

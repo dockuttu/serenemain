@@ -66,6 +66,7 @@ def home(posts):
         provs += f'<a class="provcard reveal" href="{path}"><img src="{img}" alt="{X.text_of(name)}" loading="lazy"><span class="role">{role}</span><h3>{name}</h3><p style="color:var(--ink-soft);font-size:.92rem">{creds[0]}</p></a>'
     body = f"""
 {featured_video_section()}
+{evolvex_video_section()}
 {local_specials_section(None)}
 <section class="hero" style="background-image:linear-gradient(90deg,rgba(16,50,47,.8) 0%,rgba(16,50,47,.5) 50%,rgba(16,50,47,.12) 100%),url('/img/lobby.jpg')">
   <div class="wrap">
