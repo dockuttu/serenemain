@@ -174,3 +174,56 @@ def inject_after_video(html, office, book):
             j += len('</section>')
             return html[:j] + "\n" + blk + html[j:]
     return html.replace('<section class="hero">', blk + '<section class="hero">', 1)
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Deal of the Day strip on office pages (Robin, Oct 8 2026: deals were only visible on the home pages / deal page).
+# A thin bar right under the header of every /hudson/ and /barboursville/ treatment + pricing page: today's deal for
+# THAT office (Eastern time), hidden when there is no deal today or it has sold out (/api/deals/status).
+# Called from both office repos' v2_merge.py through site_lib.inject_deal_strip(html, office). Idempotent.
+STRIP_ID = "dotd-strip"
+STRIP_SKIP = ("index.html", "lp/", "thank-you", "aftercare/", "labs/", "shop/", "cart/", "checkout/", "404", "easy-pay/", "house-calls/")
+
+
+def strip_wanted(rel):
+    rel = rel.replace("\\", "/")
+    return rel.endswith(".html") and not any(rel == k or rel.startswith(k) for k in STRIP_SKIP)
+
+
+def deal_strip(office):
+    ds = [{"d": x["date"], "t": x["treatment"], "r": x["regular"], "p": x["price"]} for x in _deals() if x["office"] == office]
+    if not ds:
+        return ""
+    data = _json.dumps({"o": office, "n": OFFICE_NAME[office], "d": ds}, ensure_ascii=False).replace("</", "<\\/")
+    return ('<div id="' + STRIP_ID + '" hidden style="background:#10322F;color:#fff;font-family:Poppins,sans-serif">'
+            '<div style="max-width:1200px;margin:0 auto;padding:9px 16px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;justify-content:center;text-align:center;font-size:.9rem;line-height:1.4">'
+            '<span style="background:#d23c3c;border-radius:30px;padding:2px 10px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700">Deal of the Day</span>'
+            '<span id="dotd-strip-txt"></span>'
+            '<a href="/deal-of-the-day/" style="color:#fff;font-weight:600;text-decoration:underline;white-space:nowrap">Get today&rsquo;s deal &rarr;</a>'
+            '</div></div>'
+            '<script type="application/json" id="dotd-strip-data">' + data + '</script>'
+            '<script>(function(){try{var E=document.getElementById("' + STRIP_ID + '");if(!E)return;'
+            'var C=JSON.parse(document.getElementById("dotd-strip-data").textContent);'
+            'var t=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(new Date());'
+            'var d=null;C.d.forEach(function(x){if(x.d===t)d=x;});if(!d)return;'
+            'function m(n){return "$"+Number(n).toLocaleString("en-US");}'
+            'var s=document.createElement("span");s.textContent=d.t;'
+            'document.getElementById("dotd-strip-txt").innerHTML="Today in "+C.n+": <b>"+s.innerHTML+"</b> &middot; "+m(d.p)+" <s style=\\"opacity:.7\\">"+m(d.r)+"</s> &middot; only 1 available";'
+            'E.hidden=false;'
+            'fetch("/api/deals/status",{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(x){'
+            'if(x&&x.date===t&&x[C.o]&&x[C.o].sold)E.hidden=true;}).catch(function(){});'
+            '}catch(e){}})();</script>')
+
+
+def inject_deal_strip(html, office):
+    if 'id="' + STRIP_ID + '"' in html:
+        return html
+    i = html.find("</header>")
+    if i == -1:
+        return html
+    strip = deal_strip(office)
+    if not strip:
+        return html
+    i += len("</header>")
+    return html[:i] + "\n" + strip + html[i:]

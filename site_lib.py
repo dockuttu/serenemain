@@ -746,3 +746,12 @@ def local_specials_section(office=None):
 def inject_local_specials(html, office):
     import local_specials as _LS
     return _LS.inject_after_video(html, office, {"hudson": HUDSON["book"], "barboursville": BARB["book"]})
+
+
+def inject_deal_strip(html, office, rel=None):
+    """Today's Deal of the Day bar under the header of office treatment/pricing pages (local_specials.py). rel = page path
+    relative to the office site root; pages like the home page, ad landing pages and aftercare are skipped."""
+    import local_specials as _LS
+    if rel is not None and not _LS.strip_wanted(rel):
+        return html
+    return _LS.inject_deal_strip(html, office)
