@@ -159,7 +159,7 @@ V_LAURA = _v("1232975340", "Laura's Story: GLP-1 Weight Loss, Restylane and Scul
     "Laura on pairing GLP-1 weight loss with Restylane and Sculptra.",
     "https://i.vimeocdn.com/video/2208519028-ef821d943daf8536e3f9e310fbedd7580ea496567a74321a591a6a2e8f053e1c-d_1280", "2026-10-05T06:38:43-04:00", "PT26S", True)
 V_EVOLVEX = _v("1233802650", "EvolveX Body Contouring on WSAZ Studio 3 — Serene Med Spa (Oct 7, 2026)",
-    "Stephanie Welker, NP and Cami, licensed esthetician, demonstrate InMode EvolveX body contouring live on WSAZ's Studio 3 (aired October 7, 2026).",
+    "Stephanie Welker, FNP-BC explains InMode EvolveX body contouring while Cami, an esthetician at Serene Med Spa, is treated live on WSAZ's Studio 3 (aired October 7, 2026).",
     "https://i.vimeocdn.com/video/2209598942-dafe73dba86e2fc96168df259f5550126eb356274119792f514578bfbde56aad-d_1280", "2026-10-07T13:29:41-04:00", "PT2M50S")
 _AFTER_GLP1 = {"eyebrow": "After GLP-1 weight loss", "h": "Your &ldquo;after-after&rdquo;: Sculpt &amp; Lift",
     "p": "Losing weight on a GLP-1 can leave the face looking older or hollow. Restylane and Sculptra restore volume and support your skin&rsquo;s own collagen, so your face catches up with the rest of your results.",

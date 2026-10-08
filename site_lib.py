@@ -376,7 +376,7 @@ EVOLVEX_VIDEO = {"id": "1233802650", "aired": "2026-10-07", "upload": "2026-10-0
 def evolvex_video_ld(page_url):
     V = EVOLVEX_VIDEO
     return {"@context": "https://schema.org", "@type": "VideoObject", "name": V["title"],
-            "description": "Stephanie Welker, NP and Cami, licensed esthetician, demonstrate InMode EvolveX body contouring live on WSAZ's Studio 3 (aired October 7, 2026).",
+            "description": "Stephanie Welker, FNP-BC explains InMode EvolveX body contouring while Cami, an esthetician at Serene Med Spa, is treated live on WSAZ's Studio 3 (aired October 7, 2026).",
             "thumbnailUrl": [V["thumb"]], "uploadDate": V["upload"], "duration": V["duration"],
             "embedUrl": "https://player.vimeo.com/video/" + V["id"], "contentUrl": "https://vimeo.com/" + V["id"], "url": page_url,
             "publisher": {"@type": "Organization", "name": "Serene Med Spa", "url": SITE_URL}}
@@ -397,7 +397,7 @@ def evolvex_video_section(loc=None, prefix=""):
     ld = json.dumps(evolvex_video_ld(SITE_URL + (prefix or "") + "/"), ensure_ascii=False)
     return (f'<section id="evolvex-video" class="vid-latest"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span>'
             f'<h2>EvolveX body contouring, live on TV</h2>'
-            f'<p style="max-width:720px;margin:10px auto 0">Stephanie Welker, NP and Cami, our licensed esthetician, demonstrated InMode EvolveX on WSAZ&rsquo;s Studio 3 on October 7, 2026. '
+            f'<p style="max-width:720px;margin:10px auto 0">On WSAZ&rsquo;s Studio 3 on October 7, 2026, Stephanie Welker, FNP-BC explained InMode EvolveX while Cami, our esthetician, was treated live on air. '
             f'Hands-free radiofrequency heat works on skin and stubborn fat while muscle stimulation tones the muscle underneath &mdash; most often on the abdomen, but also the arms, thighs and buttocks.</p></div>'
             + _vimeo_iframe(V["id"], "EvolveX body contouring demo on WSAZ Studio 3 with Serene Med Spa") +
             f'<div class="card reveal vid-offer"><div class="ico">&#10022;</div><h3>EvolveX at Serene</h3>'
