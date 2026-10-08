@@ -408,6 +408,19 @@ def evolvex_video_section(loc=None, prefix=""):
             f'#evolvex-video .deal-list li{{display:grid;gap:2px}}#evolvex-video .deal-list span{{font-size:.92rem;color:var(--ink-soft)}}</style>'
             f'<script type="application/ld+json">{ld}</script></div></section>\n')
 
+PRESS_LOGO = "/img/press/wsaz-logo.svg"   # WSAZ NewsChannel 3 masthead logo (white type: needs a dark background)
+def press_strip(abs_urls=False, anchors=True):
+    """'As featured on WSAZ' strip shown above the TV segments on the home pages. Hidden until the logo file exists in assets/img/press/."""
+    if not os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "img", "press", "wsaz-logo.svg")): return ""
+    logo = (SITE_URL if abs_urls else "") + PRESS_LOGO
+    ul = '#studio3' if anchors else SITE_URL + '/#studio3'
+    ev = '#evolvex-video' if anchors else SITE_URL + '/#evolvex-video'
+    return (f'<section id="press" style="background:#0b1f3a;padding:26px 0"><div class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 34px;text-align:center">'
+            f'<span style="color:#c9d3e6;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:600">As featured on</span>'
+            f'<a href="https://www.wsaz.com/" target="_blank" rel="noopener" aria-label="WSAZ NewsChannel 3"><img src="{logo}" alt="WSAZ NewsChannel 3" width="190" height="56" style="height:56px;width:auto;display:block"></a>'
+            f'<span style="color:#fff;font-size:.95rem">Studio 3 segments: <a href="{ul}" style="color:#fff;text-decoration:underline">Ultherapy live demo</a> &middot; '
+            f'<a href="{ev}" style="color:#fff;text-decoration:underline">EvolveX body contouring</a></span></div></section>\n')
+
 def _vimeo_latest():
     """Newest public video on the account at build time (fallback: the featured video). The page also refreshes itself client-side."""
     try:

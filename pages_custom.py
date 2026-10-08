@@ -65,6 +65,7 @@ def home(posts):
     for path, name, role, img, creds, blurb in PROVIDERS:
         provs += f'<a class="provcard reveal" href="{path}"><img src="{img}" alt="{X.text_of(name)}" loading="lazy"><span class="role">{role}</span><h3>{name}</h3><p style="color:var(--ink-soft);font-size:.92rem">{creds[0]}</p></a>'
     body = f"""
+{press_strip()}
 {featured_video_section()}
 {evolvex_video_section()}
 {local_specials_section(None)}
