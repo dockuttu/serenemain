@@ -11,6 +11,9 @@ from site_lib import *
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GIFT_URL = "https://clients.mangomint.com/gift-cards/serenemedspa"
+# Metricool web tracker (same brand hash as the office pages) so deal-page visits show up in Metricool > Web (Oct 8 2026)
+METRICOOL = '<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"4fad2d9c5cf1e8aa5074457e8e5dfbdc"})});</script>'
+
 OFFICE_NAMES = {"hudson": "Hudson, OH", "barboursville": "Barboursville, WV"}
 
 def _load():
@@ -111,7 +114,7 @@ def deal_of_day():
   else document.getElementById('glow').style.display='none';
 })();
 </script>'''
-    return shell("/deal-of-the-day/", "Deal of the Day | Serene Med Spa", "One med spa treatment a day at each office, Hudson, OH and Barboursville, WV. One available, new deal every midnight. Plus the Daily Glow.", body)
+    return shell("/deal-of-the-day/", "Deal of the Day | Serene Med Spa", "One med spa treatment a day at each office, Hudson, OH and Barboursville, WV. One available, new deal every midnight. Plus the Daily Glow.", body, extra_head=METRICOOL)
 
 def specials_banner():
     return '''<section style="padding-bottom:0"><div class="wrap"><div class="card" style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;border-top:4px solid var(--rose)">
