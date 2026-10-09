@@ -131,7 +131,7 @@ def home(posts):
   <div class="wrap">
     <div class="offer reveal">
       <div><span class="eyebrow">New patients</span><h2>Your first visit, 20% off</h2><p class="lede">Applies to any product or service at either office &mdash; injectables, facials, lasers, IV therapy or skincare. Can&rsquo;t be combined with another discount. Mention it when you book.</p>
-        <div class="actions"><a class="btn" href="/#book" data-loc-book>Book Now</a><a class="btn btn-outline" href="/specials/">September specials</a></div></div>
+        <div class="actions"><a class="btn" href="/#book" data-loc-book>Book Now</a><a class="btn btn-outline" href="/specials/">{SPECIALS_MONTH} specials</a></div></div>
       <div class="big" style="text-align:center">20%<br><span style="font-size:.28em;letter-spacing:.2em">off your first visit</span></div>
     </div>
   </div>

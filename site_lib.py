@@ -519,7 +519,8 @@ _PROMO_JS = ('<script>(function(){try{var d=new Date();if(d<new Date(2026,9,1))r
 _SEPT_PROMO = _SEPT_PROMO.replace('<div class="promo">', '<div class="promo" data-promo="sep">', 1)
 _today = _dt.date.today()
 # Base bar (visible without JS) follows the build date; the script swaps in the right variant by the visitor's date.
-_BASE = (_SEPT_PROMO if _today <= _dt.date(2026, 10, 31) else
+_BASE = (_SEPT_PROMO if _today < _dt.date(2026, 10, 1) else
+         _OCT_MAIN.replace('data-promo="oct-main" style="display:none"', 'data-promo="sep"', 1) if _today <= _dt.date(2026, 10, 31) else
          '<div class="promo" data-promo="sep">' + (_NOV_TXT if _today < _dt.date(2026, 11, 27) else _BF_TXT if _today <= _dt.date(2026, 11, 30) else _DEC_TXT if _today <= _dt.date(2026, 12, 24) else '&#10022; <a href="' + _B + '/specials/">This month&rsquo;s specials</a>' + _NP) + '</div>')
 PROMO = _BASE + _OCT_BV + _OCT_HUD + _OCT_MAIN + _NOV_JS + _PROMO_JS
 NAV = PROMO + f'''<header>
