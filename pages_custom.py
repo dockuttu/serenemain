@@ -8,6 +8,7 @@ import perimenopause_page as PP
 import brain_page as BP
 import cardio_page as CP
 import womens_health_pages as WH
+import womens_health_pages2  # noqa: F401  (adds batch-2 articles + fold-ins to WH)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 

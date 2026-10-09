@@ -47,13 +47,17 @@ def perimenopause():
     <li><strong>Digestive changes</strong> such as bloating, reflux or new food sensitivities</li>
     <li><strong>Skin and hair:</strong> adult acne, dry or itchy skin, thinning hair</li>
     <li><strong>Headaches</strong> or migraines that are new or different</li>
-    <li><strong>Frozen shoulder</strong>, dizziness or a burning sensation in the mouth</li>
+    <li><strong>Frozen shoulder</strong>, dizziness or a burning sensation in the mouth (see <a href="/unusual-perimenopause-symptoms/">unexpected perimenopause symptoms</a>)</li>
   </ul>
   <p>Each of these can also have other causes, which is exactly why they deserve a proper evaluation instead of a shrug.</p>
 
   <h2>Why perimenopause gets missed</h2>
   <p>Many of these symptoms are treated one at a time &mdash; a sleep aid here, an antidepressant there &mdash; without anyone stepping back to look at the pattern. An analysis of 2019&ndash;2023 insurance claims for nearly 29 million U.S. women aged 45&ndash;51 found that only about one in five who saw a doctor for symptoms like irregular bleeding, poor sleep or mood changes received a perimenopause diagnosis.</p>
   <p>Another common pitfall is a single blood test. Because hormone levels swing from week to week, a &ldquo;normal&rdquo; result on one day doesn&rsquo;t rule perimenopause out.</p>
+
+  <h2>Your experience may differ, and it deserves to be heard</h2>
+  <p>Perimenopause doesn&rsquo;t look the same for everyone. In the SWAN study, frequent hot flashes and night sweats lasted a median of 7.4 years overall, but the typical length differed between groups of women: about 10 years for Black women, 9 years for Hispanic women, 6.5 years for white women and around 5 years for Chinese and Japanese women. These are averages, not predictions for any one person.</p>
+  <p>If you&rsquo;ve felt brushed off, there may be a reason. In a survey of 177 internal medicine, family medicine and OB-GYN residents, only about 7% felt adequately prepared to manage menopause. To be heard at any visit, bring a short list of your top three symptoms, how long you&rsquo;ve had them and how they affect your work, sleep and relationships, and ask directly whether perimenopause could be part of the picture.</p>
 
   <h2>How we evaluate you</h2>
   <ol>
@@ -72,14 +76,16 @@ def perimenopause():
     <li><strong>Metabolic support</strong> &mdash; nutrition, strength training guidance and, when appropriate, our <a href="/telehealth/">medical weight-management program</a></li>
     <li><strong>Intimate wellness</strong> for dryness and comfort, with in-office options at both locations</li>
   </ul>
+  <p>Guidance on hormone therapy has changed since the early 2000s. In February 2026, the FDA approved updated labels for menopausal hormone therapy that removed boxed-warning statements about heart disease, breast cancer and dementia, noting that women who start treatment within 10 years of menopause, generally before 60, had lower all-cause mortality and fewer fractures in randomized studies. Whether it&rsquo;s right for you still depends on your age, timing and personal history.</p>
   <p>Every plan is individualized, and treatment is recommended only when it&rsquo;s appropriate for you after your consultation.</p>
   <p>Struggling most with mood, sleep or memory? Read Dr. Shweta Arora&rsquo;s guide to <a href="/menopause-mood-sleep-brain-fog/">mood, sleep and brain fog in midlife</a>.</p>
   <p>Worried about weight gain, blood sugar or cholesterol? See <a href="/menopause-weight-gain-heart-health/">midlife weight, blood sugar and your heart</a>.</p>
+  <p>Browse every guide in our <a href="/womens-health/">Women&rsquo;s Health Library</a>.</p>
 
   <h2>See us in person or by video</h2>
   <p>Visit our physician-led team at our <a href="{HUDSON["site"]}">Hudson, Ohio</a> office (near Akron and Cleveland) or our <a href="{BARB["site"]}">Barboursville, West Virginia</a> office (near Huntington), or meet <a href="/telehealth/">Dr. Robin Arora by telehealth</a> from anywhere in Ohio, West Virginia, Kentucky or Florida.</p>
   <p style="background:#fff5f2;border-left:5px solid #c0392b;padding:14px 18px;border-radius:8px;max-width:760px"><strong>Don&rsquo;t wait on these:</strong> soaking a pad or tampon every hour, bleeding after 12 months without a period, bleeding after sex, chest pain, or thoughts of harming yourself. Call your doctor promptly &mdash; or 911 in an emergency.</p>
-  <p style="font-size:.85rem;color:var(--muted)">Sources: The Menopause Society, <em>Menopause</em> (2026) perimenopause uncertainty study; Komodo Health, &ldquo;Lost in Transition&rdquo; claims analysis (2019&ndash;2023 data); Lu et al., <em>Neural Plasticity</em> 2020 meta-analysis of musculoskeletal pain; Cleveland Clinic, &ldquo;Perimenopause&rdquo;. This page is general education, not medical advice.</p>
+  <p style="font-size:.85rem;color:var(--muted)">Sources: The Menopause Society, <em>Menopause</em> (2026) perimenopause uncertainty study; Komodo Health, &ldquo;Lost in Transition&rdquo; claims analysis (2019&ndash;2023 data); Lu et al., <em>Neural Plasticity</em> 2020 meta-analysis of musculoskeletal pain; Cleveland Clinic, &ldquo;Perimenopause&rdquo;. Avis et al., <em>JAMA Internal Medicine</em> 2015 (SWAN); Kling et al., <em>Mayo Clinic Proceedings</em> 2019; U.S. FDA, hormone therapy labeling changes (February 2026). This page is general education, not medical advice.</p>
 </div></section>
 <section class="tint-sand"><div class="wrap"><div class="section-head"><span class="eyebrow">Perimenopause FAQ</span><h2>Common questions</h2></div><div class="grid g2">{faq_html}</div></div></section>
 {book_band()}'''
