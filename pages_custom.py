@@ -7,6 +7,7 @@ import deals_page as DP
 import perimenopause_page as PP
 import brain_page as BP
 import cardio_page as CP
+import womens_health_pages as WH
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -698,6 +699,7 @@ def comfort_options():
 def build(pages, posts, render_prose, render_embed):
     out = {"/": home(posts), "/locations/": locations(), "/our-providers/": providers(pages), "/about-us/": about(pages), "/reviews/": reviews(),
            "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/perimenopause/": PP.perimenopause(), "/menopause-mood-sleep-brain-fog/": BP.brain_page(), "/menopause-weight-gain-heart-health/": CP.cardio_page(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day()}
+    out.update(WH.pages())  # Women's Health Library: 7 A4M-deck articles + /womens-health/ hub (Oct 9 2026)
     # self-contained tools whose only <h1> is rendered client-side get a static hero (crawlers see an H1)
     EMBED_HERO = {"/vitalityiq/": page_hero("VitalityIQ: Hormone &amp; Wellness Self-Check", "A free physician-built self-check for energy, sleep, mood, weight and libido changes &mdash; and whether lab testing or a hormone consult makes sense for you.", [("/", "Home"), ("/vitalityiq/", "VitalityIQ")], "Free tool")}
     for p in EMBED_PAGES:
