@@ -74,6 +74,7 @@ def perimenopause():
   </ul>
   <p>Every plan is individualized, and treatment is recommended only when it&rsquo;s appropriate for you after your consultation.</p>
   <p>Struggling most with mood, sleep or memory? Read Dr. Shweta Arora&rsquo;s guide to <a href="/menopause-mood-sleep-brain-fog/">mood, sleep and brain fog in midlife</a>.</p>
+  <p>Worried about weight gain, blood sugar or cholesterol? See <a href="/menopause-weight-gain-heart-health/">midlife weight, blood sugar and your heart</a>.</p>
 
   <h2>See us in person or by video</h2>
   <p>Visit our physician-led team at our <a href="{HUDSON["site"]}">Hudson, Ohio</a> office (near Akron and Cleveland) or our <a href="{BARB["site"]}">Barboursville, West Virginia</a> office (near Huntington), or meet <a href="/telehealth/">Dr. Robin Arora by telehealth</a> from anywhere in Ohio, West Virginia, Kentucky or Florida.</p>

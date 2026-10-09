@@ -454,7 +454,7 @@ SERVICE_MENU = [
     ("Skin & Laser", [("/barboursville/ultherapy/", "Ultherapy"), ("/morpheus8-rf-microneedling-treatment-at-serene-med-spas/", "Morpheus8"), ("/hydrafacial/", "HydraFacial"),
                       ("/microneedling-with-prp/", "Microneedling & PRP"), ("/chemical-peel-treatments-serene-med-spa/", "Chemical Peels"), ("/laser-facial/", "Laser Facial"),
                       ("/laser-hair-removal/", "Laser Hair Removal"), ("/laser-tattoo-removal/", "Tattoo Removal"), ("/expert-spider-vein-treatment/", "Spider Veins")]),
-    ("Body & Wellness", [("/inmode-evolvex-body-contouring/", "Body Contouring (EvolveX)"), ("/telehealth/", "Weight Management"), ("/biote-hormone-therapy/", "Hormone Therapy"), ("/perimenopause/", "Perimenopause Care"), ("/menopause-mood-sleep-brain-fog/", "Mood, Sleep & Brain Fog"),
+    ("Body & Wellness", [("/inmode-evolvex-body-contouring/", "Body Contouring (EvolveX)"), ("/telehealth/", "Weight Management"), ("/biote-hormone-therapy/", "Hormone Therapy"), ("/perimenopause/", "Perimenopause Care"), ("/menopause-mood-sleep-brain-fog/", "Mood, Sleep & Brain Fog"), ("/menopause-weight-gain-heart-health/", "Weight & Heart Health"),
                          ("/the-serene-hydration-bar/", "IV Therapy"), ("/natural-prp-hair-restoration/", "Hair Restoration"), ("/empowerrf-vaginal-rejuvenation-treatment/", "Women's Wellness"),
                          ("/alma-duo/", "Sexual Wellness"), ("/comfort-options/", "Comfort Options")]),
     ("By Concern", [("/service/#injectables", "Wrinkles & fine lines"), ("/service/#injectables", "Volume loss & contour"), ("/service/#skin", "Acne & scarring"),

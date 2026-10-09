@@ -53,6 +53,7 @@ def brain_page():
     <li><strong>Measure the result.</strong> We track the same symptoms at follow-up so you can see what changed.</li>
   </ol>
   <p>Every plan is individualized, and treatment is recommended only when it&rsquo;s right for you after your consultation. Learn more about <a href="/perimenopause/">perimenopause</a> and <a href="/biote-hormone-therapy/">hormone therapy</a>.</p>
+  <p>Worried about weight gain, blood sugar or cholesterol? See <a href="/menopause-weight-gain-heart-health/">midlife weight, blood sugar and your heart</a>.</p>
 
   <h2>See us in person or by video</h2>
   <p>Visit our physician-led team at our <a href="{HUDSON["site"]}">Hudson, Ohio</a> or <a href="{BARB["site"]}">Barboursville, West Virginia</a> office, or meet <a href="/telehealth/">Dr. Robin Arora by telehealth</a> from anywhere in Ohio, West Virginia, Kentucky or Florida.</p>
