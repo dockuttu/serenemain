@@ -4,6 +4,7 @@ import re, os, json
 import extract as X
 from site_lib import *
 import deals_page as DP
+import perimenopause_page as PP
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -577,7 +578,7 @@ def telehealth():
   <div class="section-head"><span class="eyebrow">What we treat by telehealth</span><h2>Wellness that fits your week</h2></div>
   <div class="grid g3">
     <div class="card reveal"><h3>Medical weight management</h3><p>Physician-supervised programs that can include GLP-1 medications when they are appropriate for you, with regular follow-ups to track progress and adjust your plan.</p></div>
-    <div class="card reveal"><h3>Hormone therapy</h3><p>Hormone optimization for women and men, guided by your symptoms and lab work. Dr. Arora is Biote certified; pellet therapy is placed in person at our offices.</p></div>
+    <div class="card reveal"><h3>Hormone therapy</h3><p>Hormone optimization for women and men, guided by your symptoms and lab work. Dr. Arora is Biote certified; pellet therapy is placed in person at our offices. <a href="/perimenopause/">Perimenopause care &rarr;</a></p></div>
     <div class="card reveal"><h3>Wellness &amp; longevity</h3><p>Personalized wellness plans, lab review and prescription options to help you feel your best.</p></div>
   </div>
 </div></section>
@@ -694,7 +695,7 @@ def comfort_options():
 
 def build(pages, posts, render_prose, render_embed):
     out = {"/": home(posts), "/locations/": locations(), "/our-providers/": providers(pages), "/about-us/": about(pages), "/reviews/": reviews(),
-           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day()}
+           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/perimenopause/": PP.perimenopause(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day()}
     # self-contained tools whose only <h1> is rendered client-side get a static hero (crawlers see an H1)
     EMBED_HERO = {"/vitalityiq/": page_hero("VitalityIQ: Hormone &amp; Wellness Self-Check", "A free physician-built self-check for energy, sleep, mood, weight and libido changes &mdash; and whether lab testing or a hormone consult makes sense for you.", [("/", "Home"), ("/vitalityiq/", "VitalityIQ")], "Free tool")}
     for p in EMBED_PAGES:
