@@ -151,6 +151,7 @@ def home(posts):
       <div class="badge reveal"><img src="/img/badges/ultherapy-prime.png" alt="Ultherapy PRIME provider"><div><b>Ultherapy PRIME</b><small>Non-surgical lifting</small></div></div>
       <div class="badge reveal"><img src="/img/badges/inmode-morpheus8-verified.png" alt="InMode Morpheus8 Verified Provider"><div><b>InMode Verified Provider</b><small>Morpheus8 &amp; EmpowerRF</small></div></div>
       <div class="badge reveal"><img src="/img/badges/biote-certified-provider.webp" alt="Biote Certified Provider"><div><b>Biote Certified</b><small>Hormone optimization</small></div></div>
+      <div class="badge reveal"><img src="/img/badges/a4m-member.png" alt="A4M, American Academy of Anti-Aging Medicine" style="height:34px;padding:0 4px 0 10px"><div><b>A4M Member Physicians</b><small>Robin Arora, MD &amp; Shweta Arora, MD</small></div></div>
       <div class="badge reveal"><img src="/img/logos/obagi-medical-logo.png" alt="Obagi Medical" style="padding:6px"><div><b>Authorized Obagi Provider</b><small>Medical-grade skincare</small></div></div>
     </div>
     <p style="text-align:center;margin:40px 0 18px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600">Injectables &amp; skin</p>
@@ -279,10 +280,10 @@ def locations():
 
 PROVIDERS = [
     ("/our-providers/robin-arora-md/", "Robin Arora, MD, MBA", "Founder &amp; Medical Director", "/wp-content/uploads/2026/08/Robin-683x1024-1.jpg",
-     ["Board Certified, Internal Medicine (ABIM)", "Board Certified, Nephrology &amp; Hypertension", "Certified in Aesthetic Medicine", "Biote Certified Provider", "Licensed in OH, WV, KY &amp; FL", "16+ years in practice"],
+     ["Board Certified, Internal Medicine (ABIM)", "Board Certified, Nephrology &amp; Hypertension", "Certified in Aesthetic Medicine", "Biote Certified Provider", "Member, American Academy of Anti-Aging Medicine (A4M)", "Licensed in OH, WV, KY &amp; FL", "16+ years in practice"],
      "Dr. Robin Arora trained in nephrology at Tulane and brings an internist&rsquo;s judgment to aesthetic and wellness medicine. He leads Serene Telehealth and supervises every treatment protocol at both offices."),
     ("/our-providers/shweta-arora/", "Shweta Arora, MD", "Aesthetic Physician", "/wp-content/uploads/2026/08/Shweta-Arora-MD.png",
-     ["Board Certified, Anesthesiology (ABA)", "Certified in Aesthetic Medicine (AAAM)", "Biote Certified Provider", "Licensed in Ohio &amp; West Virginia", "16+ years in practice"],
+     ["Board Certified, Anesthesiology (ABA)", "Certified in Aesthetic Medicine (AAAM)", "Biote Certified Provider", "Member, American Academy of Anti-Aging Medicine (A4M)", "Licensed in Ohio &amp; West Virginia", "16+ years in practice"],
      "Dr. Shweta Arora is the artistic eye behind Serene&rsquo;s injectables &mdash; conservative, anatomy-first and known for results that look rested rather than done. She sees patients at both offices."),
     ("/our-providers/stephanie-welker-fnp-bc/", "Stephanie Welker, FNP-BC", "Nurse Practitioner", "/wp-content/uploads/2025/10/Stephanie-Welker.png",
      ["Board Certified Family Nurse Practitioner", "Biote Certified Provider", "Allergan &amp; InMode trained", "8+ years as an NP"],
