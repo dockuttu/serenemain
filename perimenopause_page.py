@@ -20,6 +20,7 @@ def perimenopause():
                      "Poor sleep, mood swings, brain fog, heavier periods, new aches &mdash; and a feeling that something is off. A physician-led team can help you sort out what&rsquo;s hormonal, what isn&rsquo;t, and what to do about it.",
                      [("/", "Home"), ("/service/", "Treatments"), (None, "Perimenopause")], "Women&rsquo;s hormone care") + f'''
 <section><div class="wrap prose">
+  <p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>
   <p class="lede">If you&rsquo;re in your late 30s or 40s and don&rsquo;t feel like yourself, you&rsquo;re not imagining it, and you&rsquo;re not alone. In a 2026 study of more than 7,600 U.S. women, one in three over 35 weren&rsquo;t sure whether they were in perimenopause &mdash; 42% of women aged 40&ndash;44.</p>
   <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}" target="_blank" rel="noopener">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a hormone consult</a></div>
 
@@ -84,6 +85,7 @@ def perimenopause():
         {"@context": "https://schema.org", "@type": "MedicalWebPage", "url": SITE_URL + "/perimenopause/", "name": "Perimenopause symptoms, diagnosis and treatment",
          "about": {"@type": "MedicalCondition", "name": "Perimenopause", "alternateName": "Menopausal transition"},
          "audience": {"@type": "MedicalAudience", "audienceType": "Patient"}, "lastReviewed": "2026-10-09",
+         "author": {"@type": "Person", "name": "Shweta Arora, MD", "url": SITE_URL + "/our-providers/shweta-arora/"},
          "reviewedBy": {"@type": "Person", "name": "Robin Arora, MD", "url": SITE_URL + "/our-providers/robin-arora-md/"}, "isPartOf": {"@type": "WebSite", "@id": SITE_URL + "/#website"}},
         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": __import__("html").unescape(a)}} for q, a in PERI_FAQ]},
     ], ensure_ascii=False)
