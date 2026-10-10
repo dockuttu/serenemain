@@ -61,6 +61,54 @@ def medical_webpage(path, title, desc):
     return d
 
 
+# ================================================================== articles (Serene Journal posts whose primary copy lives here)
+# Each file in articles/ defines POST = {...} in the Journal format (see serenestaff/marketing/journal-engine/PLAYBOOK.md),
+# plus ky_path (URL here), ky_service (treatment page that links to it) and ky_img (hero photo in assets/img).
+# The matching post on blog.serenemedspas.com sets 'canonical' to this page. Future-dated articles stay hidden until their date.
+def load_articles():
+    out = []
+    d = os.path.join(HERE, "articles")
+    if not os.path.isdir(d): return out
+    for fn in sorted(os.listdir(d)):
+        if not fn.endswith(".py") or fn.startswith("._"): continue
+        ns = {}
+        exec(open(os.path.join(d, fn), encoding="utf-8").read(), ns)
+        a = ns.get("POST")
+        if a and a.get("date", "9999") <= TODAY: out.append(a)
+    return sorted(out, key=lambda a: a["date"], reverse=True)
+ARTICLES = load_articles()
+
+def article_links(service_slug):
+    rel = [a for a in ARTICLES if a.get("ky_service") == service_slug]
+    if not rel: return ""
+    lis = "".join(f'<li><a href="{a["ky_path"]}">{a["title"]}</a></li>' for a in rel)
+    return f'<div class="card" style="margin-top:18px"><span class="eyebrow">From our physicians</span><ul style="margin:8px 0 0 18px">{lis}</ul></div>'
+
+def article_page(a):
+    path = a["ky_path"]
+    svc = C.BY_SLUG.get(a.get("ky_service"))
+    crumbs = [("/", "Home")] + ([(f"/{svc['slug']}/", text_of(svc["name"]))] if svc else []) + [(None, "Article")]
+    tldr = "".join(f"<li>{t}</li>" for t in a.get("tldr", []))
+    srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{l}</a></li>' for l, u in a.get("sources", []))
+    byline = f'<p class="fine">By Robin Arora, MD, MBA &middot; Medically reviewed by Robin Arora, MD &middot; {a["date_h"]}</p>'
+    body = page_hero(a["h1"], a.get("excerpt", ""), crumbs, "Article &middot; Paintsville, KY", image=a.get("ky_img"), alt=a.get("img_alt", "")) + f'''
+<section><div class="wrap narrow"><div class="prose">{byline}
+<div class="card" style="background:var(--grey);border-color:transparent;margin:18px 0 26px"><span class="eyebrow">The short answer</span><ul style="margin:10px 0 0 18px">{tldr}</ul></div>
+{a["body"]}
+<p class="fine" style="margin-top:28px">This article is for education and is not medical advice. Results vary, and a consultation determines whether a treatment is right for you.</p>
+</div></div></section>
+{faq_section(a.get("faq", []), "Frequently asked questions")}
+<section><div class="wrap narrow"><div class="prose"><span class="eyebrow">Sources</span><ol class="fine" style="margin-left:18px">{srcs}</ol></div></div></section>
+{book_band()}'''
+    url = SITE_URL + path
+    art = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": text_of(a["h1"]), "description": text_of(a["desc"]), "url": url,
+           "mainEntityOfPage": url, "datePublished": a["date"], "dateModified": a.get("updated", a["date"]), "image": SITE_URL + (a.get("ky_img") or OG_DEFAULT),
+           "author": {"@type": "Person", "name": "Robin Arora, MD, MBA", "url": SITE_URL + "/about/#dr-arora"},
+           "publisher": {"@id": ORG_ID}, "keywords": ", ".join(a.get("keywords", [])), "inLanguage": "en-US"}
+    ld = [art, faq_ld(a.get("faq", [])), medical_webpage(path, text_of(a["title"]), text_of(a["desc"]))]
+    write(path, shell(path, a.get("seo_title", a["title"]), a["desc"], body, og_image=a.get("ky_img"), ld=ld, crumbs=crumbs))
+
+
 # ================================================================== pages
 def home():
     trust = '<div class="trust"><div class="wrap"><span>Board-certified NP</span><span>Physician medical director</span><span>InMode technology</span><span>Biote Certified</span></div></div>'
@@ -125,7 +173,7 @@ def service_page(s):
     glance = s["prices"] if len(s["prices"]) <= 6 else s["prices"][:5]
     more = f'<p style="margin-top:10px"><a href="#pricing" class="more" style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600">See all {len(s["prices"])} areas &darr;</a></p>' if len(s["prices"]) > 6 else ""
     body = page_hero(s["h1"], s["lede"], crumbs, s["eyebrow"], image=s["hero"], alt=s["hero_alt"], price=s["price_pill"]) + f'''
-<section><div class="wrap band top"><div class="prose"><span class="eyebrow">What it is</span><h2 style="margin-top:0">About {s["name"]}</h2>{"".join(f"<p>{p}</p>" for p in s["what"])}{disc}</div>
+<section><div class="wrap band top"><div class="prose"><span class="eyebrow">What it is</span><h2 style="margin-top:0">About {s["name"]}</h2>{"".join(f"<p>{p}</p>" for p in s["what"])}{disc}{article_links(s['slug'])}</div>
 <div><div class="card" style="background:var(--grey);border-color:transparent"><span class="eyebrow">At a glance</span><h3>Regular rates</h3>{price_table(glance, note=False, caption=text_of(s["name"]) + " pricing")}{more}<p class="fine" style="margin:12px 0 18px">{C.PRICE_NOTE}</p>{cta_row("/specials/", "Current specials")}</div></div></div></section>
 <section class="tint-sand"><div class="wrap"><div class="section-head"><span class="eyebrow">What it treats</span><h2>Is {s["name"]} right for you?</h2><p class="lede">Common concerns we treat with {s["name"]} at our Paintsville office. A consultation confirms candidacy and sets realistic expectations.</p></div><ul class="checks">{treats}</ul></div></section>
 <section><div class="wrap band top"><div class="steps">{steps}</div><div style="position:sticky;top:130px"><span class="eyebrow">What to expect</span><h2>Your visit, step by step</h2><p class="lede">Every treatment at Serene Paintsville is performed by Katrina Watkins, NP, following protocols set by our physician medical director, Robin Arora, MD.</p>{cta_row()}</div></div></section>
@@ -419,6 +467,7 @@ def build():
     os.makedirs(OUT, exist_ok=True)
     home(); services(); pricing(); about(); contact(); specials(); privacy(); terms(); not_found()
     for s in C.SERVICES: service_page(s)
+    for a in ARTICLES: article_page(a)
     statics(); images()
     print(f"Built {len(PAGES)} pages into {OUT}")
     for p in sorted(PAGES): print(f"  {p:26s} {re.search(r'<title>(.*?)</title>', PAGES[p]).group(1)}")
