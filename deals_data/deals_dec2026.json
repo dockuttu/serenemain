@@ -6,7 +6,8 @@
   "covers": "40 units of Botox (forehead, 11s or crow's feet)",
   "regular": 440,
   "price": 389,
-  "off": 12
+  "off": 12,
+  "title": "Merry-tox — 40 units"
  },
  {
   "date": "2026-12-01",
@@ -15,7 +16,8 @@
   "covers": "One BBL Heroic photofacial",
   "regular": 400,
   "price": 359,
-  "off": 10
+  "off": 10,
+  "title": "Silver Bells BBL HEROic"
  },
  {
   "date": "2026-12-02",
@@ -24,7 +26,8 @@
   "covers": "One microneedling session",
   "regular": 200,
   "price": 169,
-  "off": 16
+  "off": 16,
+  "title": "Snowflake Microneedling"
  },
  {
   "date": "2026-12-02",
@@ -33,7 +36,8 @@
   "covers": "40 units of Botox (forehead, 11s or crow's feet)",
   "regular": 400,
   "price": 349,
-  "off": 13
+  "off": 13,
+  "title": "Merry-tox — 40 units"
  },
  {
   "date": "2026-12-03",
@@ -60,7 +64,8 @@
   "covers": "One syringe of Skinvive skin booster",
   "regular": 400,
   "price": 359,
-  "off": 10
+  "off": 10,
+  "title": "Candlelight Skinvive"
  },
  {
   "date": "2026-12-04",
@@ -69,7 +74,8 @@
   "covers": "One SKNLAB facial",
   "regular": 150,
   "price": 129,
-  "off": 14
+  "off": 14,
+  "title": "Winter Wonderland SKNLAB Facial"
  },
  {
   "date": "2026-12-05",
@@ -78,7 +84,8 @@
   "covers": "One Glow Drip IV infusion",
   "regular": 149,
   "price": 129,
-  "off": 13
+  "off": 13,
+  "title": "Sugarplum Glow Drip IV"
  },
  {
   "date": "2026-12-05",
@@ -87,7 +94,8 @@
   "covers": "One Glow Drip IV infusion",
   "regular": 149,
   "price": 129,
-  "off": 13
+  "off": 13,
+  "title": "Sugarplum Glow Drip IV"
  },
  {
   "date": "2026-12-06",
@@ -96,7 +104,8 @@
   "covers": "One DiamondGlow facial",
   "regular": 150,
   "price": 129,
-  "off": 14
+  "off": 14,
+  "title": "Frosted DiamondGlow"
  },
  {
   "date": "2026-12-06",
@@ -105,7 +114,8 @@
   "covers": "One Moxi laser treatment, full face",
   "regular": 500,
   "price": 449,
-  "off": 10
+  "off": 10,
+  "title": "Evergreen MOXI"
  },
  {
   "date": "2026-12-07",
@@ -114,7 +124,8 @@
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 699,
-  "off": 13
+  "off": 13,
+  "title": "Nutcracker Morpheus8"
  },
  {
   "date": "2026-12-07",
@@ -123,7 +134,8 @@
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 689,
-  "off": 14
+  "off": 14,
+  "title": "Nutcracker Morpheus8"
  },
  {
   "date": "2026-12-08",
@@ -132,7 +144,8 @@
   "covers": "120 units of Dysport",
   "regular": 479,
   "price": 429,
-  "off": 10
+  "off": 10,
+  "title": "Deck-the-Halls Dysport — 120 units"
  },
  {
   "date": "2026-12-08",
@@ -141,7 +154,8 @@
   "covers": "120 units of Dysport",
   "regular": 479,
   "price": 419,
-  "off": 13
+  "off": 13,
+  "title": "Deck-the-Halls Dysport — 120 units"
  },
  {
   "date": "2026-12-09",
@@ -150,7 +164,8 @@
   "covers": "One laser facial",
   "regular": 400,
   "price": 349,
-  "off": 13
+  "off": 13,
+  "title": "Fireside Laser Facial"
  },
  {
   "date": "2026-12-09",
@@ -159,7 +174,8 @@
   "covers": "PDO smooth (collagen) threads, one area",
   "regular": 275,
   "price": 239,
-  "off": 13
+  "off": 13,
+  "title": "Tinsel PDO Smooth Threads"
  },
  {
   "date": "2026-12-10",
@@ -168,7 +184,8 @@
   "covers": "One syringe of under-eye filler",
   "regular": 500,
   "price": 449,
-  "off": 10
+  "off": 10,
+  "title": "Starry-Eyed Under-Eye Filler"
  },
  {
   "date": "2026-12-10",
@@ -177,7 +194,8 @@
   "covers": "One syringe of under-eye filler",
   "regular": 500,
   "price": 439,
-  "off": 12
+  "off": 12,
+  "title": "Starry-Eyed Under-Eye Filler"
  },
  {
   "date": "2026-12-11",
@@ -204,7 +222,8 @@
   "covers": "One vial of Kybella (double chin)",
   "regular": 600,
   "price": 519,
-  "off": 14
+  "off": 14,
+  "title": "Snow Angel Chin Kybella"
  },
  {
   "date": "2026-12-12",
@@ -213,7 +232,8 @@
   "covers": "One vial of Kybella (double chin)",
   "regular": 600,
   "price": 519,
-  "off": 14
+  "off": 14,
+  "title": "Snow Angel Chin Kybella"
  },
  {
   "date": "2026-12-13",
@@ -222,7 +242,8 @@
   "covers": "20 units of Botox, soft 'baby Botox' dosing",
   "regular": 220,
   "price": 189,
-  "off": 14
+  "off": 14,
+  "title": "Stocking Stuffer Baby Botox — 20 units"
  },
  {
   "date": "2026-12-13",
@@ -231,7 +252,8 @@
   "covers": "20 units of Botox, soft 'baby Botox' dosing",
   "regular": 200,
   "price": 169,
-  "off": 16
+  "off": 16,
+  "title": "Stocking Stuffer Baby Botox — 20 units"
  },
  {
   "date": "2026-12-14",
@@ -240,7 +262,8 @@
   "covers": "One Opus Plasma resurfacing treatment",
   "regular": 400,
   "price": 349,
-  "off": 13
+  "off": 13,
+  "title": "Peppermint Opus Plasma"
  },
  {
   "date": "2026-12-14",
@@ -249,7 +272,8 @@
   "covers": "One Opus Plasma resurfacing treatment",
   "regular": 400,
   "price": 349,
-  "off": 13
+  "off": 13,
+  "title": "Peppermint Opus Plasma"
  },
  {
   "date": "2026-12-15",
@@ -258,7 +282,8 @@
   "covers": "Any one Serene IV drip",
   "regular": 149,
   "price": 129,
-  "off": 13
+  "off": 13,
+  "title": "Holly Jolly IV Drip"
  },
  {
   "date": "2026-12-15",
@@ -267,7 +292,8 @@
   "covers": "One microneedling session",
   "regular": 200,
   "price": 169,
-  "off": 16
+  "off": 16,
+  "title": "Snowflake Microneedling"
  },
  {
   "date": "2026-12-16",
@@ -276,7 +302,8 @@
   "covers": "1 mL Juvéderm lip filler",
   "regular": 500,
   "price": 449,
-  "off": 10
+  "off": 10,
+  "title": "Mistletoe Lips — full syringe"
  },
  {
   "date": "2026-12-16",
@@ -285,7 +312,8 @@
   "covers": "1 mL Juvéderm lip filler",
   "regular": 500,
   "price": 449,
-  "off": 10
+  "off": 10,
+  "title": "Mistletoe Lips — full syringe"
  },
  {
   "date": "2026-12-17",
@@ -294,7 +322,8 @@
   "covers": "One microneedling session with PRP",
   "regular": 500,
   "price": 439,
-  "off": 12
+  "off": 12,
+  "title": "Winter Solstice Microneedling with PRP"
  },
  {
   "date": "2026-12-17",
@@ -303,7 +332,8 @@
   "covers": "One microneedling session with PRP",
   "regular": 500,
   "price": 439,
-  "off": 12
+  "off": 12,
+  "title": "Winter Solstice Microneedling with PRP"
  },
  {
   "date": "2026-12-18",
@@ -348,7 +378,8 @@
   "covers": "One signature HydraFacial",
   "regular": 150,
   "price": 129,
-  "off": 14
+  "off": 14,
+  "title": "Holiday Glow HydraFacial"
  },
  {
   "date": "2026-12-20",
@@ -357,7 +388,8 @@
   "covers": "One signature HydraFacial",
   "regular": 150,
   "price": 129,
-  "off": 14
+  "off": 14,
+  "title": "Holiday Glow HydraFacial"
  },
  {
   "date": "2026-12-21",
@@ -366,7 +398,8 @@
   "covers": "40 units of Xeomin",
   "regular": 440,
   "price": 389,
-  "off": 12
+  "off": 12,
+  "title": "Silent Night Xeomin — 40 units"
  },
  {
   "date": "2026-12-21",
@@ -375,7 +408,8 @@
   "covers": "One syringe of Skinvive skin booster",
   "regular": 400,
   "price": 349,
-  "off": 13
+  "off": 13,
+  "title": "Candlelight Skinvive"
  },
  {
   "date": "2026-12-22",
@@ -384,7 +418,8 @@
   "covers": "One CoolPeel CO₂ laser treatment",
   "regular": 400,
   "price": 359,
-  "off": 10
+  "off": 10,
+  "title": "Frosty CoolPeel"
  },
  {
   "date": "2026-12-22",
@@ -393,7 +428,8 @@
   "covers": "One fractional CO₂ treatment",
   "regular": 600,
   "price": 519,
-  "off": 14
+  "off": 14,
+  "title": "Fresh Snow CO₂ — Alma Hybrid Fractional"
  },
  {
   "date": "2026-12-23",
@@ -402,7 +438,8 @@
   "covers": "One EMSCULPT NEO session",
   "regular": 400,
   "price": 349,
-  "off": 13
+  "off": 13,
+  "title": "Cookie-Proof EMSCULPT NEO"
  },
  {
   "date": "2026-12-23",
@@ -411,7 +448,8 @@
   "covers": "One sclerotherapy session",
   "regular": 300,
   "price": 259,
-  "off": 14
+  "off": 14,
+  "title": "Winter Legs Spider Vein Treatment"
  },
  {
   "date": "2026-12-24",
@@ -438,7 +476,8 @@
   "covers": "One Glow Drip IV infusion",
   "regular": 149,
   "price": 129,
-  "off": 13
+  "off": 13,
+  "title": "Christmas Morning Glow Drip IV"
  },
  {
   "date": "2026-12-25",
@@ -447,7 +486,8 @@
   "covers": "One Glow Drip IV infusion",
   "regular": 149,
   "price": 129,
-  "off": 13
+  "off": 13,
+  "title": "Christmas Morning Glow Drip IV"
  },
  {
   "date": "2026-12-26",
@@ -456,7 +496,8 @@
   "covers": "One vial of Sculptra",
   "regular": 750,
   "price": 659,
-  "off": 12
+  "off": 12,
+  "title": "New Year, New You Sculptra"
  },
  {
   "date": "2026-12-26",
@@ -465,7 +506,8 @@
   "covers": "One vial of Sculptra",
   "regular": 600,
   "price": 519,
-  "off": 14
+  "off": 14,
+  "title": "New Year, New You Sculptra"
  },
  {
   "date": "2026-12-27",
@@ -474,7 +516,8 @@
   "covers": "One VI chemical peel",
   "regular": 250,
   "price": 219,
-  "off": 12
+  "off": 12,
+  "title": "Resolution VI Peel"
  },
  {
   "date": "2026-12-27",
@@ -483,7 +526,8 @@
   "covers": "One laser facial",
   "regular": 400,
   "price": 359,
-  "off": 10
+  "off": 10,
+  "title": "Fresh Start Laser Facial"
  },
  {
   "date": "2026-12-28",
@@ -492,7 +536,8 @@
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 699,
-  "off": 13
+  "off": 13,
+  "title": "Countdown Morpheus8"
  },
  {
   "date": "2026-12-28",
@@ -501,7 +546,8 @@
   "covers": "One Morpheus8 face treatment",
   "regular": 800,
   "price": 689,
-  "off": 14
+  "off": 14,
+  "title": "Countdown Morpheus8"
  },
  {
   "date": "2026-12-29",
@@ -510,7 +556,8 @@
   "covers": "One fractional CO₂ treatment",
   "regular": 600,
   "price": 539,
-  "off": 10
+  "off": 10,
+  "title": "Midnight Sparkle CO₂ — Deka Fractional"
  },
  {
   "date": "2026-12-29",
@@ -519,7 +566,8 @@
   "covers": "PDO lifting threads, one small area",
   "regular": 300,
   "price": 259,
-  "off": 14
+  "off": 14,
+  "title": "Champagne PDO Lift — small area"
  },
  {
   "date": "2026-12-30",
@@ -528,7 +576,8 @@
   "covers": "One Alma TED session",
   "regular": 500,
   "price": 449,
-  "off": 10
+  "off": 10,
+  "title": "Resolution Alma TED"
  },
  {
   "date": "2026-12-30",
@@ -537,7 +586,8 @@
   "covers": "One Alma TED session",
   "regular": 500,
   "price": 429,
-  "off": 14
+  "off": 14,
+  "title": "Resolution Alma TED"
  },
  {
   "date": "2026-12-31",

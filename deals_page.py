@@ -93,7 +93,7 @@ def deal_of_day():
   if (todays.length){
     todays.sort(function(a,b){return a.office<b.office?1:-1});
     cards.innerHTML = todays.map(function(d){ return '<div class="card dotd" data-office="'+d.office+'">'+
-      '<span class="eyebrow">'+NAMES[d.office]+'</span><h3>'+esc(d.treatment)+'</h3><p class="covers">'+esc(d.covers)+'</p>'+
+      '<span class="eyebrow">'+NAMES[d.office]+'</span><h3>'+esc(d.title||d.treatment)+'</h3><p class="covers">'+esc(d.covers)+'</p>'+
       '<div class="price"><s>'+money(d.regular)+'</s><b>'+money(d.price)+'</b><span class="pill">'+d.off+'% off</span></div>'+
       '<p class="left">Only 1 available today</p>'+
       '<a class="btn buy" href="'+D.gift+'" target="_blank" rel="noopener">Buy now</a><div class="soldout">Sold out &mdash; new deal at midnight</div>'+
