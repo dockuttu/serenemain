@@ -91,7 +91,7 @@ def article_page(a):
     tldr = "".join(f"<li>{t}</li>" for t in a.get("tldr", []))
     srcs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{l}</a></li>' for l, u in a.get("sources", []))
     byline = f'<p class="fine">By Robin Arora, MD, MBA &middot; Medically reviewed by Robin Arora, MD &middot; {a["date_h"]}</p>'
-    body = page_hero(a["h1"], a.get("excerpt", ""), crumbs, "Article &middot; Paintsville, KY", image=a.get("ky_img"), alt=a.get("img_alt", "")) + f'''
+    body = page_hero(a.get("ky_h1", a["h1"]), a.get("excerpt", ""), crumbs, "Article &middot; Paintsville, KY", image=a.get("ky_img"), alt=a.get("img_alt", "")) + f'''
 <section><div class="wrap narrow"><div class="prose">{byline}
 <div class="card" style="background:var(--grey);border-color:transparent;margin:18px 0 26px"><span class="eyebrow">The short answer</span><ul style="margin:10px 0 0 18px">{tldr}</ul></div>
 {a["body"]}
@@ -106,7 +106,8 @@ def article_page(a):
            "author": {"@type": "Person", "name": "Robin Arora, MD, MBA", "url": SITE_URL + "/about/#dr-arora"},
            "publisher": {"@id": ORG_ID}, "keywords": ", ".join(a.get("keywords", [])), "inLanguage": "en-US"}
     ld = [art, faq_ld(a.get("faq", [])), medical_webpage(path, text_of(a["title"]), text_of(a["desc"]))]
-    write(path, shell(path, a.get("seo_title", a["title"]), a["desc"], body, og_image=a.get("ky_img"), ld=ld, crumbs=crumbs))
+    import html as _h
+    write(path, shell(path, _h.unescape(a.get("seo_title", a["title"])), _h.unescape(a.get("ky_desc", a["desc"])), body, og_image=a.get("ky_img"), ld=ld, crumbs=crumbs))
 
 
 # ================================================================== pages

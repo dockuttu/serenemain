@@ -14,6 +14,8 @@ POST = {
   'img_alt': 'A wrinkle-relaxer injection between the brows at Serene Med Spa in Paintsville, Kentucky',
   'excerpt': 'Botox and Xeomin work the same way and performed the same in a head-to-head trial. Here is how they actually differ, what each costs in Paintsville, and how to pick one for your first visit.',
   'loc': 'paintsville',
+  'ky_h1': 'Botox vs. Xeomin in Paintsville: Which to Choose First',
+  'ky_desc': 'Botox or Xeomin in Paintsville, KY? How they compare on results, onset, units and cost ($12 vs $10 a unit), and how to choose your first.',
   'ky_path': '/botox-vs-xeomin/',          # URL on serenemedspaky.com (primary copy; the blog copy canonicals here)
   'ky_service': 'botox-xeomin',            # linked from this treatment page
   'ky_img': '/img/botox-inject.jpg',       # hero photo from assets/img (has an 800px variant)
