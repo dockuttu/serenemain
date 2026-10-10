@@ -3,7 +3,7 @@
 import json
 from site_lib import shell, page_hero, book_band, HUDSON, BARB, TELE, SITE_URL
 
-QUIZ = "https://form.jotform.com/262813862138057"
+QUIZ = "/perimenopause-check/"  # was the all-in-Jotform check 262813862138057 (kept, unlinked)
 
 PERI_FAQ = [
     ("What is perimenopause?", "Perimenopause is the transition leading up to menopause, when the ovaries&rsquo; hormone output starts to swing up and down instead of following a steady monthly rhythm. Menopause itself is confirmed after 12 months in a row without a period."),
@@ -22,7 +22,7 @@ def perimenopause():
 <section><div class="wrap prose">
   <p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>
   <p class="lede">If you&rsquo;re in your late 30s or 40s and don&rsquo;t feel like yourself, you&rsquo;re not imagining it, and you&rsquo;re not alone. In a 2026 study of more than 7,600 U.S. women, one in three over 35 weren&rsquo;t sure whether they were in perimenopause &mdash; 42% of women aged 40&ndash;44.</p>
-  <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}" target="_blank" rel="noopener">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a hormone consult</a></div>
+  <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a hormone consult</a></div>
 
   <h2>What&rsquo;s actually happening</h2>
   <p>Through your 30s, each monthly cycle follows a predictable rise and fall of your ovarian hormones. As the supply of eggs dwindles, the brain pushes harder to get a response, and cycles become erratic. Some months estrogen runs high; others it crashes. The calming hormone your body makes after ovulation often drops first, because ovulation itself becomes less reliable.</p>
