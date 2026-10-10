@@ -3,7 +3,7 @@
 import json, html as _h
 from site_lib import shell, page_hero, book_band, HUDSON, BARB, SITE_URL
 
-QUIZ = "https://form.jotform.com/262813862138057"
+QUIZ = "/perimenopause-check/"
 SLUG = "/menopause-mood-sleep-brain-fog/"
 
 FAQ = [
@@ -23,7 +23,7 @@ def brain_page():
 <section><div class="wrap prose">
   <p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>
   <p class="lede">Your brain is full of hormone receptors &mdash; in the areas that control body temperature, mood, stress, sleep and memory. So when hormones start swinging in your 40s, it&rsquo;s no surprise that many women feel it first in their head.</p>
-  <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}" target="_blank" rel="noopener">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a hormone consult</a></div>
+  <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a hormone consult</a></div>
 
   <h2>Swings, not just a slow decline</h2>
   <p>Perimenopause isn&rsquo;t a smooth slide downhill. Some months hormone levels spike; others they crash. Two women with the same lab result can feel completely different, because some brains are simply more sensitive to change &mdash; especially in women who had strong PMS, postpartum depression or mood changes on birth control.</p>

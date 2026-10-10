@@ -3,7 +3,7 @@
 import json, html as _h
 from site_lib import shell, page_hero, book_band, HUDSON, BARB, SITE_URL
 
-QUIZ = "https://form.jotform.com/262813862138057"
+QUIZ = "/perimenopause-check/"
 SLUG = "/menopause-weight-gain-heart-health/"
 
 FAQ = [
@@ -23,7 +23,7 @@ def cardio_page():
 <section><div class="wrap prose">
   <p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>
   <p class="lede">Same diet, same workouts &mdash; yet the scale creeps up and your waistband gets tighter. If that sounds familiar in your 40s, you&rsquo;re not doing anything wrong. Your metabolism is changing, and so is your heart risk.</p>
-  <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}" target="_blank" rel="noopener">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a consult</a></div>
+  <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a consult</a></div>
 
   <h2>What changes during the transition</h2>
   <ul>

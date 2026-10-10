@@ -641,6 +641,18 @@ ORG_LD = json.dumps({
 
 def esc(s): return html.escape(s or "", quote=True)
 
+# Health-condition pages carry no ad/analytics trackers (Meta Pixel, Google tag) - Robin, Oct 10 2026.
+NO_TRACK_PATHS = {"/perimenopause/", "/perimenopause-check/", "/unusual-perimenopause-symptoms/", "/womens-health/",
+    "/menopause-mood-sleep-brain-fog/", "/menopause-weight-gain-heart-health/", "/perimenopause-or-thyroid/",
+    "/hormone-testing-menopause/", "/menopause-appetite-food-noise/", "/strength-training-women-over-40/",
+    "/brain-health-after-40/", "/genetic-testing-women/", "/endometriosis-symptoms/", "/fertility-after-35/",
+    "/beyond-hormone-therapy-midlife/", "/everyday-chemicals-menopause-bone-health/", "/gut-health-midlife/",
+    "/breast-health-perimenopause/", "/sexual-health-menopause/"}  # keep in sync with womens_health_pages*.py
+
+def strip_trackers(html):
+    html = re.sub(r'<!-- Meta Pixel -->.*?</noscript>', '', html, flags=re.S)
+    return re.sub(r'<!-- Google Ads tag -->\s*<script async src="https://www\.googletagmanager\.com/gtag/js[^"]*"></script>\s*<script>.*?</script>', '', html, flags=re.S)
+
 def shell(path, title, description, body, og_image=None, noindex=False, extra_head="", ld=None, body_class=""):
     """Wrap page body in the site shell. path like '/telehealth/'."""
     canonical = SITE_URL + path
@@ -653,7 +665,7 @@ def shell(path, title, description, body, og_image=None, noindex=False, extra_he
         existing = "".join(blocks)
         blocks += [json.dumps(b, ensure_ascii=False) for b in SEO.default_ld(path, title, description, existing) + meta.get("ld", [])]
     ldjson = "".join(f'<script type="application/ld+json">{block}</script>\n' for block in blocks)
-    return f'''<!DOCTYPE html>
+    out = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -681,6 +693,7 @@ def shell(path, title, description, body, og_image=None, noindex=False, extra_he
 {SCRIPTS}
 </body>
 </html>'''
+    return strip_trackers(out) if path in NO_TRACK_PATHS else out
 
 # ------------------------------------------------------------------ reusable blocks
 def consult_form(source="serenemedspas.com"):

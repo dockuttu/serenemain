@@ -5,7 +5,7 @@
 import json, html as _h
 from site_lib import shell, page_hero, book_band, HUDSON, BARB, SITE_URL
 
-QUIZ = "https://form.jotform.com/262813862138057"
+QUIZ = "/perimenopause-check/"
 BYLINE = ('<p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, '
           'board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>')
 ALERT = '<p style="background:#fff5f2;border-left:5px solid #c0392b;padding:14px 18px;border-radius:8px;max-width:760px">{}</p>'
@@ -35,7 +35,7 @@ def _see_us(extra=""):
             f'from anywhere in Ohio, West Virginia, Kentucky or Florida.{extra}</p>')
 
 def _cta(quiz=True):
-    q = f'<a class="btn" href="{QUIZ}" target="_blank" rel="noopener">Take the 3-minute symptom check</a>' if quiz else ""
+    q = f'<a class="btn" href="{QUIZ}">Take the 3-minute symptom check</a>' if quiz else ""
     return f'<div class="actions" style="margin:22px 0 8px">{q}<a class="btn{" btn-outline" if quiz else ""}" href="#book">Book a consult</a></div>'
 
 ARTICLES = {}
@@ -487,7 +487,7 @@ def hub():
                      [("/", "Home"), (None, "Women&rsquo;s Health")], "Education") + f'''
 <section><div class="wrap">
   {BYLINE}
-  <div class="actions" style="margin:6px 0 26px"><a class="btn" href="{QUIZ}" target="_blank" rel="noopener">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a consult</a></div>
+  <div class="actions" style="margin:6px 0 26px"><a class="btn" href="{QUIZ}">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a consult</a></div>
   <div class="grid g2">{cards}</div>
   <div class="badges"><div class="badge"><img src="/img/badges/a4m-member.png" alt="A4M, American Academy of Anti-Aging Medicine" style="height:34px;padding:0 4px 0 10px"><div><b>A4M Member Physicians</b><small>Robin Arora, MD &amp; Shweta Arora, MD</small></div></div></div>
   <p style="font-size:.85rem;color:var(--muted);margin-top:26px">These guides are general education, not medical advice. In person in Hudson, OH and Barboursville, WV; telehealth in Ohio, West Virginia, Kentucky and Florida.</p>
