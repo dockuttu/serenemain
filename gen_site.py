@@ -46,6 +46,23 @@ REDIRECTS = {
     # MOXI + BBL HEROic are Barboursville-only (Sep 26, 2026): the Hudson aftercare pages were removed (serenehudson/build_aftercare.py)
     HUDSON["site"] + "aftercare/moxi/": HUDSON["site"] + "aftercare/", HUDSON["site"] + "aftercare/bbl-hero/": HUDSON["site"] + "aftercare/",
 }
+# Oct 10, 2026: practice rule — never say "vaginal rejuvenation". Old article URLs are renamed (301 from the old URL)
+# and the phrase is replaced sitewide in titles, descriptions and article text at build time.
+SLUG_RENAMES = {
+    "/empowerrf-vaginal-rejuvenation-treatment/": "/empowerrf-intimate-wellness-treatment/",
+    "/prp-vaginal-rejuvenation-o-shot/": "/o-shot-prp-womens-wellness/",
+}
+REDIRECTS.update(SLUG_RENAMES)
+def _scrub_phrase(v):
+    def rep(m):
+        w = m.group(0)
+        if w.isupper(): return "INTIMATE WELLNESS"
+        if w[0].isupper() and w.split()[1][0].isupper(): return "Intimate Wellness"
+        if w[0].isupper(): return "Intimate wellness"
+        return "intimate wellness"
+    v = re.sub(r"(?i)vaginal\s+rejuvenation", rep, v)
+    for old, new in SLUG_RENAMES.items(): v = v.replace(old, new)
+    return v
 SKIP_DIRS = {"wp-content", "wp-includes", "wp-json", "wp-admin", "cart", "checkout", "my-account", "login", "logout", "password-reset", "shop", "product", "feed", "_test"}
 
 def write(path, content):
@@ -67,8 +84,11 @@ def inventory():
         slug = "/" if rel == "." else "/" + rel.replace(os.sep, "/") + "/"
         if re.match(r"^/\d{4}/", slug): continue                       # date archives -> /blogs/
         if re.search(r"/[a-z0-9]/$", slug): continue                    # crawl junk (/page/r/ etc.)
-        if slug in REDIRECTS: continue
+        if slug in REDIRECTS and slug not in SLUG_RENAMES: continue
         rec = X.load(MIRROR, slug)
+        for k, v in list(rec.items()):
+            if isinstance(v, str): rec[k] = _scrub_phrase(v)
+        if slug in SLUG_RENAMES: rec["slug"] = SLUG_RENAMES[slug]
         s = rec["raw"]
         bc = re.search(r'<body[^>]*class="([^"]*)"', s); bc = bc.group(1) if bc else ""
         rec["is_post"] = bool(re.search(r"(^| )single-post( |$)", bc))   # not Astra's "ast-single-post"

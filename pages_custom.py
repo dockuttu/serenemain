@@ -371,9 +371,9 @@ SPECIALS_SCHEDULE = {
     "September": [
         # (deal, [(treatment, href, one-line blurb)], note)
         ("Buy 2, get 1 free", [
-            ("V-Tone", "/empowerrf-vaginal-rejuvenation-treatment/", "Gentle electrical muscle stimulation for pelvic-floor strength and bladder control."),
-            ("Forma V", "/empowerrf-vaginal-rejuvenation-treatment/", "Radiofrequency for intimate comfort, tissue quality and blood flow &mdash; no downtime."),
-            ("Morpheus V", "/empowerrf-vaginal-rejuvenation-treatment/", "Fractional RF microneedling for deeper remodeling of vaginal and vulvar tissue."),
+            ("V-Tone", "/empowerrf-intimate-wellness-treatment/", "Gentle electrical muscle stimulation for pelvic-floor strength and bladder control."),
+            ("Forma V", "/empowerrf-intimate-wellness-treatment/", "Radiofrequency for intimate comfort, tissue quality and blood flow &mdash; no downtime."),
+            ("Morpheus V", "/empowerrf-intimate-wellness-treatment/", "Fractional RF microneedling for deeper remodeling of vaginal and vulvar tissue."),
         ], "EmpowerRF women&rsquo;s wellness &middot; series of 3 recommended"),
         ("Buy 1, get 1 free", [
             ("PRP Hair Restoration", "/natural-prp-hair-restoration/", "Your own platelet-rich plasma, injected into the scalp to wake up thinning follicles."),
