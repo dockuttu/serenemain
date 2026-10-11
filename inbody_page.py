@@ -10,6 +10,7 @@ def inbody_page():
     body = page_hero("Free InBody body scan",
                      "Your scale shows one number. An InBody 580 scan shows what&rsquo;s behind it: muscle, body fat and body water, arm by arm and leg by leg. About a minute, a printout to keep, and always free, starting Wednesday, October 21.",
                      [("/", "Home"), ("/service/", "Treatments"), (None, "Free InBody body scan")], "New at both offices") + f'''
+<section style="padding-bottom:0"><div class="wrap"><div class="card" style="background:var(--teal-100,#E3F0F2);text-align:center"><strong>Free InBody Open House &middot; Monday, November 2, 4&ndash;7 PM at both offices.</strong> Free scans, short talks and a HydraFacial raffle. <a href="/events/inbody-open-house/">RSVP &rarr;</a></div></div></section>
 <section><div class="wrap">
   <div class="grid g3">
     <div class="card reveal"><span class="eyebrow">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br>Text <a href="sms:+13303032031">(330) 303-2031</a></p><div class="actions"><a class="btn btn-sm" href="{BOOK}" target="_blank" rel="noopener">Book a free scan</a><a class="btn btn-sm btn-outline" href="/hudson/inbody-body-scan/">Details</a></div></div>
