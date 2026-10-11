@@ -7,10 +7,12 @@ SITE_URL = "https://serenemedspas.com"
 LOGO = "/wp-content/uploads/2024/11/Serene_Logo-1024x574.png"
 HUDSON = {"name": "Hudson, OH", "addr1": "50 W Streetsboro St, Suite 2", "addr2": "Hudson, OH 44236", "tel": "+13304605915",
           "phone": "(330) 460-5915", "book": "https://booking.mangomint.com/serenemedspa/Hudson", "site": "/hudson/",  # folded into the main domain (Phase 3, Sep 2026)
-          "map": "https://maps.google.com/maps?q=50+W+Streetsboro+St+Suite+2,+Hudson,+OH+44236", "state": "Ohio"}
+          "map": "https://maps.google.com/maps?q=50+W+Streetsboro+St+Suite+2,+Hudson,+OH+44236", "state": "Ohio",
+          "sms": "+13303032031", "text": "(330) 303-2031"}  # Mangomint two-way texting number (Robin, Oct 10 2026: Text before Call)
 BARB = {"name": "Barboursville, WV", "addr1": "1 Chateau Grove Ln", "addr2": "Barboursville, WV 25504", "tel": "+13045200461",
         "phone": "(304) 520-0461", "book": "https://booking.mangomint.com/serenemedspa/Barboursville", "site": "/barboursville/",  # folded into the main domain (Phase 2, Sep 2026)
-        "map": "https://maps.google.com/maps?q=1+Chateau+Grove+Ln,+Barboursville,+WV+25504", "state": "West Virginia"}
+        "map": "https://maps.google.com/maps?q=1+Chateau+Grove+Ln,+Barboursville,+WV+25504", "state": "West Virginia",
+        "sms": "+13043960295", "text": "(304) 396-0295"}  # Mangomint two-way texting number
 TELE = {"phone": "(330) 775-2452", "tel": "+13307752452", "spruce": "https://spruce.care/serene-telehealth", "consent": "https://form.jotform.com/262647300953054"}
 BLOG = "https://blog.serenemedspas.com/"
 GTAG = "AW-788907512"
@@ -302,7 +304,7 @@ footer img{height:54px;width:auto;margin-bottom:14px;filter:brightness(0) invert
 .foot-bottom a{color:rgba(255,255,255,.7);margin-right:14px}
 /* sticky mobile bar */
 .mbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:80;background:#fff;border-top:1px solid var(--rule);padding:10px 12px;gap:10px}
-.mbar a{flex:1;text-align:center;padding:14px;border-radius:30px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.mbar a{flex:1;text-align:center;padding:14px 6px;border-radius:30px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 .mbar-call{border:1.5px solid var(--forest);color:var(--forest)}.mbar-book{background:var(--forest);color:#fff}
 /* reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
@@ -558,8 +560,8 @@ FOOTER = f'''<footer>
       <div><h4>Patients</h4><ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for h, t in PATIENT_MENU)}</ul></div>
       <div><h4>About</h4><ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for h, t in ABOUT_MENU)}<li><a href="https://www.instagram.com/serene.wellness.wv" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       <div><h4>Visit us</h4>
-        <ul><li><strong style="color:#fff">Hudson, OH</strong><br>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br><a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a> &middot; <a href="{HUDSON["book"]}" target="_blank" rel="noopener">Book</a></li>
-        <li style="margin-top:14px"><strong style="color:#fff">Barboursville, WV</strong><br>{BARB["addr1"]}<br>{BARB["addr2"]}<br><a href="tel:{BARB["tel"]}">{BARB["phone"]}</a> &middot; <a href="{BARB["book"]}" target="_blank" rel="noopener">Book</a></li>
+        <ul><li><strong style="color:#fff">Hudson, OH</strong><br>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br><a data-txt href="sms:{HUDSON["sms"]}">Text {HUDSON["text"]}</a> &middot; <a href="tel:{HUDSON["tel"]}">Call {HUDSON["phone"]}</a> &middot; <a href="{HUDSON["book"]}" target="_blank" rel="noopener">Book</a></li>
+        <li style="margin-top:14px"><strong style="color:#fff">Barboursville, WV</strong><br>{BARB["addr1"]}<br>{BARB["addr2"]}<br><a data-txt href="sms:{BARB["sms"]}">Text {BARB["text"]}</a> &middot; <a href="tel:{BARB["tel"]}">Call {BARB["phone"]}</a> &middot; <a href="{BARB["book"]}" target="_blank" rel="noopener">Book</a></li>
         <li style="margin-top:14px"><strong style="color:#fff">Telehealth</strong> &middot; OH, WV, KY, FL<br><a href="tel:{TELE["tel"]}">{TELE["phone"]}</a> &middot; <a href="{TELE["spruce"]}" target="_blank" rel="noopener">Message securely</a></li></ul>
       </div>
       <div><h4>20% off your first visit</h4>
@@ -579,13 +581,13 @@ FOOTER = f'''<footer>
     </div>
   </div>
 </footer>
-<div class="mbar"><a class="mbar-call" href="/contact-us/" data-loc-tel>&#9742;&nbsp; Call</a><a class="mbar-book" href="/#book" data-loc-book>Book Now</a></div>'''
+<div class="mbar"><a class="mbar-call" href="/contact-us/" data-loc-sms data-txt>&#9993;&nbsp; Text</a><a class="mbar-call" href="/contact-us/" data-loc-tel>&#9742;&nbsp; Call</a><a class="mbar-book" href="/#book" data-loc-book>Book Now</a></div>'''
 
 LOCAL_JS = json.dumps({"map": LOCAL_MAP, "missing": LOCAL_MISSING}, separators=(",", ":"))
 LOC_JS = json.dumps({
-    "hudson": {"name": "Hudson, OH", "book": HUDSON["book"], "tel": HUDSON["tel"], "site": HUDSON["site"], "shop": "/hudson/shop/"},
-    "barboursville": {"name": "Barboursville, WV", "book": BARB["book"], "tel": BARB["tel"], "site": BARB["site"], "shop": "/barboursville/shop/"},
-    "telehealth": {"name": "Telehealth", "book": TELE["spruce"], "tel": TELE["tel"], "site": "/telehealth/", "shop": ""}})
+    "hudson": {"name": "Hudson, OH", "book": HUDSON["book"], "tel": HUDSON["tel"], "sms": HUDSON["sms"], "site": HUDSON["site"], "shop": "/hudson/shop/"},
+    "barboursville": {"name": "Barboursville, WV", "book": BARB["book"], "tel": BARB["tel"], "sms": BARB["sms"], "site": BARB["site"], "shop": "/barboursville/shop/"},
+    "telehealth": {"name": "Telehealth", "book": TELE["spruce"], "tel": TELE["tel"], "sms": TELE["tel"], "site": "/telehealth/", "shop": ""}})
 
 SCRIPTS = f'''<script>
 (function(){{var LOC={LOC_JS},LOCAL={LOCAL_JS};
@@ -594,7 +596,7 @@ function get(){{try{{return localStorage.getItem('serene_loc')||'';}}catch(e){{r
 function apply(k){{var L=LOC[k];
 document.querySelectorAll('[data-loc-name]').forEach(function(el){{el.textContent=L?L.name:'Choose location';}});
 document.querySelectorAll('[data-loc-book]').forEach(function(a){{if(L){{a.href=L.book;a.target='_blank';a.rel='noopener';}}else{{a.href='/#book';a.removeAttribute('target');}}}});
-document.querySelectorAll('[data-loc-tel]').forEach(function(a){{a.href=L?'tel:'+L.tel:'/contact-us/';}});
+document.querySelectorAll('[data-loc-sms]').forEach(function(a){{a.href=L?'sms:'+L.sms:'/contact-us/';}});document.querySelectorAll('[data-loc-tel]').forEach(function(a){{a.href=L?'tel:'+L.tel:'/contact-us/';}});
 document.querySelectorAll('[data-set-loc]').forEach(function(b){{b.classList.toggle('on',b.getAttribute('data-set-loc')===k);}});
 document.querySelectorAll('[data-loc-only]').forEach(function(el){{el.classList.toggle('hidden',!!L&&el.getAttribute('data-loc-only')!==k);}});document.querySelectorAll('[data-loc-any]').forEach(function(el){{el.classList.toggle('hidden',!L);}});document.querySelectorAll('[data-loc-none]').forEach(function(el){{el.classList.toggle('hidden',!!L);}});document.querySelectorAll('[data-loc-site]').forEach(function(a){{a.href=L?L.site:'/locations/';}});document.querySelectorAll('[data-loc-shop]').forEach(function(a){{if(L&&L.shop){{a.href=L.shop;a.removeAttribute('data-pick');}}else{{a.href='#';a.setAttribute('data-pick','1');}}}});localize(k);}}
 document.addEventListener('click',function(e){{var a=e.target.closest('[data-pick]');if(a){{e.preventDefault();var p=document.getElementById('locpick');if(p){{p.classList.add('open');p.scrollIntoView({{behavior:'smooth',block:'center'}});}}}}}});
@@ -726,7 +728,7 @@ def consult_form(source="serenemedspas.com"):
       <div class="zf-actions"><button type="submit" class="btn zf-btn">Request Consultation</button><span class="zf-err" id="zf-err" role="alert"></span></div>
       <p class="zf-fine">By submitting, you agree to be contacted by Serene Med Spa about your request. We never sell your information.</p>
     </form>
-    <div class="zf-done" id="zf-done" hidden><h3>Thank you &mdash; we got your request.</h3><p>A member of our team will reach out within one business day. Prefer not to wait? Call <a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a> (Hudson) or <a href="tel:{BARB["tel"]}">{BARB["phone"]}</a> (Barboursville).</p></div>
+    <div class="zf-done" id="zf-done" hidden><h3>Thank you &mdash; we got your request.</h3><p>A member of our team will reach out within one business day. Prefer not to wait? Text <a data-txt href="sms:{HUDSON["sms"]}">{HUDSON["text"]}</a> (Hudson) or <a data-txt href="sms:{BARB["sms"]}">{BARB["text"]}</a> (Barboursville), or call <a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a> (Hudson) or <a href="tel:{BARB["tel"]}">{BARB["phone"]}</a> (Barboursville).</p></div>
     </div>
   </div>
 </section>'''
@@ -736,8 +738,8 @@ def book_band():
   <div class="wrap">
     <div class="section-head center"><span class="eyebrow">Book online</span><h2>Choose your location</h2><p class="lede" style="margin:0 auto">Same-week appointments at both offices. Video visits for weight management and hormone care through Serene Telehealth.</p></div>
     <div class="grid g3">
-      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br><a href="tel:{HUDSON["tel"]}">{HUDSON["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn btn-sm btn-outline" href="{HUDSON["site"]}">Pricing &amp; menu</a></div></div>
-      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">West Virginia</span><h3>Barboursville</h3><p>{BARB["addr1"]}<br>{BARB["addr2"]}<br><a href="tel:{BARB["tel"]}">{BARB["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a><a class="btn btn-sm btn-outline" href="{BARB["site"]}">Pricing &amp; menu</a></div></div>
+      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">Ohio</span><h3>Hudson</h3><p>{HUDSON["addr1"]}<br>{HUDSON["addr2"]}<br><a data-txt href="sms:{HUDSON["sms"]}">Text {HUDSON["text"]}</a><br><a href="tel:{HUDSON["tel"]}">Call {HUDSON["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a><a class="btn btn-sm btn-outline" href="{HUDSON["site"]}">Pricing &amp; menu</a></div></div>
+      <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">West Virginia</span><h3>Barboursville</h3><p>{BARB["addr1"]}<br>{BARB["addr2"]}<br><a data-txt href="sms:{BARB["sms"]}">Text {BARB["text"]}</a><br><a href="tel:{BARB["tel"]}">Call {BARB["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a><a class="btn btn-sm btn-outline" href="{BARB["site"]}">Pricing &amp; menu</a></div></div>
       <div class="card"><span class="state" style="font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-500);font-weight:600">OH &middot; WV &middot; KY &middot; FL</span><h3>Telehealth</h3><p>Weight management, hormone therapy &amp; wellness by secure video with Dr. Robin Arora.<br><a href="tel:{TELE["tel"]}">{TELE["phone"]}</a></p><div class="actions"><a class="btn btn-sm" href="{TELE["spruce"]}" target="_blank" rel="noopener">Start a visit</a><a class="btn btn-sm btn-outline" href="/telehealth/">Learn more</a></div></div>
     </div>
   </div>
