@@ -78,5 +78,55 @@
    "Safety and side effects",
    "Ultherapy PRIME vs. RF microneedling vs. fillers"
   ]
+ },
+ {
+  "slug": "laser-hair-removal",
+  "form": "262833908698071",
+  "title": "Smooth, Simple, Done: A Guide to Laser Hair Removal",
+  "subtitle": "How it works, who it suits, how many sessions to plan for, and what it really costs",
+  "inside": [
+   "How laser hair removal works",
+   "Who is a good candidate?",
+   "How to prepare (and what to skip)",
+   "What a session feels like",
+   "How many sessions, and how far apart",
+   "Aftercare and side effects",
+   "Doing the cost math",
+   "Popular treatment areas"
+  ]
+ },
+ {
+  "slug": "skin-resurfacing",
+  "form": "262834782739068",
+  "title": "From Glow to Reset: Choosing a Facial, Peel or Laser",
+  "subtitle": "A step-by-step ladder for dullness, texture, pores, sun spots, fine lines and acne scars, matched to the downtime you can actually take",
+  "inside": [
+   "Start with your goal, then your downtime",
+   "Rung 1: No-downtime facials",
+   "Rung 2: Chemical peels, Laser Facials and CoolPeel",
+   "Rung 3: Light lasers and photofacials",
+   "Rung 4: Deeper resurfacing with CO2 lasers",
+   "Skin of color and melasma: go slower, not without",
+   "Prep, aftercare and sun protection",
+   "Combining treatments the smart way",
+   "Building your yearly skin plan"
+  ]
+ },
+ {
+  "slug": "hair-restoration",
+  "form": "262834334670055",
+  "title": "Thinning Hair? Causes, Options and What to Know About PRP",
+  "subtitle": "How to tell normal shedding from thinning, what to check first, and what to realistically expect from PRP hair restoration",
+  "inside": [
+   "Normal shedding vs. thinning: what is actually happening?",
+   "Common causes of thinning in women and men",
+   "When to see a doctor first, and which labs are commonly checked",
+   "How PRP for hair works",
+   "Who tends to be a good candidate, and who is not",
+   "What a session is like, and how many you may need",
+   "Side effects and who should avoid PRP",
+   "Realistic expectations: what the research says",
+   "How PRP fits alongside other treatments"
+  ]
  }
 ]

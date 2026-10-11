@@ -41,7 +41,7 @@ def hub():
     cards = "".join(f'<a class="gd-card" href="/guides/{g["slug"]}/"><img src="/img/guides/guide-cover-{g["slug"]}.jpg" alt="" loading="lazy"><div><h3>{esc(g["title"])}</h3><p style="font-size:.9rem;margin:0">{esc(g["subtitle"])}</p></div></a>' for g in GUIDES)
     body = page_hero("Free guides from our physician-led team", "Straight answers about popular treatments: how they work, who they suit, what to expect and what they cost at Serene. Free to download.",
                      [("/", "Home"), (None, "Free guides")], "Free downloads") + f'<section><div class="wrap"><div class="gd-cards">{cards}</div></div></section>'
-    return shell("/guides/", "Free Med Spa Guides | Serene Med Spa", "Free downloadable guides from Serene Med Spa's physician-led team on weight loss, injectables, skin tightening, Ultherapy and perimenopause.", body, extra_head=CSS)
+    return shell("/guides/", "Free Med Spa Guides | Serene Med Spa", "Free downloadable guides from Serene Med Spa's physician-led team on weight loss, injectables, skin care, lasers, hair loss and perimenopause.", body, extra_head=CSS)
 
 def pages():
     out = {"/guides/": hub()}
