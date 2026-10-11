@@ -343,19 +343,26 @@ def reviews():
     return shell("/reviews/", "Patient Reviews | Serene Med Spa", "What patients say about Serene Med Spa in Hudson, OH and Barboursville, WV — Google reviews of our physicians, nurse practitioner and staff.", body)
 
 def membership():
-    body = page_hero("Serene Elevate Membership", "A monthly membership that turns maintenance into a habit &mdash; and rewards you for it. Available at both offices.", [("/", "Home"), (None, "Membership")], "Members save on every visit") + f'''
-<section><div class="wrap band">
-  <div class="reveal"><img src="/wp-content/uploads/2026/08/Serene-Elevate-Membership-791x1024.png" alt="Serene Elevate Membership details" style="border-radius:var(--r);box-shadow:var(--shadow)"></div>
-  <div class="prose">
+    # Tiers mirror what Mangomint sells online (clients.mangomint.com/serenemedspa/memberships) - checked Oct 10 2026.
+    # Robin chose "checkout script + web signup" (Oct 10 2026); the old Elevate card image ($100 bank, free microneedling) was retired.
+    JOIN = "https://clients.mangomint.com/serenemedspa/memberships"
+    tiers = [("Serene Membership", "$99", "a month", ["$99 banked as spa credit every month", "10% off services and retail"]),
+             ("Membership Plus", "$199", "a month", ["$199 banked as spa credit every month", "A facial included twice a year", "10% off services, 15% off retail"]),
+             ("Membership Elite", "$299", "a month", ["$299 banked as spa credit every month", "A facial included every quarter", "10% off services, 20% off retail"])]
+    cards = "".join(f'''<div class="card reveal" style="text-align:center"><span class="eyebrow">{n}</span><h3 style="font-size:2.2rem;margin:6px 0 0">{p}</h3><p style="margin:0 0 12px;color:var(--muted)">{per}</p>
+<ul style="text-align:left;margin:0 0 16px">{"".join(f"<li>{x}</li>" for x in perks)}</ul><a class="btn btn-sm" href="{JOIN}" target="_blank" rel="noopener">Join online</a></div>''' for n, p, per, perks in tiers)
+    body = page_hero("Serene membership", "Bank a set amount each month toward any treatment or product, and save 10% on every visit. Join online in a few minutes, or at checkout at either office.", [("/", "Home"), (None, "Membership")], "Members save on every visit") + f'''
+<section><div class="wrap"><div class="grid g3">{cards}</div>
+  <div class="prose" style="max-width:760px;margin:34px auto 0">
     <h2>How it works</h2>
-    <p>Choose a monthly tier, bank your credit toward treatments and skincare, and enjoy member pricing on injectables, facials, lasers and IV therapy. Credits roll over, there&rsquo;s no long-term contract, and members get first access to monthly specials.</p>
-    <ul><li>Member pricing on wrinkle relaxers, fillers and skin treatments</li><li>Monthly credit that rolls over</li><li>Priority booking and early access to <a href="/specials/">specials</a></li><li>Cancel any time after your first three months</li></ul>
-    <p>Details, tiers and current pricing are on the card at left; our front desk can enroll you at your next visit or by phone.</p>
-    <div class="actions"><a class="btn" href="tel:{HUDSON["tel"]}">Hudson {HUDSON["phone"]}</a><a class="btn btn-outline" href="tel:{BARB["tel"]}">Barboursville {BARB["phone"]}</a></div>
+    <p>Your monthly payment is banked in your account as spa credit, so it&rsquo;s there when you need it: for wrinkle relaxers every few months, a facial, laser treatments or skincare. On top of your credit, members save 10% on services and get a retail discount.</p>
+    <ul><li>Use your credit at our Hudson or Barboursville office</li><li>Members-only offers in addition to our monthly <a href="/specials/">specials</a></li><li>Full membership terms are shown when you join online, or ask our front desk</li></ul>
+    <div class="actions"><a class="btn" href="{JOIN}" target="_blank" rel="noopener">Join online</a><a class="btn btn-outline" data-txt href="sms:{HUDSON["sms"]}">Text Hudson {HUDSON["text"]}</a><a class="btn btn-outline" data-txt href="sms:{BARB["sms"]}">Text Barboursville {BARB["text"]}</a></div>
   </div>
 </div></section>
 {book_band()}'''
-    return shell("/membership/", "Aesthetic Membership Plan | Serene Med Spa", "Serene Elevate Membership: monthly credit, member pricing on injectables, skin, laser and IV treatments, priority booking. Hudson, OH and Barboursville, WV.", body)
+    return shell("/membership/", "Med Spa Membership: $99, $199 or $299 a Month | Serene Med Spa", "Serene membership: bank $99, $199 or $299 a month as spa credit, save 10% on services, plus included facials on Plus and Elite. Join online. Hudson, OH & Barboursville, WV.", body)
+
 
 def financing():
     body = page_hero("Financing &amp; payment plans", "Start now, pay over time. Pre-qualify in minutes with no impact on your credit score.", [("/", "Home"), (None, "Financing")], "Easy Pay") + f'''
