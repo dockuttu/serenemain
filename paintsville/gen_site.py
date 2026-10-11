@@ -121,7 +121,7 @@ def home():
     review_link = GBP_REVIEW_URL if GBP_REVIEW_URL != "TODO" else "/contact/#review"
     body = f'''<section class="hero"><div class="wrap">
   <div class="hero-copy"><span class="eyebrow">Now open &middot; Paintsville, Kentucky</span><span class="script">Welcome to</span><h1>Serene Med Spa Paintsville</h1>
-  <p class="lede">Physician-directed aesthetics and wellness in the heart of Johnson County &mdash; Botox&reg; and Xeomin&reg;, InMode laser and radiofrequency treatments, women&rsquo;s wellness, hormone therapy and IV therapy, all with Katrina Watkins, NP.</p>
+  <p class="lede">Physician-supervised aesthetics and wellness in the heart of Johnson County &mdash; Botox&reg; and Xeomin&reg;, InMode laser and radiofrequency treatments, women&rsquo;s wellness, hormone therapy and IV therapy, all with Katrina Watkins, NP.</p>
   <div class="hero-cta"><a class="btn btn-lav" href="{BOOK_URL}" target="_blank" rel="noopener">Book Online</a><a class="btn btn-ghost" href="/pricing/">See Pricing</a></div>
   <div class="hero-chips"><span class="chip">Botox $12 / unit</span><span class="chip">Xeomin $10 / unit</span><span class="chip">Dysport $4 / unit</span><span class="chip">Laser hair removal from $75</span><span class="chip">Complimentary consults</span></div></div>
   <div class="hero-fig">{img("/img/katrina-optimas.jpg", "Katrina Watkins, NP with the InMode Optimas platform at Serene Med Spa Paintsville, KY", lazy=False, sizes="(max-width:900px) 100vw, 45vw")}<div class="tag"><span>Your provider</span><b>Katrina Watkins, NP</b></div></div>
@@ -132,7 +132,7 @@ def home():
 <section class="tint-sand" id="katrina"><div class="wrap"><div class="prov reveal">{img(C.KATRINA["img"], C.KATRINA["alt"], sizes="(max-width:900px) 100vw, 40vw")}<div class="pbody"><span class="eyebrow">Meet your provider</span><h2 style="font-size:2rem">Katrina Watkins, NP</h2><ul class="creds">{"".join(f"<li>{c}</li>" for c in C.KATRINA["creds"])}</ul><p class="lede" style="font-size:1.02rem">{C.KATRINA["bio"].split(chr(10)+chr(10))[0]}</p>
 <div class="actions"><a class="btn btn-sm" href="/about/">Meet the team</a><a class="btn btn-sm btn-outline" href="{BOOK_URL}" target="_blank" rel="noopener">Book with Katrina</a></div></div></div>
 <div class="grid g3" style="margin-top:28px">
-  <div class="card reveal"><h3>Physician-directed</h3><p>Every protocol is set and supervised by Robin Arora, MD, MBA &mdash; board-certified physician, founder of Serene Med Spa and a Biote Certified Provider.</p><a class="more" href="/about/#dr-arora">About Dr. Arora &rsaquo;</a></div>
+  <div class="card reveal"><h3>Physician-supervised</h3><p>Every protocol is set and supervised by Robin Arora, MD, MBA &mdash; board-certified physician, founder of Serene Med Spa and a Biote Certified Provider.</p><a class="more" href="/about/#dr-arora">About Dr. Arora &rsaquo;</a></div>
   <div class="card reveal"><h3>Honest, natural results</h3><p>We start conservatively, tell you what will and won&rsquo;t work, and never sell you a treatment you don&rsquo;t need. Complimentary consultations, always.</p><a class="more" href="/services/">Our treatments &rsaquo;</a></div>
   <div class="card reveal"><h3>Close to home</h3><p>No more driving to Lexington or Huntington. Serving Paintsville, Prestonsburg, Pikeville, Salyersville, Louisa and all of Eastern Kentucky from Broadway Street.</p><a class="more" href="/contact/">Directions &rsaquo;</a></div>
 </div></div></section>
@@ -161,7 +161,7 @@ def home():
 <iframe class="map" src="{MAP_EMBED}" title="Map to Serene Med Spa, {ADDR1}, {ADDR2}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section>
 {book_band()}'''
     title = "Serene Med Spa Paintsville, KY | Botox, Laser & Wellness"
-    desc = "Physician-directed med spa in Paintsville, KY: Botox $12/unit, Xeomin $10, Dysport $4, laser hair removal, VI Peel, Morpheus8, Biote hormones, IV therapy."
+    desc = "Physician-supervised med spa in Paintsville, KY: Botox $12/unit, Xeomin $10, Dysport $4, laser hair removal, VI Peel, Morpheus8, Biote, IV therapy."
     write("/", shell("/", title, desc, body, og_image="/img/katrina-optimas.jpg", ld=[webpage_ld("/", title, desc)]))
 
 
@@ -194,7 +194,7 @@ def services():
     for i, (g, slugs) in enumerate(groups):
         cards = "".join(f'<a class="card reveal" href="/{sl}/">{img(C.BY_SLUG[sl]["hero"], C.BY_SLUG[sl]["hero_alt"], sizes="(max-width:900px) 100vw, 33vw")}<h3 style="margin-top:18px">{C.BY_SLUG[sl]["name"]}</h3><p>{C.BY_SLUG[sl]["short"]}</p><span class="price" style="font-size:1.2rem">{C.BY_SLUG[sl]["price_pill"][0]}</span><span class="more">Learn more &rsaquo;</span></a>' for sl in slugs)
         secs += f'<section class="{"tint-sand" if i % 2 else ""}" id="{re.sub(r"[^a-z]", "", text_of(g).lower())}"><div class="wrap"><div class="section-head"><h2>{g}</h2></div><div class="grid g3">{cards}</div></div></section>'
-    body = page_hero("Med Spa Treatments in Paintsville", "Injectables, InMode laser and radiofrequency, women&rsquo;s wellness, hormones and IV therapy &mdash; a focused menu delivered by Katrina Watkins, NP, under physician direction. Complimentary consultations for every treatment.", crumbs, "Everything we offer") + secs + f'''
+    body = page_hero("Med Spa Treatments in Paintsville", "Injectables, InMode laser and radiofrequency, women&rsquo;s wellness, hormones and IV therapy &mdash; a focused menu delivered by Katrina Watkins, NP, under physician supervision. Complimentary consultations for every treatment.", crumbs, "Everything we offer") + secs + f'''
 <section><div class="wrap narrow prose"><h2 style="margin-top:0">Not sure where to start?</h2><p>Book a complimentary consultation. Katrina will listen to what bothers you, look at your skin and health history, and recommend a plan &mdash; sometimes a single treatment, sometimes a combination like Lumecca plus Forma, and sometimes nothing at all yet. Patients visit us from Paintsville, Prestonsburg, Pikeville, Salyersville, Louisa, Ashland and across Eastern Kentucky.</p>{cta_row()}</div></section>
 {book_band()}'''
     title = "Med Spa Treatments in Paintsville, KY | Serene Med Spa"
@@ -243,17 +243,17 @@ def about():
     crumbs = [("/", "Home"), (None, "About")]
     def prov(p, flip=False):
         return f'''<div class="prov reveal" id="{p["id"]}" style="{'direction:rtl' if flip else ''}">{img(p["img"], p["alt"], sizes="(max-width:900px) 100vw, 40vw")}<div class="pbody" style="direction:ltr"><span class="eyebrow">{p["role"]}</span><h2 style="font-size:2rem">{p["name"]}</h2><ul class="creds">{"".join(f"<li>{c}</li>" for c in p["creds"])}</ul>{paras(p["bio"])}</div></div>'''
-    body = page_hero("About Serene Med Spa Paintsville", "Part tranquil spa, part advanced medical-aesthetics clinic &mdash; physician-directed care in downtown Paintsville, Kentucky, led by nurse practitioner Katrina Watkins and founded by Robin Arora, MD.", crumbs, "Meet the team", image="/img/katrina-headshot.jpg", alt=C.KATRINA["alt"]) + f'''
+    body = page_hero("About Serene Med Spa Paintsville", "Part tranquil spa, part advanced medical-aesthetics clinic &mdash; physician-supervised care in downtown Paintsville, Kentucky, led by nurse practitioner Katrina Watkins and founded by Robin Arora, MD.", crumbs, "Meet the team", image="/img/katrina-headshot.jpg", alt=C.KATRINA["alt"]) + f'''
 <section><div class="wrap" style="display:grid;gap:28px">{prov(C.KATRINA)}{prov(C.DR_ARORA, flip=True)}</div></section>
 <section class="tint-sand"><div class="wrap band"><div class="prose"><span class="eyebrow">Our story</span><h2 style="margin-top:0">Serene comes to Eastern Kentucky</h2>
-<p>Serene Med Spa was founded by Dr. Robin Arora on a simple belief: good aesthetic care shouldn&rsquo;t require choosing between a clinical setting and a comfortable one. That idea grew from a first office in Hudson, Ohio, to Barboursville, West Virginia &mdash; and now to Paintsville, Kentucky, where Katrina Watkins, NP, brings the same physician-directed standards to Johnson County and the surrounding communities of Prestonsburg, Pikeville, Salyersville, Louisa and Ashland.</p>
+<p>Serene Med Spa was founded by Dr. Robin Arora on a simple belief: good aesthetic care shouldn&rsquo;t require choosing between a clinical setting and a comfortable one. That idea grew from a first office in Hudson, Ohio, to Barboursville, West Virginia &mdash; and now to Paintsville, Kentucky, where Katrina Watkins, NP, brings the same physician-supervised standards to Johnson County and the surrounding communities of Prestonsburg, Pikeville, Salyersville, Louisa and Ashland.</p>
 <p>We use only medical-grade technology &mdash; the InMode Optimas, EmpowerRF and EvolveX platforms, Morpheus8, Botox&reg; and Xeomin&reg;, and Biote hormone optimization &mdash; and every treatment plan is customized to you. Never a menu of upsells.</p>
 <p>Our mission is exceptional care in a peaceful setting, with results you can see and feel.</p>{cta_row("/services/", "Our treatments")}</div>
 <div>{img("/img/katrina-evolvex.jpg", C.BY_SLUG["evolvex"]["hero_alt"], sizes="(max-width:900px) 100vw, 40vw")}</div></div></section>
 {logos_strip("Our technology")}
 {book_band()}'''
     title = "About Serene Med Spa Paintsville | Katrina Watkins, NP"
-    desc = "Meet Katrina Watkins, NP, lead provider at Serene Med Spa Paintsville, KY, and medical director Robin Arora, MD. Physician-directed care in Eastern KY."
+    desc = "Meet Katrina Watkins, NP, lead provider at Serene Med Spa Paintsville, KY, and medical director Robin Arora, MD. Physician-supervised care in Eastern KY."
     ld = [{"@context": "https://schema.org", "@type": "AboutPage", "url": SITE_URL + path, "name": "About Serene Med Spa Paintsville", "description": desc, "mainEntity": {"@id": ORG_ID}},
           {"@context": "https://schema.org", "@type": "Person", "@id": SITE_URL + "/about/#katrina", "name": "Katrina Watkins, NP", "jobTitle": "Nurse Practitioner", "worksFor": {"@id": ORG_ID}, "image": SITE_URL + C.KATRINA["img"], "url": SITE_URL + "/about/#katrina",
            "hasCredential": [{"@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Board-certified Nurse Practitioner"}], "knowsAbout": ["aesthetic medicine", "injectables", "laser hair removal", "radiofrequency skin tightening", "women's wellness", "hormone therapy"]},
@@ -284,7 +284,7 @@ def contact():
 <div class="actions"><a class="btn btn-sm btn-outline" href="{MAP_LINK}" target="_blank" rel="noopener">Get directions</a></div></div>
 <iframe class="map" style="min-height:300px" src="{MAP_EMBED}" title="Map to Serene Med Spa, {ADDR1}, {ADDR2}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div>
 </div></div></section>
-<section class="tint-sand" id="review"><div class="wrap narrow" style="text-align:center"><span class="eyebrow">Already visited?</span><h2>Leave us a Google review</h2><p class="lede" style="margin:0 auto 18px">Reviews help neighbors in Paintsville and across Eastern Kentucky find physician-directed care close to home. Thank you!</p>{review_block}</div></section>
+<section class="tint-sand" id="review"><div class="wrap narrow" style="text-align:center"><span class="eyebrow">Already visited?</span><h2>Leave us a Google review</h2><p class="lede" style="margin:0 auto 18px">Reviews help neighbors in Paintsville and across Eastern Kentucky find physician-supervised care close to home. Thank you!</p>{review_block}</div></section>
 <section><div class="wrap narrow prose"><h2 style="margin-top:0">Getting here</h2><p>Serene Med Spa Paintsville is at {ADDR1}, in downtown Paintsville near the Johnson County courthouse district. From US-23, take the Paintsville exit toward downtown and follow Main Street to Broadway. Free street and lot parking is close by. We are roughly 20 minutes from Prestonsburg, 30 minutes from Salyersville and Louisa, 45 minutes from Pikeville and about an hour from Ashland.</p>
 <h2>Before your first visit</h2><ul><li>Arrive 10 minutes early to complete a short health history.</li><li>Bring a list of medications and supplements.</li><li>For laser or IPL visits, avoid tanning for 4 weeks and shave the area within 24 hours.</li><li>Consultations are complimentary; pricing is confirmed before any treatment.</li></ul></div></section>'''
     title = "Contact Serene Med Spa Paintsville, KY | Book & Directions"

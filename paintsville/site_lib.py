@@ -356,7 +356,7 @@ def footer():
     <div class="foot-grid">
       <div class="foot-brand">
         <img class="flogo" src="{LOGO}" alt="{BRAND}" width="186" height="104">
-        <p>Serene Med Spa Paintsville is a physician-directed medical spa serving Paintsville, Johnson County and Eastern Kentucky &mdash; injectables, InMode laser and radiofrequency treatments, women&rsquo;s wellness, hormone therapy and IV therapy, led by Katrina Watkins, NP.</p>
+        <p>Serene Med Spa Paintsville is a physician-supervised medical spa serving Paintsville, Johnson County and Eastern Kentucky &mdash; injectables, InMode laser and radiofrequency treatments, women&rsquo;s wellness, hormone therapy and IV therapy, led by Katrina Watkins, NP.</p>
         <p style="font-size:.82rem;color:rgba(255,255,255,.6);margin:0">Medical Director: Robin Arora, MD, MBA &middot; Board Certified, American Board of Internal Medicine &middot; <a href="mailto:{EMAIL}">{EMAIL}</a></p>
       </div>
       <div><h4>Treatments</h4><ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for h, t in services)}<li><a href="/pricing/">Full price list</a></li></ul></div>
@@ -538,7 +538,7 @@ def logos_strip(title="The technology behind our treatments"):
              ("evolvex-dark.png", "EvolveX", "tall"), ("empowerrf-dark.png", "EmpowerRF", "tall"), ("formav-dark.png", "FormaV", ""), ("morpheus8v-dark.png", "Morpheus8V", ""),
              ("botox-cosmetic-dark.png", "Botox Cosmetic", "mid"), ("biote-dark.png", "Biote", "mid")]
     imgs = "".join(f'<img src="/img/logos/{f}" alt="{a}" loading="lazy" class="{c}" height="{64 if c == "tall" else (44 if c == "mid" else 34)}">' for f, a, c in items)
-    return f'''<section><div class="wrap"><div class="section-head center"><span class="eyebrow">Physician-grade technology</span><h2>{title}</h2><p class="lede">FDA-cleared InMode platforms operated by a board-certified nurse practitioner under physician direction. The same devices used at our Hudson and Barboursville offices.</p></div>
+    return f'''<section><div class="wrap"><div class="section-head center"><span class="eyebrow">Physician-grade technology</span><h2>{title}</h2><p class="lede">FDA-cleared InMode platforms operated by a board-certified nurse practitioner under physician supervision. The same devices used at our Hudson and Barboursville offices.</p></div>
 <div class="logos reveal">{imgs}</div>
 <div class="badges reveal"><div class="badge"><img src="/img/badges/abim-board-certified.png" alt="ABIM Board Certified" width="44" height="44"><div><b>Board-certified medical director</b><small>Robin Arora, MD &middot; American Board of Internal Medicine</small></div></div>
 <div class="badge"><img src="/img/badges/biote-certified-provider.webp" alt="Biote Certified Provider" width="44" height="44"><div><b>Biote Certified Provider</b><small>Hormone optimization with pellet therapy</small></div></div></div></div></section>'''

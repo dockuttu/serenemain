@@ -73,9 +73,9 @@ KATRINA = {
     "bio": ("Katrina Watkins is the board-certified nurse practitioner who leads our Paintsville clinic. She came to aesthetics the way many great injectors do &mdash; "
             "through years of hands-on patient care, where she learned that people feel best when someone actually listens. That is still how every visit with Katrina starts: "
             "a conversation about what you see in the mirror and what you would like to change, followed by an honest plan that fits your goals and your budget.\n\n"
-            "Katrina performs every treatment in the office herself, from wrinkle relaxers to InMode laser, radiofrequency and women&rsquo;s wellness procedures, under the direction of "
+            "Katrina performs every treatment in the office herself, from wrinkle relaxers to InMode laser, radiofrequency and women&rsquo;s wellness procedures, under the supervision of "
             "Dr. Robin Arora. She is known for a light, natural touch, for explaining things in plain language, and for being genuinely excited when patients from Paintsville, "
-            "Prestonsburg, Pikeville and across Eastern Kentucky no longer have to drive to Lexington for physician-directed aesthetic care."),
+            "Prestonsburg, Pikeville and across Eastern Kentucky no longer have to drive to Lexington for physician-supervised aesthetic care."),
 }
 DR_ARORA = {
     "id": "dr-arora", "name": "Robin Arora, MD, MBA", "role": "Founder &amp; Medical Director",
@@ -107,7 +107,7 @@ SERVICES = [
   "slug": "botox-xeomin", "name": "Botox&reg;, Xeomin&reg; &amp; Dysport&reg;", "nav": "Botox, Xeomin & Dysport",
   "short": "Botox $12, Xeomin $10 and Dysport $4 per unit for frown lines, forehead lines and crow&rsquo;s feet.",
   "title": "Botox, Xeomin & Dysport in Paintsville, KY | Serene",
-  "description": "Botox $12, Xeomin $10 and Dysport $4 per unit in Paintsville, KY. Natural wrinkle relaxer results by Katrina Watkins, NP, under physician direction.",
+  "description": "Botox $12, Xeomin $10 and Dysport $4 per unit in Paintsville, KY. Natural wrinkle relaxer results by Katrina Watkins, NP, under physician supervision.",
   "eyebrow": "Wrinkle relaxers", "h1": "Botox&reg;, Xeomin&reg; &amp; Dysport&reg; in Paintsville",
   "lede": "Soften frown lines, forehead lines and crow&rsquo;s feet with precise, conservative dosing. Injected by Katrina Watkins, NP, with plans reviewed by our physician medical director.",
   "hero": "/img/botox-inject.jpg", "hero_alt": "Wrinkle relaxer injection at Serene Med Spa", "og": "/img/botox-inject.jpg",
@@ -347,9 +347,9 @@ SERVICES = [
   "slug": "hormone-therapy", "name": "Biote Hormone Therapy", "nav": "Hormone therapy",
   "short": "Bioidentical hormone pellet therapy for women and men, with labs reviewed by our physician medical director.",
   "title": "Biote Hormone Therapy in Paintsville, KY | Serene Med Spa",
-  "description": "Biote hormone pellet therapy in Paintsville, KY: women $405, men from $465 per insertion, labs $125. Lab-guided, physician-directed bioidentical hormones.",
+  "description": "Biote hormone pellet therapy in Paintsville, KY: women $405, men from $465 per insertion, labs $125. Lab-guided, physician-supervised hormone care.",
   "eyebrow": "Biote Certified Provider", "h1": "Biote Hormone Therapy in Paintsville",
-  "lede": "Bioidentical hormone optimization with Biote pellets for women and men &mdash; a lab-guided, physician-directed approach to the fatigue, weight change, low mood, poor sleep and low libido that often come with hormonal decline.",
+  "lede": "Bioidentical hormone optimization with Biote pellets for women and men &mdash; a lab-guided, physician-supervised approach to the fatigue, weight change, low mood, poor sleep and low libido that often come with hormonal decline.",
   "hero": "/img/skin-analysis.jpg", "hero_alt": "Wellness consultation at Serene Med Spa", "og": "/img/skin-analysis.jpg",
   "price_pill": ("From $405", "women $405 &middot; men from $465 &middot; labs $125"),
   "procedure": "Bioidentical hormone pellet therapy", "body": "Whole body (subcutaneous pellet insertion, hip)",
