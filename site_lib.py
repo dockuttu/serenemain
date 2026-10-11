@@ -695,7 +695,7 @@ def shell(path, title, description, body, og_image=None, noindex=False, extra_he
 {SCRIPTS}
 </body>
 </html>'''
-    return strip_trackers(out) if path in NO_TRACK_PATHS else out
+    return strip_trackers(out) if (path in NO_TRACK_PATHS or path.startswith("/guides/")) else out
 
 # ------------------------------------------------------------------ reusable blocks
 def consult_form(source="serenemedspas.com"):
