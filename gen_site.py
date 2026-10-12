@@ -410,7 +410,9 @@ def main():
     os.makedirs(SITE, exist_ok=True)
     with open(os.path.join(SITE, "_redirects.map"), "w", encoding="utf-8") as f:
         for src, dst in sorted(all_redirects.items()):
-            f.write(f'"{src}" "{dst}";\n"{src.rstrip("/")}" "{dst}";\n')
+            f.write(f'"{src}" "{dst}";\n')
+            if src.rstrip("/") != src:   # Oct 12, 2026: no duplicate keys (nginx refuses to start on a duplicate map key)
+                f.write(f'"{src.rstrip("/")}" "{dst}";\n')
     print(f"gen_site: {len(dup_redirects)} duplicate-slug articles -> 301, {len(all_redirects)} redirects in _redirects.map")
     # generated indexes
     out["/service/"] = render_service(posts)
