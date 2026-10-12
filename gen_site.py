@@ -43,6 +43,14 @@ REDIRECTS = {
     "/wrinkle-treatments/": HUDSON["site"] + "botox/",   # Hudson pricing menu lives on the Hudson site
     "/semaglutide-weight-loss-program-at-serene-med-spa-in-huntington-and-barboursville-wv/": BARB["site"] + "weight-loss/",  # still gets search clicks (GSC 404)
     "/pro-nox-nitrous-treatment/": "/comfort-options/",  # Pro-Nox retired Sep 2026 -> Journavx comfort page
+    # Oct 12, 2026: Search Console "Not found (404)" validation failed on these old WordPress URLs -> 301 to the closest live page
+    "/contact/": "/contact-us/", "/treatment/laser-hair-removal/": "/laser-hair-removal/",
+    "/treatment/semaglutide-weight-loss-program/": "/weight-loss/", "/locations/hudson-oh/": HUDSON["site"],
+    "/jawline-filler-treatment-at-serene-med-spa-in-huntington-barboursville-wv/": BARB["site"] + "jawline-filler/",
+    "/laser-vein-removal-treatment-at-serene-med-spa-in-huntington-barboursville-wv/": BARB["site"] + "spider-veins/",
+    "/booking/ipl-bbl": BARB["site"] + "photofacial/", "/booking/microneedle": BARB["site"] + "microneedling/",
+    "/booking/threads": BARB["site"] + "thread-lift/", "/insider/": "/membership/", "/loyalty/": "/membership/",
+    "/author/": "/our-providers/", "/wp-content/uploads/2025/11/SERENE-MED-SPA-IV-INFUSIONS-MENU.pdf": BARB["site"] + "iv-therapy/",
     # MOXI + BBL HEROic are Barboursville-only (Sep 26, 2026): the Hudson aftercare pages were removed (serenehudson/build_aftercare.py)
     HUDSON["site"] + "aftercare/moxi/": HUDSON["site"] + "aftercare/", HUDSON["site"] + "aftercare/bbl-hero/": HUDSON["site"] + "aftercare/",
 }
