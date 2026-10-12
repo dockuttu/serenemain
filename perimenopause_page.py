@@ -21,6 +21,7 @@ def perimenopause():
                      [("/", "Home"), ("/service/", "Treatments"), (None, "Perimenopause")], "Women&rsquo;s hormone care") + f'''
 <section><div class="wrap prose">
   <p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>
+  <p style="font-size:.9rem;color:var(--muted);margin:-8px 0 18px;max-width:760px">In October 2026, Dr. Robin Arora completed <em>The Women&rsquo;s Health Summit: From Perimenopause to the Power Years</em>, an accredited continuing medical education program from the George Washington University School of Medicine and Health Sciences (20 <em>AMA PRA Category 1 Credits&trade;</em>).</p>
   <p class="lede">If you&rsquo;re in your late 30s or 40s and don&rsquo;t feel like yourself, you&rsquo;re not imagining it, and you&rsquo;re not alone. In a 2026 study of more than 7,600 U.S. women, one in three over 35 weren&rsquo;t sure whether they were in perimenopause &mdash; 42% of women aged 40&ndash;44.</p>
   <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a hormone consult</a></div>
 

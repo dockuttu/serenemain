@@ -22,6 +22,7 @@ def brain_page():
                      [("/", "Home"), ("/service/", "Treatments"), (None, "Mood, sleep &amp; brain fog")], "Women&rsquo;s hormone care") + f'''
 <section><div class="wrap prose">
   <p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>
+  <p style="font-size:.9rem;color:var(--muted);margin:-8px 0 18px;max-width:760px">In October 2026, Dr. Robin Arora completed <em>The Women&rsquo;s Health Summit: From Perimenopause to the Power Years</em>, an accredited continuing medical education program from the George Washington University School of Medicine and Health Sciences (20 <em>AMA PRA Category 1 Credits&trade;</em>).</p>
   <p class="lede">Your brain is full of hormone receptors &mdash; in the areas that control body temperature, mood, stress, sleep and memory. So when hormones start swinging in your 40s, it&rsquo;s no surprise that many women feel it first in their head.</p>
   <div class="actions" style="margin:22px 0 8px"><a class="btn" href="{QUIZ}">Take the 3-minute symptom check</a><a class="btn btn-outline" href="#book">Book a hormone consult</a></div>
 

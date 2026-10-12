@@ -7,7 +7,8 @@ from site_lib import shell, page_hero, book_band, HUDSON, BARB, SITE_URL
 
 QUIZ = "/perimenopause-check/"
 BYLINE = ('<p style="font-size:.92rem;color:var(--muted);margin-bottom:18px">By <a href="/our-providers/shweta-arora/">Shweta Arora, MD</a>, '
-          'board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>')
+          'board-certified physician &middot; Medically reviewed by <a href="/our-providers/robin-arora-md/">Robin Arora, MD</a> &middot; Updated October 2026</p>'
+          '<p style="font-size:.9rem;color:var(--muted);margin:-8px 0 18px;max-width:760px">In October 2026, Dr. Robin Arora completed <em>The Women&rsquo;s Health Summit: From Perimenopause to the Power Years</em>, an accredited continuing medical education program from the George Washington University School of Medicine and Health Sciences (20 <em>AMA PRA Category 1 Credits&trade;</em>).</p>')
 ALERT = '<p style="background:#fff5f2;border-left:5px solid #c0392b;padding:14px 18px;border-radius:8px;max-width:760px">{}</p>'
 
 # Every article in the library, in reading order (first three were published Oct 9 2026 from earlier decks).
