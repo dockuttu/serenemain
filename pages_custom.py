@@ -336,7 +336,11 @@ def about(pages):
 
 def reviews():
     body = page_hero("Patient reviews", "Real words from real patients at our Hudson and Barboursville offices. Reviews are collected on Google; we never edit them.", [("/", "Home"), (None, "Reviews")], "5-star rated on Google") + f'''
-<section><div class="wrap"><div class="grid g3">{"".join(f'<div class="rev reveal">{stars()}<p>&ldquo;{q}&rdquo;</p><div class="who">&mdash; {n} &middot; Google</div></div>' for n, q in REVIEWS)}</div>
+<section><div class="wrap">
+  <!-- Trustindex widget "Serene Reviews Page" (id 722236): Google reviews from the Hudson + Barboursville profiles, all star ratings, newest first. Edit at admin.trustindex.io. -->
+  <div class="ti-reviews" style="max-width:900px;margin:0 auto 40px"><script defer async src="https://cdn.trustindex.io/loader.js?cfb9a4672b3b2231a5662909c49"></script></div>
+  <h2 style="text-align:center;margin-bottom:20px">More from our patients</h2>
+  <div class="grid g3">{"".join(f'<div class="rev reveal">{stars()}<p>&ldquo;{q}&rdquo;</p><div class="who">&mdash; {n} &middot; Google</div></div>' for n, q in REVIEWS)}</div>
 <div class="grid g2" style="margin-top:34px">
   <div class="card"><h3>Hudson, OH</h3><p>Read and leave reviews for our Hudson office.</p><a class="btn btn-sm btn-outline" href="https://www.google.com/maps/search/Serene+Med+Spa+Hudson+OH" target="_blank" rel="noopener">Hudson on Google</a></div>
   <div class="card"><h3>Barboursville, WV</h3><p>Read and leave reviews for our Barboursville office.</p><a class="btn btn-sm btn-outline" href="https://g.page/r/CXHpqD_ZeNBmEBM/review" target="_blank" rel="noopener">Barboursville on Google</a></div>
