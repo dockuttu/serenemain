@@ -22,7 +22,7 @@ def open_house():
        <strong>Barboursville:</strong> {BARB["addr1"]}, {BARB["addr2"]} &middot; text <a data-txt href="sms:{BARB["sms"]}">{BARB["text"]}</a></p>
     <h2>Before your scan</h2>
     <p>Don&rsquo;t eat for 2&ndash;3 hours before, skip lotion on your hands and feet, and plan to take off your shoes and socks. InBody scans aren&rsquo;t for anyone with a pacemaker or other implanted electronic device; if you&rsquo;re pregnant, text us first.</p>
-    <p style="font-size:.85rem;color:var(--muted)"><strong>Raffle rules:</strong> one free Signature HydraFacial per office (value $150). One entry per adult 18 or older who attends. No purchase, review or social post is needed to enter or win. Drawn at 6:45 PM; the winner doesn&rsquo;t need to be present and is notified by text. Redeem by February 28, 2027. Not exchangeable for cash; can&rsquo;t be combined with another discount.</p>
+    <p style="font-size:.85rem;color:var(--muted)"><strong>Raffle rules:</strong> one free Signature HydraFacial per office (value $149). One entry per adult 18 or older who attends. No purchase, review or social post is needed to enter or win. Drawn at 6:45 PM; the winner doesn&rsquo;t need to be present and is notified by text. Redeem by February 28, 2027. Not exchangeable for cash; can&rsquo;t be combined with another discount.</p>
   </div>
   <div style="background:#fff;border:1px solid rgba(30,74,85,.14);border-radius:16px;padding:8px;box-shadow:0 10px 30px rgba(27,42,47,.06)">
     <iframe title="RSVP for the free InBody open house" src="{RSVP}" loading="lazy" style="width:100%;min-height:1050px;border:0;display:block"></iframe>

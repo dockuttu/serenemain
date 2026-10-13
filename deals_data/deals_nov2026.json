@@ -4,9 +4,9 @@
   "office": "hudson",
   "treatment": "HydraFacial",
   "covers": "One signature HydraFacial",
-  "regular": 150,
+  "regular": 149,
   "price": 129,
-  "off": 14,
+  "off": 13,
   "title": "Harvest Glow HydraFacial"
  },
  {
@@ -84,9 +84,9 @@
   "office": "hudson",
   "treatment": "DiamondGlow",
   "covers": "One DiamondGlow facial",
-  "regular": 150,
+  "regular": 149,
   "price": 129,
-  "off": 14,
+  "off": 13,
   "title": "Golden Leaf DiamondGlow"
  },
  {
@@ -114,9 +114,9 @@
   "office": "barboursville",
   "treatment": "HydraFacial",
   "covers": "One signature HydraFacial",
-  "regular": 150,
+  "regular": 149,
   "price": 129,
-  "off": 14,
+  "off": 13,
   "title": "Harvest Glow HydraFacial"
  },
  {
@@ -442,7 +442,7 @@
   "office": "hudson",
   "treatment": "Holiday Party Ready",
   "covers": "20 units of Botox + one DiamondGlow facial",
-  "regular": 370,
+  "regular": 369,
   "price": 319,
   "off": 14
  },
@@ -460,7 +460,7 @@
   "office": "hudson",
   "treatment": "Thanksgiving Glow",
   "covers": "One HydraFacial + one Glow Drip IV infusion",
-  "regular": 299,
+  "regular": 298,
   "price": 269,
   "off": 10
  },
@@ -469,7 +469,7 @@
   "office": "barboursville",
   "treatment": "Thanksgiving Glow",
   "covers": "One HydraFacial + one Glow Drip IV infusion",
-  "regular": 299,
+  "regular": 298,
   "price": 269,
   "off": 10
  },
