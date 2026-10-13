@@ -13,10 +13,13 @@ echo "==> Form spam guard (Zoho consult + newsletter forms)"
 python3 form_guard_inject.py bundle/site || echo "!!! form_guard_inject failed (continuing)" >&2
 echo "==> Text option before every Call option (Mangomint texting numbers)"
 python3 add_text_links.py bundle/site || echo "!!! add_text_links failed (continuing)" >&2
+echo "==> HIPAA-compliant patient forms badge in every footer"
+python3 hipaa_badge.py bundle/site /privacy-practices/ || echo "!!! hipaa_badge failed (continuing)" >&2
 echo "==> Link check"
 python3 check_links.py bundle/site | tail -8 || echo "!!! WARNING: some page links are missing (see above)" >&2
 if [ ! -s bundle/site/index.html ] || [ "$(wc -c < bundle/site/index.html)" -lt 5000 ]; then
   echo "!!! sanity check FAILED (homepage missing/too small)" >&2; exit 1; fi
 echo "==> Paintsville (serenemedspaky.com)"
 python3 paintsville/gen_site.py bundle/paintsville/site || echo "!!! paintsville build failed (continuing)" >&2
+python3 hipaa_badge.py bundle/paintsville/site /privacy-policy/ || echo "!!! paintsville hipaa_badge failed (continuing)" >&2
 echo "==> Build complete: $(find bundle/site -type f | wc -l) files in bundle/site/"
