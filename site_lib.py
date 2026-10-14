@@ -94,6 +94,7 @@ header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid 
 .drop{position:absolute;top:100%;left:0;min-width:250px;background:#fff;border:1px solid var(--rule);border-radius:0 0 16px 16px;padding:12px;box-shadow:var(--shadow);display:none;z-index:70}
 .nav ul li.has-mega{position:static}.drop.mega{min-width:0;width:min(1000px,calc(100vw - 32px));display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding:26px 30px 28px;left:50%;transform:translateX(-50%)}
 .nav li:hover>.drop{display:block}.nav li:hover>.drop.mega{display:grid}
+.drop.mega::before{content:"";position:absolute;left:0;right:0;top:-48px;height:48px}
 .nav .drop a{text-transform:none;letter-spacing:0;font-size:.9rem;line-height:1.35;padding:7px 8px;font-weight:400;border:0;color:var(--ink-soft);white-space:normal}
 .nav .drop a:hover{color:var(--forest);background:var(--grey);border-radius:6px;border-bottom-color:transparent}
 .drop h5{font-family:'Poppins',sans-serif;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:4px 8px 8px}
