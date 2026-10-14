@@ -649,7 +649,8 @@ NO_TRACK_PATHS = {"/perimenopause/", "/perimenopause-check/", "/unusual-perimeno
     "/hormone-testing-menopause/", "/menopause-appetite-food-noise/", "/strength-training-women-over-40/",
     "/brain-health-after-40/", "/genetic-testing-women/", "/endometriosis-symptoms/", "/fertility-after-35/",
     "/beyond-hormone-therapy-midlife/", "/everyday-chemicals-menopause-bone-health/", "/gut-health-midlife/",
-    "/breast-health-perimenopause/", "/sexual-health-menopause/", "/perimenopause-what-i-tell-women/"}  # keep in sync with womens_health_pages*.py
+    "/breast-health-perimenopause/", "/sexual-health-menopause/", "/perimenopause-what-i-tell-women/",
+    "/weight-loss/brand-name-medications/"}  # keep in sync with womens_health_pages*.py
 
 def strip_trackers(html):
     html = re.sub(r'<!-- Meta Pixel -->.*?</noscript>', '', html, flags=re.S)

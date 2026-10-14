@@ -270,7 +270,7 @@ def render_post(r, posts):
     sibs.sort(key=lambda p: (0 if "cost" in p["slug"] else 1 if "what-is" in p["slug"] else 2 if p["slug"].strip("/") == lslug else 3, p["title"]))
     guides_card = ('<div class="card"><h3>Related guides</h3><ul>' + "".join(f'<li><a href="{p["slug"]}">{esc(POST_OVERRIDES.get(p["slug"], {}).get("h1") or p["title"])}</a></li>' for p in sibs[:4]) + '</ul></div>') if sibs else ""
     if lslug in ("weight-loss", "medical-weight-loss", "hormone-optimization", "longevity"):
-        guides_card += '<div class="card"><h3>Prefer a video visit?</h3><p style="font-size:.95rem">Weight management and hormone care by telehealth in OH, WV, KY and FL.</p><ul><li><a href="/telehealth/">Serene Telehealth &rsaquo;</a></li></ul></div>'
+        guides_card += '<div class="card"><h3>Prefer a video visit?</h3><p style="font-size:.95rem">Weight management and hormone care by telehealth in OH, WV, KY and FL.</p><ul><li><a href="/telehealth/">Serene Telehealth &rsaquo;</a></li>' + ('<li><a href="/weight-loss/brand-name-medications/">Brand-name medication self-pay prices &rsaquo;</a></li>' if lslug in ("weight-loss", "medical-weight-loss") else '') + '</ul></div>'
     # partner / verified-provider card for the treatment this guide is about (same badges as the office sites)
     PARTNER_CARDS = {
         "morpheus8": ("inmode-morpheus8-verified.png", "InMode Morpheus8 Verified Provider", "Serene Med Spa is an InMode Morpheus8 Verified Provider: genuine devices and tips, InMode-trained physicians."),

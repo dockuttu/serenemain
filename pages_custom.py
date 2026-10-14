@@ -10,6 +10,7 @@ import inbody_page as IB
 import guides_pages as GP
 import events_page as EV
 import refer_page as RF
+import brand_glp1_page as BG  # /weight-loss/brand-name-medications/ (Oct 14 2026)
 import brain_page as BP
 import cardio_page as CP
 import womens_health_pages as WH
@@ -717,7 +718,7 @@ def comfort_options():
 
 def build(pages, posts, render_prose, render_embed):
     out = {"/": home(posts), "/locations/": locations(), "/our-providers/": providers(pages), "/about-us/": about(pages), "/reviews/": reviews(),
-           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/perimenopause/": PP.perimenopause(), "/perimenopause-check/": PC.check_page(), "/inbody-body-scan/": IB.inbody_page(), "/menopause-mood-sleep-brain-fog/": BP.brain_page(), "/menopause-weight-gain-heart-health/": CP.cardio_page(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day(), **GP.pages(), "/events/inbody-open-house/": EV.open_house(), "/refer-a-friend/": RF.refer_page()}
+           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/perimenopause/": PP.perimenopause(), "/perimenopause-check/": PC.check_page(), "/inbody-body-scan/": IB.inbody_page(), "/menopause-mood-sleep-brain-fog/": BP.brain_page(), "/menopause-weight-gain-heart-health/": CP.cardio_page(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day(), **GP.pages(), "/events/inbody-open-house/": EV.open_house(), "/refer-a-friend/": RF.refer_page(), BG.SLUG: BG.brand_glp1_page()}
     out.update(WH.pages())  # Women's Health Library: 7 A4M-deck articles + /womens-health/ hub (Oct 9 2026)
     # self-contained tools whose only <h1> is rendered client-side get a static hero (crawlers see an H1)
     EMBED_HERO = {"/vitalityiq/": page_hero("VitalityIQ: Hormone &amp; Wellness Self-Check", "A free physician-built self-check for energy, sleep, mood, weight and libido changes &mdash; and whether lab testing or a hormone consult makes sense for you.", [("/", "Home"), ("/vitalityiq/", "VitalityIQ")], "Free tool")}
