@@ -19,7 +19,7 @@ def _price_offer(name, price, area_url, area_name, unit="unit"):
 POST_OVERRIDES = {
     "/how-much-botox-cost/": {
         "title": "How Much Is Botox? $10–$20 Per Unit — 2026 Prices by Area",
-        "description": "Botox costs $10–$20 per unit in 2026; frown lines (20 units) run $200–$400. See units and prices by area. Serene: $10/unit in WV, $11/unit in OH.",
+        "description": "Botox costs $10–$20 per unit in 2026; frown lines (20 units) run $200–$400. See units and prices by area. Serene: $10/unit in both WV and OH.",
         "ld_extra": [{
             "@context": "https://schema.org", "@type": "Service", "name": "Botox Cosmetic (per unit)", "serviceType": "Botox injections",
             "provider": SERENE_ORG, "areaServed": ["Hudson, OH", "Barboursville, WV"],
