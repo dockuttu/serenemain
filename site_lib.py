@@ -348,8 +348,8 @@ VIMEO_USER = "221277662"   # Robin Arora, MD — Serene Med Spa on Vimeo
 FEATURED_VIDEO = {"id": "1228988348", "through": "2026-10-31",
                   "eyebrow": "As seen on WSAZ Studio 3", "title": "Watch Dr. Arora&rsquo;s live Ultherapy demo",
                   "lede": "Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18, 2026 &mdash; see what a treatment looks like, how the ultrasound imaging guides each pass, and why there&rsquo;s no downtime.",
-                  "offer_h": "Studio 3 special: 30% off Ultherapy",
-                  "offer_p": "The first 20 clients who book Ultherapy after the segment save <strong>30%</strong> on any Ultherapy PRIME treatment at either Serene office &mdash; Hudson or Barboursville. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Offer ends <strong>October 31, 2026</strong>; can&rsquo;t be combined with other discounts."}
+                  "offer_h": "Studio 3 special: 20% off Ultherapy",
+                  "offer_p": "The first 20 clients who book Ultherapy after the segment save <strong>20%</strong> on any Ultherapy PRIME treatment at either Serene office &mdash; Hudson or Barboursville. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Offer ends <strong>October 31, 2026</strong>; can&rsquo;t be combined with other discounts."}
 VIDEO_CSS = ('.vid-wrap{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);margin:0 auto 28px;max-width:960px;background:#000}'
              '.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}'
              '.vid-offer{max-width:760px;margin:0 auto;text-align:center}.vid-offer .btn{margin:6px 4px 0}'
@@ -499,8 +499,8 @@ _OCT_BV = ('<div class="promo" data-promo="oct-bv" style="display:none">&#10022;
            'BBL + MOXI same visit $750 (reg. $900) &middot; BBL HEROic buy 3, get 1 free &middot; laser hair removal buy 5, get 2 free'
            '<span class="promo-more"> &middot; Through Oct 31; can&rsquo;t be combined with another discount</span></div>')
 _OCT_HUD = ('<div class="promo" data-promo="oct-hud" style="display:none">&#10022; <a href="' + _B + '/hudson/ultherapy/#studio3">October special</a>: '
-            '30% off Ultherapy for the first 20 clients &mdash; as seen on WSAZ Studio 3<span class="promo-more"> &middot; Through Oct 31</span></div>')
-_OCT_MAIN = ('<div class="promo" data-promo="oct-main" style="display:none">&#10022; October: <a href="' + _B + '/hudson/ultherapy/#studio3">30% off Ultherapy</a> (first 20 clients) '
+            '20% off Ultherapy for the first 20 clients &mdash; as seen on WSAZ Studio 3<span class="promo-more"> &middot; Through Oct 31</span></div>')
+_OCT_MAIN = ('<div class="promo" data-promo="oct-main" style="display:none">&#10022; October: <a href="' + _B + '/hudson/ultherapy/#studio3">20% off Ultherapy</a> (first 20 clients) '
              '&middot; <a href="' + _B + '/barboursville/sciton-moxi/">Fall Laser Season in Barboursville</a>: BBL + MOXI $750'
              '<span class="promo-more"> &middot; Through Oct 31</span></div>')
 # November-December variants (Robin OK'd Oct 4): holiday gift card bonus Nov 1 - Dec 24, doubled Black Friday weekend Nov 27-30.

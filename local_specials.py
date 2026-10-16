@@ -18,11 +18,11 @@ OFFICE_NAME = {"hudson": "Hudson", "barboursville": "Barboursville"}
 # buttons: (label, href); href "BOOK" = that office's online booking, "{o}" in an href = the office slug.
 OFFERS = [
     {"id": "ultherapy-oct", "offices": ["hudson", "barboursville"], "from": "2026-10-01", "until": "2026-10-31",
-     "eyebrow": "Through October 31 &middot; first 20 clients", "title": "30% off Ultherapy PRIME",
+     "eyebrow": "Through October 31 &middot; first 20 clients", "title": "20% off Ultherapy PRIME",
      "items": {"hudson": ["Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;",
-                          "Regular: brow $950 &middot; lower face $1,900 &middot; full face $2,600, now 30% off"],
+                          "Regular: brow $850 &middot; lower face $1,650 &middot; full face $2,200, now 20% off"],
                "barboursville": ["Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;",
-                                 "Regular: brow $850 &middot; lower face $1,650 &middot; full face $2,200, now 30% off"]},
+                                 "Regular: brow $850 &middot; lower face $1,650 &middot; full face $2,200, now 20% off"]},
      "note": "As seen on WSAZ Studio 3 &middot; mention &ldquo;Studio 3&rdquo;",
      "buttons": [("Book a consult", "BOOK"), ("Ultherapy pricing", "/{o}/ultherapy/#pricing")]},
     {"id": "fall-laser-oct", "offices": ["barboursville"], "from": "2026-10-01", "until": "2026-10-31",

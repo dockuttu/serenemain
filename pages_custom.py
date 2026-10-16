@@ -401,9 +401,9 @@ SPECIALS_SCHEDULE = {
         ], "Series pricing on Tite, Trim &amp; Tone"),
     ],
     "October": [
-        ("30% off Ultherapy PRIME", [
+        ("20% off Ultherapy PRIME", [
             ("Barboursville, WV", "/barboursville/ultherapy/", "Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;. Regular: brow $850, lower face $1,650, full face $2,200."),
-            ("Hudson, OH", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $950, lower face $1,900, full face $2,600."),
+            ("Hudson, OH", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $850, lower face $1,650, full face $2,200."),
         ], "As seen on WSAZ Studio 3 &middot; first 20 clients &middot; mention &ldquo;Studio 3&rdquo;"),
     ],
     "November": [
@@ -458,20 +458,20 @@ def studio3_block():
     if _dt.date.today() > _dt.date.fromisoformat(STUDIO3["through"]): return "", []
     html = f'''
 <section class="tint-sand" id="studio3" data-through="{STUDIO3["through"]}"><div class="wrap">
-  <div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span><h2>30% off Ultherapy &mdash; Hudson &amp; Barboursville</h2>
-    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. The first 20 clients who book after the segment save 30% on any Ultherapy PRIME treatment at either office &mdash; Hudson, OH or Barboursville, WV. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Ends <strong>October 31, 2026</strong>.</p></div>
+  <div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span><h2>20% off Ultherapy &mdash; Hudson &amp; Barboursville</h2>
+    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. The first 20 clients who book after the segment save 20% on any Ultherapy PRIME treatment at either office &mdash; Hudson, OH or Barboursville, WV. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Ends <strong>October 31, 2026</strong>.</p></div>
   <div class="grid g2" style="align-items:center">
     <div class="studio3-wrap reveal"><iframe src="https://player.vimeo.com/video/{STUDIO3["vimeo"]}?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Ultherapy live demo on WSAZ Studio 3 with Dr. Robin Arora" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-    <div class="card reveal"><span class="eyebrow">Studio 3 special</span><h3>Ultherapy PRIME, 30% off</h3>
-      <p>A non-surgical lift for the brow, jowls, neck and d&eacute;collet&eacute; &mdash; one session, no downtime, results that build over two to three months. Regular pricing &mdash; Barboursville: brow $850, lower face $1,650, full face $2,200. Hudson: brow $950, lower face $1,900, full face $2,600. See each office&rsquo;s price list for every area.</p>
+    <div class="card reveal"><span class="eyebrow">Studio 3 special</span><h3>Ultherapy PRIME, 20% off</h3>
+      <p>A non-surgical lift for the brow, jowls, neck and d&eacute;collet&eacute; &mdash; one session, no downtime, results that build over two to three months. Regular pricing at both offices: brow $850, lower face $1,650, full face $2,200. See the price list for every area.</p>
       <p class="deal-note">First 20 clients &middot; both offices &middot; through Oct 31, 2026</p>
       <p style="margin-top:14px"><a class="btn" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a> <a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a> <a class="btn btn-outline" href="{HUDSON["site"]}ultherapy/">Ultherapy &middot; Hudson</a> <a class="btn btn-outline" href="{BARB["site"]}ultherapy/">Ultherapy &middot; Barboursville</a></p></div>
   </div>
   <style>.studio3-wrap{{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);background:#000}}.studio3-wrap iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}</style>
   <script>(function(){{var s=document.getElementById("studio3");if(s&&new Date()>new Date(s.dataset.through+"T23:59:59"))s.style.display="none";}})();</script>
 </div></section>'''
-    ld = [{"@context": "https://schema.org", "@type": "Offer", "name": "Studio 3 special: 30% off Ultherapy PRIME", "url": SITE_URL + "/specials/#studio3",
-           "description": "First 20 clients who book Ultherapy after the WSAZ Studio 3 segment save 30% at Serene Med Spa in Hudson, OH or Barboursville, WV. Mention Studio 3 when booking.",
+    ld = [{"@context": "https://schema.org", "@type": "Offer", "name": "Studio 3 special: 20% off Ultherapy PRIME", "url": SITE_URL + "/specials/#studio3",
+           "description": "First 20 clients who book Ultherapy after the WSAZ Studio 3 segment save 20% at Serene Med Spa in Hudson, OH or Barboursville, WV. Mention Studio 3 when booking.",
            "validFrom": "2026-09-18", "validThrough": STUDIO3["through"], "category": "Promotion", "areaServed": ["Hudson, OH", "Barboursville, WV"], "offeredBy": {"@id": SITE_URL + "/#organization"}},
           {"@context": "https://schema.org", "@type": "VideoObject", "name": "Ultherapy Live Demo on WSAZ Studio 3 — Dr. Robin Arora, Serene Med Spa",
            "description": "Dr. Robin Arora performs a live Ultherapy PRIME demonstration on WSAZ's Studio 3 (aired September 18, 2026).", "thumbnailUrl": [STUDIO3["thumb"]],
