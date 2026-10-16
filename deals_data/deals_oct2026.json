@@ -292,9 +292,9 @@
   "office": "hudson",
   "treatment": "Sculptra Spell",
   "covers": "One vial of Sculptra",
-  "regular": 750,
-  "price": 649,
-  "off": 13
+  "regular": 650,
+  "price": 559,
+  "off": 14
  },
  {
   "date": "2026-10-17",
@@ -310,9 +310,9 @@
   "office": "hudson",
   "treatment": "EvolveX Monster Sculpt",
   "covers": "One EvolveX session",
-  "regular": 250,
-  "price": 219,
-  "off": 12
+  "regular": 149,
+  "price": 129,
+  "off": 13
  },
  {
   "date": "2026-10-18",
@@ -400,9 +400,9 @@
   "office": "hudson",
   "treatment": "Spellcaster Xeomin — 40 units",
   "covers": "40 units of Xeomin",
-  "regular": 440,
-  "price": 389,
-  "off": 12
+  "regular": 400,
+  "price": 349,
+  "off": 13
  },
  {
   "date": "2026-10-23",
@@ -472,9 +472,9 @@
   "office": "hudson",
   "treatment": "Hair-Raising Alma TED",
   "covers": "One Alma TED session",
-  "regular": 500,
-  "price": 439,
-  "off": 12
+  "regular": 300,
+  "price": 259,
+  "off": 14
  },
  {
   "date": "2026-10-27",
@@ -499,9 +499,9 @@
   "office": "barboursville",
   "treatment": "Hair-Raising Alma TED",
   "covers": "One Alma TED session",
-  "regular": 500,
-  "price": 429,
-  "off": 14
+  "regular": 300,
+  "price": 249,
+  "off": 17
  },
  {
   "date": "2026-10-29",
@@ -515,19 +515,19 @@
  {
   "date": "2026-10-29",
   "office": "barboursville",
-  "treatment": "Morpheus8 Monster Mash",
-  "covers": "One Morpheus8 face treatment",
-  "regular": 800,
-  "price": 679,
-  "off": 15
+  "treatment": "HydraFacial Monster Mash",
+  "covers": "One signature HydraFacial",
+  "regular": 149,
+  "price": 129,
+  "off": 13
  },
  {
   "date": "2026-10-30",
   "office": "hudson",
-  "treatment": "Morpheus8 Monster Mash",
-  "covers": "One Morpheus8 face treatment",
-  "regular": 800,
-  "price": 699,
+  "treatment": "HydraFacial Monster Mash",
+  "covers": "One signature HydraFacial",
+  "regular": 149,
+  "price": 129,
   "off": 13
  },
  {
@@ -544,9 +544,9 @@
   "office": "hudson",
   "treatment": "Boo-tox — 50 units",
   "covers": "Halloween special: 50 units of Botox",
-  "regular": 550,
-  "price": 469,
-  "off": 15
+  "regular": 500,
+  "price": 419,
+  "off": 16
  },
  {
   "date": "2026-10-31",

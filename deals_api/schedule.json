@@ -161,7 +161,7 @@
  },
  "2026-10-17": {
   "hudson": {
-   "value": 750,
+   "value": 650,
    "treatment": "Sculptra Spell"
   },
   "barboursville": {
@@ -171,7 +171,7 @@
  },
  "2026-10-18": {
   "hudson": {
-   "value": 250,
+   "value": 149,
    "treatment": "EvolveX Monster Sculpt"
   },
   "barboursville": {
@@ -221,7 +221,7 @@
  },
  "2026-10-23": {
   "hudson": {
-   "value": 440,
+   "value": 400,
    "treatment": "Spellcaster Xeomin — 40 units"
   },
   "barboursville": {
@@ -261,7 +261,7 @@
  },
  "2026-10-27": {
   "hudson": {
-   "value": 500,
+   "value": 300,
    "treatment": "Hair-Raising Alma TED"
   },
   "barboursville": {
@@ -275,7 +275,7 @@
    "treatment": "Unmasked VI Peel"
   },
   "barboursville": {
-   "value": 500,
+   "value": 300,
    "treatment": "Hair-Raising Alma TED"
   }
  },
@@ -285,14 +285,14 @@
    "treatment": "Eye of Newt Under-Eye Filler"
   },
   "barboursville": {
-   "value": 800,
-   "treatment": "Morpheus8 Monster Mash"
+   "value": 149,
+   "treatment": "HydraFacial Monster Mash"
   }
  },
  "2026-10-30": {
   "hudson": {
-   "value": 800,
-   "treatment": "Morpheus8 Monster Mash"
+   "value": 149,
+   "treatment": "HydraFacial Monster Mash"
   },
   "barboursville": {
    "value": 150,
@@ -301,7 +301,7 @@
  },
  "2026-10-31": {
   "hudson": {
-   "value": 550,
+   "value": 500,
    "treatment": "Boo-tox — 50 units"
   },
   "barboursville": {
@@ -315,13 +315,13 @@
    "treatment": "HydraFacial"
   },
   "barboursville": {
-   "value": 800,
-   "treatment": "Morpheus8 RF"
+   "value": 149,
+   "treatment": "HydraFacial"
   }
  },
  "2026-11-02": {
   "hudson": {
-   "value": 440,
+   "value": 400,
    "treatment": "Botox — 40 units"
   },
   "barboursville": {
@@ -385,7 +385,7 @@
    "treatment": "Lip Filler — full syringe"
   },
   "barboursville": {
-   "value": 600,
+   "value": 650,
    "treatment": "Sculptra"
   }
  },
@@ -411,7 +411,7 @@
  },
  "2026-11-11": {
   "hudson": {
-   "value": 440,
+   "value": 400,
    "treatment": "Veterans Day — Xeomin 40 units"
   },
   "barboursville": {
@@ -431,7 +431,7 @@
  },
  "2026-11-13": {
   "hudson": {
-   "value": 220,
+   "value": 200,
    "treatment": "Baby Botox — 20 units"
   },
   "barboursville": {
@@ -451,7 +451,7 @@
  },
  "2026-11-15": {
   "hudson": {
-   "value": 750,
+   "value": 650,
    "treatment": "Sculptra"
   },
   "barboursville": {
@@ -531,7 +531,7 @@
  },
  "2026-11-23": {
   "hudson": {
-   "value": 370,
+   "value": 349,
    "treatment": "Holiday Party Ready"
   },
   "barboursville": {
@@ -551,7 +551,7 @@
  },
  "2026-11-25": {
   "hudson": {
-   "value": 500,
+   "value": 300,
    "treatment": "Alma TED Hair Restoration"
   },
   "barboursville": {
@@ -561,7 +561,7 @@
  },
  "2026-11-26": {
   "hudson": {
-   "value": 550,
+   "value": 500,
    "treatment": "Gobble-tox — 50 units"
   },
   "barboursville": {
@@ -571,12 +571,12 @@
  },
  "2026-11-27": {
   "hudson": {
-   "value": 800,
-   "treatment": "Black Friday — Morpheus8 RF"
+   "value": 149,
+   "treatment": "Black Friday — HydraFacial"
   },
   "barboursville": {
-   "value": 800,
-   "treatment": "Black Friday — Morpheus8 RF"
+   "value": 149,
+   "treatment": "Black Friday — HydraFacial"
   }
  },
  "2026-11-28": {
@@ -601,17 +601,17 @@
  },
  "2026-11-30": {
   "hudson": {
-   "value": 800,
-   "treatment": "Cyber Monday — Morpheus8 RF"
+   "value": 149,
+   "treatment": "Cyber Monday — HydraFacial"
   },
   "barboursville": {
-   "value": 500,
+   "value": 300,
    "treatment": "Cyber Monday — Alma TED Hair Restoration"
   }
  },
  "2026-12-01": {
   "hudson": {
-   "value": 440,
+   "value": 400,
    "treatment": "Botox — 40 units"
   },
   "barboursville": {
@@ -631,7 +631,7 @@
  },
  "2026-12-03": {
   "hudson": {
-   "value": 370,
+   "value": 349,
    "treatment": "Holiday Party Ready"
   },
   "barboursville": {
@@ -671,12 +671,12 @@
  },
  "2026-12-07": {
   "hudson": {
-   "value": 800,
-   "treatment": "Morpheus8 RF"
+   "value": 149,
+   "treatment": "HydraFacial"
   },
   "barboursville": {
-   "value": 800,
-   "treatment": "Morpheus8 RF"
+   "value": 149,
+   "treatment": "HydraFacial"
   }
  },
  "2026-12-08": {
@@ -711,7 +711,7 @@
  },
  "2026-12-11": {
   "hudson": {
-   "value": 370,
+   "value": 349,
    "treatment": "Holiday Party Ready"
   },
   "barboursville": {
@@ -731,7 +731,7 @@
  },
  "2026-12-13": {
   "hudson": {
-   "value": 220,
+   "value": 200,
    "treatment": "Baby Botox — 20 units"
   },
   "barboursville": {
@@ -781,7 +781,7 @@
  },
  "2026-12-18": {
   "hudson": {
-   "value": 370,
+   "value": 349,
    "treatment": "Holiday Party Ready"
   },
   "barboursville": {
@@ -811,7 +811,7 @@
  },
  "2026-12-21": {
   "hudson": {
-   "value": 440,
+   "value": 400,
    "treatment": "Xeomin — 40 units"
   },
   "barboursville": {
@@ -841,7 +841,7 @@
  },
  "2026-12-24": {
   "hudson": {
-   "value": 550,
+   "value": 500,
    "treatment": "Jingle-tox — 50 units"
   },
   "barboursville": {
@@ -861,11 +861,11 @@
  },
  "2026-12-26": {
   "hudson": {
-   "value": 750,
+   "value": 650,
    "treatment": "Sculptra"
   },
   "barboursville": {
-   "value": 600,
+   "value": 650,
    "treatment": "Sculptra"
   }
  },
@@ -881,12 +881,12 @@
  },
  "2026-12-28": {
   "hudson": {
-   "value": 800,
-   "treatment": "Morpheus8 RF"
+   "value": 149,
+   "treatment": "HydraFacial"
   },
   "barboursville": {
-   "value": 800,
-   "treatment": "Morpheus8 RF"
+   "value": 149,
+   "treatment": "HydraFacial"
   }
  },
  "2026-12-29": {
@@ -901,11 +901,11 @@
  },
  "2026-12-30": {
   "hudson": {
-   "value": 500,
+   "value": 300,
    "treatment": "Alma TED Hair Restoration"
   },
   "barboursville": {
-   "value": 500,
+   "value": 300,
    "treatment": "Alma TED Hair Restoration"
   }
  },
