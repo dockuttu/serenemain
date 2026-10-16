@@ -349,7 +349,7 @@ FEATURED_VIDEO = {"id": "1228988348", "through": "2026-10-31",
                   "eyebrow": "As seen on WSAZ Studio 3", "title": "Watch Dr. Arora&rsquo;s live Ultherapy demo",
                   "lede": "Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18, 2026 &mdash; see what a treatment looks like, how the ultrasound imaging guides each pass, and why there&rsquo;s no downtime.",
                   "offer_h": "Studio 3 special: 20% off Ultherapy",
-                  "offer_p": "The first 20 clients who book Ultherapy after the segment save <strong>20%</strong> on any Ultherapy PRIME treatment at either Serene office &mdash; Hudson or Barboursville. Mention <strong>&ldquo;Studio 3&rdquo;</strong> when you book. Offer ends <strong>October 31, 2026</strong>; can&rsquo;t be combined with other discounts."}
+                  "offer_p": "The first 20 clients who book Ultherapy after the segment save <strong>20%</strong> on any Ultherapy PRIME treatment at either Serene office &mdash; Hudson or Barboursville. Use code <strong>STUDIO3</strong> when you book online, or mention &ldquo;Studio 3&rdquo; when you call. Offer ends <strong>October 31, 2026</strong>; can&rsquo;t be combined with other discounts."}
 VIDEO_CSS = ('.vid-wrap{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);margin:0 auto 28px;max-width:960px;background:#000}'
              '.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}'
              '.vid-offer{max-width:760px;margin:0 auto;text-align:center}.vid-offer .btn{margin:6px 4px 0}'
