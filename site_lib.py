@@ -429,7 +429,7 @@ VIDEO_CARDS = [
      "links": {None: [("EvolveX &middot; Hudson", "/hudson/evolve-x/", True), ("EvolveX &middot; Barboursville", "/barboursville/evolve-x/", False)],
                "barboursville": [("About EvolveX", "/barboursville/evolve-x/", True)],
                "hudson": [("About EvolveX", "/hudson/evolve-x/", True)]}},
-    {"id": "1228988348", "date": "2026-09-18", "kicker": "WSAZ Studio 3 &middot; Sept 18, 2026",
+    {"id": "1228988348", "date": "2026-09-18", "pin": True, "kicker": "WSAZ Studio 3 &middot; Sept 18, 2026",
      "thumb": "2203534769-9df18cf4bcf6ef3f14c3a1ce6c37a5fdaa4957b5937dff689e47836bf0f9886f",
      "title": "Dr. Arora&rsquo;s live Ultherapy demo",
      "line": "See how real-time ultrasound imaging guides each pass of an Ultherapy PRIME treatment, with no downtime.",
@@ -438,6 +438,8 @@ VIDEO_CARDS = [
                "barboursville": [("Ultherapy pricing", "/barboursville/ultherapy/#pricing", True)],
                "hudson": [("Ultherapy pricing", "/hudson/ultherapy/#pricing", True)]}},
 ]
+# Pinned cards (Ultherapy, Robin Oct 17, 2026) always lead the slider; the rest follow newest first.
+VIDEO_CARDS = [c for c in VIDEO_CARDS if c.get("pin")] + sorted([c for c in VIDEO_CARDS if not c.get("pin")], key=lambda c: c["date"], reverse=True)
 
 CAROUSEL_CSS = (
  '#watch-serene{overflow:hidden}#watch-serene .section-head{text-align:center;margin-left:auto;margin-right:auto}'
@@ -527,13 +529,13 @@ def video_carousel_section(loc=None, prefix="", sec_id="watch-serene", with_ld=T
           "requestAnimationFrame(loop);};requestAnimationFrame(loop);}"
           "var skip=" + json.dumps(skip) + ";"
           "fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){"
-          "var fresh=(a||[]).filter(function(v){return skip.indexOf(String(v.id))<0&&v.upload_date>'" + VIDEO_CARDS[0]["date"] + "';}).slice(0,3).reverse();"
+          "var fresh=(a||[]).filter(function(v){return skip.indexOf(String(v.id))<0&&v.upload_date>'" + max(c["date"] for c in VIDEO_CARDS) + "';}).slice(0,3).reverse();var npin=" + str(sum(1 for c in VIDEO_CARDS if c.get("pin"))) + ";"
           "fresh.forEach(function(v){var el=document.createElement('article');el.className='wsc-card';el.dataset.vid=v.id;"
           "var esc=function(s){return String(s||'').replace(/[&<>\"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[ch];});};"
           "el.innerHTML='<img class=\"wsc-thumb\" src=\"'+esc(v.thumbnail_large)+'\" alt=\"'+esc(v.title)+'\" loading=\"lazy\"><div class=\"wsc-shade\"></div>'+"
           "'<button class=\"wsc-play\" type=\"button\" aria-label=\"Play video\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14l11-7z\"/></svg></button>'+"
           "'<div class=\"wsc-body\"><p class=\"wsc-kicker\">New from Serene</p><h3>'+esc(v.title)+'</h3><p>'+esc((v.description||'').split(String.fromCharCode(10))[0].slice(0,160))+'</p></div>';"
-          "T.insertBefore(el,T.firstChild);wire(el);});if(fresh.length){dots();T.scrollLeft=0;}}).catch(function(){});"
+          "T.insertBefore(el,cards()[npin]||null);wire(el);});if(fresh.length){dots();T.scrollLeft=0;}}).catch(function(){});"
           "})();</script>")
     legacy = '<a id="studio3" aria-hidden="true"></a><a id="evolvex-video" aria-hidden="true"></a>' if sec_id == "watch-serene" else ""  # old #studio3 / #evolvex-video links still land here
     return (f'<section id="{sec_id}" class="wsc">{legacy}<div class="wrap"><div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span>'
