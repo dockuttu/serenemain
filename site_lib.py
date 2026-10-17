@@ -519,7 +519,8 @@ def video_carousel_section(loc=None, prefix="", sec_id="watch-serene", with_ld=T
           "'<div class=\"wsc-body\"><p class=\"wsc-kicker\">New from Serene</p><h3>'+esc(v.title)+'</h3><p>'+esc((v.description||'').split(String.fromCharCode(10))[0].slice(0,160))+'</p></div>';"
           "T.insertBefore(el,T.firstChild);wire(el);});if(fresh.length){dots();T.scrollLeft=0;}}).catch(function(){});"
           "})();</script>")
-    return (f'<section id="{sec_id}" class="wsc"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span>'
+    legacy = '<a id="studio3" aria-hidden="true"></a><a id="evolvex-video" aria-hidden="true"></a>' if sec_id == "watch-serene" else ""  # old #studio3 / #evolvex-video links still land here
+    return (f'<section id="{sec_id}" class="wsc">{legacy}<div class="wrap"><div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span>'
             f'<h2>Watch Serene</h2><p style="max-width:680px;margin:10px auto 0">Live treatment demos from our physician-led team. Swipe or use the arrows to see more.</p></div></div>'
             f'<div class="wsc-track" tabindex="0" aria-label="Serene videos">{cards}</div>'
             f'<div class="wsc-nav"><button class="wsc-arrow wsc-prev" type="button" aria-label="Previous video">&#8592;</button><div class="wsc-dots"></div>'
@@ -531,13 +532,22 @@ def press_strip(abs_urls=False, anchors=True):
     """'As featured on WSAZ' strip shown above the TV segments on the home pages. Hidden until the logo file exists in assets/img/press/."""
     if not os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "img", "press", "wsaz-logo.svg")): return ""
     logo = (SITE_URL if abs_urls else "") + PRESS_LOGO
-    ul = '#studio3' if anchors else SITE_URL + '/#studio3'
-    ev = '#evolvex-video' if anchors else SITE_URL + '/#evolvex-video'
+    w = '#watch-serene' if anchors else SITE_URL + '/#watch-serene'
     return (f'<section id="press" style="background:#0b1f3a;padding:26px 0"><div class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 34px;text-align:center">'
             f'<span style="color:#c9d3e6;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:600">As featured on</span>'
             f'<a href="https://www.wsaz.com/" target="_blank" rel="noopener" aria-label="WSAZ NewsChannel 3"><img src="{logo}" alt="WSAZ NewsChannel 3" width="190" height="56" style="height:56px;width:auto;display:block"></a>'
-            f'<span style="color:#fff;font-size:.95rem">Studio 3 segments: <a href="{ul}" style="color:#fff;text-decoration:underline">Ultherapy live demo</a> &middot; '
-            f'<a href="{ev}" style="color:#fff;text-decoration:underline">EvolveX body contouring</a></span></div></section>\n')
+            f'<span style="color:#fff;font-size:.95rem">Studio 3 segments: <a href="{w}" style="color:#fff;text-decoration:underline">Alma Hybrid, EvolveX and Ultherapy live demos</a></span></div></section>\n')
+
+_OLD_VIDEO_IDS = ("press", "studio3", "evolvex-video", "latest-video")
+def strip_old_video_blocks(s):
+    """Remove the pre-carousel home video blocks (press strip, Ultherapy, EvolveX, newest video) from an already-built page (Oct 16, 2026)."""
+    for i in _OLD_VIDEO_IDS:
+        s = re.sub(r'<section id="' + i + r'"[^>]*>.*?</section>\n?', "", s, count=1, flags=re.S)
+    return s
+
+def home_video_block(loc=None, prefix=""):
+    """WSAZ press strip + 'Watch Serene' card slider, shared by the three home pages."""
+    return press_strip(abs_urls=bool(loc)) + video_carousel_section(loc, prefix)
 
 def _vimeo_latest():
     """Newest public video on the account at build time (fallback: the featured video). The page also refreshes itself client-side."""
