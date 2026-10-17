@@ -640,6 +640,14 @@ def telehealth():
     return shell("/telehealth/", "Serene Telehealth with Dr. Robin Arora | Weight Management & Hormone Care by Video",
                  "Telehealth weight management, hormone therapy and wellness visits with board-certified physician Robin Arora, MD for patients in Ohio, West Virginia, Kentucky and Florida. $149/month, HIPAA-secure video via Spruce.", body, ld=ld)
 
+def video_preview():
+    """Noindex preview of the Watch Serene carousel (main / Hudson / Barboursville variants), Oct 16 2026."""
+    body = (page_hero("Video slideshow preview", "Preview only (not linked, not indexed). Main site version first, then the Hudson and Barboursville versions.", [("/", "Home"), (None, "Video preview")], "Preview")
+            + video_carousel_section(None, "", "watch-serene") 
+            + '<div class="wrap"><h2 style="text-align:center;margin:40px 0 0">Hudson home page version</h2></div>' + video_carousel_section("hudson", "/hudson", "watch-serene-h", with_ld=False)
+            + '<div class="wrap"><h2 style="text-align:center;margin:40px 0 0">Barboursville home page version</h2></div>' + video_carousel_section("barboursville", "/barboursville", "watch-serene-b", with_ld=False))
+    return shell("/video-preview/", "Video Slideshow Preview | Serene Med Spa", "Preview of the Watch Serene video slideshow.", body, noindex=True)
+
 def thank_you():
     body = page_hero("Request received", "Thank you for reaching out to Serene Med Spa. Our team will contact you within one business day to schedule your complimentary, no-commitment consultation.", [("/", "Home"), (None, "Thank you")], "We&rsquo;ll be in touch") + f'''
 <section><div class="wrap grid g3">
@@ -718,7 +726,7 @@ def comfort_options():
 
 def build(pages, posts, render_prose, render_embed):
     out = {"/": home(posts), "/locations/": locations(), "/our-providers/": providers(pages), "/about-us/": about(pages), "/reviews/": reviews(),
-           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/perimenopause/": PP.perimenopause(), "/perimenopause-check/": PC.check_page(), "/inbody-body-scan/": IB.inbody_page(), "/menopause-mood-sleep-brain-fog/": BP.brain_page(), "/menopause-weight-gain-heart-health/": CP.cardio_page(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day(), **GP.pages(), "/events/inbody-open-house/": EV.open_house(), "/refer-a-friend/": RF.refer_page(), BG.SLUG: BG.brand_glp1_page()}
+           "/membership/": membership(), "/financing/": financing(), "/specials/": specials(pages), "/telehealth/": telehealth(), "/comfort-options/": comfort_options(), "/video-preview/": video_preview(), "/perimenopause/": PP.perimenopause(), "/perimenopause-check/": PC.check_page(), "/inbody-body-scan/": IB.inbody_page(), "/menopause-mood-sleep-brain-fog/": BP.brain_page(), "/menopause-weight-gain-heart-health/": CP.cardio_page(), "/thank-you/": thank_you(), "/deal-of-the-day/": DP.deal_of_day(), **GP.pages(), "/events/inbody-open-house/": EV.open_house(), "/refer-a-friend/": RF.refer_page(), BG.SLUG: BG.brand_glp1_page()}
     out.update(WH.pages())  # Women's Health Library: 7 A4M-deck articles + /womens-health/ hub (Oct 9 2026)
     # self-contained tools whose only <h1> is rendered client-side get a static hero (crawlers see an H1)
     EMBED_HERO = {"/vitalityiq/": page_hero("VitalityIQ: Hormone &amp; Wellness Self-Check", "A free physician-built self-check for energy, sleep, mood, weight and libido changes &mdash; and whether lab testing or a hormone consult makes sense for you.", [("/", "Home"), ("/vitalityiq/", "VitalityIQ")], "Free tool")}

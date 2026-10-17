@@ -411,6 +411,121 @@ def evolvex_video_section(loc=None, prefix=""):
             f'#evolvex-video .deal-list li{{display:grid;gap:2px}}#evolvex-video .deal-list span{{font-size:.92rem;color:var(--ink-soft)}}</style>'
             f'<script type="application/ld+json">{ld}</script></div></section>\n')
 
+# ------------------------------------------------------------------ "Watch Serene" video carousel (Tesla-style cards; Oct 16, 2026)
+# Curated TV segments, newest first. Newer public uploads on Serene's Vimeo are prepended client-side (skip list below).
+# links: per site -> [(label, href, primary?)]; href is absolute-path on serenemedspas.com
+VIDEO_CARDS = [
+    {"id": "1236722003", "date": "2026-10-15", "kicker": "WSAZ Studio 3 &middot; Oct 15, 2026",
+     "thumb": "2213306362-28c50eb179f0d08371f7a48bc85b18bdc25b76b563838191e0d5520b0483ba07",
+     "title": "Alma Hybrid laser, live on TV",
+     "line": "Dr. Robin Arora and Stephanie Welker, NP demonstrate the two-wavelength Alma Hybrid laser: CO&#8322; plus 1570&nbsp;nm in one treatment.",
+     "links": {None: [("Alma Hybrid &middot; Barboursville", "/barboursville/alma-hybrid/", True), ("CO&#8322; laser &middot; Hudson", "/hudson/deka-co2-laser/", False)],
+               "barboursville": [("About Alma Hybrid", "/barboursville/alma-hybrid/", True)],
+               "hudson": [("CO&#8322; laser in Hudson", "/hudson/deka-co2-laser/", True)]}},
+    {"id": "1233802650", "date": "2026-10-07", "kicker": "WSAZ Studio 3 &middot; Oct 7, 2026",
+     "thumb": "2209598942-dafe73dba86e2fc96168df259f5550126eb356274119792f514578bfbde56aad",
+     "title": "EvolveX body contouring, live on TV",
+     "line": "Stephanie Welker, FNP-BC explains InMode EvolveX while Cami, our esthetician, is treated live on air.",
+     "links": {None: [("EvolveX &middot; Hudson", "/hudson/evolve-x/", True), ("EvolveX &middot; Barboursville", "/barboursville/evolve-x/", False)],
+               "barboursville": [("About EvolveX", "/barboursville/evolve-x/", True)],
+               "hudson": [("About EvolveX", "/hudson/evolve-x/", True)]}},
+    {"id": "1228988348", "date": "2026-09-18", "kicker": "WSAZ Studio 3 &middot; Sept 18, 2026",
+     "thumb": "2203534769-9df18cf4bcf6ef3f14c3a1ce6c37a5fdaa4957b5937dff689e47836bf0f9886f",
+     "title": "Dr. Arora&rsquo;s live Ultherapy demo",
+     "line": "See how real-time ultrasound imaging guides each pass of an Ultherapy PRIME treatment, with no downtime.",
+     "note": "Studio 3 special: 20% off Ultherapy with code STUDIO3 (first 20 clients), through Oct 31, 2026.", "note_through": "2026-10-31",
+     "links": {None: [("Ultherapy &middot; Hudson", "/hudson/ultherapy/", True), ("Ultherapy &middot; Barboursville", "/barboursville/ultherapy/", False)],
+               "barboursville": [("Ultherapy pricing", "/barboursville/ultherapy/#pricing", True)],
+               "hudson": [("Ultherapy pricing", "/hudson/ultherapy/#pricing", True)]}},
+]
+
+CAROUSEL_CSS = (
+ '#watch-serene{overflow:hidden}#watch-serene .section-head{text-align:center;margin-left:auto;margin-right:auto}'
+ '#watch-serene .section-head h2,#watch-serene .section-head p{margin-left:auto;margin-right:auto}'
+ '.wsc-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;'
+ 'padding:4px max(16px,calc((100vw - 1100px)/2)) 8px;scroll-padding:0 max(16px,calc((100vw - 1100px)/2))}'
+ '.wsc-track::-webkit-scrollbar{display:none}'
+ '.wsc-card{flex:0 0 min(86vw,900px);scroll-snap-align:start;position:relative;border-radius:18px;overflow:hidden;background:#0b1413;color:#fff;'
+ 'aspect-ratio:16/9;box-shadow:0 18px 50px rgba(0,0,0,.14)}'
+ '@media (max-width:640px){.wsc-card{aspect-ratio:4/5}}'
+ '.wsc-card img.wsc-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}'
+ '.wsc-card .wsc-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.78) 100%)}'
+ '.wsc-play{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;border:0;cursor:pointer;'
+ 'background:rgba(255,255,255,.92);box-shadow:0 8px 24px rgba(0,0,0,.25);display:grid;place-items:center}'
+ '.wsc-play:hover{background:#fff}.wsc-play svg{width:28px;height:28px;margin-left:4px;fill:#10322f}'
+ '.wsc-body{position:absolute;left:0;right:0;bottom:0;padding:22px 26px 24px}'
+ '.wsc-kicker{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85;margin:0 0 6px}'
+ '.wsc-body h3{color:#fff;margin:0 0 6px;font-size:clamp(1.25rem,2.4vw,1.9rem)}'
+ '.wsc-body p{color:rgba(255,255,255,.88);margin:0 0 12px;max-width:640px;font-size:.95rem}'
+ '.wsc-note{display:inline-block;background:rgba(255,255,255,.14);border-radius:6px;padding:6px 10px;font-size:.85rem;margin:0 0 12px}'
+ '.wsc-btns{display:flex;flex-wrap:wrap;gap:10px}.wsc-btns a{display:inline-block;padding:10px 18px;border-radius:6px;font-size:.88rem;font-weight:600;text-decoration:none}'
+ '.wsc-btns a.p{background:#fff;color:#10322f}.wsc-btns a.s{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.4)}'
+ '.wsc-card.playing .wsc-shade,.wsc-card.playing .wsc-body,.wsc-card.playing .wsc-play,.wsc-card.playing img.wsc-thumb{display:none}'
+ '.wsc-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}'
+ '@media (max-width:640px){.wsc-body{padding:18px}.wsc-body p{font-size:.9rem}}'
+ '.wsc-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:16px}'
+ '.wsc-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--rule);background:#fff;cursor:pointer;font-size:1.1rem;line-height:1;color:var(--ink)}'
+ '.wsc-arrow:disabled{opacity:.35;cursor:default}'
+ '.wsc-dots{display:flex;gap:8px}.wsc-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--rule);cursor:pointer}'
+ '.wsc-dots button.on{background:var(--forest);width:22px;border-radius:4px}'
+)
+
+def _wsc_card(c, loc, extra_cls=""):
+    import datetime as _d
+    btns = "".join(f'<a class="{"p" if prim else "s"}" href="{href}">{label}</a>' for label, href, prim in c["links"].get(loc, c["links"][None]))
+    note = ""
+    if c.get("note") and _d.date.today().isoformat() <= c.get("note_through", "9999"):
+        note = f'<div class="wsc-note" data-through="{c["note_through"]}">{c["note"]}</div>'
+    return (f'<article class="wsc-card{extra_cls}" data-vid="{c["id"]}">'
+            f'<img class="wsc-thumb" src="https://i.vimeocdn.com/video/{c["thumb"]}-d_1280x720" alt="{c["title"]}" loading="lazy" width="1280" height="720">'
+            f'<div class="wsc-shade"></div>'
+            f'<button class="wsc-play" type="button" aria-label="Play video: {c["title"]}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>'
+            f'<div class="wsc-body"><p class="wsc-kicker">{c["kicker"]}</p><h3>{c["title"]}</h3><p>{c["line"]}</p>{note}<div class="wsc-btns">{btns}</div></div></article>')
+
+def video_carousel_ld(page_url):
+    return [{"@context": "https://schema.org", "@type": "VideoObject", "name": re.sub(r"&[a-z#0-9]+;", "'", c["title"]).replace("'", "’"),
+             "description": re.sub(r"&[a-z#0-9]+;", " ", c["line"]), "thumbnailUrl": ["https://i.vimeocdn.com/video/%s-d_1280x720" % c["thumb"]],
+             "uploadDate": c["date"], "embedUrl": "https://player.vimeo.com/video/" + c["id"], "contentUrl": "https://vimeo.com/" + c["id"], "url": page_url,
+             "publisher": {"@type": "Organization", "name": "Serene Med Spa", "url": SITE_URL}} for c in VIDEO_CARDS]
+
+def video_carousel_section(loc=None, prefix="", sec_id="watch-serene", with_ld=True):
+    """Tesla-style card slider of Serene's TV segments. loc = None (main site) | 'hudson' | 'barboursville'."""
+    cards = "".join(_wsc_card(c, loc) for c in VIDEO_CARDS)
+    skip = VIMEO_NOT_LATEST + [c["id"] for c in VIDEO_CARDS]
+    ld = ('<script type="application/ld+json">' + json.dumps(video_carousel_ld(SITE_URL + (prefix or "") + "/"), ensure_ascii=False) + '</script>') if with_ld else ""
+    js = ("<script>(function(){var S=document.getElementById('" + sec_id + "');if(!S)return;var T=S.querySelector('.wsc-track'),D=S.querySelector('.wsc-dots'),"
+          "P=S.querySelector('.wsc-prev'),N=S.querySelector('.wsc-next');var today=new Date().toISOString().slice(0,10);"
+          "S.querySelectorAll('.wsc-note[data-through]').forEach(function(n){if(today>n.dataset.through)n.remove();});"
+          "function cards(){return Array.prototype.slice.call(T.querySelectorAll('.wsc-card'));}"
+          "function play(c){if(c.classList.contains('playing'))return;cards().forEach(function(o){if(o!==c&&o.classList.contains('playing')){o.classList.remove('playing');var f=o.querySelector('iframe');if(f)f.remove();}});"
+          "var f=document.createElement('iframe');f.src='https://player.vimeo.com/video/'+c.dataset.vid+'?autoplay=1&dnt=1&title=0&byline=0&portrait=0';"
+          "f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title=(c.querySelector('h3')||{}).textContent||'Video';c.appendChild(f);c.classList.add('playing');}"
+          "function wire(c){var b=c.querySelector('.wsc-play');if(b)b.addEventListener('click',function(){play(c);});}"
+          "function idx(){var cs=cards(),x=T.scrollLeft,best=0,bd=1e9;cs.forEach(function(c,i){var d=Math.abs(c.offsetLeft-T.offsetLeft-x-parseFloat(getComputedStyle(T).paddingLeft)+0);if(d<bd){bd=d;best=i;}});return best;}"
+          "function dots(){var cs=cards();D.innerHTML='';cs.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to video '+(i+1));"
+          "b.addEventListener('click',function(){go(i);});D.appendChild(b);});upd();}"
+          "function go(i){var cs=cards();i=Math.max(0,Math.min(cs.length-1,i));T.scrollTo({left:cs[i].offsetLeft-cs[0].offsetLeft,behavior:'smooth'});}"
+          "function upd(){var i=idx(),cs=cards();Array.prototype.forEach.call(D.children,function(b,j){b.classList.toggle('on',j===i);});P.disabled=i===0;N.disabled=i>=cs.length-1;}"
+          "P.addEventListener('click',function(){go(idx()-1);});N.addEventListener('click',function(){go(idx()+1);});"
+          "var t;T.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(upd,80);},{passive:true});"
+          "cards().forEach(wire);dots();"
+          "var skip=" + json.dumps(skip) + ";"
+          "fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){"
+          "var fresh=(a||[]).filter(function(v){return skip.indexOf(String(v.id))<0&&v.upload_date>'" + VIDEO_CARDS[0]["date"] + "';}).slice(0,3).reverse();"
+          "fresh.forEach(function(v){var el=document.createElement('article');el.className='wsc-card';el.dataset.vid=v.id;"
+          "var esc=function(s){return String(s||'').replace(/[&<>\"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[ch];});};"
+          "el.innerHTML='<img class=\"wsc-thumb\" src=\"'+esc(v.thumbnail_large)+'\" alt=\"'+esc(v.title)+'\" loading=\"lazy\"><div class=\"wsc-shade\"></div>'+"
+          "'<button class=\"wsc-play\" type=\"button\" aria-label=\"Play video\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14l11-7z\"/></svg></button>'+"
+          "'<div class=\"wsc-body\"><p class=\"wsc-kicker\">New from Serene</p><h3>'+esc(v.title)+'</h3><p>'+esc((v.description||'').split(String.fromCharCode(10))[0].slice(0,160))+'</p></div>';"
+          "T.insertBefore(el,T.firstChild);wire(el);});if(fresh.length){dots();T.scrollLeft=0;}}).catch(function(){});"
+          "})();</script>")
+    return (f'<section id="{sec_id}" class="wsc"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span>'
+            f'<h2>Watch Serene</h2><p style="max-width:680px;margin:10px auto 0">Live treatment demos from our physician-led team. Swipe or use the arrows to see more.</p></div></div>'
+            f'<div class="wsc-track" tabindex="0" aria-label="Serene videos">{cards}</div>'
+            f'<div class="wsc-nav"><button class="wsc-arrow wsc-prev" type="button" aria-label="Previous video">&#8592;</button><div class="wsc-dots"></div>'
+            f'<button class="wsc-arrow wsc-next" type="button" aria-label="Next video">&#8594;</button></div>'
+            f'<style>{CAROUSEL_CSS}</style>{ld}{js}</section>\n')
+
 PRESS_LOGO = "/img/press/wsaz-logo.svg"   # WSAZ NewsChannel 3 masthead logo (white type: needs a dark background)
 def press_strip(abs_urls=False, anchors=True):
     """'As featured on WSAZ' strip shown above the TV segments on the home pages. Hidden until the logo file exists in assets/img/press/."""
