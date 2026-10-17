@@ -415,21 +415,21 @@ def evolvex_video_section(loc=None, prefix=""):
 # Curated TV segments, newest first. Newer public uploads on Serene's Vimeo are prepended client-side (skip list below).
 # links: per site -> [(label, href, primary?)]; href is absolute-path on serenemedspas.com
 VIDEO_CARDS = [
-    {"id": "1236722003", "date": "2026-10-15", "kicker": "WSAZ Studio 3 &middot; Oct 15, 2026",
+    {"id": "1236722003", "date": "2026-10-15", "upload": "2026-10-16T21:07:06-04:00", "kicker": "WSAZ Studio 3 &middot; Oct 15, 2026",
      "thumb": "2213306362-28c50eb179f0d08371f7a48bc85b18bdc25b76b563838191e0d5520b0483ba07",
      "title": "Alma Hybrid laser, live on TV",
      "line": "Dr. Robin Arora and Stephanie Welker, NP demonstrate the two-wavelength Alma Hybrid laser: CO&#8322; plus 1570&nbsp;nm in one treatment.",
      "links": {None: [("Alma Hybrid &middot; Barboursville", "/barboursville/alma-hybrid/", True), ("CO&#8322; laser &middot; Hudson", "/hudson/deka-co2-laser/", False)],
                "barboursville": [("About Alma Hybrid", "/barboursville/alma-hybrid/", True)],
                "hudson": [("CO&#8322; laser in Hudson", "/hudson/deka-co2-laser/", True)]}},
-    {"id": "1233802650", "date": "2026-10-07", "kicker": "WSAZ Studio 3 &middot; Oct 7, 2026",
+    {"id": "1233802650", "date": "2026-10-07", "upload": "2026-10-07T13:29:41-04:00", "kicker": "WSAZ Studio 3 &middot; Oct 7, 2026",
      "thumb": "2209598942-dafe73dba86e2fc96168df259f5550126eb356274119792f514578bfbde56aad",
      "title": "EvolveX body contouring, live on TV",
      "line": "Stephanie Welker, FNP-BC explains InMode EvolveX while Cami, our esthetician, is treated live on air.",
      "links": {None: [("EvolveX &middot; Hudson", "/hudson/evolve-x/", True), ("EvolveX &middot; Barboursville", "/barboursville/evolve-x/", False)],
                "barboursville": [("About EvolveX", "/barboursville/evolve-x/", True)],
                "hudson": [("About EvolveX", "/hudson/evolve-x/", True)]}},
-    {"id": "1228988348", "date": "2026-09-18", "pin": True, "kicker": "WSAZ Studio 3 &middot; Sept 18, 2026",
+    {"id": "1228988348", "date": "2026-09-18", "upload": "2026-09-21T18:27:07-04:00", "pin": True, "kicker": "WSAZ Studio 3 &middot; Sept 18, 2026",
      "thumb": "2203534769-9df18cf4bcf6ef3f14c3a1ce6c37a5fdaa4957b5937dff689e47836bf0f9886f",
      "title": "Dr. Arora&rsquo;s live Ultherapy demo",
      "line": "See how real-time ultrasound imaging guides each pass of an Ultherapy PRIME treatment, with no downtime.",
@@ -488,7 +488,8 @@ def _wsc_card(c, loc, extra_cls=""):
 def video_carousel_ld(page_url):
     return [{"@context": "https://schema.org", "@type": "VideoObject", "name": re.sub(r"&[a-z#0-9]+;", "'", c["title"]).replace("'", "’"),
              "description": re.sub(r"&[a-z#0-9]+;", " ", c["line"]), "thumbnailUrl": ["https://i.vimeocdn.com/video/%s-d_1280x720" % c["thumb"]],
-             "uploadDate": c["date"], "embedUrl": "https://player.vimeo.com/video/" + c["id"], "contentUrl": "https://vimeo.com/" + c["id"], "url": page_url,
+             "uploadDate": c.get("upload") or (c["date"] + "T12:00:00-04:00"),  # full ISO 8601 with timezone (Search Console, Oct 17 2026)
+             "embedUrl": "https://player.vimeo.com/video/" + c["id"], "contentUrl": "https://vimeo.com/" + c["id"], "url": page_url,
              "publisher": {"@type": "Organization", "name": "Serene Med Spa", "url": SITE_URL}} for c in VIDEO_CARDS]
 
 CAROUSEL_AUTO_MS = 10000   # auto-advance every 10 s (timer bar fills in the active dot), looping back to the first card (Oct 16, 2026); 0 = off
