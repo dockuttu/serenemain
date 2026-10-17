@@ -466,8 +466,9 @@ CAROUSEL_CSS = (
  '.wsc-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:16px}'
  '.wsc-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--rule);background:#fff;cursor:pointer;font-size:1.1rem;line-height:1;color:var(--ink)}'
  '.wsc-arrow:disabled{opacity:.35;cursor:default}'
- '.wsc-dots{display:flex;gap:8px}.wsc-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--rule);cursor:pointer}'
- '.wsc-dots button.on{background:var(--forest);width:22px;border-radius:4px}'
+ '.wsc-dots{display:flex;gap:8px;align-items:center}.wsc-dots button{position:relative;overflow:hidden;width:10px;height:6px;border-radius:3px;border:0;padding:0;background:var(--rule);cursor:pointer;transition:width .35s ease}'
+ '.wsc-dots button.on{width:52px}.wsc-dots button i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--forest);border-radius:inherit}'
+ '.wsc-dots.static button.on i{width:100%}'
 )
 
 def _wsc_card(c, loc, extra_cls=""):
@@ -488,7 +489,7 @@ def video_carousel_ld(page_url):
              "uploadDate": c["date"], "embedUrl": "https://player.vimeo.com/video/" + c["id"], "contentUrl": "https://vimeo.com/" + c["id"], "url": page_url,
              "publisher": {"@type": "Organization", "name": "Serene Med Spa", "url": SITE_URL}} for c in VIDEO_CARDS]
 
-CAROUSEL_AUTO_MS = 6000   # auto-advance every 6 s, looping back to the first card (Oct 16, 2026); 0 = off
+CAROUSEL_AUTO_MS = 10000   # auto-advance every 10 s (timer bar fills in the active dot), looping back to the first card (Oct 16, 2026); 0 = off
 
 def video_carousel_section(loc=None, prefix="", sec_id="watch-serene", with_ld=True):
     """Tesla-style card slider of Serene's TV segments. loc = None (main site) | 'hudson' | 'barboursville'."""
@@ -504,22 +505,26 @@ def video_carousel_section(loc=None, prefix="", sec_id="watch-serene", with_ld=T
           "f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title=(c.querySelector('h3')||{}).textContent||'Video';c.appendChild(f);c.classList.add('playing');}"
           "function wire(c){var b=c.querySelector('.wsc-play');if(b)b.addEventListener('click',function(){play(c);});}"
           "function idx(){var cs=cards(),x=T.scrollLeft,best=0,bd=1e9;cs.forEach(function(c,i){var d=Math.abs(c.offsetLeft-T.offsetLeft-x-parseFloat(getComputedStyle(T).paddingLeft)+0);if(d<bd){bd=d;best=i;}});return best;}"
-          "function dots(){var cs=cards();D.innerHTML='';cs.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to video '+(i+1));"
-          "b.addEventListener('click',function(){go(i);});D.appendChild(b);});upd();}"
+          "function dots(){var cs=cards();D.innerHTML='';cs.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to video '+(i+1));b.appendChild(document.createElement('i'));"
+          "b.addEventListener('click',function(){go(i);el=0;});D.appendChild(b);});upd();}"
           "function go(i){var cs=cards();i=Math.max(0,Math.min(cs.length-1,i));T.scrollTo({left:cs[i].offsetLeft-cs[0].offsetLeft,behavior:'smooth'});}"
           "function upd(){var i=idx(),cs=cards();Array.prototype.forEach.call(D.children,function(b,j){b.classList.toggle('on',j===i);});}"
-          "function step(d){var n=cards().length,i=idx()+d;go(i<0?n-1:(i>=n?0:i));last=Date.now();}"
+          "function step(d){var n=cards().length,i=idx()+d;go(i<0?n-1:(i>=n?0:i));el=0;}"
           "P.addEventListener('click',function(){step(-1);});N.addEventListener('click',function(){step(1);});"
           "var t;T.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(upd,80);},{passive:true});"
           "cards().forEach(wire);dots();"
-          "var AUTO=" + str(CAROUSEL_AUTO_MS) + ",last=Date.now(),hov=false,vis=true,touch=0;"
+          "var AUTO=" + str(CAROUSEL_AUTO_MS) + ",el=0,prev=0,hov=false,vis=true,touch=0;"
           "var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;"
-          "S.addEventListener('mouseenter',function(){hov=true;});S.addEventListener('mouseleave',function(){hov=false;last=Date.now();});"
-          "S.addEventListener('focusin',function(){hov=true;});S.addEventListener('focusout',function(){hov=false;last=Date.now();});"
-          "T.addEventListener('touchstart',function(){touch=Date.now()+8000;},{passive:true});"
-          "if('IntersectionObserver' in window){new IntersectionObserver(function(e){vis=e[0].isIntersecting;last=Date.now();},{threshold:.4}).observe(T);}"
-          "if(!rm&&AUTO>0)setInterval(function(){if(hov||!vis||document.hidden||Date.now()<touch||T.querySelector('.wsc-card.playing')){last=Date.now();return;}"
-          "if(Date.now()-last>=AUTO){step(1);}},250);"
+          "S.addEventListener('mouseenter',function(){hov=true;});S.addEventListener('mouseleave',function(){hov=false;});"
+          "S.addEventListener('focusin',function(){hov=true;});S.addEventListener('focusout',function(){hov=false;});"
+          "T.addEventListener('touchstart',function(){touch=Date.now()+8000;el=0;},{passive:true});"
+          "if('IntersectionObserver' in window){new IntersectionObserver(function(e){vis=e[0].isIntersecting;},{threshold:.4}).observe(T);}"
+          "if(rm||!(AUTO>0)){D.classList.add('static');}else{"
+          "var loop=function(now){var dt=prev?Math.min(now-prev,100):0;prev=now;"
+          "if(T.querySelector('.wsc-card.playing')){el=0;}else if(!(hov||!vis||document.hidden||Date.now()<touch)){el+=dt;}"
+          "if(el>=AUTO){el=0;step(1);}"
+          "Array.prototype.forEach.call(D.children,function(btn){var f=btn.firstChild;if(f)f.style.width=btn.classList.contains('on')?(el/AUTO*100)+'%':'0';});"
+          "requestAnimationFrame(loop);};requestAnimationFrame(loop);}"
           "var skip=" + json.dumps(skip) + ";"
           "fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){"
           "var fresh=(a||[]).filter(function(v){return skip.indexOf(String(v.id))<0&&v.upload_date>'" + VIDEO_CARDS[0]["date"] + "';}).slice(0,3).reverse();"
