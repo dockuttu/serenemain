@@ -488,6 +488,8 @@ def video_carousel_ld(page_url):
              "uploadDate": c["date"], "embedUrl": "https://player.vimeo.com/video/" + c["id"], "contentUrl": "https://vimeo.com/" + c["id"], "url": page_url,
              "publisher": {"@type": "Organization", "name": "Serene Med Spa", "url": SITE_URL}} for c in VIDEO_CARDS]
 
+CAROUSEL_AUTO_MS = 6000   # auto-advance every 6 s, looping back to the first card (Oct 16, 2026); 0 = off
+
 def video_carousel_section(loc=None, prefix="", sec_id="watch-serene", with_ld=True):
     """Tesla-style card slider of Serene's TV segments. loc = None (main site) | 'hudson' | 'barboursville'."""
     cards = "".join(_wsc_card(c, loc) for c in VIDEO_CARDS)
@@ -505,10 +507,19 @@ def video_carousel_section(loc=None, prefix="", sec_id="watch-serene", with_ld=T
           "function dots(){var cs=cards();D.innerHTML='';cs.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to video '+(i+1));"
           "b.addEventListener('click',function(){go(i);});D.appendChild(b);});upd();}"
           "function go(i){var cs=cards();i=Math.max(0,Math.min(cs.length-1,i));T.scrollTo({left:cs[i].offsetLeft-cs[0].offsetLeft,behavior:'smooth'});}"
-          "function upd(){var i=idx(),cs=cards();Array.prototype.forEach.call(D.children,function(b,j){b.classList.toggle('on',j===i);});P.disabled=i===0;N.disabled=i>=cs.length-1;}"
-          "P.addEventListener('click',function(){go(idx()-1);});N.addEventListener('click',function(){go(idx()+1);});"
+          "function upd(){var i=idx(),cs=cards();Array.prototype.forEach.call(D.children,function(b,j){b.classList.toggle('on',j===i);});}"
+          "function step(d){var n=cards().length,i=idx()+d;go(i<0?n-1:(i>=n?0:i));last=Date.now();}"
+          "P.addEventListener('click',function(){step(-1);});N.addEventListener('click',function(){step(1);});"
           "var t;T.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(upd,80);},{passive:true});"
           "cards().forEach(wire);dots();"
+          "var AUTO=" + str(CAROUSEL_AUTO_MS) + ",last=Date.now(),hov=false,vis=true,touch=0;"
+          "var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;"
+          "S.addEventListener('mouseenter',function(){hov=true;});S.addEventListener('mouseleave',function(){hov=false;last=Date.now();});"
+          "S.addEventListener('focusin',function(){hov=true;});S.addEventListener('focusout',function(){hov=false;last=Date.now();});"
+          "T.addEventListener('touchstart',function(){touch=Date.now()+8000;},{passive:true});"
+          "if('IntersectionObserver' in window){new IntersectionObserver(function(e){vis=e[0].isIntersecting;last=Date.now();},{threshold:.4}).observe(T);}"
+          "if(!rm&&AUTO>0)setInterval(function(){if(hov||!vis||document.hidden||Date.now()<touch||T.querySelector('.wsc-card.playing')){last=Date.now();return;}"
+          "if(Date.now()-last>=AUTO){step(1);}},250);"
           "var skip=" + json.dumps(skip) + ";"
           "fetch('https://vimeo.com/api/v2/user" + VIMEO_USER + "/videos.json').then(function(r){return r.json();}).then(function(a){"
           "var fresh=(a||[]).filter(function(v){return skip.indexOf(String(v.id))<0&&v.upload_date>'" + VIDEO_CARDS[0]["date"] + "';}).slice(0,3).reverse();"
