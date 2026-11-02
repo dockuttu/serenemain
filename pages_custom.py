@@ -401,7 +401,7 @@ SPECIALS_SCHEDULE = {
         ("20% off Ultherapy PRIME", [
             ("Barboursville, WV", "/barboursville/ultherapy/", "Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;. Regular: brow $850, lower face $1,650, full face $2,200."),
             ("Hudson, OH", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $850, lower face $1,650, full face $2,200."),
-        ], "As seen on WSAZ Studio 3 &middot; first 20 clients &middot; mention &ldquo;Studio 3&rdquo;"),
+        ], "As seen on WSAZ Studio 3 &middot; extended through Nov 30 &middot; mention &ldquo;Studio 3&rdquo;"),
     ],
     "November": [
         ("Holiday gift card bonus", [
@@ -447,7 +447,7 @@ SPECIALS_MONTH = _current_month()
 SPECIALS = SPECIALS_SCHEDULE[SPECIALS_MONTH]
 
 # Featured, date-limited offer shown above the monthly cards (hidden automatically after validThrough).
-STUDIO3 = {"through": "2026-10-31", "vimeo": "1228988348",
+STUDIO3 = {"through": "2026-11-30", "vimeo": "1228988348",
            "thumb": "https://i.vimeocdn.com/video/2203534769-9df18cf4bcf6ef3f14c3a1ce6c37a5fdaa4957b5937dff689e47836bf0f9886f-d_1280"}
 
 def studio3_block():
@@ -456,12 +456,12 @@ def studio3_block():
     html = f'''
 <section class="tint-sand" id="studio3" data-through="{STUDIO3["through"]}"><div class="wrap">
   <div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span><h2>20% off Ultherapy &mdash; Hudson &amp; Barboursville</h2>
-    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. The first 20 clients who book after the segment save 20% on any Ultherapy PRIME treatment at either office &mdash; Hudson, OH or Barboursville, WV. Use code <strong>STUDIO3</strong> when you book online, or mention &ldquo;Studio 3&rdquo; when you call. Ends <strong>October 31, 2026</strong>.</p></div>
+    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. Book by November 30 and save 20% on any Ultherapy PRIME treatment at either office &mdash; Hudson, OH or Barboursville, WV. Use code <strong>STUDIO3</strong> when you book online, or mention &ldquo;Studio 3&rdquo; when you call. Ends <strong>October 31, 2026</strong>.</p></div>
   <div class="grid g2" style="align-items:center">
     <div class="studio3-wrap reveal"><iframe src="https://player.vimeo.com/video/{STUDIO3["vimeo"]}?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Ultherapy live demo on WSAZ Studio 3 with Dr. Robin Arora" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     <div class="card reveal"><span class="eyebrow">Studio 3 special</span><h3>Ultherapy PRIME, 20% off</h3>
       <p>A non-surgical lift for the brow, jowls, neck and d&eacute;collet&eacute; &mdash; one session, no downtime, results that build over two to three months. Regular pricing at both offices: brow $850, lower face $1,650, full face $2,200. See the price list for every area.</p>
-      <p class="deal-note">First 20 clients &middot; both offices &middot; through Oct 31, 2026</p>
+      <p class="deal-note">Both offices &middot; extended through Nov 30, 2026</p>
       <p style="margin-top:14px"><a class="btn" href="{HUDSON["book"]}" target="_blank" rel="noopener">Book Hudson</a> <a class="btn" href="{BARB["book"]}" target="_blank" rel="noopener">Book Barboursville</a> <a class="btn btn-outline" href="{HUDSON["site"]}ultherapy/">Ultherapy &middot; Hudson</a> <a class="btn btn-outline" href="{BARB["site"]}ultherapy/">Ultherapy &middot; Barboursville</a></p></div>
   </div>
   <style>.studio3-wrap{{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.12);background:#000}}.studio3-wrap iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}</style>

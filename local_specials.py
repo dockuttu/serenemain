@@ -17,8 +17,8 @@ OFFICE_NAME = {"hudson": "Hudson", "barboursville": "Barboursville"}
 # items: either a list (same for both offices) or {"hudson": [...], "barboursville": [...]}.
 # buttons: (label, href); href "BOOK" = that office's online booking, "{o}" in an href = the office slug.
 OFFERS = [
-    {"id": "ultherapy-oct", "offices": ["hudson", "barboursville"], "from": "2026-10-01", "until": "2026-10-31",
-     "eyebrow": "Through October 31 &middot; first 20 clients", "title": "20% off Ultherapy PRIME",
+    {"id": "ultherapy-oct", "offices": ["hudson", "barboursville"], "from": "2026-10-01", "until": "2026-11-30",
+     "eyebrow": "Extended through November 30", "title": "20% off Ultherapy PRIME",
      "items": {"hudson": ["Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;",
                           "Regular: brow $850 &middot; lower face $1,650 &middot; full face $2,200, now 20% off"],
                "barboursville": ["Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;",
