@@ -13,6 +13,8 @@ echo "==> Form spam guard (Zoho consult + newsletter forms)"
 python3 form_guard_inject.py bundle/site || echo "!!! form_guard_inject failed (continuing)" >&2
 echo "==> Text option before every Call option (Mangomint texting numbers)"
 python3 add_text_links.py bundle/site || echo "!!! add_text_links failed (continuing)" >&2
+echo "==> SEO polish (short titles, lazy images, right-sized logo)"
+python3 seo_polish.py bundle/site || echo "!!! seo_polish failed (continuing)" >&2
 echo "==> HIPAA-compliant patient forms badge in every footer"
 python3 hipaa_badge.py bundle/site /privacy-practices/ || echo "!!! hipaa_badge failed (continuing)" >&2
 echo "==> Link check"

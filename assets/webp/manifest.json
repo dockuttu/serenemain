@@ -1,7 +1,7 @@
 {
 "/img/botox-inject.jpg": {
 "h": 1800,
-"stamp": "142015:1790159793",
+"stamp": "142015:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -9,9 +9,89 @@
 1200
 ]
 },
+"/img/guides/guide-cover-hair-restoration.jpg": {
+"h": 1210,
+"stamp": "88007:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
+"/img/guides/guide-cover-injectables.jpg": {
+"h": 1210,
+"stamp": "85398:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
+"/img/guides/guide-cover-laser-hair-removal.jpg": {
+"h": 1210,
+"stamp": "79393:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
+"/img/guides/guide-cover-medical-weight-loss.jpg": {
+"h": 1210,
+"stamp": "93966:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
+"/img/guides/guide-cover-perimenopause.jpg": {
+"h": 1210,
+"stamp": "66611:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
+"/img/guides/guide-cover-skin-resurfacing.jpg": {
+"h": 1210,
+"stamp": "84088:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
+"/img/guides/guide-cover-skin-tightening.jpg": {
+"h": 1210,
+"stamp": "85468:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
+"/img/guides/guide-cover-ultherapy.jpg": {
+"h": 1210,
+"stamp": "93988:1793581950",
+"w": 935,
+"widths": [
+480,
+800,
+935
+]
+},
 "/img/hair-ted.jpg": {
 "h": 1800,
-"stamp": "204345:1790159793",
+"stamp": "204345:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -21,7 +101,7 @@
 },
 "/img/hudson-exterior.jpg": {
 "h": 1500,
-"stamp": "212478:1790171099",
+"stamp": "212478:1793581950",
 "w": 1125,
 "widths": [
 480,
@@ -31,7 +111,7 @@
 },
 "/img/hydrafacial.jpg": {
 "h": 1800,
-"stamp": "235485:1790159793",
+"stamp": "235485:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -41,7 +121,7 @@
 },
 "/img/laser.jpg": {
 "h": 1800,
-"stamp": "212362:1790159793",
+"stamp": "212362:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -51,7 +131,7 @@
 },
 "/img/lip-inject.jpg": {
 "h": 1800,
-"stamp": "201355:1790159793",
+"stamp": "201355:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -61,7 +141,7 @@
 },
 "/img/lobby-2.jpg": {
 "h": 1200,
-"stamp": "297704:1790159793",
+"stamp": "297704:1793581950",
 "w": 1800,
 "widths": [
 480,
@@ -72,7 +152,7 @@
 },
 "/img/lobby.jpg": {
 "h": 1200,
-"stamp": "331762:1790159793",
+"stamp": "331762:1793581950",
 "w": 1800,
 "widths": [
 480,
@@ -83,7 +163,7 @@
 },
 "/img/morpheus8.jpg": {
 "h": 1800,
-"stamp": "209759:1790159793",
+"stamp": "209759:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -93,7 +173,7 @@
 },
 "/img/skin-analysis.jpg": {
 "h": 1800,
-"stamp": "159399:1790159793",
+"stamp": "159399:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -103,7 +183,7 @@
 },
 "/img/team.jpg": {
 "h": 1800,
-"stamp": "215048:1790159793",
+"stamp": "215048:1793581950",
 "w": 1200,
 "widths": [
 480,
@@ -113,7 +193,7 @@
 },
 "/wp-content/uploads/2024/07/2148574924.jpg": {
 "h": 1000,
-"stamp": "117550:1790121707",
+"stamp": "117550:1793581951",
 "w": 1000,
 "widths": [
 480,
@@ -123,7 +203,7 @@
 },
 "/wp-content/uploads/2024/07/Biote-Certified-Provider-Seal-Web-Optimized-1.webp": {
 "h": 318,
-"stamp": "14992:1790121976",
+"stamp": "14992:1793581951",
 "w": 318,
 "widths": [
 318
@@ -131,7 +211,7 @@
 },
 "/wp-content/uploads/2024/08/alma-ted-hero.png": {
 "h": 774,
-"stamp": "123411:1790121960",
+"stamp": "123411:1793581951",
 "w": 832,
 "widths": [
 480,
@@ -141,7 +221,7 @@
 },
 "/wp-content/uploads/2024/11/Serene_Logo-1024x574.png.webp": {
 "h": 574,
-"stamp": "32566:1790122491",
+"stamp": "32566:1793581951",
 "w": 1024,
 "widths": [
 480,
@@ -151,7 +231,7 @@
 },
 "/wp-content/uploads/2025/09/Acne-Scars.jpg": {
 "h": 668,
-"stamp": "733984:1790121571",
+"stamp": "733984:1793581951",
 "w": 1000,
 "widths": [
 480,
@@ -161,7 +241,7 @@
 },
 "/wp-content/uploads/2025/09/Body-Fat.jpg": {
 "h": 563,
-"stamp": "456807:1790121569",
+"stamp": "456807:1793581951",
 "w": 1000,
 "widths": [
 480,
@@ -171,7 +251,7 @@
 },
 "/wp-content/uploads/2025/09/Botox-serene-med-spa-huntington-barboursville.png": {
 "h": 368,
-"stamp": "83033:1790121912",
+"stamp": "83033:1793581951",
 "w": 243,
 "widths": [
 243
@@ -179,7 +259,7 @@
 },
 "/wp-content/uploads/2025/09/Dysport-Before-and-After.jpg": {
 "h": 788,
-"stamp": "177237:1790122051",
+"stamp": "177237:1793581951",
 "w": 940,
 "widths": [
 480,
@@ -189,7 +269,7 @@
 },
 "/wp-content/uploads/2025/09/EmpowerScreenshot.png": {
 "h": 1012,
-"stamp": "816845:1790121918",
+"stamp": "816845:1793581951",
 "w": 1392,
 "widths": [
 480,
@@ -200,7 +280,7 @@
 },
 "/wp-content/uploads/2025/09/Exosome-Therapy.png": {
 "h": 864,
-"stamp": "1218134:1790121918",
+"stamp": "1218134:1793581951",
 "w": 1184,
 "widths": [
 480,
@@ -210,7 +290,7 @@
 },
 "/wp-content/uploads/2025/09/Facial-Sagging.jpg": {
 "h": 577,
-"stamp": "348487:1790121577",
+"stamp": "348487:1793581951",
 "w": 1000,
 "widths": [
 480,
@@ -220,7 +300,7 @@
 },
 "/wp-content/uploads/2025/09/Forma-treatment-serene-med-spa.png": {
 "h": 1080,
-"stamp": "164180:1790121922",
+"stamp": "164180:1793581951",
 "w": 720,
 "widths": [
 480,
@@ -229,7 +309,7 @@
 },
 "/wp-content/uploads/2025/09/Gemini_Generated_Image_bz9nfibz9nfibz9n.png": {
 "h": 1024,
-"stamp": "1359509:1790121923",
+"stamp": "1359509:1793581951",
 "w": 1024,
 "widths": [
 480,
@@ -239,7 +319,7 @@
 },
 "/wp-content/uploads/2025/09/Hair-Loss.jpg": {
 "h": 667,
-"stamp": "445786:1790121573",
+"stamp": "445786:1793581951",
 "w": 1000,
 "widths": [
 480,
@@ -249,7 +329,7 @@
 },
 "/wp-content/uploads/2025/09/Hand-Filler-Before.png": {
 "h": 747,
-"stamp": "423606:1790122020",
+"stamp": "423606:1793581951",
 "w": 669,
 "widths": [
 480,
@@ -258,7 +338,7 @@
 },
 "/wp-content/uploads/2025/09/Hand-Filler-after.png": {
 "h": 724,
-"stamp": "383953:1790122022",
+"stamp": "383953:1793581951",
 "w": 685,
 "widths": [
 480,
@@ -267,7 +347,7 @@
 },
 "/wp-content/uploads/2025/09/Hand_Filler_SereneMedSpa-landscape.png": {
 "h": 1024,
-"stamp": "1186523:1790121921",
+"stamp": "1186523:1793581951",
 "w": 1024,
 "widths": [
 480,
@@ -277,7 +357,7 @@
 },
 "/wp-content/uploads/2025/09/Hydrafacial-serene-med-spa.png": {
 "h": 764,
-"stamp": "216876:1790121922",
+"stamp": "216876:1793581951",
 "w": 486,
 "widths": [
 480,
@@ -286,7 +366,7 @@
 },
 "/wp-content/uploads/2025/09/Morpheus-8-Before-AA-Serene.png": {
 "h": 1864,
-"stamp": "1339051:1790122193",
+"stamp": "1339051:1793581951",
 "w": 1045,
 "widths": [
 480,
@@ -296,7 +376,7 @@
 },
 "/wp-content/uploads/2025/09/Morpheus-8-after-AA-Serene.png": {
 "h": 1858,
-"stamp": "1634319:1790122197",
+"stamp": "1634319:1793581951",
 "w": 1050,
 "widths": [
 480,
@@ -306,7 +386,7 @@
 },
 "/wp-content/uploads/2025/09/NAD-Vitamin-Therapy-Treatment.png": {
 "h": 502,
-"stamp": "80449:1790121937",
+"stamp": "80449:1793581951",
 "w": 301,
 "widths": [
 301
@@ -314,7 +394,7 @@
 },
 "/wp-content/uploads/2025/09/Pigmentation.jpg": {
 "h": 667,
-"stamp": "394701:1790121575",
+"stamp": "394701:1793581951",
 "w": 1000,
 "widths": [
 480,
@@ -324,7 +404,7 @@
 },
 "/wp-content/uploads/2025/09/Robin-Arora-EZ-Gel-PRF.png": {
 "h": 864,
-"stamp": "1275507:1790121919",
+"stamp": "1275507:1793581951",
 "w": 1184,
 "widths": [
 480,
@@ -334,7 +414,7 @@
 },
 "/wp-content/uploads/2025/09/Shoulder-Sliming-with-botox-after.png": {
 "h": 163,
-"stamp": "65891:1790122067",
+"stamp": "65891:1793581951",
 "w": 556,
 "widths": [
 480,
@@ -343,7 +423,7 @@
 },
 "/wp-content/uploads/2025/09/Shoulder-Slimitting-Botox-Before.png": {
 "h": 151,
-"stamp": "54006:1790122065",
+"stamp": "54006:1793581951",
 "w": 559,
 "widths": [
 480,
@@ -352,7 +432,7 @@
 },
 "/wp-content/uploads/2025/09/Sweat-reduction-treatment-serene-med-spa-1.png": {
 "h": 832,
-"stamp": "1362082:1790121950",
+"stamp": "1362082:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -363,7 +443,7 @@
 },
 "/wp-content/uploads/2025/09/Wrinkles.jpg": {
 "h": 667,
-"stamp": "706183:1790121567",
+"stamp": "706183:1793581951",
 "w": 1000,
 "widths": [
 480,
@@ -373,7 +453,7 @@
 },
 "/wp-content/uploads/2025/09/close-up-of-pain-injections-in-the-rheumatology-de-2025-03-08-04-34-50-utc-1.jpeg": {
 "h": 1000,
-"stamp": "817200:1790121912",
+"stamp": "817200:1793581951",
 "w": 1500,
 "widths": [
 480,
@@ -384,7 +464,7 @@
 },
 "/wp-content/uploads/2025/09/juvederm-treatment-serene-med-spa-huntington-barboursville-wv-landscape-wv.png": {
 "h": 832,
-"stamp": "1436722:1790121924",
+"stamp": "1436722:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -395,7 +475,7 @@
 },
 "/wp-content/uploads/2025/09/juvederm-ultra-plus-xc-filler-serene-med-spa-huntington-barboursville-wv-landscape-wv.png": {
 "h": 832,
-"stamp": "1303636:1790121925",
+"stamp": "1303636:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -406,7 +486,7 @@
 },
 "/wp-content/uploads/2025/09/juvederm-ultra-xc-filler-serene-med-spa-huntington-barboursville-wv-landscape-wv.png": {
 "h": 832,
-"stamp": "1431932:1790121926",
+"stamp": "1431932:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -417,7 +497,7 @@
 },
 "/wp-content/uploads/2025/09/juvederm-volbella-xc-treatment-serene-med-spa-huntington-barboursville-wv-landscape-wv.png": {
 "h": 832,
-"stamp": "1260632:1790121926",
+"stamp": "1260632:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -428,7 +508,7 @@
 },
 "/wp-content/uploads/2025/09/juvederm-vollure-xc-treatment-serene-med-spa-huntington-barboursville-wv-landscape-wv.png": {
 "h": 832,
-"stamp": "1183381:1790121927",
+"stamp": "1183381:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -439,7 +519,7 @@
 },
 "/wp-content/uploads/2025/09/juvederm-voluma-xc-treatment-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1203998:1790121928",
+"stamp": "1203998:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -450,7 +530,7 @@
 },
 "/wp-content/uploads/2025/09/kybella-treatment-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1252539:1790121929",
+"stamp": "1252539:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -461,7 +541,7 @@
 },
 "/wp-content/uploads/2025/09/labial-puff-treatment-abstract-floral-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1066960:1790121930",
+"stamp": "1066960:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -472,7 +552,7 @@
 },
 "/wp-content/uploads/2025/09/laser-facial-treatment-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1364371:1790121930",
+"stamp": "1364371:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -483,7 +563,7 @@
 },
 "/wp-content/uploads/2025/09/laser-hair-removal-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1410508:1790121931",
+"stamp": "1410508:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -494,7 +574,7 @@
 },
 "/wp-content/uploads/2025/09/laser-nail-fungus-treatment-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1334783:1790121932",
+"stamp": "1334783:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -505,7 +585,7 @@
 },
 "/wp-content/uploads/2025/09/laser-vein-removal-treatment-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1365010:1790121933",
+"stamp": "1365010:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -516,7 +596,7 @@
 },
 "/wp-content/uploads/2025/09/lip-filler-injection-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1212353:1790121934",
+"stamp": "1212353:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -527,7 +607,7 @@
 },
 "/wp-content/uploads/2025/09/microneedling-treatment-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1376912:1790121934",
+"stamp": "1376912:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -538,7 +618,7 @@
 },
 "/wp-content/uploads/2025/09/microneedling-with-prp-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1324728:1790121935",
+"stamp": "1324728:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -549,7 +629,7 @@
 },
 "/wp-content/uploads/2025/09/morpheus8-hyperhidrosis-treatment-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1384106:1790121936",
+"stamp": "1384106:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -560,7 +640,7 @@
 },
 "/wp-content/uploads/2025/09/neurotoxin-injection-treatments-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1271861:1790121938",
+"stamp": "1271861:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -571,7 +651,7 @@
 },
 "/wp-content/uploads/2025/09/opus-plasma-skin-resurfacing-serene-med-spa-huntington-barboursville-wv-landscape.jpg": {
 "h": 1770,
-"stamp": "459170:1790121938",
+"stamp": "459170:1793581951",
 "w": 1370,
 "widths": [
 480,
@@ -582,7 +662,7 @@
 },
 "/wp-content/uploads/2025/09/pdo-thread-face-lift-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1390859:1790121939",
+"stamp": "1390859:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -593,18 +673,7 @@
 },
 "/wp-content/uploads/2025/09/platelet-rich-plasma-prp-hair-restoration-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1447833:1790121940",
-"w": 1248,
-"widths": [
-480,
-800,
-1200,
-1248
-]
-},
-"/wp-content/uploads/2025/09/pro-nox-nitrous-treatment-serene-med-spa-huntington-barboursville-wv.png": {
-"h": 832,
-"stamp": "1394311:1790121941",
+"stamp": "1447833:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -615,7 +684,7 @@
 },
 "/wp-content/uploads/2025/09/professional-doctor-person-working-at-hospital-me-2025-03-26-12-53-58-utc-1.jpg": {
 "h": 998,
-"stamp": "817248:1790121955",
+"stamp": "817248:1793581951",
 "w": 1500,
 "widths": [
 480,
@@ -626,7 +695,7 @@
 },
 "/wp-content/uploads/2025/09/prp-vaginal-rejuvenation-injections-serene-med-spa-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1252013:1790121941",
+"stamp": "1252013:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -637,7 +706,7 @@
 },
 "/wp-content/uploads/2025/09/radiesse-filler-treatment-serene-med-spa-huntington-barboursville-wv-1.png": {
 "h": 832,
-"stamp": "1061441:1790121942",
+"stamp": "1061441:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -648,7 +717,7 @@
 },
 "/wp-content/uploads/2025/09/restylane-eyelight-under-eye-filler-serene-med-spa-huntington-barboursville.png": {
 "h": 832,
-"stamp": "1242180:1790121943",
+"stamp": "1242180:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -659,7 +728,7 @@
 },
 "/wp-content/uploads/2025/09/restylane-l-filler-treatment-serene-med-spa-huntington-barboursville.png": {
 "h": 832,
-"stamp": "1257251:1790121944",
+"stamp": "1257251:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -670,7 +739,7 @@
 },
 "/wp-content/uploads/2025/09/restylane-refyne-filler-serene-med-spa-huntington-barboursville.png": {
 "h": 832,
-"stamp": "1305686:1790121944",
+"stamp": "1305686:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -681,7 +750,7 @@
 },
 "/wp-content/uploads/2025/09/sculptra-body-contouring-non-surgical-butt-lift-serene-med-spa-huntington-wv-1.png": {
 "h": 832,
-"stamp": "1154608:1790121947",
+"stamp": "1154608:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -692,7 +761,7 @@
 },
 "/wp-content/uploads/2025/09/sculptra-facial-rejuvenation-treatment-serene-med-spa-huntington-wv-1.png": {
 "h": 832,
-"stamp": "1144885:1790121947",
+"stamp": "1144885:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -703,7 +772,7 @@
 },
 "/wp-content/uploads/2025/09/semaglutide-serene-med-spa.png": {
 "h": 832,
-"stamp": "1411039:1790121948",
+"stamp": "1411039:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -714,7 +783,7 @@
 },
 "/wp-content/uploads/2025/09/serene-med-spa-restylane-contour-cheek-filler-huntington.png": {
 "h": 832,
-"stamp": "1403416:1790121945",
+"stamp": "1403416:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -725,7 +794,7 @@
 },
 "/wp-content/uploads/2025/09/serene-med-spa-sciton-bbl-photofacial-huntington-wv.png": {
 "h": 1350,
-"stamp": "1513509:1790121946",
+"stamp": "1513509:1793581951",
 "w": 1080,
 "widths": [
 480,
@@ -735,7 +804,7 @@
 },
 "/wp-content/uploads/2025/09/serene-med-spa-skinvive-injection-hyaluronic-skin-treatment-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1187139:1790121949",
+"stamp": "1187139:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -746,7 +815,7 @@
 },
 "/wp-content/uploads/2025/09/serene-med-spa-spider-vein-treatment-huntington-barboursville-wv.png": {
 "h": 832,
-"stamp": "1237173:1790121950",
+"stamp": "1237173:1793581951",
 "w": 1248,
 "widths": [
 480,
@@ -757,7 +826,7 @@
 },
 "/wp-content/uploads/2025/09/teeth-grinding-serene-med-spa-service.png": {
 "h": 1024,
-"stamp": "2742163:1790121951",
+"stamp": "2742163:1793581951",
 "w": 1536,
 "widths": [
 480,
@@ -768,7 +837,7 @@
 },
 "/wp-content/uploads/2025/10/Stephanie-Welker.png": {
 "h": 1056,
-"stamp": "1337819:1790121784",
+"stamp": "1337819:1793581951",
 "w": 992,
 "widths": [
 480,
@@ -778,7 +847,7 @@
 },
 "/wp-content/uploads/2025/11/Botoxpreandpostbotox.jpg": {
 "h": 1200,
-"stamp": "395255:1790121956",
+"stamp": "395255:1793581951",
 "w": 1200,
 "widths": [
 480,
@@ -788,7 +857,7 @@
 },
 "/wp-content/uploads/2025/11/top-quality-med-spa.jpg": {
 "h": 467,
-"stamp": "46968:1790121956",
+"stamp": "46968:1793581951",
 "w": 700,
 "widths": [
 480,
@@ -797,7 +866,7 @@
 },
 "/wp-content/uploads/2025/12/Facial-Fillers-Before-and-After-E28093-With-a-Photo-Gallery-1024x659-1.webp": {
 "h": 659,
-"stamp": "37384:1790121958",
+"stamp": "37384:1793581951",
 "w": 1024,
 "widths": [
 480,
@@ -807,7 +876,7 @@
 },
 "/wp-content/uploads/2025/12/average-botox-units-4.webp": {
 "h": 720,
-"stamp": "46100:1790121957",
+"stamp": "46100:1793581951",
 "w": 600,
 "widths": [
 480,
@@ -816,7 +885,7 @@
 },
 "/wp-content/uploads/2025/12/shutterstock_24655996-842x630-1.jpg": {
 "h": 630,
-"stamp": "65679:1790121957",
+"stamp": "65679:1793581951",
 "w": 842,
 "widths": [
 480,
@@ -826,7 +895,7 @@
 },
 "/wp-content/uploads/2026/01/French-Med-Spa-Wellness-Shots-1516-1024x683-1.jpg": {
 "h": 683,
-"stamp": "101293:1790122255",
+"stamp": "101293:1793581951",
 "w": 1024,
 "widths": [
 480,
@@ -836,7 +905,7 @@
 },
 "/wp-content/uploads/2026/01/Hyelenex-at-Serene-Med-Spa.png": {
 "h": 1418,
-"stamp": "1027466:1790124038",
+"stamp": "1027466:1793581951",
 "w": 776,
 "widths": [
 480,
@@ -845,7 +914,7 @@
 },
 "/wp-content/uploads/2026/01/P-Shot-Serene-Med-Spa.jpg": {
 "h": 630,
-"stamp": "105414:1790123949",
+"stamp": "105414:1793581951",
 "w": 947,
 "widths": [
 480,
@@ -855,7 +924,7 @@
 },
 "/wp-content/uploads/2026/01/Peptide-Therapy-at-Serene-Med-Spa.jpg": {
 "h": 559,
-"stamp": "88415:1790123496",
+"stamp": "88415:1793581951",
 "w": 1024,
 "widths": [
 480,
@@ -865,7 +934,7 @@
 },
 "/wp-content/uploads/2026/01/SKNLAB-Device.png": {
 "h": 1196,
-"stamp": "1270096:1790123637",
+"stamp": "1270096:1793581951",
 "w": 1410,
 "widths": [
 480,
@@ -876,7 +945,7 @@
 },
 "/wp-content/uploads/2026/01/Under-eye-PRP.jpeg": {
 "h": 1080,
-"stamp": "107684:1790123597",
+"stamp": "107684:1793581951",
 "w": 1080,
 "widths": [
 480,
@@ -886,7 +955,7 @@
 },
 "/wp-content/uploads/2026/01/image-6.png": {
 "h": 1000,
-"stamp": "390324:1790121961",
+"stamp": "390324:1793581951",
 "w": 603,
 "widths": [
 480,
@@ -895,7 +964,7 @@
 },
 "/wp-content/uploads/2026/03/Grow-Girth.png": {
 "h": 770,
-"stamp": "465460:1790123288",
+"stamp": "465460:1793581951",
 "w": 948,
 "widths": [
 480,
@@ -905,7 +974,7 @@
 },
 "/wp-content/uploads/2026/08/August-Serene-Specials-for-Barboursville-Hudson-OH.png": {
 "h": 2000,
-"stamp": "1882016:1790121602",
+"stamp": "1882016:1793581951",
 "w": 1545,
 "widths": [
 480,
@@ -916,7 +985,7 @@
 },
 "/wp-content/uploads/2026/08/Robin-683x1024-1.jpg": {
 "h": 1024,
-"stamp": "62089:1790121769",
+"stamp": "62089:1793581951",
 "w": 683,
 "widths": [
 480,
@@ -925,7 +994,7 @@
 },
 "/wp-content/uploads/2026/08/Serene-Med-Spa-Founders-pic.webp": {
 "h": 1020,
-"stamp": "1605596:1790122533",
+"stamp": "1605596:1793581951",
 "w": 1360,
 "widths": [
 480,
@@ -936,7 +1005,7 @@
 },
 "/wp-content/uploads/2026/08/Shweta-Arora-MD-1.png": {
 "h": 754,
-"stamp": "264962:1790122675",
+"stamp": "264962:1793581951",
 "w": 602,
 "widths": [
 480,
@@ -945,7 +1014,7 @@
 },
 "/wp-content/uploads/2026/08/Shweta-Arora-MD.png": {
 "h": 754,
-"stamp": "264962:1790121781",
+"stamp": "264962:1793581951",
 "w": 602,
 "widths": [
 480,

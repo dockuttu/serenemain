@@ -25,7 +25,7 @@ POST_OVERRIDES = {
             "provider": SERENE_ORG, "areaServed": ["Hudson, OH", "Barboursville, WV"],
             "offers": [
                 _price_offer("Botox", 10, "https://serenemedspas.com/barboursville/botox/", "Barboursville, WV"),
-                _price_offer("Botox", 11, "https://serenemedspas.com/hudson/botox/", "Hudson, OH"),
+                _price_offer("Botox", 10, "https://serenemedspas.com/hudson/botox/", "Hudson, OH"),
             ]}],
     },
     "/best-laser-for-tattoo-removal-guide/": {

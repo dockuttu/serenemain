@@ -61,6 +61,25 @@ a.g{color:#3C8296;font-weight:700}</style></head><body><div>
 </div></body></html>''')
 
 # 3. Sitemap from the indexable HTML pages
+# <lastmod> only moves when a page's content actually changes (content hash tracked in sitemap_state.json, committed
+# with the repo, same scheme as the Hudson/Barboursville builds) — a build-time mtime stamped every page "today".
+import hashlib, json, subprocess
+_STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sitemap_state.json")
+try: _state = json.load(open(_STATE_FILE))
+except Exception: _state = {}
+_new_state = {}
+_today = datetime.date.today().isoformat()
+def _lastmod(path, html):
+    h = re.sub(r"\s+", " ", re.sub(r"\?v=[0-9a-zA-Z]+", "", html))
+    h = hashlib.sha1(h.encode("utf-8")).hexdigest()[:16]
+    old = _state.get(path)
+    if old and old[0] == h: lm = old[1]
+    elif old: lm = _today
+    else:
+        try: lm = subprocess.run(["git", "log", "-1", "--format=%cs"], capture_output=True, text=True, timeout=10).stdout.strip() or _today
+        except Exception: lm = _today
+    _new_state[path] = [h, lm]
+    return lm
 urls = []
 for root, dirs, files in os.walk(SITE):
     rel = os.path.relpath(root, SITE)
@@ -72,9 +91,9 @@ for root, dirs, files in os.walk(SITE):
         can = re.search(r'<link rel="canonical" href="([^"]+)"', s)
         if can and can.group(1).replace(ORIGIN, "") not in (path, ""): continue   # duplicate pointing elsewhere
         if 'http-equiv="refresh"' in s: continue                                  # redirect stub
-        mtime = datetime.date.fromtimestamp(os.path.getmtime(os.path.join(root, "index.html"))).isoformat()
-        urls.append((path, mtime))
+        urls.append((path, _lastmod(path, s)))
 urls.sort()
+json.dump(_new_state, open(_STATE_FILE, "w"), indent=0, sort_keys=True)
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for p, d in urls:
     sm.append(f"  <url><loc>{ORIGIN}{p}</loc><lastmod>{d}</lastmod></url>")
