@@ -51,8 +51,6 @@ REDIRECTS = {
     "/booking/ipl-bbl": BARB["site"] + "photofacial/", "/booking/microneedle": BARB["site"] + "microneedling/",
     "/booking/threads": BARB["site"] + "thread-lift/", "/insider/": "/membership/", "/loyalty/": "/membership/",
     "/author/": "/our-providers/", "/wp-content/uploads/2025/11/SERENE-MED-SPA-IV-INFUSIONS-MENU.pdf": BARB["site"] + "iv-therapy/",
-    # MOXI + BBL HEROic are Barboursville-only (Sep 26, 2026): the Hudson aftercare pages were removed (serenehudson/build_aftercare.py)
-    HUDSON["site"] + "aftercare/moxi/": HUDSON["site"] + "aftercare/", HUDSON["site"] + "aftercare/bbl-hero/": HUDSON["site"] + "aftercare/",
 }
 # Oct 10, 2026: practice rule — never say "vaginal rejuvenation". Old article URLs are renamed (301 from the old URL)
 # and the phrase is replaced sitewide in titles, descriptions and article text at build time.
