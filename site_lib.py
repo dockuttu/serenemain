@@ -648,8 +648,8 @@ _OCT_MAIN = ('<div class="promo" data-promo="oct-main" style="display:none">&#10
              '&middot; <a href="' + _B + '/barboursville/sciton-moxi/">Fall Laser Season in Barboursville</a>: BBL + MOXI $750'
              '<span class="promo-more"> &middot; Through Oct 31</span></div>')
 # November-December variants (Robin OK'd Oct 4): holiday gift card bonus Nov 1 - Dec 24, doubled Black Friday weekend Nov 27-30.
-_NOV_TXT = ('&#10022; <a href="' + _B + '/specials/#holiday">Holiday gift card bonus</a>: $225 card for $200 &middot; $575 card for $500'
-            '<span class="promo-more"> &middot; Black Friday weekend (Nov 27&ndash;30) it doubles</span>')
+_NOV_TXT = ('&#10022; November: <a href="' + _B + '/hudson/halo/">Sciton Halo, BBL &amp; MOXI now in Hudson</a> &middot; <a href="' + _B + '/specials/">20% off Ultherapy</a> at both offices'
+            '<span class="promo-more"> &middot; <a href="' + _B + '/specials/#holiday">Holiday gift card bonus</a>: $225 card for $200, $575 for $500</span>')
 _BF_TXT = ('&#10022; <a href="' + _B + '/specials/#black-friday">Black Friday weekend</a>: $250 gift card for $200 &middot; $650 for $500, plus prepaid Botox &amp; filler savings'
            '<span class="promo-more"> &middot; Through Nov 30</span>')
 _DEC_TXT = ('&#10022; <a href="' + _B + '/specials/#holiday">Holiday gift card bonus</a>: $225 card for $200 &middot; $575 card for $500'

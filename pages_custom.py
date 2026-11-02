@@ -404,6 +404,20 @@ SPECIALS_SCHEDULE = {
         ], "As seen on WSAZ Studio 3 &middot; extended through Nov 30 &middot; mention &ldquo;Studio 3&rdquo;"),
     ],
     "November": [
+        ("Sciton Halo, BBL &amp; MOXI arrive in Hudson", [
+            ("Halo hybrid laser, full face: $1,199", "/hudson/halo/", "Launch pricing on the Halo hybrid fractional laser (regularly $1,399). Tone, texture, pores and sun damage in one treatment."),
+            ("Halo + BBL, same visit: $1,399", "/hudson/halo/", "Halo resurfacing plus BBL HEROic light therapy in one appointment (regularly $1,799)."),
+            ("BBL + MOXI, same visit: $750", "/hudson/sciton-moxi/", "BBL HEROic for redness and brown spots, MOXI for glow and texture (regularly $900). BBL HEROic buy 3, get 1 free."),
+        ], "Hudson, OH &middot; treatments start November 3 &middot; launch pricing through Nov 30"),
+        ("20% off Ultherapy PRIME", [
+            ("Barboursville, WV", "/barboursville/ultherapy/", "Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;. Regular: brow $850, lower face $1,650, full face $2,200."),
+            ("Hudson, OH", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $850, lower face $1,650, full face $2,200."),
+        ], "As seen on WSAZ Studio 3 &middot; extended through Nov 30 &middot; mention &ldquo;Studio 3&rdquo;"),
+        ("Laser Season continues in Barboursville", [
+            ("BBL + MOXI, same visit: $750", "/barboursville/sciton-moxi/", "Regularly $900. BBL HEROic buy 3, get 1 free."),
+            ("Laser hair removal: buy 5, get 2 free", "/barboursville/laser-hair-removal/", "Pay for 5 sessions, get 7 on any area &mdash; from underarms to full body."),
+            ("Alma Duo: 6 sessions for the price of 5", "/barboursville/alma-duo/", "Needle-free shockwave therapy for men&rsquo;s wellness. Private consultation."),
+        ], "Barboursville, WV &middot; through Nov 30 &middot; can&rsquo;t be combined with another discount"),
         ("Holiday gift card bonus", [
             ("$225 gift card for $200", "/specials/#holiday", "Good for any treatment or product at Hudson or Barboursville. Gift cards never expire."),
             ("$575 gift card for $500", "/specials/#holiday", "The bigger bonus &mdash; $75 extra to spend on yourself or someone you love."),
