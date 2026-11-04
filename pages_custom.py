@@ -409,6 +409,10 @@ SPECIALS_SCHEDULE = {
             ("Halo + BBL, same visit: $1,399", "/hudson/halo/", "Halo resurfacing plus BBL HEROic light therapy in one appointment (regularly $1,799)."),
             ("BBL + MOXI, same visit: $750", "/hudson/sciton-moxi/", "BBL HEROic for redness and brown spots, MOXI for glow and texture (regularly $900). BBL HEROic buy 3, get 1 free."),
         ], "Hudson, OH &middot; treatments start November 3 &middot; launch pricing through Nov 30"),
+        ("$65 off Xeomin in Hudson", [
+            ("$65 instant savings on Xeomin", "/hudson/botox/", "Merz Xperience+ Elite+ offer for Hudson patients, Nov 4&ndash;27. Free to join; we enroll you at checkout. Xeomin is $10 a unit."),
+            ("First Xeomin treatment: 200 bonus points", "/hudson/botox/", "Worth $20 toward a future visit. Returning patients earn a 100-point same-provider bonus every treatment."),
+        ], "Hudson, OH &middot; through Nov 27 &middot; requires the Xperience+ $50-off patient reward at checkout"),
         ("20% off Ultherapy PRIME", [
             ("Barboursville, WV", "/barboursville/ultherapy/", "Non-surgical ultrasound lift for brow, jowls, neck and d&eacute;collet&eacute;. Regular: brow $850, lower face $1,650, full face $2,200."),
             ("Hudson, OH", "/hudson/ultherapy/", "Same treatment, same physician-led team in Hudson. Regular: brow $850, lower face $1,650, full face $2,200."),
