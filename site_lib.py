@@ -710,14 +710,9 @@ FOOTER = f'''<footer>
         <li style="margin-top:14px"><strong style="color:#fff">Telehealth</strong> &middot; OH, WV, KY, FL<br><a href="tel:{TELE["tel"]}">{TELE["phone"]}</a> &middot; <a href="{TELE["spruce"]}" target="_blank" rel="noopener">Message securely</a></li></ul>
       </div>
       <div><h4>20% off your first visit</h4>
-        <p style="font-size:.9rem">Join our list for monthly specials and new treatments. New patients get 20% off their first visit &mdash; any product or service.</p>
-        <form class="newsletter" id="zf-news" action="https://crm.zoho.com/crm/WebToLeadForm" method="POST" accept-charset="UTF-8" novalidate>
-          <input type="hidden" name="xnQsjsdp" value="29c1b6f4e6219d1e5682cd0434b1ce181ccda55241b6394ae70c33a7f83e1dfa"><input type="hidden" name="xmIwtLD" value="139bc9e7ae4c09a2ea84b820c0c3b10459ed2d907a8c88693956f8d217af21d20ea75c0d1b75b947bf1bf59cc28d7274"><input type="hidden" name="actionType" value="TGVhZHM="><input type="hidden" name="returnURL" value="https://serenemedspas.com/thank-you/">
-          <input type="hidden" name="Last Name" value="Email signup"><input type="hidden" name="Lead Status" value="Not Contacted"><input type="hidden" name="LEADCF1" value="Website form: newsletter"><input type="text" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off" class="zf-hp" aria-hidden="true">
-          <input type="email" name="Email" placeholder="Your email" aria-label="Email address" required autocomplete="email" inputmode="email"><button class="btn" type="submit">Subscribe</button>
-        </form>
-        <p id="zf-news-done" hidden style="font-size:.9rem;color:#fff">Thanks &mdash; you&rsquo;re on the list. Mention the offer when you book.</p>
-        <p style="font-size:.72rem;color:rgba(255,255,255,.5);margin:0">Can&rsquo;t be combined with another discount. Unsubscribe any time. <a href="/llc-privacy-policy/">Privacy</a>.</p>
+        <p style="font-size:.9rem">New patients get 20% off their first visit &mdash; any product or service. Request a free consultation and our team will reach out within one business day.</p>
+        <div class="newsletter"><a class="btn" href="/#consult">Claim your 20% off</a></div>
+        <p style="font-size:.72rem;color:rgba(255,255,255,.5);margin:0">Can&rsquo;t be combined with another discount. <a href="/llc-privacy-policy/">Privacy</a>.</p>
       </div>
     </div>
     <div class="foot-bottom">
@@ -750,8 +745,6 @@ function go(k){{var path=location.pathname,dest='';if(k==='telehealth'){{if(path
 document.addEventListener('click',function(e){{var p=document.getElementById('locpick');if(p&&!p.contains(e.target))p.classList.remove('open');}});
 (function(){{var pm=location.pathname.match(/^\/(hudson|barboursville)(\/|$)/);if(pm){{try{{localStorage.setItem('serene_loc',pm[1]);}}catch(e){{}}}}}})();
 apply(get());
-var n=document.getElementById('zf-news');if(n){{n.addEventListener('submit',function(e){{e.preventDefault();var em=n.querySelector('input[type=email]');if(!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]{{2,}}$/.test(em.value.trim())){{em.focus();return;}}
-fetch(n.action,{{method:'POST',body:new URLSearchParams(new FormData(n)),mode:'no-cors',credentials:'omit'}}).then(function(){{n.hidden=true;document.getElementById('zf-news-done').hidden=false;try{{if(window.gtag)gtag('event','generate_lead',{{event_category:'form',event_label:'newsletter'}});}}catch(x){{}}}}).catch(function(){{n.submit();}});}});}}
 }})();
 </script>
 <script>
