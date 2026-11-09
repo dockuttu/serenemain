@@ -52,6 +52,9 @@ fi
 
 cp -f bundle/docker-compose.yml "$LIVE/docker-compose.yml"
 cp -f bundle/nginx.conf "$LIVE/nginx.conf"
+echo "==> Lead relay code (leadrelay/ -> $LIVE/leadrelay)"
+rm -rf "$LIVE/leadrelay.new"; cp -a leadrelay "$LIVE/leadrelay.new"
+rm -rf "$LIVE/leadrelay"; mv "$LIVE/leadrelay.new" "$LIVE/leadrelay"
 
 echo "==> Restarting container"
 cd "$LIVE"

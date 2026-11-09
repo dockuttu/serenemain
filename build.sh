@@ -17,6 +17,8 @@ echo "==> SEO polish (short titles, lazy images, right-sized logo)"
 python3 seo_polish.py bundle/site || echo "!!! seo_polish failed (continuing)" >&2
 echo "==> HIPAA-compliant patient forms badge in every footer"
 python3 hipaa_badge.py bundle/site /privacy-practices/ || echo "!!! hipaa_badge failed (continuing)" >&2
+echo "==> Lead forms post to our own /api/lead relay, not Zoho directly (bot filter, Nov 9 2026)"
+python3 lead_relay_rewrite.py bundle/site
 echo "==> Link check"
 python3 check_links.py bundle/site | tail -8 || echo "!!! WARNING: some page links are missing (see above)" >&2
 if [ ! -s bundle/site/index.html ] || [ "$(wc -c < bundle/site/index.html)" -lt 5000 ]; then

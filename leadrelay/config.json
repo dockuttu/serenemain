@@ -1,0 +1,10 @@
+{
+  "_note": "Zoho web-to-lead codes for the Leads form the relay forwards to. Kept here, never in website HTML. When the Zoho form is replaced, put the new codes here and push.",
+  "zoho_url": "https://crm.zoho.com/crm/WebToLeadForm",
+  "xnQsjsdp": "e5385e377b2acd984e8f99f482fa523aca74fd504e9c95efc8f36b5a40b54096",
+  "xmIwtLD": "9f219afdcf0277dcbbad173fdabd75a85b737bcdda8af4aa1007d742d3cd723b2400a4d60636f5a7bcfe7cb9f07f7852",
+  "allowed_hosts": ["serenemedspas.com", "www.serenemedspas.com"],
+  "default_return": "https://serenemedspas.com/thank-you/",
+  "rate_max": 4,
+  "rate_window_sec": 600
+}

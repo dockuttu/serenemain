@@ -21,6 +21,19 @@ services:
       - "traefik.http.routers.serenemain.tls.domains[0].main=serenemedspas.com"
       - "traefik.http.routers.serenemain.tls.domains[0].sans=www.serenemedspas.com"
       - "traefik.http.services.serenemain.loadbalancer.server.port=80"
+  # Lead relay (Nov 9 2026): website lead forms post to /api/lead; nginx above proxies here. Screens bots,
+  # forwards real leads to Zoho with codes kept in leadrelay/config.json (never in the website HTML).
+  leadrelay:
+    image: python:3.12-alpine
+    container_name: serene-leadrelay
+    restart: always
+    command: ["python", "-u", "/app/app.py"]
+    volumes:
+      - ./leadrelay:/app:ro
+    environment:
+      - PORT=8080
+    networks:
+      - root_default
   paintsville:
     image: nginx:alpine
     container_name: paintsville-site
