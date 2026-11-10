@@ -80,6 +80,9 @@ def forward(fields):
     data = {k: v for k, v in fields.items() if k not in (HONEYPOT, "xnQsjsdp", "xmIwtLD", "g-recaptcha-response")}
     data["xnQsjsdp"], data["xmIwtLD"] = XNQ, XMI
     data.setdefault("actionType", "TGVhZHM=")
+    # The new Zoho form (Nov 10 2026) names the city field "Address - City"; the site still sends "City".
+    if data.get("City") and not data.get("Address - City"):
+        data["Address - City"] = data["City"]
     body = urllib.parse.urlencode(data).encode()
     req = urllib.request.Request(ZOHO_URL, data=body, method="POST",
                                  headers={"Content-Type": "application/x-www-form-urlencoded",
