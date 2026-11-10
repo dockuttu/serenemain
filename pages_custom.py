@@ -474,7 +474,7 @@ def studio3_block():
     html = f'''
 <section class="tint-sand" id="studio3" data-through="{STUDIO3["through"]}"><div class="wrap">
   <div class="section-head reveal"><span class="eyebrow">As seen on WSAZ Studio 3</span><h2>20% off Ultherapy &mdash; Hudson &amp; Barboursville</h2>
-    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. Book by November 30 and save 20% on any Ultherapy PRIME treatment at either office &mdash; Hudson, OH or Barboursville, WV. Use code <strong>STUDIO3</strong> when you book online, or mention &ldquo;Studio 3&rdquo; when you call. Ends <strong>October 31, 2026</strong>.</p></div>
+    <p style="max-width:720px;margin:10px auto 0">Dr. Robin Arora demonstrated Ultherapy PRIME live on WSAZ&rsquo;s Studio 3 on September 18. Book by November 30 and save 20% on any Ultherapy PRIME treatment at either office &mdash; Hudson, OH or Barboursville, WV. Use code <strong>STUDIO3</strong> when you book online, or mention &ldquo;Studio 3&rdquo; when you call. Ends <strong>November 30, 2026</strong>.</p></div>
   <div class="grid g2" style="align-items:center">
     <div class="studio3-wrap reveal"><iframe src="https://player.vimeo.com/video/{STUDIO3["vimeo"]}?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Ultherapy live demo on WSAZ Studio 3 with Dr. Robin Arora" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
     <div class="card reveal"><span class="eyebrow">Studio 3 special</span><h3>Ultherapy PRIME, 20% off</h3>
