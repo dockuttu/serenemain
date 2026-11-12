@@ -50,6 +50,8 @@ REDIRECTS = {
     "/laser-vein-removal-treatment-at-serene-med-spa-in-huntington-barboursville-wv/": BARB["site"] + "spider-veins/",
     "/booking/ipl-bbl": BARB["site"] + "photofacial/", "/booking/microneedle": BARB["site"] + "microneedling/",
     "/booking/threads": BARB["site"] + "thread-lift/", "/insider/": "/membership/", "/loyalty/": "/membership/",
+    # Nov 12, 2026: peptide menu retired (LegitScript) -> 301 to the longevity page
+    "/peptide-therapy-benefits-skin-hair-wellness/": BARB["site"] + "longevity/",
     "/author/": "/our-providers/", "/wp-content/uploads/2025/11/SERENE-MED-SPA-IV-INFUSIONS-MENU.pdf": BARB["site"] + "iv-therapy/",
 }
 # Oct 10, 2026: practice rule — never say "vaginal rejuvenation". Old article URLs are renamed (301 from the old URL)
