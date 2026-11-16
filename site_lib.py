@@ -415,6 +415,13 @@ def evolvex_video_section(loc=None, prefix=""):
 # Curated TV segments, newest first. Newer public uploads on Serene's Vimeo are prepended client-side (skip list below).
 # links: per site -> [(label, href, primary?)]; href is absolute-path on serenemedspas.com
 VIDEO_CARDS = [
+    {"id": "1247335324", "date": "2026-11-11", "upload": "2026-11-16T12:25:19-05:00", "kicker": "WSAZ Studio 3 &middot; Nov 11, 2026",
+     "thumb": "2227075254-89b652f27a08abe36dd45607a5624809071383baa65cf32cf495df8253439726",
+     "title": "Morpheus8, live on TV",
+     "line": "Stephanie Welker, FNP-BC shows how Morpheus8 (microneedling with heat) treats sun damage, fine lines and loose skin, with Michelle treated live on air.",
+     "links": {None: [("Morpheus8 &middot; Barboursville", "/barboursville/morpheus8/", True), ("Morpheus8 &middot; Hudson", "/hudson/morpheus8/", False)],
+               "barboursville": [("About Morpheus8", "/barboursville/morpheus8/", True)],
+               "hudson": [("About Morpheus8", "/hudson/morpheus8/", True)]}},
     {"id": "1236722003", "date": "2026-10-15", "upload": "2026-10-16T21:07:06-04:00", "kicker": "WSAZ Studio 3 &middot; Oct 15, 2026",
      "thumb": "2213306362-28c50eb179f0d08371f7a48bc85b18bdc25b76b563838191e0d5520b0483ba07",
      "title": "Alma Hybrid laser, live on TV",
@@ -429,7 +436,7 @@ VIDEO_CARDS = [
      "links": {None: [("EvolveX &middot; Hudson", "/hudson/evolve-x/", True), ("EvolveX &middot; Barboursville", "/barboursville/evolve-x/", False)],
                "barboursville": [("About EvolveX", "/barboursville/evolve-x/", True)],
                "hudson": [("About EvolveX", "/hudson/evolve-x/", True)]}},
-    {"id": "1228988348", "date": "2026-09-18", "upload": "2026-09-21T18:27:07-04:00", "pin": True, "kicker": "WSAZ Studio 3 &middot; Sept 18, 2026",
+    {"id": "1228988348", "date": "2026-09-18", "upload": "2026-09-21T18:27:07-04:00", "kicker": "WSAZ Studio 3 &middot; Sept 18, 2026",
      "thumb": "2203534769-9df18cf4bcf6ef3f14c3a1ce6c37a5fdaa4957b5937dff689e47836bf0f9886f",
      "title": "Dr. Arora&rsquo;s live Ultherapy demo",
      "line": "See how real-time ultrasound imaging guides each pass of an Ultherapy PRIME treatment, with no downtime.",
@@ -438,7 +445,8 @@ VIDEO_CARDS = [
                "barboursville": [("Ultherapy pricing", "/barboursville/ultherapy/#pricing", True)],
                "hudson": [("Ultherapy pricing", "/hudson/ultherapy/#pricing", True)]}},
 ]
-# Pinned cards (Ultherapy, Robin Oct 17, 2026) always lead the slider; the rest follow newest first.
+# Newest segment leads the slider and stays first until the next one airs; older ones move down (Robin, Nov 16 2026 - replaces the Oct 17 Ultherapy pin).
+# A card with "pin": True would still lead.
 VIDEO_CARDS = [c for c in VIDEO_CARDS if c.get("pin")] + sorted([c for c in VIDEO_CARDS if not c.get("pin")], key=lambda c: c["date"], reverse=True)
 
 CAROUSEL_CSS = (
@@ -555,7 +563,7 @@ def press_strip(abs_urls=False, anchors=True):
     return (f'<section id="press" style="background:#0b1f3a;padding:26px 0"><div class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 34px;text-align:center">'
             f'<span style="color:#c9d3e6;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:600">As featured on</span>'
             f'<a href="https://www.wsaz.com/" target="_blank" rel="noopener" aria-label="WSAZ NewsChannel 3"><img src="{logo}" alt="WSAZ NewsChannel 3" width="190" height="56" style="height:56px;width:auto;display:block"></a>'
-            f'<span style="color:#fff;font-size:.95rem">Studio 3 segments: <a href="{w}" style="color:#fff;text-decoration:underline">Alma Hybrid, EvolveX and Ultherapy live demos</a></span></div></section>\n')
+            f'<span style="color:#fff;font-size:.95rem">Studio 3 segments: <a href="{w}" style="color:#fff;text-decoration:underline">Morpheus8, Alma Hybrid, EvolveX and Ultherapy live demos</a></span></div></section>\n')
 
 _OLD_VIDEO_IDS = ("press", "studio3", "evolvex-video", "latest-video")
 def strip_old_video_blocks(s):
