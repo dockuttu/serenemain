@@ -678,6 +678,41 @@ _BASE = (_SEPT_PROMO if _today < _dt.date(2026, 10, 1) else
          _OCT_MAIN.replace('data-promo="oct-main" style="display:none"', 'data-promo="sep"', 1) if _today <= _dt.date(2026, 10, 31) else
          '<div class="promo" data-promo="sep">' + (_NOV_TXT if _today < _dt.date(2026, 11, 27) else _BF_TXT if _today <= _dt.date(2026, 11, 30) else _DEC_TXT if _today <= _dt.date(2026, 12, 24) else '&#10022; <a href="' + _B + '/specials/">This month&rsquo;s specials</a>' + _NP) + '</div>')
 PROMO = _BASE + _OCT_BV + _OCT_HUD + _OCT_MAIN + _NOV_JS + _PROMO_JS
+# Black Friday gift card bar (Robin asked Nov 20, 2026): its own red bar with flashing lights above everything, on every page
+# (main site + both office sites via the shared NAV). Before Nov 27 it announces the deal; Nov 27-30 it links straight to the
+# online gift card store; from Dec 1 the script hides it (and builds after Nov 30 leave it out). Inline CSS so the office sites get it too.
+_BF_GC_URL = "https://clients.mangomint.com/gift-cards/585660"
+_BF_BULBS = "".join('<i></i>' for _ in range(48))
+_BFBAR = ('<style>'
+  '.bfbar{position:relative;background:linear-gradient(180deg,#c8102e,#9b0c22);color:#fff;text-align:center;padding:20px 16px 14px;overflow:hidden;font-family:inherit}'
+  '.bfbar .bf-lights{position:absolute;top:0;left:0;right:0;height:12px;display:flex;justify-content:space-between;padding:0 6px;pointer-events:none}'
+  '.bfbar .bf-lights:before{content:"";position:absolute;left:0;right:0;top:3px;height:2px;background:#3b0a10}'
+  '.bfbar .bf-lights i{position:relative;top:4px;width:9px;height:12px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:#ffd23f;box-shadow:0 0 10px 3px rgba(255,210,63,.85);animation:bfblink 1s steps(1,end) infinite}'
+  '.bfbar .bf-lights i:nth-child(3n+2){background:#fff;box-shadow:0 0 10px 3px rgba(255,255,255,.9);animation-delay:.33s}'
+  '.bfbar .bf-lights i:nth-child(3n){background:#ff3b3b;box-shadow:0 0 10px 3px rgba(255,59,59,.95);animation-delay:.66s}'
+  '@keyframes bfblink{0%{opacity:1}50%{opacity:.15;box-shadow:none}}'
+  '.bfbar .bf-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 22px;max-width:1100px;margin:0 auto}'
+  '.bfbar .bf-tag{font-weight:900;font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;text-shadow:0 0 12px rgba(255,210,63,.7)}'
+  '.bfbar .bf-deal{font-weight:800;font-size:1.15rem;color:#fff}.bfbar .bf-deal b{color:#ffd23f;font-weight:900}'
+  '.bfbar .bf-when{font-weight:700;font-size:1rem;color:#fff;opacity:.95}'
+  '.bfbar .bf-btn{display:inline-block;background:#ffd23f;color:#5a0612;font-weight:900;font-size:1rem;padding:10px 20px;border-radius:999px;text-decoration:none;box-shadow:0 0 0 3px rgba(255,255,255,.35);animation:bfpulse 1.4s ease-in-out infinite}'
+  '.bfbar .bf-btn:hover{background:#fff;color:#9b0c22}'
+  '@keyframes bfpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}'
+  '@media (max-width:640px){.bfbar{padding:18px 12px 12px}.bfbar .bf-tag{font-size:1.05rem}.bfbar .bf-deal{font-size:1rem}.bfbar .bf-lights i:nth-child(n+25){display:none}}'
+  '@media (prefers-reduced-motion:reduce){.bfbar .bf-lights i,.bfbar .bf-btn{animation:none}}'
+  '</style>'
+  '<div class="bfbar" id="bfbar" role="region" aria-label="Black Friday gift card special"><div class="bf-lights" aria-hidden="true">' + _BF_BULBS + '</div>'
+  '<div class="bf-in"><span class="bf-tag">&#127873; Black Friday Gift Cards</span>'
+  '<span class="bf-deal">Pay $200, get <b>$250</b> &middot; Pay $500, get <b>$650</b></span>'
+  '<span class="bf-when" data-bf-when>Fri Nov 27 &ndash; Mon Nov 30 only &middot; Hudson &amp; Barboursville &middot; never expire</span>'
+  '<a class="bf-btn" data-bf-btn href="' + _B + '/specials/#black-friday">See the deal</a></div></div>'
+  '<script>(function(){try{var d=new Date(),b=document.getElementById("bfbar");if(!b)return;'
+  'if(d>=new Date(2026,11,1)){b.style.display="none";return;}'
+  'if(d>=new Date(2026,10,27)){var w=b.querySelector("[data-bf-when]"),a=b.querySelector("[data-bf-btn]");'
+  'if(w)w.innerHTML="On now &middot; ends Monday, Nov 30 &middot; Hudson &amp; Barboursville &middot; never expire";'
+  'if(a){a.href="' + _BF_GC_URL + '";a.target="_blank";a.rel="noopener";a.textContent="Buy gift cards now";}}}catch(e){}})();</script>')
+if _today <= _dt.date(2026, 11, 30):
+    PROMO = _BFBAR + PROMO
 NAV = PROMO + f'''<header>
   <div class="wrap nav">
     <a class="logo" href="/"><img src="{LOGO}" alt="Serene Med Spa" width="220" height="123"></a>
