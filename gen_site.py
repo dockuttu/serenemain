@@ -17,7 +17,7 @@ SITE = sys.argv[2] if len(sys.argv) > 2 else "bundle/site"
 CATS = [
     ("about", "About Serene", r"dr-robin|dr-shweta|founder|serene-med-spa-dr|our-team|welcome|grand-opening|meet-"),
     ("intimate", "Intimate Wellness", r"p-shot|o-shot|vaginal|labial|sexual|alma-duo|empowerrf|erectile|intimate"),
-    ("hair", "Hair Restoration", r"hair-restoration|alma-ted|prp-hair|hair-loss|hair-growth|exosome"),
+    ("hair", "Hair Restoration", r"hair-restoration|alma-ted|prp-hair|hair-loss|hair-growth"),
     ("wellness", "Wellness & Weight", r"\biv\b|iv-|vitamin|hormone|biote|weight|glp|semaglutide|tirzepatide|peptide|nad|longevity|testosterone|hydration|pro-nox|nitrous|telehealth"),
     ("laser", "Laser & Hair Removal", r"laser-hair|diolaze|tattoo|nail-fungus|vein|spider|laser-vein|hair-removal"),
     ("body", "Body Contouring", r"body|contour|evolve|emsculpt|bodytite|fat-|cellulite|slimming|butt|bbl|sculpt"),
@@ -52,6 +52,8 @@ REDIRECTS = {
     "/booking/threads": BARB["site"] + "thread-lift/", "/insider/": "/membership/", "/loyalty/": "/membership/",
     # Nov 12, 2026: peptide menu retired (LegitScript) -> 301 to the longevity page
     "/peptide-therapy-benefits-skin-hair-wellness/": BARB["site"] + "longevity/",
+    # Nov 20, 2026: exosome services retired (LegitScript: no FDA-approved exosome products) -> 301 to microneedling
+    "/exosome-treatment-skin-hair-rejuvenation/": BARB["site"] + "microneedling/",
     "/author/": "/our-providers/", "/wp-content/uploads/2025/11/SERENE-MED-SPA-IV-INFUSIONS-MENU.pdf": BARB["site"] + "iv-therapy/",
 }
 # Oct 10, 2026: practice rule — never say "vaginal rejuvenation". Old article URLs are renamed (301 from the old URL)
